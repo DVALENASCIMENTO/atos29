@@ -1,0 +1,941 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#17130f">
+<title>ATOS 29 — Capítulo 3 | O Sonho dos Cinco Níveis</title>
+
+<style>
+:root {
+    --papel: #f3e9cf;
+    --papel-claro: #f8f0dc;
+    --tinta: #302719;
+    --tinta-suave: #66563e;
+    --dourado: #a18a5b;
+    --fundo: #17130f;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    background:
+        radial-gradient(ellipse at center, #403326 0%, #211a14 55%, #100d0a 100%);
+    color: var(--papel);
+    font-family: Georgia, "Times New Roman", serif;
+}
+
+.cabecalho-site {
+    text-align: center;
+    padding: 22px 12px 12px;
+    color: #e8d9b9;
+}
+
+.cabecalho-site .marca {
+    font-size: 13px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+.cabecalho-site h1 {
+    margin: 8px 0 4px;
+    font-size: clamp(19px, 3vw, 27px);
+    letter-spacing: 2px;
+    font-weight: normal;
+}
+
+.cabecalho-site p {
+    margin: 0;
+    font-size: 12px;
+    letter-spacing: 2px;
+    color: #c0ad89;
+}
+
+.livro-area {
+    width: min(1500px, 96vw);
+    margin: 18px auto;
+    perspective: 1800px;
+}
+
+.livro {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    position: relative;
+    filter: drop-shadow(0 22px 28px rgba(0,0,0,.55));
+}
+
+.pagina {
+    position: relative;
+    min-width: 0;
+    height: min(78vh, 850px);
+    min-height: 570px;
+    padding: 35px 38px 45px;
+    color: var(--tinta);
+    overflow: hidden;
+    background:
+        linear-gradient(90deg, rgba(90,65,32,.08), transparent 12%, transparent 88%, rgba(90,65,32,.08)),
+        repeating-linear-gradient(0deg, rgba(100,75,40,.018) 0px, rgba(100,75,40,.018) 1px, transparent 1px, transparent 4px),
+        radial-gradient(ellipse at 30% 20%, rgba(255,255,255,.34), transparent 65%),
+        var(--papel);
+    border: 1px solid rgba(100,75,40,.25);
+}
+
+.pagina.esquerda {
+    border-radius: 5px 0 0 5px;
+    box-shadow: inset -15px 0 22px -20px #4a3824;
+}
+
+.pagina.direita {
+    border-radius: 0 5px 5px 0;
+    box-shadow: inset 15px 0 22px -20px #4a3824;
+}
+
+.lombada {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 20px;
+    transform: translateX(-50%);
+    z-index: 5;
+    pointer-events: none;
+    background: linear-gradient(90deg,
+        rgba(55,38,20,.18),
+        rgba(255,255,255,.25) 35%,
+        rgba(60,42,23,.22) 70%,
+        rgba(40,28,16,.10));
+}
+
+.cabecalho-pagina {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+    border-bottom: 1px solid rgba(90,70,42,.45);
+    padding-bottom: 8px;
+    margin-bottom: 17px;
+    color: var(--tinta-suave);
+    font-size: 9px;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.conteudo-pagina {
+    height: calc(100% - 76px);
+    overflow: hidden;
+    column-count: 2;
+    column-gap: 25px;
+    column-rule: 1px solid rgba(105,83,52,.18);
+    column-fill: auto;
+    font-size: clamp(11px, .93vw, 13px);
+    line-height: 1.48;
+    text-align: justify;
+    hyphens: auto;
+}
+
+.titulo-capitulo {
+    column-span: all;
+    text-align: center;
+    margin: 20px 0 22px;
+    break-inside: avoid;
+}
+
+.titulo-capitulo .livro-nome {
+    display: block;
+    font-size: 12px;
+    letter-spacing: 4px;
+    margin-bottom: 12px;
+}
+
+.titulo-capitulo .numero-capitulo {
+    display: block;
+    font-size: 10px;
+    letter-spacing: 3px;
+    margin-bottom: 8px;
+}
+
+.titulo-capitulo h2 {
+    font-size: clamp(17px, 1.7vw, 24px);
+    line-height: 1.25;
+    letter-spacing: 1.4px;
+    margin: 0;
+    text-transform: uppercase;
+}
+
+.titulo-capitulo .autor {
+    display: block;
+    margin-top: 12px;
+    font-size: 10px;
+    font-style: italic;
+    color: var(--tinta-suave);
+}
+
+.subtitulo {
+    break-after: avoid;
+    break-inside: avoid;
+    margin: 16px 0 8px;
+    font-size: 11px;
+    line-height: 1.3;
+    font-weight: bold;
+    text-align: left;
+    text-transform: uppercase;
+    letter-spacing: .5px;
+}
+
+.paragrafo {
+    margin: 0 0 7px;
+    break-inside: avoid;
+    text-indent: 0;
+}
+
+.numero {
+    font-size: .72em;
+    vertical-align: super;
+    font-weight: bold;
+    margin-right: 3px;
+    color: #75613e;
+}
+
+.citacao {
+    margin: 8px 8px 10px 13px;
+    padding-left: 9px;
+    border-left: 1px solid rgba(120,94,54,.55);
+    font-style: italic;
+    color: #51432f;
+    break-inside: avoid;
+}
+
+.referencia {
+    display: inline;
+    font-style: normal;
+    font-size: .91em;
+    color: #796545;
+    white-space: normal;
+}
+
+.rodape-pagina {
+    position: absolute;
+    bottom: 15px;
+    left: 38px;
+    right: 38px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid rgba(90,70,42,.32);
+    padding-top: 7px;
+    font-size: 9px;
+    letter-spacing: 1px;
+    color: #756348;
+}
+
+.pagina.vazia .conteudo-pagina {
+    display: none;
+}
+
+.controles {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 18px;
+    padding: 18px 10px 10px;
+}
+
+.controles button {
+    background: #3a2d20;
+    border: 1px solid #806b49;
+    color: #f4e7c9;
+    padding: 11px 22px;
+    font-family: Georgia, serif;
+    font-size: 12px;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: background .2s, transform .2s;
+}
+
+.controles button:hover:not(:disabled) {
+    background: #59432b;
+    transform: translateY(-2px);
+}
+
+.controles button:disabled {
+    opacity: .35;
+    cursor: not-allowed;
+}
+
+.indicador {
+    min-width: 115px;
+    text-align: center;
+    color: #e5d5b4;
+    font-size: 12px;
+    letter-spacing: 1px;
+}
+
+.institucional {
+    text-align: center;
+    padding: 8px 10px 25px;
+    color: #b7a27e;
+    font-size: 11px;
+    letter-spacing: 3px;
+}
+
+.animar {
+    animation: virar .35s ease;
+}
+
+@keyframes virar {
+    0% { opacity: .45; transform: rotateY(3deg); }
+    100% { opacity: 1; transform: rotateY(0); }
+}
+
+@media (max-width: 760px) {
+    .livro-area {
+        width: 96vw;
+        margin: 10px auto;
+    }
+
+    .livro {
+        display: block;
+    }
+
+    .pagina {
+        height: 76vh;
+        min-height: 490px;
+        padding: 25px 24px 42px;
+        border-radius: 4px !important;
+        box-shadow: 0 12px 25px rgba(0,0,0,.4) !important;
+    }
+
+    .pagina.direita {
+        display: none;
+    }
+
+    .pagina.esquerda {
+        display: none;
+    }
+
+    .pagina.movel {
+        display: block;
+    }
+
+    .pagina.movel .conteudo-pagina {
+        font-size: clamp(12px, 3.2vw, 15px);
+        line-height: 1.55;
+        column-gap: 18px;
+    }
+
+    .lombada {
+        display: none;
+    }
+
+    .cabecalho-pagina {
+        font-size: 8px;
+        letter-spacing: .7px;
+    }
+
+    .rodape-pagina {
+        left: 24px;
+        right: 24px;
+    }
+
+    .controles {
+        gap: 8px;
+    }
+
+    .controles button {
+        padding: 10px 13px;
+        font-size: 10px;
+    }
+}
+
+@media (max-width: 430px) {
+    .pagina.movel .conteudo-pagina {
+        column-count: 1;
+    }
+
+    .pagina {
+        padding: 22px 21px 42px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: .01ms !important;
+        transition-duration: .01ms !important;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header class="cabecalho-site">
+    <div class="marca">Ministério Atalaia</div>
+    <h1>ATOS 29 • A HISTÓRIA CONTINUA</h1>
+    <p>LEITURA DIGITAL • CAPÍTULO 3</p>
+</header>
+
+<main class="livro-area">
+    <div class="livro" id="livro">
+        <section class="pagina esquerda" id="paginaEsquerda"></section>
+        <div class="lombada"></div>
+        <section class="pagina direita" id="paginaDireita"></section>
+        <section class="pagina movel" id="paginaMovel" style="display:none"></section>
+    </div>
+</main>
+
+<nav class="controles" aria-label="Navegação do livro">
+    <button id="anterior" type="button">← ANTERIOR</button>
+    <span class="indicador" id="indicador">Páginas 1–2</span>
+    <button id="proxima" type="button">PRÓXIMA →</button>
+</nav>
+
+<footer class="institucional">MINISTÉRIO ATALAIA</footer>
+
+<script>
+/*
+  ATOS 29 — A HISTÓRIA CONTINUA
+  CAPÍTULO 3 — O SONHO DOS CINCO NÍVEIS
+
+  O conteúdo abaixo mantém a ordem e a numeração fornecidas.
+  Os cabeçalhos e rodapés repetidos da extração do texto foram
+  retirados para não aparecerem como parte da narrativa.
+*/
+
+const textoOriginal = `
+# O SONHO DURANTE O TEMPO DE BUSCA
+2|Durante aquele período de busca, oração e aprofundamento na presença de Deus, tive um sonho que marcou profundamente minha caminhada espiritual.
+3|Sonhei que estava caminhando por um lugar de provas.
+4|Muitas pessoas passavam por aquele caminho, mas, para chegar ao final, era necessário atravessar cinco níveis.
+5|Cada etapa apresentava um novo desafio.
+6|Era necessário avançar, vencer cada obstáculo e continuar caminhando.
+7|Naquele sonho, eu não estava simplesmente observando o caminho.
+8|Eu estava dentro dele.
+9|Com o passar do tempo, aprendi a compreender que existem coisas que Deus nos permite enxergar enquanto ainda estamos no processo, mas outras somente conseguimos compreender depois de atravessarmos determinadas etapas.
+10|A caminhada com Deus possui processos.
+11|Abraão recebeu uma promessa, mas precisou caminhar pela fé.
+12|José recebeu sonhos, mas passou por circunstâncias que pareciam contradizer aquilo que Deus havia mostrado.
+13|Davi foi ungido rei, mas antes de ocupar o trono passou por perseguição e espera.
+14|Moisés foi chamado para conduzir um povo, mas antes precisou atravessar anos de preparação no deserto.
+15|A Bíblia mostra repetidamente que o chamado e o processo caminham juntos.
+16|Por isso, quando me lembro daquele sonho, compreendo que o caminho de provas não representava necessariamente abandono ou rejeição.
+17|Representava uma caminhada de preparação.
+18|Deus estava me ensinando que chegar a determinado lugar exige atravessar determinadas etapas.
+19|Nem todo processo será compreendido imediatamente.
+20|Às vezes, Deus nos mostra apenas o suficiente para continuarmos caminhando.
+21|E foi assim naquele sonho.
+22|Eu sabia que precisava continuar.
+
+# O CAMINHO DE PROVAS
+23|O caminho parecia ser um lugar de provas.
+24|Havia muitas pessoas passando por ele, mas cada uma precisava enfrentar suas próprias dificuldades.
+25|Isso me fez pensar naquilo que a Palavra de Deus ensina sobre a caminhada da fé.
+26|Pedro escreveu: “Para que a prova da vossa fé, muito mais preciosa do que o ouro que perece e é provado pelo fogo, se ache em louvor, e honra, e glória na revelação de Jesus Cristo.” 1 Pedro 1:7 A prova revela aquilo que existe dentro de nós.
+27|Quando tudo está fácil, podemos imaginar que somos fortes.
+28|Mas é durante determinadas circunstâncias que descobrimos onde realmente está nossa confiança.
+29|A provação pode revelar nossa dependência de Deus, nossas limitações e áreas que precisam ser transformadas.
+30|Pode nos ensinar a esperar e a perseverar.
+31|Por isso, nem toda dificuldade significa que estamos fora da vontade de Deus.
+32|Algumas dificuldades fazem parte do próprio processo de amadurecimento.
+33|Tiago escreveu: “Meus irmãos, tende grande gozo quando cairdes em várias tentações; sabendo que a prova da vossa fé produz a paciência.” Tiago 1:2-3 Isso não significa desejar o sofrimento, mas compreender que Deus é capaz de produzir crescimento espiritual mesmo através de circunstâncias difíceis.
+34|Naquele sonho, eu precisava atravessar o caminho.
+35|Hoje compreendo que, muitas vezes, o propósito não está somente no lugar onde chegaremos, mas também naquilo que Deus formará em nós enquanto caminhamos.
+
+# OS CINCO NÍVEIS
+36|No sonho, havia cinco níveis.
+37|Cada nível apresentava um novo desafio.
+38|Não bastava vencer o primeiro para considerar o caminho terminado.
+39|Era necessário continuar.
+40|Isso me fez compreender que a vida espiritual também possui diferentes níveis de aprendizado.
+41|Existem coisas que Deus nos ensina no início da caminhada e outras que somente conseguimos compreender depois de algum tempo.
+42|A fé cresce.
+43|O entendimento cresce.
+44|A maturidade cresce.
+45|A responsabilidade também cresce.
+46|Jesus contou a parábola do semeador e mostrou que existem pessoas que recebem a Palavra de maneiras diferentes.
+47|Algumas não permitem que ela produza frutos; outras começam bem, mas não permanecem; outras recebem a Palavra e produzem fruto.
+48|A diferença não estava apenas em ouvir, mas na maneira como cada pessoa respondia àquilo que havia recebido.
+49|Assim também acontece conosco.
+50|Deus pode nos conduzir de uma etapa para outra, trabalhando áreas diferentes de nossa vida.
+51|Talvez um nível nos ensine dependência.
+52|Outro, perseverança.
+53|Outro, renúncia.
+54|Outro, obediência.
+55|E outro nos prepare para servir.
+56|Não afirmo que esses eram necessariamente os significados específicos dos cinco níveis do sonho.
+57|O que compreendi é que havia um princípio espiritual naquela experiência: existem etapas que precisamos atravessar antes de receber aquilo que Deus deseja colocar em nossas mãos.
+58|Paulo escreveu: “Não que já a tenha alcançado, ou que seja perfeito; mas prossigo para alcançar aquilo para o que fui também preso por Cristo Jesus.” Filipenses 3:12 A caminhada continua.
+59|Sempre existe algo que Deus deseja formar em nós.
+
+# A RECOMPENSA DEPOIS DA CAMINHADA
+60|Depois de atravessar os cinco níveis, cheguei ao final daquele percurso.
+61|Então recebi como recompensa uma fatia de bolo.
+62|Era algo simples, mas o que aconteceu naquele momento ficou profundamente marcado em minha memória.
+63|Eu olhei para aquilo que havia recebido e pensei: “Vou levar para a minha família.” Naquele momento, eu ainda não compreendia o significado daquela atitude.
+64|Hoje, porém, consigo enxergar uma mensagem profunda naquela cena.
+65|Eu havia atravessado um caminho.
+66|Havia enfrentado os níveis.
+67|Havia chegado ao final.
+68|E então havia recebido algo.
+69|Mas a primeira coisa que pensei foi repartir.
+70|Isso me faz lembrar que as bênçãos de Deus não precisam terminar em nós.
+71|Muitas vezes, Deus nos permite receber para que possamos repartir.
+72|A experiência que Deus nos concede pode servir para fortalecer alguém.
+73|A consolação que recebemos pode ser usada para consolar outra pessoa.
+74|O conhecimento adquirido pode servir para ensinar.
+75|A Palavra que nos alimenta pode alimentar outros.
+76|Paulo escreveu: “Deus [...] nos consola em toda a nossa tribulação, para que também possamos consolar os que estiverem em alguma tribulação.” 2 Coríntios 1:3-4 Existe uma dimensão de serviço naquilo que recebemos.
+77|A experiência pessoal pode tornar-se testemunho.
+78|O aprendizado pode tornar-se ensino.
+79|A transformação pode tornar-se instrumento de transformação para outras pessoas.
+
+# “VOU LEVAR PARA A MINHA FAMÍLIA”
+80|A frase que surgiu em meu coração naquele sonho foi simples: “Vou levar para a minha família.” Quanto mais penso nela, mais percebo sua importância.
+81|Eu não pensei em guardar.
+82|Pensei em levar.
+83|Não pensei somente em consumir.
+84|Pensei em repartir.
+85|A família apareceu primeiro.
+86|Isso também me fez refletir sobre a responsabilidade que temos dentro de nossa própria casa.
+87|Antes de pensarmos em grandes multidões, existem pessoas próximas que precisam enxergar nossa transformação.
+88|O Evangelho precisa ser vivido dentro de casa.
+89|Não adianta falar sobre amor fora e cultivar indiferença dentro.
+90|Não adianta falar sobre perdão para outras pessoas e não praticá-lo com aqueles que convivem conosco.
+91|Não adianta ensinar sobre oração sem desenvolver uma vida de oração.
+92|A transformação verdadeira começa alcançando nossa própria maneira de viver.
+93|Josué declarou: “Eu e a minha casa serviremos ao Senhor.” Josué 24:15 A fé também possui uma dimensão familiar.
+94|Quando Deus começa a trabalhar em uma pessoa, aquilo que Ele faz nela pode alcançar aqueles que estão ao seu redor.
+95|Por isso, aquela frase do sonho passou a ter um significado especial para mim.
+96|Eu queria levar para casa aquilo que havia recebido.
+97|E, espiritualmente, compreendi que deveria fazer o mesmo com aquilo que Deus estava colocando dentro de mim através das Escrituras.
+
+# O ALIMENTO QUE RECEBEMOS
+98|Jesus disse: “De graça recebestes, de graça dai.” Mateus 10:8 Essa palavra carrega uma grande responsabilidade.
+99|Tudo aquilo que recebemos do Senhor deve produzir em nós disposição para servir.
+100|Se recebemos conhecimento, podemos ensinar.
+101|Se recebemos consolo, podemos consolar.
+102|Se recebemos misericórdia, podemos demonstrar misericórdia.
+103|Se recebemos uma oportunidade, podemos usá-la para abençoar.
+104|Se recebemos a Palavra, precisamos permitir que ela alcance outros.
+105|Jesus também ensinou: “Vós sois a luz do mundo; não se pode esconder uma cidade edificada sobre um monte.” Mateus 5:14 A luz não foi feita para ficar escondida.
+106|Da mesma forma, o conhecimento da Palavra não deve transformar-se em um tesouro escondido.
+107|Com o passar do tempo, aquela fatia de bolo ganhou para mim um significado simbólico.
+108|Era alimento.
+109|E aquilo que Deus estava começando a colocar dentro de mim também era alimento, mas alimento espiritual.
+110|Jesus disse: “Nem só de pão viverá o homem, mas de toda palavra que sai da boca de Deus.” Mateus 4:4 A Palavra começou a alimentar minha alma.
+111|As Escrituras começaram a ocupar um espaço cada vez maior em minha caminhada.
+112|Textos que antes pareciam apenas conhecidos passaram a adquirir novos significados.
+113|Versículos começaram a confrontar pensamentos.
+114|Passagens começaram a trazer direção.
+115|Histórias bíblicas começaram a revelar princípios.
+116|E quanto mais eu estudava, mais percebia que não poderia guardar aquilo somente para mim.
+
+# A FAMÍLIA COMO PRIMEIRO CAMPO
+117|Quando penso no sonho, percebo que a família apareceu antes de qualquer outra pessoa.
+118|Isso me ensina que a missão começa muitas vezes perto de nós.
+119|Não devemos esperar alcançar grandes lugares para começar a servir.
+120|Existe um campo missionário dentro de casa.
+121|Existem pessoas ao nosso redor que observam nossa caminhada.
+122|Nossa família conhece nossas limitações, nossos erros e nossas reações.
+123|Por isso, o testemunho dentro de casa exige autenticidade.
+124|Paulo escreveu a Timóteo sobre a importância de uma fé que havia sido transmitida dentro de sua própria família: “Trazendo à memória a fé não fingida que em ti há, a qual habitou primeiro em tua avó Lóide, e em tua mãe Eunice.” 2 Timóteo 1:5 A fé pode atravessar gerações.
+125|Uma pessoa pode ensinar outra.
+126|Uma vida transformada pode influenciar uma família inteira.
+127|Por isso, quando pensei em levar o bolo para minha família, talvez o Senhor estivesse me ensinando algo que somente compreenderia mais tarde: o alimento que recebemos pode começar sendo repartido com aqueles que estão mais próximos.
+128|Depois, Deus pode ampliar o alcance.
+129|Mas o primeiro lugar onde nossa fé precisa ser percebida é também o lugar onde nossa vida é mais conhecida.
+130|Quanto mais estudamos a Palavra, maior se torna nossa responsabilidade diante daquilo que aprendemos.
+131|Conhecimento sem prática pode tornar-se apenas informação.
+132|A Bíblia não foi dada para ser apenas acumulada na mente.
+133|Ela precisa alcançar o coração e transformar a vida.
+134|Tiago escreveu: “E sede cumpridores da palavra, e não somente ouvintes.” Tiago 1:22 Conhecer as Escrituras é uma bênção, mas também é uma responsabilidade.
+
+# O CAMINHO ANTES DA MISSÃO
+135|O sonho apresentava uma sequência muito significativa.
+136|Primeiro vinha o caminho.
+137|Depois vinham as provas.
+138|Então vinha a chegada.
+139|Depois vinha a recompensa.
+140|E, finalmente, havia o desejo de repartir aquilo que havia sido recebido.
+141|Isso me fez perceber que existe uma preparação antes da missão.
+142|Antes de ensinar, precisamos aprender.
+143|Antes de conduzir, precisamos aprender a seguir.
+144|Antes de alimentar outros, precisamos ser alimentados.
+145|Antes de falar sobre perseverança, precisamos aprender a perseverar.
+146|Antes de testemunhar sobre a fidelidade de Deus, muitas vezes atravessamos situações nas quais precisamos experimentar essa fidelidade.
+147|Moisés passou pelo deserto.
+148|Davi passou pelo deserto.
+149|José passou pela prisão.
+150|Elias passou por períodos de isolamento.
+151|Jesus passou pelo deserto antes de iniciar publicamente Seu ministério.
+152|O processo não é necessariamente uma interrupção da missão.
+153|Muitas vezes, ele faz parte da preparação para ela.
+154|Existe um tempo de aprender no secreto.
+155|Existe um tempo de ser tratado.
+156|Existe um tempo de amadurecer.
+157|E existe um tempo em que aquilo que Deus formou dentro de nós começa a ser colocado a serviço de outras pessoas.
+158|Talvez aqueles cinco níveis representassem muito mais do que eu conseguia compreender naquele momento.
+159|Existem momentos de descoberta, confronto, renúncia, espera, silêncio, aprendizado e crescimento.
+160|Nem sempre entendemos imediatamente por que estamos passando por determinada situação.
+161|Mas não precisamos compreender todo o caminho para dar o próximo passo.
+162|“Porque andamos por fé, e não por vista.” 2 Coríntios 5:7 O sonho mostrava cinco níveis.
+163|Eu não sabia o que encontraria em cada um deles.
+164|Mas precisava continuar.
+
+# AQUILO QUE DEUS COLOCA EM NOSSAS MÃOS
+165|Aquela pequena fatia de bolo tornou-se uma lembrança de que toda dádiva recebida pode carregar consigo uma responsabilidade.
+166|Deus não nos abençoa apenas para que tenhamos algo para nós mesmos.
+167|Ele também pode nos abençoar para que sejamos instrumentos de bênção.
+168|Abraão recebeu uma promessa que alcançaria outras gerações.
+169|José recebeu uma posição que posteriormente serviria para preservar vidas.
+170|Moisés recebeu uma missão que alcançaria uma nação.
+171|Os discípulos receberam o Evangelho e foram enviados para anunciá-lo.
+172|Jesus disse: “Ide por todo o mundo, pregai o evangelho a toda criatura.” Marcos 16:15 Aquele que recebe também pode ser enviado.
+173|Aquele que aprende pode ensinar.
+174|Aquele que é alcançado pode tornar-se instrumento para alcançar.
+175|Aquele que é alimentado pode repartir o alimento.
+176|Foi isso que comecei a compreender através daquele sonho.
+177|O que Deus coloca em nossas mãos não deve necessariamente terminar em nossas mãos.
+178|Pode existir alguém esperando justamente aquilo que Deus está colocando em você.
+179|Compreendi, então, que minha caminhada com Deus não deveria terminar em uma experiência pessoal.
+180|O que Deus estava fazendo em mim também apontava para aquilo que Ele poderia fazer através de mim.
+181|Os primeiros discípulos disseram: “Porque não podemos deixar de falar do que temos visto e ouvido.” Atos 4:20 Eles haviam experimentado algo, e aquilo que experimentaram tornou-se testemunho.
+182|O sonho dos cinco níveis passou a representar, para mim, justamente essa transição.
+183|Eu caminhava.
+184|Eu era provado.
+185|Eu chegava ao final de uma etapa.
+186|Recebia algo.
+187|E pensava em repartir.
+188|Isso me ensinou que a experiência com Deus não deve produzir apenas lembranças pessoais.
+189|Ela pode produzir responsabilidade.
+190|Pode produzir serviço.
+191|Pode produzir testemunho.
+192|Pode produzir ministério.
+
+# O SONHO QUE SE TORNOU UMA MISSÃO
+193|Mais tarde compreendi ainda mais claramente o significado daquela experiência.
+194|O conhecimento das Escrituras nunca deveria permanecer apenas comigo.
+195|A Palavra que alimentou minha alma também seria compartilhada com outras pessoas.
+196|Aquilo que comecei aprendendo no secreto poderia, no tempo de Deus, tornar-se alimento para outras vidas.
+197|Jeremias declarou: “Achando-se as tuas palavras, logo as comi, e a tua palavra foi para mim o gozo e alegria do meu coração.” Jeremias 15:16 A Palavra é recebida como alimento.
+198|Ela entra em nós.
+199|Transforma-nos.
+200|Corrige-nos.
+201|Fortalece-nos.
+202|E depois pode sair de nós como testemunho.
+203|Quando penso novamente naquela frase do sonho — “Vou levar para a minha família” — percebo que ela ganhou um significado muito maior com o passar do tempo.
+204|Não se tratava apenas de levar uma fatia de bolo.
+205|Tratava-se de levar aquilo que havia sido recebido.
+206|Levar alimento.
+207|Levar esperança.
+208|Levar a Palavra.
+209|Levar aquilo que Deus havia começado a ensinar.
+210|A transformação interior deve encontrar expressão exterior.
+211|A Palavra recebida precisa produzir vida.
+212|A experiência precisa produzir testemunho.
+213|O conhecimento precisa produzir serviço.
+214|E a bênção recebida precisa encontrar alguém com quem possa ser compartilhada.
+215|Hoje compreendo que não devemos desprezar os processos pelos quais passamos.
+216|Cada nível pode nos ensinar alguma coisa.
+217|Cada prova pode revelar alguma coisa.
+218|Cada espera pode trabalhar alguma coisa.
+219|Cada experiência pode preparar alguma coisa.
+220|Paulo escreveu: “Porque a nossa leve e momentânea tribulação produz para nós um peso eterno de glória mui excelente.” 2 Coríntios 4:17 Talvez, durante uma prova, não consigamos perceber o propósito.
+221|Mas podemos perguntar: “Senhor, o que estás formando em mim através disso?” Porque aquilo que Deus forma em nós durante o caminho poderá tornar-se parte daquilo que Ele deseja entregar através de nós depois do caminho.
+222|O sonho dos cinco níveis deixou de ser apenas uma lembrança.
+223|Tornou-se uma compreensão.
+224|O caminho representava o processo.
+225|Os níveis representavam etapas.
+226|A recompensa representava aquilo que Deus poderia colocar em nossas mãos depois de um período de aprendizado e perseverança.
+227|E a decisão de levar o bolo para minha família representava uma verdade que se tornou cada vez mais clara: Aquilo que Deus coloca em nossas mãos não deve terminar em nossas mãos.
+228|A Palavra que recebemos precisa ser compartilhada.
+229|O conhecimento precisa transformar-se em serviço.
+230|A experiência precisa transformar-se em testemunho.
+231|O alimento recebido precisa ser repartido.
+232|Eu havia recebido.
+233|E precisava repartir.
+234|Eu havia sido alimentado.
+235|E precisava alimentar.
+236|Eu havia aprendido.
+237|E precisava ensinar.
+238|Eu havia caminhado.
+239|E poderia ajudar outros a caminhar.
+240|Talvez seja exatamente assim que uma experiência no secreto começa a se transformar em uma missão no público.
+241|Porque aquilo que Deus começa em silêncio pode, no tempo determinado por Ele, tornar-se uma mensagem para muitas vidas.
+242|O caminho continua.
+243|Os níveis continuam.
+244|A Palavra continua sendo recebida.
+245|E o alimento continua sendo repartido.
+
+# FIM DO CAPÍTULO
+# ATOS 29 CONTINUA
+`;
+
+const configuracao = {
+    titulo: "O SONHO DOS CINCO NÍVEIS",
+    capitulo: "CAPÍTULO 3",
+    autor: "Ministério Atalaia • Diego Nascimento — Pastor Evangelista",
+    caracteresPorPagina: 3300
+};
+
+const linhas = textoOriginal
+    .split("\n")
+    .map(linha => linha.trim())
+    .filter(Boolean);
+
+const blocos = [];
+
+for (const linha of linhas) {
+    if (linha.startsWith("# ")) {
+        blocos.push({
+            tipo: "titulo",
+            texto: linha.replace(/^#\s*/, "")
+        });
+    } else {
+        const separador = linha.indexOf("|");
+        if (separador > -1) {
+            blocos.push({
+                tipo: "paragrafo",
+                numero: linha.slice(0, separador),
+                texto: linha.slice(separador + 1)
+            });
+        }
+    }
+}
+
+/*
+  Distribuição automática: cada página recebe uma sequência de blocos.
+  O texto não é descartado nem encurtado. Os parágrafos são mantidos
+  inteiros, e os títulos permanecem junto ao conteúdo subsequente.
+*/
+
+function calcularPaginas() {
+    const paginas = [];
+    let paginaAtual = [];
+    let totalCaracteres = 0;
+
+    const limite = configuracao.caracteresPorPagina;
+
+    blocos.forEach((bloco, indice) => {
+        const tamanho = bloco.texto.length + 35;
+
+        if (
+            totalCaracteres + tamanho > limite &&
+            paginaAtual.length > 0 &&
+            bloco.tipo !== "titulo"
+        ) {
+            paginas.push(paginaAtual);
+            paginaAtual = [];
+            totalCaracteres = 0;
+        }
+
+        if (
+            bloco.tipo === "titulo" &&
+            totalCaracteres > limite * .78
+        ) {
+            paginas.push(paginaAtual);
+            paginaAtual = [];
+            totalCaracteres = 0;
+        }
+
+        paginaAtual.push(bloco);
+        totalCaracteres += tamanho;
+
+        if (indice === blocos.length - 1) {
+            paginas.push(paginaAtual);
+        }
+    });
+
+    if (paginaAtual.length && paginas[paginas.length - 1] !== paginaAtual) {
+        paginas.push(paginaAtual);
+    }
+
+    return paginas.filter(p => p.length);
+}
+
+const paginas = calcularPaginas();
+
+function escaparHTML(texto) {
+    return texto
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+}
+
+function formatarTexto(texto) {
+    let seguro = escaparHTML(texto);
+
+    /*
+      Destaca citações entre aspas e preserva a referência bíblica
+      que aparece imediatamente depois da citação.
+    */
+    seguro = seguro.replace(
+        /“([^”]+)”/g,
+        '<span class="citacao">“$1”</span>'
+    );
+
+    return seguro;
+}
+
+function montarConteudo(blocosPagina, numeroPagina) {
+    let html = "";
+
+    if (numeroPagina === 0) {
+        html += `
+            <div class="titulo-capitulo">
+                <span class="livro-nome">ATOS 29</span>
+                <span class="numero-capitulo">${configuracao.capitulo}</span>
+                <h2>${configuracao.titulo}</h2>
+                <span class="autor">${configuracao.autor}</span>
+            </div>
+        `;
+    }
+
+    for (const bloco of blocosPagina) {
+        if (bloco.tipo === "titulo") {
+            if (bloco.texto === "FIM DO CAPÍTULO" ||
+                bloco.texto === "ATOS 29 CONTINUA") {
+                html += `<h3 class="subtitulo">${escaparHTML(bloco.texto)}</h3>`;
+            } else {
+                html += `<h3 class="subtitulo">${escaparHTML(bloco.texto)}</h3>`;
+            }
+        } else {
+            html += `
+                <p class="paragrafo">
+                    <sup class="numero">${escaparHTML(bloco.numero)}</sup>
+                    ${formatarTexto(bloco.texto)}
+                </p>
+            `;
+        }
+    }
+
+    return html;
+}
+
+function criarPagina(elemento, numero, classe) {
+    const blocosPagina = paginas[numero];
+
+    if (!blocosPagina) {
+        elemento.className = "pagina " + classe + " vazia";
+        elemento.innerHTML = "";
+        return;
+    }
+
+    elemento.className = "pagina " + classe + " animar";
+
+    elemento.innerHTML = `
+        <div class="cabecalho-pagina">
+            <span>ATOS 29 • A HISTÓRIA CONTINUA</span>
+            <span>CAPÍTULO 3</span>
+        </div>
+
+        <div class="conteudo-pagina">
+            ${montarConteudo(blocosPagina, numero)}
+        </div>
+
+        <div class="rodape-pagina">
+            <span>MINISTÉRIO ATALAIA</span>
+            <span>${numero + 1}</span>
+        </div>
+    `;
+}
+
+let indiceAtual = 0;
+
+const paginaEsquerda = document.getElementById("paginaEsquerda");
+const paginaDireita = document.getElementById("paginaDireita");
+const paginaMovel = document.getElementById("paginaMovel");
+
+const botaoAnterior = document.getElementById("anterior");
+const botaoProxima = document.getElementById("proxima");
+const indicador = document.getElementById("indicador");
+
+function ehCelular() {
+    return window.matchMedia("(max-width: 760px)").matches;
+}
+
+function atualizarLivro() {
+    if (ehCelular()) {
+        paginaEsquerda.style.display = "none";
+        paginaDireita.style.display = "none";
+        paginaMovel.style.display = "block";
+
+        criarPagina(paginaMovel, indiceAtual, "movel");
+
+        indicador.textContent =
+            `Página ${indiceAtual + 1} de ${paginas.length}`;
+
+        botaoAnterior.disabled = indiceAtual === 0;
+        botaoProxima.disabled = indiceAtual >= paginas.length - 1;
+
+    } else {
+        paginaMovel.style.display = "none";
+        paginaEsquerda.style.display = "block";
+        paginaDireita.style.display = "block";
+
+        const par = Math.floor(indiceAtual / 2) * 2;
+
+        criarPagina(paginaEsquerda, par, "esquerda");
+        criarPagina(paginaDireita, par + 1, "direita");
+
+        indicador.textContent =
+            `Páginas ${par + 1}–${Math.min(par + 2, paginas.length)} de ${paginas.length}`;
+
+        botaoAnterior.disabled = par === 0;
+        botaoProxima.disabled = par + 2 >= paginas.length;
+    }
+}
+
+function avancar() {
+    if (ehCelular()) {
+        if (indiceAtual < paginas.length - 1) {
+            indiceAtual++;
+        }
+    } else {
+        const par = Math.floor(indiceAtual / 2) * 2;
+        if (par + 2 < paginas.length) {
+            indiceAtual = par + 2;
+        }
+    }
+
+    atualizarLivro();
+}
+
+function voltar() {
+    if (ehCelular()) {
+        if (indiceAtual > 0) {
+            indiceAtual--;
+        }
+    } else {
+        const par = Math.floor(indiceAtual / 2) * 2;
+        if (par > 0) {
+            indiceAtual = par - 2;
+        }
+    }
+
+    atualizarLivro();
+}
+
+botaoAnterior.addEventListener("click", voltar);
+botaoProxima.addEventListener("click", avancar);
+
+document.addEventListener("keydown", evento => {
+    if (evento.key === "ArrowRight") avancar();
+    if (evento.key === "ArrowLeft") voltar();
+});
+
+window.addEventListener("resize", atualizarLivro);
+
+atualizarLivro();
+</script>
+
+</body>
+</html>

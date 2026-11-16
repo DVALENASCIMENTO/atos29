@@ -1,0 +1,1506 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#17140f">
+
+<title>ATOS 29 — Capítulo 5 | O Coral Celestial</title>
+
+<style>
+/* ==========================================
+   ATOS 29 — IDENTIDADE EDITORIAL
+   MODELO BÍBLIA IMPRESSA TRADICIONAL
+========================================== */
+
+:root {
+    --paper: #f3ecd9;
+    --paper-dark: #e9dfc6;
+    --ink: #29251d;
+    --muted: #746b58;
+    --gold: #a18a58;
+    --dark: #17140f;
+    --page-height: min(78vh, 780px);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    background:
+        radial-gradient(ellipse at center, #393328 0%, #211e18 55%, #100e0b 100%);
+    color: var(--ink);
+    font-family: Georgia, "Times New Roman", serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* ==========================================
+   CABEÇALHO EXTERNO
+========================================== */
+
+.top-brand {
+    width: 100%;
+    padding: 23px 12px 17px;
+    text-align: center;
+    color: #e7dcc1;
+}
+
+.top-brand h1 {
+    font-family: Georgia, serif;
+    font-size: 19px;
+    letter-spacing: 3px;
+    font-weight: normal;
+    margin: 0;
+}
+
+.top-brand p {
+    margin: 8px 0 0;
+    font-family: Arial, sans-serif;
+    font-size: 9px;
+    letter-spacing: 3px;
+    color: #b9a77d;
+}
+
+/* ==========================================
+   ÁREA DO LIVRO
+========================================== */
+
+.book-container {
+    width: min(1160px, 96vw);
+    margin: 8px auto 15px;
+    position: relative;
+}
+
+.book {
+    width: 100%;
+    height: var(--page-height);
+    min-height: 570px;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    position: relative;
+    perspective: 1800px;
+    background: #332a1e;
+    box-shadow:
+        0 20px 55px rgba(0,0,0,.65),
+        0 0 0 5px rgba(105,84,51,.22);
+}
+
+/* ==========================================
+   PÁGINAS
+========================================== */
+
+.page {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+
+    background-color: var(--paper);
+
+    background-image:
+        radial-gradient(
+            ellipse at 15% 20%,
+            rgba(255,255,255,.24),
+            transparent 55%
+        ),
+        radial-gradient(
+            ellipse at 85% 75%,
+            rgba(153,123,67,.08),
+            transparent 60%
+        ),
+        repeating-linear-gradient(
+            0deg,
+            rgba(110,87,49,.018) 0px,
+            rgba(110,87,49,.018) 1px,
+            transparent 1px,
+            transparent 4px
+        );
+
+    box-shadow:
+        inset 0 0 25px rgba(91,69,36,.13),
+        inset 0 0 4px rgba(91,69,36,.15);
+}
+
+.page:first-child {
+    border-right: 1px solid rgba(76,59,35,.15);
+    box-shadow:
+        inset -13px 0 19px -15px rgba(0,0,0,.45),
+        inset 0 0 22px rgba(91,69,36,.13);
+}
+
+.page:last-child {
+    border-left: 1px solid rgba(76,59,35,.12);
+    box-shadow:
+        inset 13px 0 19px -15px rgba(0,0,0,.4),
+        inset 0 0 22px rgba(91,69,36,.13);
+}
+
+/* Lombada central */
+
+.book::after {
+    content: "";
+    position: absolute;
+    z-index: 10;
+    left: 50%;
+    top: 0;
+    height: 100%;
+    width: 13px;
+    transform: translateX(-50%);
+    pointer-events: none;
+
+    background: linear-gradient(
+        90deg,
+        rgba(0,0,0,.16),
+        rgba(0,0,0,.025) 35%,
+        rgba(255,255,255,.13) 50%,
+        rgba(0,0,0,.025) 70%,
+        rgba(0,0,0,.17)
+    );
+}
+
+/* Página em preparação */
+
+.page.measuring {
+    position: absolute;
+    left: -20000px;
+    top: 0;
+    visibility: hidden;
+    display: block !important;
+}
+
+/* ==========================================
+   CABEÇALHO DA PÁGINA
+========================================== */
+
+.page-header {
+    position: absolute;
+    left: 9%;
+    right: 9%;
+    top: 22px;
+    height: 25px;
+    border-bottom: 1px solid rgba(100,83,51,.45);
+
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+
+    font-size: 8px;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    color: #625840;
+}
+
+.page-header .chapter-name {
+    font-style: italic;
+    letter-spacing: .5px;
+}
+
+/* ==========================================
+   ÁREA DE TEXTO
+========================================== */
+
+.page-content {
+    position: absolute;
+    top: 62px;
+    bottom: 48px;
+    left: 8%;
+    right: 8%;
+
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 19px;
+    overflow: hidden;
+}
+
+.text-column {
+    min-width: 0;
+    height: 100%;
+    overflow: hidden;
+
+    text-align: justify;
+    text-justify: inter-word;
+
+    font-size: 11.6px;
+    line-height: 1.48;
+    hyphens: auto;
+    overflow-wrap: break-word;
+}
+
+/* ==========================================
+   ABERTURA DO CAPÍTULO
+========================================== */
+
+.chapter-opening {
+    text-align: center;
+    margin: 3px 0 16px;
+    padding-bottom: 11px;
+    border-bottom: 1px solid rgba(116,94,56,.45);
+}
+
+.chapter-opening .book-name {
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: 3px;
+    margin-bottom: 7px;
+}
+
+.chapter-opening .chapter-title {
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 1.4;
+    letter-spacing: .8px;
+    margin: 5px 0;
+    text-transform: uppercase;
+}
+
+.chapter-opening .author {
+    font-size: 9px;
+    font-style: italic;
+    color: #625840;
+    margin-top: 7px;
+}
+
+/* ==========================================
+   TÍTULOS DAS SEÇÕES
+========================================== */
+
+.section-title {
+    font-size: 10.7px;
+    line-height: 1.35;
+    font-weight: bold;
+    text-align: left;
+    text-transform: uppercase;
+    letter-spacing: .45px;
+
+    margin: 12px 0 7px;
+    color: #29251d;
+}
+
+/* ==========================================
+   PARÁGRAFOS NUMERADOS
+========================================== */
+
+.paragraph {
+    margin: 0 0 5px;
+    text-indent: 0;
+}
+
+.verse-number {
+    display: inline-block;
+    font-size: 8px;
+    font-weight: bold;
+    vertical-align: super;
+    line-height: 0;
+    margin-right: 3px;
+    color: #716342;
+}
+
+/* ==========================================
+   CITAÇÕES BÍBLICAS
+========================================== */
+
+.bible-quote {
+    margin: 7px 5px 4px 12px;
+    padding-left: 8px;
+    border-left: 1px solid #a9956a;
+
+    font-size: 10.8px;
+    line-height: 1.5;
+    font-style: italic;
+    text-align: left;
+}
+
+.bible-reference {
+    font-size: 9px;
+    font-style: italic;
+    text-align: right;
+    color: #625840;
+    margin: 3px 5px 9px 0;
+}
+
+/* ==========================================
+   DESTAQUE FINAL
+========================================== */
+
+.final-declaration {
+    text-align: center;
+    font-size: 10.5px;
+    font-weight: bold;
+    font-style: italic;
+    line-height: 1.5;
+    letter-spacing: .4px;
+    margin: 10px 4px 5px;
+}
+
+/* ==========================================
+   RODAPÉ
+========================================== */
+
+.page-footer {
+    position: absolute;
+    bottom: 19px;
+    left: 9%;
+    right: 9%;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    border-top: 1px solid rgba(100,83,51,.4);
+    padding-top: 7px;
+
+    color: #71664e;
+    font-size: 8px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.page-number {
+    font-size: 9px;
+    font-weight: bold;
+}
+
+/* ==========================================
+   NAVEGAÇÃO
+========================================== */
+
+.navigation {
+    width: min(1160px, 96vw);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    margin: 17px auto 8px;
+}
+
+.navigation button {
+    border: 1px solid #8d7952;
+    background: #29241b;
+    color: #e8ddc3;
+
+    padding: 12px 25px;
+    font-family: Arial, sans-serif;
+    font-size: 10px;
+    letter-spacing: 1.5px;
+
+    cursor: pointer;
+    transition: .2s;
+}
+
+.navigation button:hover:not(:disabled) {
+    background: #665437;
+    border-color: #c1a36b;
+}
+
+.navigation button:disabled {
+    opacity: .35;
+    cursor: not-allowed;
+}
+
+.navigation button:focus-visible {
+    outline: 2px solid #d4bd87;
+    outline-offset: 3px;
+}
+
+.page-indicator {
+    color: #d9cba9;
+    font-family: Arial, sans-serif;
+    font-size: 11px;
+    letter-spacing: 1px;
+    min-width: 110px;
+    text-align: center;
+}
+
+/* ==========================================
+   RODAPÉ INSTITUCIONAL EXTERNO
+========================================== */
+
+.institution {
+    color: #b9a77d;
+    text-align: center;
+    font-family: Arial, sans-serif;
+    font-size: 9px;
+    letter-spacing: 3px;
+    margin: 12px 0 23px;
+}
+
+/* ==========================================
+   ANIMAÇÃO DE MUDANÇA
+========================================== */
+
+.page.entering {
+    animation: pageEnter .32s ease-out;
+}
+
+@keyframes pageEnter {
+    from {
+        opacity: .45;
+        transform: perspective(1000px) rotateY(-2deg);
+    }
+
+    to {
+        opacity: 1;
+        transform: perspective(1000px) rotateY(0);
+    }
+}
+
+/* ==========================================
+   RESPONSIVIDADE
+========================================== */
+
+@media (max-width: 700px) {
+
+    :root {
+        --page-height: 76vh;
+    }
+
+    .top-brand {
+        padding-top: 19px;
+    }
+
+    .top-brand h1 {
+        font-size: 15px;
+        letter-spacing: 2px;
+    }
+
+    .book-container {
+        width: 94vw;
+    }
+
+    .book {
+        display: block;
+        min-height: 510px;
+        height: var(--page-height);
+    }
+
+    .book::after {
+        display: none;
+    }
+
+    .page {
+        width: 100%;
+        height: 100%;
+        border: none !important;
+        box-shadow:
+            inset 0 0 25px rgba(91,69,36,.14),
+            0 4px 15px rgba(0,0,0,.2);
+    }
+
+    .page-header {
+        left: 7%;
+        right: 7%;
+        top: 19px;
+        font-size: 7px;
+    }
+
+    .page-content {
+        left: 7%;
+        right: 7%;
+        top: 53px;
+        bottom: 43px;
+        grid-template-columns: 1fr;
+    }
+
+    .text-column {
+        font-size: clamp(10px, 2.8vw, 12px);
+        line-height: 1.52;
+    }
+
+    .chapter-opening .chapter-title {
+        font-size: 13px;
+    }
+
+    .section-title {
+        font-size: 10.5px;
+    }
+
+    .navigation {
+        gap: 8px;
+    }
+
+    .navigation button {
+        padding: 12px 13px;
+        font-size: 9px;
+    }
+
+    .page-indicator {
+        min-width: 75px;
+        font-size: 9px;
+    }
+
+    .page-footer {
+        left: 7%;
+        right: 7%;
+        bottom: 15px;
+        font-size: 7px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .page.entering {
+        animation: none;
+    }
+
+    * {
+        scroll-behavior: auto !important;
+    }
+}
+
+@media print {
+    body {
+        background: white;
+    }
+
+    .top-brand,
+    .navigation,
+    .institution {
+        display: none;
+    }
+
+    .book-container,
+    .book {
+        width: 100%;
+        height: auto;
+        display: block;
+        box-shadow: none;
+    }
+
+    .book::after {
+        display: none;
+    }
+
+    .page,
+    .page.is-hidden {
+        display: block !important;
+        position: relative;
+        width: 100%;
+        height: 270mm;
+        page-break-after: always;
+        break-after: page;
+        box-shadow: none;
+    }
+
+    .page.measuring {
+        display: none !important;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header class="top-brand">
+    <h1>ATOS 29 • A HISTÓRIA CONTINUA</h1>
+    <p>MINISTÉRIO ATALAIA</p>
+</header>
+
+<main class="book-container">
+
+    <div class="book" id="book" aria-label="Livro digital ATOS 29">
+    </div>
+
+</main>
+
+<nav class="navigation" aria-label="Navegação do livro">
+
+    <button id="previous" type="button" disabled>
+        ← ANTERIOR
+    </button>
+
+    <div class="page-indicator" id="pageIndicator">
+        PÁGINA 1
+    </div>
+
+    <button id="next" type="button">
+        PRÓXIMA →
+    </button>
+
+</nav>
+
+<footer class="institution">
+    MINISTÉRIO ATALAIA
+</footer>
+
+<script>
+
+/* ==========================================
+   ATOS 29 — CAPÍTULO 5
+   O CORAL CELESTIAL
+
+   SISTEMA DE DIAGRAMAÇÃO AUTOMÁTICA
+========================================== */
+
+const content = [
+
+    {
+        type: "opening"
+    },
+
+    {
+        type: "heading",
+        text: "QUANDO OS OUVIDOS SE ABRIRAM"
+    },
+
+    {type:"p", n:1, text:"Lembro-me de tudo ser novidade. Era como se eu estivesse vivendo uma nova vida."},
+
+    {type:"p", n:2, text:"Depois de conhecer o Evangelho e experimentar aquilo que Deus estava fazendo em meu interior, aconteceu algo que jamais esqueci."},
+
+    {type:"p", n:3, text:"De repente, meus ouvidos se abriram."},
+
+    {type:"p", n:4, text:"Era como se o céu tivesse sido aberto acima da minha cabeça, e então pude ouvir algo que jamais havia imaginado ouvir: o som de um coral celestial."},
+
+    {type:"p", n:5, text:"Fiquei profundamente maravilhado."},
+
+    {type:"p", n:6, text:"Ao mesmo tempo, fiquei assustado, porque aquilo era completamente inesperado. Eu nunca havia imaginado que uma experiência assim pudesse acontecer comigo."},
+
+    {type:"p", n:7, text:"Eu estava ouvindo vozes."},
+
+    {type:"p", n:8, text:"Eram inúmeras vozes, formando algo tão belo e harmonioso que não encontro comparação com nenhum coral que já tenha ouvido na Terra."},
+
+    {type:"p", n:9, text:"Era diferente de tudo."},
+
+    {type:"p", n:10, text:"Era como se uma multidão de vozes estivesse cantando em perfeita harmonia, produzindo uma beleza que ultrapassava aquilo que os ouvidos humanos estão acostumados a ouvir."},
+
+    {type:"p", n:11, text:"Não era uma música comum."},
+
+    {type:"p", n:12, text:"Não era simplesmente um coral."},
+
+    {type:"p", n:13, text:"Para mim, naquele momento, era como se tivesse sido permitido ouvir, ainda que por um instante, um pouco daquilo que existe na adoração celestial."},
+
+    {
+        type:"heading",
+        text:"UMA EXPERIÊNCIA QUE MARCOU MINHA CAMINHADA"
+    },
+
+    {type:"p", n:14, text:"Aquela experiência ficou gravada em minha memória."},
+
+    {type:"p", n:15, text:"Talvez o Senhor tenha me permitido vivê-la de uma maneira especial justamente pelo fato de eu ser músico."},
+
+    {type:"p", n:16, text:"A música sempre fez parte da minha vida."},
+
+    {type:"p", n:17, text:"Antes mesmo de compreender muitas coisas sobre o ministério, eu já tinha dentro de mim uma profunda ligação com a música. Por isso, ouvir algo tão extraordinário teve um significado ainda maior para mim."},
+
+    {type:"p", n:18, text:"Não posso afirmar detalhes que não me foram revelados."},
+
+    {type:"p", n:19, text:"Não posso dizer exatamente quem cantava, como era o céu ou explicar completamente aquilo que ouvi."},
+
+    {type:"p", n:20, text:"Posso apenas testemunhar aquilo que vivi:"},
+
+    {type:"p", n:21, text:"Eu ouvi."},
+
+    {type:"p", n:22, text:"E aquilo me marcou."},
+
+    {
+        type:"heading",
+        text:"A BÍBLIA E A ADORAÇÃO CELESTIAL"
+    },
+
+    {type:"p", n:23, text:"A Bíblia apresenta diversas passagens que descrevem a realidade da adoração diante de Deus."},
+
+    {type:"p", n:24, text:"No livro de Isaías, o profeta relata uma visão na qual viu o Senhor assentado sobre um alto e sublime trono, enquanto os serafins proclamavam continuamente:"},
+
+    {
+        type:"quote",
+        text:"“Santo, santo, santo é o SENHOR dos Exércitos; toda a terra está cheia da sua glória.”"
+    },
+
+    {
+        type:"reference",
+        text:"— Isaías 6:1–3"
+    },
+
+    {type:"p", n:26, text:"João também recebeu uma visão extraordinária da adoração celestial."},
+
+    {type:"p", n:27, text:"Ele descreve seres viventes e anciãos diante do trono, proclamando a santidade e a dignidade daquele que está assentado no trono."},
+
+    {type:"reference", text:"28 — Apocalipse 4:8–11"},
+
+    {type:"p", n:29, text:"E, posteriormente, João ouviu algo ainda maior:"},
+
+    {
+        type:"quote",
+        text:"“E ouvi como que a voz de uma grande multidão, e como que a voz de muitas águas, e como que a voz de grandes trovões, que dizia: Aleluia! pois já o Senhor Deus Todo-Poderoso reina.”"
+    },
+
+    {
+        type:"reference",
+        text:"— Apocalipse 19:6"
+    },
+
+    {type:"p", n:31, text:"Essa passagem sempre me chama atenção."},
+
+    {type:"p", n:32, text:"João fala de uma grande multidão, de muitas águas e de grandes trovões."},
+
+    {type:"p", n:33, text:"É uma descrição de uma manifestação sonora grandiosa, poderosa e impossível de comparar simplesmente com aquilo que conhecemos na experiência humana."},
+
+    {
+        type:"heading",
+        text:"O SOM DA ADORAÇÃO"
+    },
+
+    {type:"p", n:34, text:"A Bíblia também apresenta a realidade de uma multidão incontável diante do Cordeiro."},
+
+    {type:"reference", text:"35 — Apocalipse 7:9–10"},
+
+    {type:"p", n:36, text:"João declara que viu uma grande multidão, de todas as nações, povos e línguas, diante do trono e diante do Cordeiro, clamando em alta voz e atribuindo a salvação ao nosso Deus."},
+
+    {type:"p", n:37, text:"Existe, portanto, na revelação bíblica, uma realidade de adoração celestial e multidões diante de Deus."},
+
+    {type:"p", n:38, text:"Por isso, quando penso naquela experiência que vivi, não procuro construir uma doutrina a partir dela."},
+
+    {type:"p", n:39, text:"A minha experiência não está acima das Escrituras."},
+
+    {type:"p", n:40, text:"A Bíblia é o fundamento."},
+
+    {type:"p", n:41, text:"A experiência é apenas um testemunho pessoal daquilo que vivi."},
+
+    {
+        type:"heading",
+        text:"O MÚSICO E O SOM DO CÉU"
+    },
+
+    {type:"p", n:42, text:"Talvez exista uma razão especial pela qual aquela experiência tenha tocado tão profundamente meu coração."},
+
+    {type:"p", n:43, text:"Eu sou músico."},
+
+    {type:"p", n:44, text:"Eu conheço a beleza de uma voz bem colocada."},
+
+    {type:"p", n:45, text:"Conheço a força de uma harmonia."},
+
+    {type:"p", n:46, text:"Conheço a emoção que pode existir quando várias vozes se unem para produzir um único som."},
+
+    {type:"p", n:47, text:"Mas aquilo que ouvi estava além daquilo que eu conhecia."},
+
+    {type:"p", n:48, text:"Foi como se Deus tivesse me permitido perceber que existe uma beleza na adoração que ultrapassa os limites da música que conhecemos aqui."},
+
+    {type:"p", n:49, text:"A música terrestre pode ser maravilhosa."},
+
+    {type:"p", n:50, text:"Mas toda música que verdadeiramente glorifica a Deus aponta para algo maior:"},
+
+    {type:"p", n:51, text:"O próprio Deus."},
+
+    {
+        type:"heading",
+        text:"NÃO É SOBRE O SOM — É SOBRE QUEM É ADORADO"
+    },
+
+    {type:"p", n:52, text:"Com o passar do tempo, compreendi que a parte mais importante daquela experiência não deveria ser o som que ouvi."},
+
+    {type:"p", n:53, text:"O mais importante é Aquele que é digno de ser adorado."},
+
+    {type:"p", n:54, text:"Os anjos adoram."},
+
+    {type:"p", n:55, text:"Os seres viventes adoram."},
+
+    {type:"p", n:56, text:"Os anciãos adoram."},
+
+    {type:"p", n:57, text:"A multidão dos santos adora."},
+
+    {type:"p", n:58, text:"E toda a criação aponta para a glória daquele que está assentado no trono."},
+
+    {type:"reference", text:"59 — Apocalipse 5:11–13"},
+
+    {type:"p", n:60, text:"O céu não é apresentado nas Escrituras como um lugar de entretenimento."},
+
+    {type:"p", n:61, text:"É um lugar onde a glória de Deus é reconhecida."},
+
+    {type:"p", n:62, text:"Por isso, aquela experiência me leva a uma pergunta muito mais profunda:"},
+
+    {type:"p", n:63, text:"Se existe adoração no céu, como está a minha adoração na Terra?"},
+
+    {
+        type:"heading",
+        text:"UMA EXPERIÊNCIA QUE ME ENSINOU"
+    },
+
+    {type:"p", n:64, text:"A experiência do coral celestial não me ensinou a buscar experiências."},
+
+    {type:"p", n:65, text:"Ela me ensinou a valorizar ainda mais a presença de Deus."},
+
+    {type:"p", n:66, text:"Não devemos buscar o extraordinário."},
+
+    {type:"p", n:67, text:"Devemos buscar o Senhor."},
+
+    {type:"p", n:68, text:"Se Deus permite que alguém tenha uma experiência extraordinária, que toda a glória seja dada a Ele."},
+
+    {type:"p", n:69, text:"Se Deus não permite, continuamos confiando nEle da mesma maneira."},
+
+    {type:"p", n:70, text:"Porque a nossa fé não está fundamentada naquilo que ouvimos, vemos ou sentimos."},
+
+    {type:"p", n:71, text:"Nossa fé está fundamentada em Deus e na Sua Palavra."},
+
+    {type:"reference", text:"72 — 2 Coríntios 5:7"},
+
+    {
+        type:"quote",
+        text:"“Porque andamos por fé, e não por vista.”"
+    },
+
+    {
+        type:"heading",
+        text:"O CÉU CANTA — E A IGREJA ADORA"
+    },
+
+    {type:"p", n:73, text:"A experiência que vivi também me fez compreender que a Igreja não está apenas participando de uma atividade religiosa."},
+
+    {type:"p", n:74, text:"Quando a Igreja adora a Deus verdadeiramente, ela está apontando para uma realidade eterna."},
+
+    {type:"p", n:75, text:"A adoração não começou na Terra."},
+
+    {type:"p", n:76, text:"Ela aponta para o céu."},
+
+    {type:"p", n:77, text:"E a Igreja, enquanto aguarda a volta de Cristo, já participa dessa esperança."},
+
+    {type:"p", n:78, text:"Um dia, a adoração não será mais apenas aquilo que fazemos pela fé."},
+
+    {type:"p", n:79, text:"Estaremos diante dEle."},
+
+    {type:"p", n:80, text:"O livro de Apocalipse aponta para esse grande encontro."},
+
+    {type:"reference", text:"81 — Apocalipse 5:9–10"},
+
+    {type:"reference", text:"82 — Apocalipse 7:9–12"},
+
+    {type:"reference", text:"83 — Apocalipse 19:1–7"},
+
+    {
+        type:"heading",
+        text:"O QUE EU OUVI"
+    },
+
+    {type:"p", n:84, text:"Não pretendo explicar aquilo que Deus não me explicou."},
+
+    {type:"p", n:85, text:"Não quero acrescentar palavras que não ouvi."},
+
+    {type:"p", n:86, text:"Não quero criar detalhes que não vi."},
+
+    {type:"p", n:87, text:"Quero apenas permanecer fiel ao testemunho."},
+
+    {type:"p", n:88, text:"Eu estava vivendo uma nova vida."},
+
+    {type:"p", n:89, text:"Meus ouvidos se abriram."},
+
+    {type:"p", n:90, text:"Ouvi um coral celestial."},
+
+    {type:"p", n:91, text:"Fiquei maravilhado."},
+
+    {type:"p", n:92, text:"E aquela experiência permanece comigo como uma lembrança profunda de que a realidade de Deus é infinitamente maior do que aquilo que conseguimos compreender com nossos sentidos."},
+
+    {type:"p", n:93, text:"Talvez tenha sido um presente especial para alguém que Deus chamou para viver também através da música."},
+
+    {type:"p", n:94, text:"Talvez tenha sido simplesmente uma experiência que o Senhor permitiu que eu carregasse como parte do meu testemunho."},
+
+    {type:"p", n:95, text:"Eu não preciso explicar tudo."},
+
+    {type:"p", n:96, text:"Preciso apenas ser fiel ao que vivi."},
+
+    {type:"p", n:97, text:"E, acima de tudo, continuar adorando Aquele que é digno de toda honra, toda glória e todo louvor."},
+
+    {
+        type:"final",
+        text:"“ALELUIA! POIS JÁ O SENHOR DEUS TODO-PODEROSO REINA.”"
+    },
+
+    {
+        type:"reference",
+        text:"— Apocalipse 19:6"
+    },
+
+    {type:"p", n:99, text:"O céu adora."},
+
+    {type:"p", n:100, text:"A Igreja adora."},
+
+    {type:"p", n:101, text:"E nós continuaremos adorando até o dia em que estaremos diante do Cordeiro."},
+
+    {
+        type:"ending",
+        text:"ATOS 29 CONTINUA."
+    }
+
+];
+
+/* ==========================================
+   CONSTRUÇÃO DOS ELEMENTOS
+========================================== */
+
+function createElement(tag, className, text = "") {
+
+    const el = document.createElement(tag);
+
+    if (className) {
+        el.className = className;
+    }
+
+    if (text !== "") {
+        el.textContent = text;
+    }
+
+    return el;
+}
+
+/* ==========================================
+   TRANSFORMA CONTEÚDO EM BLOCOS
+   TÍTULOS FICAM COM O PRÓXIMO PARÁGRAFO
+========================================== */
+
+function buildUnits() {
+
+    const units = [];
+
+    for (let i = 0; i < content.length; i++) {
+
+        const item = content[i];
+
+        if (item.type === "heading") {
+
+            const wrapper = createElement("div", "heading-unit");
+
+            wrapper.appendChild(
+                createElement("h2", "section-title", item.text)
+            );
+
+            if (content[i + 1] &&
+                content[i + 1].type === "p") {
+
+                const next = content[i + 1];
+
+                const p = createElement("p", "paragraph");
+
+                const number = createElement(
+                    "sup",
+                    "verse-number",
+                    next.n
+                );
+
+                p.appendChild(number);
+                p.appendChild(
+                    document.createTextNode(next.text)
+                );
+
+                wrapper.appendChild(p);
+
+                i++;
+            }
+
+            units.push(wrapper);
+
+            continue;
+        }
+
+        if (item.type === "p") {
+
+            const p = createElement("p", "paragraph");
+
+            const number = createElement(
+                "sup",
+                "verse-number",
+                item.n
+            );
+
+            p.appendChild(number);
+            p.appendChild(
+                document.createTextNode(item.text)
+            );
+
+            units.push(p);
+
+            continue;
+        }
+
+        if (item.type === "opening") {
+
+            const opening = createElement(
+                "div",
+                "chapter-opening"
+            );
+
+            opening.appendChild(
+                createElement(
+                    "div",
+                    "book-name",
+                    "ATOS 29"
+                )
+            );
+
+            opening.appendChild(
+                createElement(
+                    "div",
+                    "chapter-title",
+                    "CAPÍTULO 5 — O CORAL CELESTIAL"
+                )
+            );
+
+            opening.appendChild(
+                createElement(
+                    "div",
+                    "author",
+                    "Ministério Atalaia • Diego Nascimento — Pastor Evangelista"
+                )
+            );
+
+            units.push(opening);
+
+            continue;
+        }
+
+        if (item.type === "quote") {
+
+            const quote = createElement(
+                "blockquote",
+                "bible-quote",
+                item.text
+            );
+
+            units.push(quote);
+
+            continue;
+        }
+
+        if (item.type === "reference") {
+
+            const ref = createElement(
+                "div",
+                "bible-reference",
+                item.text
+            );
+
+            units.push(ref);
+
+            continue;
+        }
+
+        if (item.type === "final") {
+
+            const final = createElement(
+                "div",
+                "final-declaration",
+                item.text
+            );
+
+            units.push(final);
+
+            continue;
+        }
+
+        if (item.type === "ending") {
+
+            const ending = createElement(
+                "div",
+                "final-declaration",
+                item.text
+            );
+
+            ending.style.marginTop = "14px";
+            ending.style.letterSpacing = "1.3px";
+
+            units.push(ending);
+
+        }
+
+    }
+
+    return units;
+}
+
+/* ==========================================
+   CRIA UMA PÁGINA FÍSICA
+========================================== */
+
+function createPage(number) {
+
+    const page = createElement("section", "page measuring");
+
+    page.setAttribute("aria-label", "Página " + number);
+
+    const header = createElement(
+        "header",
+        "page-header"
+    );
+
+    header.appendChild(
+        createElement(
+            "span",
+            "",
+            "ATOS 29 • A HISTÓRIA CONTINUA"
+        )
+    );
+
+    header.appendChild(
+        createElement(
+            "span",
+            "chapter-name",
+            "CAPÍTULO 5"
+        )
+    );
+
+    const contentArea = createElement(
+        "div",
+        "page-content"
+    );
+
+    const firstColumn = createElement(
+        "div",
+        "text-column"
+    );
+
+    const secondColumn = createElement(
+        "div",
+        "text-column"
+    );
+
+    contentArea.appendChild(firstColumn);
+    contentArea.appendChild(secondColumn);
+
+    const footer = createElement(
+        "footer",
+        "page-footer"
+    );
+
+    footer.appendChild(
+        createElement(
+            "span",
+            "",
+            "MINISTÉRIO ATALAIA"
+        )
+    );
+
+    footer.appendChild(
+        createElement(
+            "span",
+            "page-number",
+            "PÁGINA " + number
+        )
+    );
+
+    page.appendChild(header);
+    page.appendChild(contentArea);
+    page.appendChild(footer);
+
+    return {
+        page,
+        columns: [firstColumn, secondColumn]
+    };
+}
+
+/* ==========================================
+   PAGINAÇÃO AUTOMÁTICA
+========================================== */
+
+const book = document.getElementById("book");
+
+let pages = [];
+let currentPage = 0;
+let mobileMode = false;
+
+function paginate() {
+
+    book.innerHTML = "";
+    pages = [];
+
+    const units = buildUnits();
+
+    const first = createPage(1);
+
+    book.appendChild(first.page);
+
+    let current = first;
+    let columnIndex = 0;
+
+    let total = 1;
+
+    for (const unit of units) {
+
+        let target = current.columns[columnIndex];
+
+        target.appendChild(unit);
+
+        /*
+          Verifica se o bloco ultrapassou
+          a altura disponível da coluna.
+        */
+
+        if (target.scrollHeight > target.clientHeight + 1) {
+
+            target.removeChild(unit);
+
+            /*
+              Primeiro tenta a segunda coluna.
+            */
+
+            if (columnIndex === 0) {
+
+                columnIndex = 1;
+
+                target = current.columns[columnIndex];
+
+                target.appendChild(unit);
+
+                /*
+                  Se também não couber,
+                  cria uma nova página.
+                */
+
+                if (target.scrollHeight > target.clientHeight + 1) {
+
+                    target.removeChild(unit);
+
+                    total++;
+
+                    current = createPage(total);
+
+                    book.appendChild(current.page);
+
+                    columnIndex = 0;
+
+                    current.columns[0].appendChild(unit);
+                }
+
+            } else {
+
+                /*
+                  Segunda coluna cheia:
+                  inicia uma nova página.
+                */
+
+                total++;
+
+                current = createPage(total);
+
+                book.appendChild(current.page);
+
+                columnIndex = 0;
+
+                current.columns[0].appendChild(unit);
+            }
+        }
+    }
+
+    /*
+      Confirma o número final de páginas.
+    */
+
+    pages = Array.from(
+        book.querySelectorAll(".page")
+    );
+
+    pages.forEach((page, index) => {
+
+        page.classList.remove("measuring");
+
+        const number = page.querySelector(".page-number");
+
+        number.textContent = "PÁGINA " + (index + 1);
+
+    });
+
+    currentPage = 0;
+
+    updateNavigation();
+    displayPages(false);
+}
+
+/* ==========================================
+   VISUALIZAÇÃO RESPONSIVA
+========================================== */
+
+function isMobile() {
+
+    return window.matchMedia("(max-width: 700px)").matches;
+
+}
+
+function displayPages(animate = true) {
+
+    mobileMode = isMobile();
+
+    const visibleCount = mobileMode ? 1 : 2;
+
+    pages.forEach((page, index) => {
+
+        const visible =
+            index >= currentPage &&
+            index < currentPage + visibleCount;
+
+        page.classList.toggle(
+            "is-hidden",
+            !visible
+        );
+
+        page.style.display = visible ? "block" : "none";
+
+        page.classList.remove("entering");
+
+        if (visible && animate) {
+
+            void page.offsetWidth;
+
+            page.classList.add("entering");
+
+        }
+
+    });
+
+    updateNavigation();
+}
+
+/* ==========================================
+   NAVEGAÇÃO
+========================================== */
+
+const previousButton = document.getElementById("previous");
+
+const nextButton = document.getElementById("next");
+
+const indicator = document.getElementById("pageIndicator");
+
+function updateNavigation() {
+
+    const visibleCount = isMobile() ? 1 : 2;
+
+    const total = pages.length;
+
+    const firstNumber = currentPage + 1;
+
+    const lastNumber = Math.min(
+        currentPage + visibleCount,
+        total
+    );
+
+    previousButton.disabled = currentPage === 0;
+
+    nextButton.disabled = currentPage + visibleCount >= total;
+
+    if (firstNumber === lastNumber) {
+
+        indicator.textContent =
+            "PÁGINA " + firstNumber + " / " + total;
+
+    } else {
+
+        indicator.textContent =
+            "PÁGINAS " +
+            firstNumber +
+            "–" +
+            lastNumber +
+            " / " +
+            total;
+
+    }
+}
+
+function nextPage() {
+
+    const step = isMobile() ? 1 : 2;
+
+    if (currentPage + step < pages.length) {
+
+        currentPage += step;
+
+        displayPages(true);
+
+    }
+
+}
+
+function previousPage() {
+
+    const step = isMobile() ? 1 : 2;
+
+    currentPage = Math.max(
+        0,
+        currentPage - step
+    );
+
+    displayPages(true);
+
+}
+
+previousButton.addEventListener(
+    "click",
+    previousPage
+);
+
+nextButton.addEventListener(
+    "click",
+    nextPage
+);
+
+/* ==========================================
+   TECLADO
+========================================== */
+
+document.addEventListener("keydown", function(event) {
+
+    if (
+        event.key === "ArrowRight" ||
+        event.key === "ArrowDown"
+    ) {
+
+        nextPage();
+
+    }
+
+    if (
+        event.key === "ArrowLeft" ||
+        event.key === "ArrowUp"
+    ) {
+
+        previousPage();
+
+    }
+
+});
+
+/* ==========================================
+   REAJUSTE AUTOMÁTICO
+   QUANDO A TELA MUDA DE TAMANHO
+========================================== */
+
+let resizeTimer;
+
+window.addEventListener("resize", function() {
+
+    clearTimeout(resizeTimer);
+
+    resizeTimer = setTimeout(function() {
+
+        const oldMode = mobileMode;
+
+        if (oldMode !== isMobile()) {
+
+            paginate();
+
+        } else {
+
+            paginate();
+
+        }
+
+    }, 250);
+
+});
+
+/* ==========================================
+   INICIALIZAÇÃO
+========================================== */
+
+window.addEventListener("load", function() {
+
+    requestAnimationFrame(function() {
+
+        paginate();
+
+    });
+
+});
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,669 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ATOS 29 — Capítulo 1</title>
+
+<style>
+:root {
+    --papel: #f5efdE;
+    --texto: #29261f;
+    --borda: #d4c9ae;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 20px;
+    min-height: 100vh;
+    background: #302e2a;
+    font-family: Georgia, "Times New Roman", serif;
+}
+
+.cabecalho {
+    text-align: center;
+    color: #eee4ce;
+    margin-bottom: 20px;
+    font-family: Arial, sans-serif;
+    letter-spacing: 2px;
+}
+
+.cabecalho h1 {
+    font-size: 23px;
+    margin: 0 0 7px;
+}
+
+.cabecalho p {
+    font-size: 11px;
+    margin: 0;
+}
+
+.livro {
+    max-width: 1150px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background: var(--papel);
+    box-shadow: 0 15px 35px #0009;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.pagina {
+    position: relative;
+    min-height: 760px;
+    padding: 30px 25px 45px;
+    background:
+        linear-gradient(90deg, #00000008, transparent 8%, transparent 92%, #00000008),
+        var(--papel);
+}
+
+.pagina:first-child {
+    border-right: 1px solid #c9bea5;
+    box-shadow: inset -12px 0 15px -15px #000;
+}
+
+.pagina:last-child {
+    box-shadow: inset 12px 0 15px -15px #000;
+}
+
+.topo {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--borda);
+    padding-bottom: 9px;
+    margin-bottom: 15px;
+    color: #766c58;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.titulo-capitulo {
+    text-align: center;
+    font-size: 16px;
+    margin: 12px 0 18px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.colunas {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.coluna {
+    font-size: 14px;
+    line-height: 1.45;
+    text-align: justify;
+    overflow-wrap: break-word;
+}
+
+.versiculo {
+    margin: 0 0 9px;
+}
+
+.numero {
+    font-size: 10px;
+    vertical-align: super;
+    font-weight: bold;
+    margin-right: 3px;
+}
+
+.secao {
+    font-size: 14px;
+    font-weight: bold;
+    margin: 13px 0 9px;
+    text-transform: uppercase;
+    line-height: 1.2;
+}
+
+.introducao {
+    text-align: center;
+    font-style: italic;
+    font-weight: bold;
+    margin-bottom: 12px;
+}
+
+.citacao {
+    border-left: 2px solid #b8aa8e;
+    padding-left: 8px;
+    margin: 10px 0;
+    font-size: 13px;
+    font-style: italic;
+    text-align: left;
+}
+
+.referencia {
+    display: block;
+    text-align: right;
+    font-size: 11px;
+    font-style: normal;
+    margin-top: 5px;
+}
+
+.numero-pagina {
+    position: absolute;
+    bottom: 15px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    color: #817762;
+    font-size: 12px;
+}
+
+.controles {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    padding: 20px 10px;
+    color: white;
+    font-family: Arial, sans-serif;
+}
+
+.controles button {
+    padding: 11px 20px;
+    border: 1px solid #c8b994;
+    background: #eee3ca;
+    color: #302a20;
+    border-radius: 3px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.controles button:hover {
+    background: white;
+}
+
+.controles button:disabled {
+    opacity: .35;
+    cursor: not-allowed;
+}
+
+#contador {
+    min-width: 110px;
+    text-align: center;
+}
+
+.instrucao {
+    text-align: center;
+    color: #d5cbb8;
+    font: 12px Arial, sans-serif;
+}
+
+@media(max-width: 750px) {
+    body {
+        padding: 10px;
+    }
+
+    .livro {
+        grid-template-columns: 1fr;
+    }
+
+    .pagina {
+        min-height: 720px;
+        padding: 25px 20px 45px;
+    }
+
+    .pagina:first-child {
+        display: none;
+    }
+
+    .colunas {
+        gap: 14px;
+    }
+
+    .coluna {
+        font-size: 12px;
+        line-height: 1.4;
+    }
+
+    .citacao {
+        font-size: 11px;
+    }
+}
+
+@media(max-width: 380px) {
+    .colunas {
+        gap: 10px;
+    }
+
+    .coluna {
+        font-size: 11px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header class="cabecalho">
+    <h1>ATOS 29</h1>
+    <p>A HISTÓRIA CONTINUA • MINISTÉRIO ATALAIA</p>
+</header>
+
+<main>
+
+<div class="livro">
+
+    <article class="pagina" id="paginaEsquerda"></article>
+
+    <article class="pagina" id="paginaDireita"></article>
+
+</div>
+
+<div class="controles">
+    <button id="anterior">← Anterior</button>
+    <span id="contador">1–2</span>
+    <button id="proxima">Próxima →</button>
+</div>
+
+<p class="instrucao">
+    Utilize os botões ou as setas do teclado para navegar pelas páginas.
+</p>
+
+</main>
+
+<script>
+const conteudo = [
+
+{tipo:"intro", texto:"INTRODUÇÃO"},
+
+{tipo:"v", n:1, texto:"Diego Vale do Nascimento, Pastor Evangelista, servo de Jesus Cristo, aos que receberem este testemunho: graça, paz e conhecimento daquilo que o Senhor começou a fazer em minha vida, em Manaus, no estado do Amazonas, Brasil, em meados do ano de 2006."},
+
+{tipo:"v", n:2, texto:"Estas páginas registram acontecimentos vividos ao longo de uma caminhada com Cristo, para testemunhar aquilo que vi, ouvi e experimentei desde os primeiros dias da minha fé."},
+
+{tipo:"v", n:3, texto:"Não escrevo para acrescentar algo às Escrituras, mas para testemunhar a continuidade da missão recebida de nosso Senhor Jesus Cristo: anunciar o Evangelho, fazer discípulos e proclamar a verdade."},
+
+{tipo:"v", n:4, texto:"A história narrada no livro de Atos chegou ao seu fim como Escritura, mas a missão daqueles que seguem a Cristo continua. Por isso, este testemunho recebe o nome de Atos 29: não como um novo capítulo da Bíblia, mas como uma expressão da história que continua sendo escrita por vidas alcançadas pelo Evangelho."},
+
+{tipo:"v", n:5, texto:"Ao Senhor Jesus Cristo seja toda a honra, toda a glória e todo o louvor."},
+
+{tipo:"secao", texto:"A PALAVRA NÃO PODE SER CONTIDA"},
+
+{tipo:"v", n:6, texto:"E aconteceu que, quando eu tinha dezenove anos, estudava Música na UFAM; e naquele tempo eu era super católico."},
+
+{tipo:"v", n:7, texto:"E havia dois colegas de minha classe que eram evangélicos, os quais começaram a me falar acerca da verdade sobre as imagens; e eu comecei a discutir com eles, defendendo as imagens."},
+
+{tipo:"v", n:8, texto:"Mas pouco tempo depois, meus olhos foram abertos ao verdadeiro Evangelho, e pedi perdão aos dois colegas."},
+
+{tipo:"v", n:9, texto:"E eu era novo convertido, e havia encontrado a verdadeira paz, o perdão e a alegria; e desejava que todos também conhecessem aquilo que eu havia encontrado."},
+
+{tipo:"q", texto:"Assim que, se alguém está em Cristo, nova criatura é; as coisas velhas já passaram; eis que tudo se fez novo.", ref:"2 Coríntios 5:17"},
+
+{tipo:"v", n:10, texto:"E compreendi que a salvação não era apenas uma mudança de opinião, mas uma nova vida em Cristo."},
+
+{tipo:"q", texto:"Porque pela graça somos salvos, por meio da fé; e isto não vem de nós, porque é dom de Deus; não vem das obras, para que ninguém se glorie.", ref:"Efésios 2:8-9"},
+
+{tipo:"v", n:11, texto:"E Jesus disse que aquele que deseja ver o Reino de Deus precisa nascer de novo."},
+
+{tipo:"q", texto:"Jesus respondeu: Na verdade, na verdade te digo que aquele que não nascer de novo não pode ver o Reino de Deus.", ref:"João 3:3"},
+
+{tipo:"q", texto:"Arrependei-vos, pois, e convertei-vos, para que sejam apagados os vossos pecados, e venham assim os tempos do refrigério pela presença do Senhor.", ref:"Atos 3:19"},
+
+{tipo:"v", n:12, texto:"E a experiência cristã não terminou quando aceitei o Evangelho; antes, ali começava uma nova caminhada."},
+
+{tipo:"secao", texto:"O QUE EU HAVIA RECEBIDO"},
+
+{tipo:"v", n:13, texto:"E a experiência de encontrar a Cristo mudou completamente minha maneira de enxergar a vida."},
+
+{tipo:"v", n:14, texto:"E aquilo que eu havia recebido não queria guardar somente para mim; antes, desejava que outras pessoas também conhecessem a paz, o perdão e a alegria que eu havia encontrado."},
+
+{tipo:"q", texto:"Porque o amor de Cristo nos constrange; e aqueles que vivem não devem mais viver para si mesmos, mas para aquele que morreu e ressuscitou por eles.", ref:"2 Coríntios 5:14-15"},
+
+{tipo:"v", n:15, texto:"E eu não queria me envergonhar do Evangelho, porque está escrito:"},
+
+{tipo:"q", texto:"Porque não me envergonho do evangelho de Cristo, pois é o poder de Deus para salvação de todo aquele que crê.", ref:"Romanos 1:16"},
+
+{tipo:"v", n:16, texto:"E dentro de mim havia o desejo de contar aquilo que Deus havia feito."},
+
+{tipo:"q", texto:"Vinde, ouvi, todos vós que temeis a Deus, e vos contarei o que ele tem feito à minha alma.", ref:"Salmo 66:16"},
+
+{tipo:"q", texto:"Vai para tua casa, para os teus, e anuncia-lhes quão grandes coisas o Senhor te fez, e como teve misericórdia de ti.", ref:"Marcos 5:19"},
+
+{tipo:"v", n:17, texto:"Assim, aquilo que eu havia recebido tornou-se uma mensagem que precisava ser compartilhada."},
+
+{tipo:"secao", texto:"EU APENAS FALEI"},
+
+{tipo:"v", n:18, texto:"E comecei a pregar a Palavra para um colega; mas ele se irritou e começou a gritar comigo."},
+
+{tipo:"v", n:19, texto:"E quanto mais ele gritava, dizendo que não queria ouvir, mais eu falava; e, por fim, ele foi embora."},
+
+{tipo:"v", n:20, texto:"Naquele momento eu poderia ter pensado que não deveria mais falar; poderia ter entendido que aquela pessoa não queria ouvir e que seria melhor permanecer em silêncio."},
+
+{tipo:"v", n:21, texto:"Mas eu estava vivendo os primeiros passos da minha caminhada com Cristo, e havia dentro de mim um desejo profundo de anunciar aquilo que eu havia encontrado."},
+
+{tipo:"q", texto:"Porque, se anuncio o evangelho, não tenho de que me gloriar, pois me é imposta essa obrigação; e ai de mim, se não anunciar o evangelho!", ref:"1 Coríntios 9:16"},
+
+{tipo:"q", texto:"Que pregues a palavra, instes a tempo e fora de tempo.", ref:"2 Timóteo 4:2"},
+
+{tipo:"v", n:22, texto:"E também está escrito que o cristão deve estar sempre preparado para responder acerca da esperança que há nele, com mansidão e temor."},
+
+{tipo:"q", texto:"Antes, santificai a Cristo, como Senhor, em vosso coração; e estai sempre preparados para responder com mansidão e temor a qualquer que vos pedir a razão da esperança que há em vós.", ref:"1 Pedro 3:15"},
+
+{tipo:"v", n:23, texto:"E a Palavra também ensina que a nossa conversação deve ser conduzida com sabedoria, com palavras agradáveis e adequadas a cada pessoa."},
+
+{tipo:"q", texto:"Andai com sabedoria para com os que estão de fora, remindo o tempo. A vossa palavra seja sempre agradável, temperada com sal, para que saibais como vos convém responder a cada um.", ref:"Colossenses 4:5-6"},
+
+{tipo:"v", n:24, texto:"Porque falar a verdade não significa obrigar alguém a recebê-la."},
+
+{tipo:"v", n:25, texto:"O Evangelho deve ser anunciado com coragem; porém, o coração daquele que ouve pertence a Deus."},
+
+{tipo:"v", n:26, texto:"E eu apenas falei."},
+
+{tipo:"secao", texto:"DEPOIS DAQUELE DIA"},
+
+{tipo:"v", n:27, texto:"E aconteceu que, uma semana depois, ele me procurou."},
+
+{tipo:"v", n:28, texto:"E disse-me que, depois daquele episódio, havia adoecido e fora parar no hospital."},
+
+{tipo:"v", n:29, texto:"E enquanto aguardava atendimento, uma senhora sentou-se ao lado dele e começou a pregar-lhe o Evangelho."},
+
+{tipo:"v", n:30, texto:"E como ele não tinha forças nem para falar, teve que ouvir tudo calado."},
+
+{tipo:"v", n:31, texto:"E daquele dia em diante começou a frequentar uma igreja e aceitou Jesus."},
+
+{tipo:"v", n:32, texto:"Então compreendi que uma palavra pode ser lançada em um momento e produzir fruto em outro."},
+
+{tipo:"q", texto:"Eu plantei, Apolo regou; mas Deus deu o crescimento.", ref:"1 Coríntios 3:6"},
+
+{tipo:"v", n:33, texto:"E também está escrito que a Palavra que sai da boca de Deus não volta vazia, mas realiza aquilo para que foi enviada."},
+
+{tipo:"q", texto:"Assim será a palavra que sair da minha boca: ela não voltará para mim vazia, antes fará o que me apraz e prosperará naquilo para que a enviei.", ref:"Isaías 55:11"},
+
+{tipo:"v", n:34, texto:"Assim, aquilo que eu não pude continuar fazendo, Deus permitiu que outra pessoa fizesse."},
+
+{tipo:"v", n:35, texto:"Uma palavra preparou o terreno; outra regou; e Deus continuou trabalhando."},
+
+{tipo:"secao", texto:"A RESPONSABILIDADE DE ANUNCIAR"},
+
+{tipo:"v", n:36, texto:"E aquela experiência me ensinou algo que jamais esqueci: eu não era responsável pelo resultado da Palavra; minha responsabilidade era anunciá-la."},
+
+{tipo:"v", n:37, texto:"Deus poderia usar uma palavra dita por mim, uma palavra dita por outra pessoa ou uma situação que eu jamais poderia imaginar."},
+
+{tipo:"v", n:38, texto:"Porque a Palavra poderia continuar seu caminho mesmo depois que eu tivesse ido embora."},
+
+{tipo:"q", texto:"Assim será a palavra que sair da minha boca: ela não voltará para mim vazia...", ref:"Isaías 55:11"},
+
+{tipo:"v", n:39, texto:"E o Senhor havia colocado o atalaia para ouvir a Palavra e advertir o povo."},
+
+{tipo:"q", texto:"Filho do homem, eu te dei por atalaia sobre a casa de Israel; e tu da minha boca ouvirás a palavra e os avisarás da minha parte.", ref:"Ezequiel 3:17-19"},
+
+{tipo:"v", n:40, texto:"E a mensagem deveria ser confiada a homens fiéis, que fossem também capazes de ensinar a outros."},
+
+{tipo:"q", texto:"E o que de mim, entre muitas testemunhas, ouviste, confia-o a homens fiéis, que sejam idôneos para também ensinarem os outros.", ref:"2 Timóteo 2:2"},
+
+{tipo:"v", n:41, texto:"E Jesus disse:"},
+
+{tipo:"q", texto:"Ide, portanto, fazei discípulos de todas as nações, batizando-os em nome do Pai, e do Filho, e do Espírito Santo; ensinando-os a guardar todas as coisas que eu vos tenho mandado.", ref:"Mateus 28:19-20"},
+
+{tipo:"v", n:42, texto:"Portanto, o pregador anuncia; o discípulo ensina; o testemunho é dado; e o Senhor conduz os resultados segundo a sua vontade."},
+
+{tipo:"secao", texto:"O PEDIDO DE PERDÃO"},
+
+{tipo:"v", n:43, texto:"E na faculdade, depois de me contar tudo aquilo, ele me pediu perdão e me agradeceu."},
+
+{tipo:"v", n:44, texto:"E aquele momento ficou marcado na minha história."},
+
+{tipo:"v", n:45, texto:"Porque eu havia começado aquela conversa tentando falar de Jesus, mas terminei descobrindo que Deus estava trabalhando muito além do que meus olhos podiam enxergar."},
+
+{tipo:"v", n:46, texto:"Eu não sabia o que aconteceria depois que aquele colega foi embora."},
+
+{tipo:"v", n:47, texto:"Eu não sabia que ele ficaria doente."},
+
+{tipo:"v", n:48, texto:"Eu não sabia que iria para um hospital."},
+
+{tipo:"v", n:49, texto:"Eu não sabia que encontraria uma senhora que também lhe anunciaria o Evangelho."},
+
+{tipo:"v", n:50, texto:"Eu apenas falei."},
+
+{tipo:"v", n:51, texto:"E Deus continuou a obra."},
+
+{tipo:"q", texto:"E tudo isso provém de Deus, que nos reconciliou consigo mesmo por Jesus Cristo e nos deu o ministério da reconciliação.", ref:"2 Coríntios 5:18-20"},
+
+{tipo:"q", texto:"Se for possível, quanto estiver em vós, tende paz com todos os homens.", ref:"Romanos 12:18"},
+
+{tipo:"v", n:52, texto:"E o Senhor nos chama a suportar uns aos outros e a perdoar, assim como também fomos perdoados."},
+
+{tipo:"q", texto:"Revesti-vos, pois, como eleitos de Deus, santos e amados, de entranhas de misericórdia, de benignidade, humildade, mansidão, longanimidade; suportando-vos uns aos outros e perdoando-vos uns aos outros.", ref:"Colossenses 3:12-13"},
+
+{tipo:"secao", texto:"A SEMENTE E O CRESCIMENTO"},
+
+{tipo:"v", n:53, texto:"E permaneceu em meu coração a palavra:"},
+
+{tipo:"q", texto:"Eu plantei, Apolo regou; mas Deus deu o crescimento.", ref:"1 Coríntios 3:6"},
+
+{tipo:"v", n:54, texto:"E comecei a compreender, na prática, que o chamado de Deus não termina quando terminamos de falar."},
+
+{tipo:"v", n:55, texto:"Porque há sementes que são lançadas e cujo resultado somente veremos depois."},
+
+{tipo:"v", n:56, texto:"E Jesus comparou o Reino de Deus a uma semente que cresce enquanto o homem não sabe exatamente como."},
+
+{tipo:"q", texto:"O Reino de Deus é assim como se um homem lançasse semente à terra; e dormisse, e se levantasse, de noite ou de dia, e a semente brotasse e crescesse, não sabendo ele como.", ref:"Marcos 4:26-29"},
+
+{tipo:"q", texto:"Os que semeiam em lágrimas segarão com alegria.", ref:"Salmo 126:5"},
+
+{tipo:"v", n:57, texto:"Por isso não devemos desanimar de fazer o bem, porque no tempo certo haverá colheita, se não houver desistência."},
+
+{tipo:"q", texto:"E não nos cansemos de fazer bem, porque a seu tempo ceifaremos, se não houvermos desfalecido.", ref:"Gálatas 6:9"},
+
+{tipo:"v", n:58, texto:"E compreendi que a perseverança também faz parte do chamado."},
+
+{tipo:"v", n:59, texto:"O Evangelho continua sendo anunciado porque a missão não depende da reação imediata."},
+
+{tipo:"v", n:60, texto:"Cada geração precisa ouvir."},
+
+{tipo:"v", n:61, texto:"Cada pessoa precisa ter oportunidade de conhecer a mensagem."},
+
+{tipo:"v", n:62, texto:"O semeador permanece fiel, e Deus continua trabalhando."},
+
+{tipo:"secao", texto:"QUANDO A PALAVRA NÃO PODE SER CONTIDA"},
+
+{tipo:"v", n:63, texto:"E a história continuava."},
+
+{tipo:"v", n:64, texto:"E, para mim, aquele era apenas o começo."},
+
+{tipo:"v", n:65, texto:"Porque aquilo que aconteceu naquele ambiente universitário tornou-se uma das primeiras experiências que me ensinaram a anunciar a Palavra sem tentar controlar o resultado."},
+
+{tipo:"v", n:66, texto:"O Evangelho havia alcançado minha vida, e agora precisava continuar sendo anunciado."},
+
+{tipo:"v", n:67, texto:"E a igreja recebeu de Cristo uma missão que ultrapassa lugares, épocas e circunstâncias."},
+
+{tipo:"q", texto:"Ide por todo o mundo, pregai o evangelho a toda criatura.", ref:"Marcos 16:15"},
+
+{tipo:"q", texto:"Mas recebereis a virtude do Espírito Santo, que há de vir sobre vós; e ser-me-eis testemunhas, tanto em Jerusalém como em toda a Judeia e Samaria, e até aos confins da terra.", ref:"Atos 1:8"},
+
+{tipo:"v", n:68, texto:"E aqueles que haviam visto e ouvido não poderiam permanecer calados."},
+
+{tipo:"q", texto:"Porque não podemos deixar de falar do que temos visto e ouvido.", ref:"Atos 4:20"},
+
+{tipo:"v", n:69, texto:"E Paulo exortou Timóteo a cumprir plenamente o seu ministério e a fazer a obra de um evangelista."},
+
+{tipo:"q", texto:"Mas tu sê sóbrio em tudo, sofre as aflições, faze a obra de um evangelista, cumpre o teu ministério.", ref:"2 Timóteo 4:5"},
+
+{tipo:"v", n:70, texto:"E assim compreendi que a Palavra não pode ser contida."},
+
+{tipo:"v", n:71, texto:"Porque a missão recebida de Cristo continua."},
+
+{tipo:"v", n:72, texto:"O testemunho começa onde estamos e alcança aqueles que Deus coloca em nosso caminho."},
+
+{tipo:"v", n:73, texto:"A mensagem não pertence ao mensageiro; ele é apenas um servo que recebeu a responsabilidade de anunciá-la."},
+
+{tipo:"v", n:74, texto:"Plantamos."},
+
+{tipo:"v", n:75, texto:"Regamos."},
+
+{tipo:"v", n:76, texto:"Ensinamos."},
+
+{tipo:"v", n:77, texto:"Testemunhamos."},
+
+{tipo:"v", n:78, texto:"E Deus continua a obra."},
+
+{tipo:"q", texto:"Eu plantei, Apolo regou; mas Deus deu o crescimento.", ref:"1 Coríntios 3:6"},
+
+{tipo:"v", n:79, texto:"E esta é a história que continua."},
+
+{tipo:"v", n:80, texto:"A Palavra não pode ser contida."}
+
+];
+
+// Cada página recebe duas colunas.
+// Os blocos são distribuídos automaticamente.
+const paginas = [];
+
+for(let i = 0; i < conteudo.length; i += 14) {
+    paginas.push(conteudo.slice(i, i + 14));
+}
+
+let indice = 0;
+
+function escapar(texto) {
+    return String(texto).replace(/[&<>"']/g, letra => ({
+        '&':'&amp;',
+        '<':'&lt;',
+        '>':'&gt;',
+        '"':'&quot;',
+        "'":'&#39;'
+    })[letra]);
+}
+
+function montarBloco(item) {
+
+    if(item.tipo === "intro") {
+        return `<div class="introducao">${escapar(item.texto)}</div>`;
+    }
+
+    if(item.tipo === "secao") {
+        return `<h3 class="secao">${escapar(item.texto)}</h3>`;
+    }
+
+    if(item.tipo === "q") {
+        return `
+        <blockquote class="citacao">
+            “${escapar(item.texto)}”
+            <cite class="referencia">${escapar(item.ref)}</cite>
+        </blockquote>`;
+    }
+
+    return `
+    <p class="versiculo">
+        <sup class="numero">${item.n}</sup>
+        ${escapar(item.texto)}
+    </p>`;
+}
+
+function montarPagina(elemento, itens, numero) {
+
+    const coluna1 = itens.slice(0,7).map(montarBloco).join("");
+    const coluna2 = itens.slice(7,14).map(montarBloco).join("");
+
+    elemento.innerHTML = `
+        <div class="topo">
+            <span>ATOS 29</span>
+            <span>CAPÍTULO 1</span>
+        </div>
+
+        ${numero === 1
+        ? '<h2 class="titulo-capitulo">QUANDO A PALAVRA NÃO PODE SER CONTIDA</h2>'
+        : ''}
+
+        <div class="colunas">
+            <div class="coluna">${coluna1}</div>
+            <div class="coluna">${coluna2}</div>
+        </div>
+
+        <div class="numero-pagina">${numero}</div>
+    `;
+}
+
+function atualizar() {
+
+    const esquerda = document.getElementById("paginaEsquerda");
+    const direita = document.getElementById("paginaDireita");
+
+    const inicio = indice * 2;
+
+    montarPagina(
+        esquerda,
+        paginas[inicio] || [],
+        inicio + 1
+    );
+
+    if(paginas[inicio + 1]) {
+
+        montarPagina(
+            direita,
+            paginas[inicio + 1],
+            inicio + 2
+        );
+
+    } else {
+
+        direita.innerHTML = `
+            <div class="topo">
+                <span>ATOS 29</span>
+                <span>MINISTÉRIO ATALAIA</span>
+            </div>
+
+            <div class="introducao">
+                FIM DO CAPÍTULO 1
+            </div>
+
+            <div class="numero-pagina">
+                ${inicio + 2}
+            </div>
+        `;
+    }
+
+    document.getElementById("contador").textContent =
+        `${inicio + 1}–${Math.min(inicio + 2, paginas.length * 1)}`;
+
+    document.getElementById("anterior").disabled = indice === 0;
+
+    document.getElementById("proxima").disabled =
+        inicio + 2 >= paginas.length * 2;
+}
+
+document.getElementById("anterior").addEventListener("click", () => {
+
+    if(indice > 0) {
+        indice--;
+        atualizar();
+    }
+
+});
+
+document.getElementById("proxima").addEventListener("click", () => {
+
+    if((indice + 1) * 2 < paginas.length) {
+        indice++;
+        atualizar();
+    }
+
+});
+
+document.addEventListener("keydown", evento => {
+
+    if(evento.key === "ArrowRight") {
+        document.getElementById("proxima").click();
+    }
+
+    if(evento.key === "ArrowLeft") {
+        document.getElementById("anterior").click();
+    }
+
+});
+
+atualizar();
+
+</script>
+
+</body>
+</html>

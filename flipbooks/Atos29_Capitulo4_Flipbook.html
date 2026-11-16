@@ -1,0 +1,788 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#17130f">
+<title>ATOS 29 — Capítulo 4 | Jesus e os Rios de Água Viva</title>
+
+<style>
+:root {
+    --papel: #f3e9d1;
+    --tinta: #302719;
+    --tinta-suave: #705d40;
+    --fundo: #17130f;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    color: var(--papel);
+    background:
+        radial-gradient(ellipse at center, #403326 0%, #211a14 58%, #100d0a 100%);
+    font-family: Georgia, "Times New Roman", serif;
+}
+
+.topo {
+    text-align: center;
+    padding: 22px 12px 12px;
+    color: #e8d9b9;
+}
+
+.topo .marca {
+    font-size: 12px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+.topo h1 {
+    margin: 8px 0 5px;
+    font-size: clamp(19px, 3vw, 27px);
+    font-weight: normal;
+    letter-spacing: 2px;
+}
+
+.topo p {
+    margin: 0;
+    color: #c0ad89;
+    font-size: 11px;
+    letter-spacing: 2px;
+}
+
+.area-livro {
+    width: min(1500px, 96vw);
+    margin: 18px auto;
+    perspective: 1800px;
+}
+
+.livro {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    filter: drop-shadow(0 22px 28px rgba(0,0,0,.55));
+}
+
+.pagina {
+    position: relative;
+    min-width: 0;
+    height: min(78vh, 850px);
+    min-height: 570px;
+    padding: 32px 38px 46px;
+    overflow: hidden;
+    color: var(--tinta);
+    background:
+        linear-gradient(90deg, rgba(90,65,32,.08), transparent 12%, transparent 88%, rgba(90,65,32,.08)),
+        repeating-linear-gradient(0deg, rgba(100,75,40,.018) 0px, rgba(100,75,40,.018) 1px, transparent 1px, transparent 4px),
+        radial-gradient(ellipse at 30% 20%, rgba(255,255,255,.34), transparent 65%),
+        var(--papel);
+    border: 1px solid rgba(100,75,40,.25);
+}
+
+.pagina.esquerda {
+    border-radius: 5px 0 0 5px;
+    box-shadow: inset -15px 0 22px -20px #4a3824;
+}
+
+.pagina.direita {
+    border-radius: 0 5px 5px 0;
+    box-shadow: inset 15px 0 22px -20px #4a3824;
+}
+
+.lombada {
+    position: absolute;
+    z-index: 5;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 20px;
+    transform: translateX(-50%);
+    pointer-events: none;
+    background: linear-gradient(90deg,
+        rgba(55,38,20,.18),
+        rgba(255,255,255,.25) 35%,
+        rgba(60,42,23,.22) 70%,
+        rgba(40,28,16,.10));
+}
+
+.cabecalho-pagina {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+    padding-bottom: 8px;
+    margin-bottom: 17px;
+    border-bottom: 1px solid rgba(90,70,42,.45);
+    color: var(--tinta-suave);
+    font-size: 9px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.conteudo {
+    height: calc(100% - 76px);
+    overflow: hidden;
+    column-count: 2;
+    column-gap: 25px;
+    column-rule: 1px solid rgba(105,83,52,.18);
+    column-fill: auto;
+    font-size: clamp(11px, .93vw, 13px);
+    line-height: 1.47;
+    text-align: justify;
+    hyphens: auto;
+}
+
+.abertura {
+    column-span: all;
+    text-align: center;
+    margin: 8px 0 22px;
+    break-inside: avoid;
+}
+
+.abertura .nome-livro {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 12px;
+    letter-spacing: 4px;
+}
+
+.abertura .numero-capitulo {
+    display: block;
+    margin-bottom: 9px;
+    font-size: 10px;
+    letter-spacing: 3px;
+}
+
+.abertura h2 {
+    margin: 0;
+    font-size: clamp(16px, 1.7vw, 23px);
+    line-height: 1.25;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.abertura .autor {
+    display: block;
+    margin-top: 12px;
+    font-size: 10px;
+    font-style: italic;
+    color: var(--tinta-suave);
+}
+
+.referencia-inicial {
+    margin: 14px 0 10px;
+    font-size: 10px;
+    font-style: italic;
+    color: var(--tinta-suave);
+}
+
+.epigrafe {
+    margin: 8px auto 18px;
+    max-width: 90%;
+    font-size: 14px;
+    line-height: 1.5;
+    font-style: italic;
+    text-align: center;
+}
+
+.titulo-secao {
+    margin: 16px 0 8px;
+    font-size: 11px;
+    line-height: 1.3;
+    font-weight: bold;
+    text-align: left;
+    text-transform: uppercase;
+    letter-spacing: .45px;
+    break-after: avoid;
+    break-inside: avoid;
+}
+
+.paragrafo {
+    margin: 0 0 7px;
+    text-indent: 0;
+    break-inside: avoid;
+}
+
+.numero-versiculo {
+    font-size: .72em;
+    vertical-align: super;
+    font-weight: bold;
+    margin-right: 3px;
+    color: #75613e;
+}
+
+.citacao {
+    display: inline;
+    padding-left: 2px;
+    font-style: italic;
+    color: #51432f;
+}
+
+.rodape-pagina {
+    position: absolute;
+    right: 38px;
+    bottom: 15px;
+    left: 38px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 7px;
+    border-top: 1px solid rgba(90,70,42,.32);
+    color: #756348;
+    font-size: 9px;
+    letter-spacing: 1px;
+}
+
+.pagina.vazia .conteudo {
+    display: none;
+}
+
+.controles {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 18px;
+    padding: 18px 10px 10px;
+}
+
+.controles button {
+    padding: 11px 22px;
+    border: 1px solid #806b49;
+    background: #3a2d20;
+    color: #f4e7c9;
+    font-family: Georgia, serif;
+    font-size: 12px;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: background .2s, transform .2s;
+}
+
+.controles button:hover:not(:disabled) {
+    background: #59432b;
+    transform: translateY(-2px);
+}
+
+.controles button:disabled {
+    opacity: .35;
+    cursor: not-allowed;
+}
+
+.indicador {
+    min-width: 125px;
+    text-align: center;
+    color: #e5d5b4;
+    font-size: 12px;
+    letter-spacing: 1px;
+}
+
+.institucional {
+    padding: 8px 10px 25px;
+    color: #b7a27e;
+    text-align: center;
+    font-size: 11px;
+    letter-spacing: 3px;
+}
+
+.animar {
+    animation: virar .3s ease;
+}
+
+@keyframes virar {
+    from {
+        opacity: .45;
+        transform: rotateY(3deg);
+    }
+    to {
+        opacity: 1;
+        transform: rotateY(0);
+    }
+}
+
+@media (max-width: 760px) {
+    .area-livro {
+        width: 96vw;
+        margin: 10px auto;
+    }
+
+    .livro {
+        display: block;
+    }
+
+    .pagina {
+        height: 76vh;
+        min-height: 490px;
+        padding: 24px 24px 42px;
+        border-radius: 4px !important;
+        box-shadow: 0 12px 25px rgba(0,0,0,.4) !important;
+    }
+
+    .pagina.esquerda,
+    .pagina.direita {
+        display: none;
+    }
+
+    .pagina.movel {
+        display: block;
+    }
+
+    .pagina.movel .conteudo {
+        font-size: clamp(12px, 3.2vw, 15px);
+        line-height: 1.52;
+        column-gap: 18px;
+    }
+
+    .lombada {
+        display: none;
+    }
+
+    .cabecalho-pagina {
+        font-size: 8px;
+        letter-spacing: .6px;
+    }
+
+    .rodape-pagina {
+        right: 24px;
+        left: 24px;
+    }
+
+    .controles {
+        gap: 8px;
+    }
+
+    .controles button {
+        padding: 10px 13px;
+        font-size: 10px;
+    }
+}
+
+@media (max-width: 430px) {
+    .pagina.movel .conteudo {
+        column-count: 1;
+    }
+
+    .pagina {
+        padding: 21px 20px 42px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: .01ms !important;
+        transition-duration: .01ms !important;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header class="topo">
+    <div class="marca">Ministério Atalaia</div>
+    <h1>ATOS 29 • A HISTÓRIA CONTINUA</h1>
+    <p>LEITURA DIGITAL • CAPÍTULO 4</p>
+</header>
+
+<main class="area-livro">
+    <div class="livro">
+        <section class="pagina esquerda" id="paginaEsquerda"></section>
+        <div class="lombada"></div>
+        <section class="pagina direita" id="paginaDireita"></section>
+        <section class="pagina movel" id="paginaMovel" style="display:none"></section>
+    </div>
+</main>
+
+<nav class="controles" aria-label="Navegação do livro">
+    <button id="anterior" type="button">← ANTERIOR</button>
+    <span class="indicador" id="indicador">Páginas 1–2</span>
+    <button id="proxima" type="button">PRÓXIMA →</button>
+</nav>
+
+<footer class="institucional">MINISTÉRIO ATALAIA</footer>
+
+<script>
+const configuracao = {
+    titulo: "JESUS E OS RIOS DE ÁGUA VIVA",
+    capitulo: "CAPÍTULO 4",
+    autor: "Ministério Atalaia • Diego Nascimento — Pastor Evangelista",
+    referencia: "Referência bíblica: João 7:38",
+    caracteresPorPagina: 2200
+};
+
+/*
+  Cada parágrafo está identificado pelo número original.
+  Os títulos são mantidos como blocos próprios.
+*/
+
+const textoOriginal = `
+# EPIGRAFE
+1|“Do seu interior fluirão rios de água viva.”
+
+# JESUS E OS RIOS DE ÁGUA VIVA
+2|Há experiências que são difíceis de explicar apenas com palavras. Esta é uma delas. Eu estava desperto, sentado na cama e encostado na parede, quando tive essa experiência. Não estava dormindo. Abriu-se uma visão de um lugar muito iluminado. Vi uma figura de homem vestido de branco, com cabelos longos e brancos. Não vi o seu rosto.
+3|Ele estendeu as mãos em minha direção e, delas, saíram rios de água muito forte que vieram sobre o meu ventre. Eu senti as águas no meu ventre e me assustei. Quando olhei para o meu ventre, a visão acabou, mas continuei sentindo a força das águas. Foi isso que eu vi.
+4|A experiência ficou profundamente marcada em minha memória. Posteriormente, ao recordar aquilo que havia acontecido, associei a experiência às palavras de Jesus registradas no Evangelho de João:
+5|“Quem crê em mim, como diz a Escritura, do seu interior fluirão rios de água viva.” João 7:38
+
+# QUANDO A EXPERIÊNCIA ENCONTRA A PALAVRA
+6|A experiência não substitui a Escritura. É a Palavra de Deus que permanece como fundamento e referência. João 7:38 apresenta a imagem dos rios de água viva no contexto daqueles que creem em Jesus. Ao recordar aquilo que vivi, essa passagem tornou-se especialmente marcante para mim.
+7|Não quero acrescentar à experiência aquilo que não aconteceu, nem afirmar detalhes que não foram relatados. O que posso testemunhar é aquilo que vi: Uma figura de homem vestida de branco, com cabelos longos e brancos, estendendo as mãos, e rios de água vindo sobre o meu ventre. Não vi o seu rosto.
+8|Mas, com o passar do tempo, comecei a buscar nas Escrituras uma compreensão mais profunda daquela experiência. E foi nesse processo que uma convicção se estabeleceu dentro de mim.
+
+# JESUS E AS ÁGUAS COMO O ESPÍRITO SANTO
+9|Depois de refletir sobre essa experiência à luz das Escrituras, cheguei a uma convicção pessoal muito clara: Para mim, aquela figura era Jesus. Eu não vi o rosto daquela figura. Isso continua fazendo parte do meu testemunho e não quero acrescentar à experiência aquilo que não aconteceu.
+10|Porém, aquilo que vi — um homem vestido de branco, com cabelos longos e brancos, em um lugar muito iluminado, estendendo as mãos em minha direção — encontrou, posteriormente, uma correspondência muito forte com aquilo que as Escrituras apresentam sobre Cristo glorificado. O primeiro elemento que me chamou a atenção foi a aparência.
+11|Em Apocalipse 1:13-16, João descreve uma figura semelhante ao Filho do Homem, vestida com uma veste comprida. Ele afirma que a cabeça e os cabelos dessa figura eram brancos como lã e como neve. A passagem também descreve uma figura gloriosa, cuja aparência é extraordinária.
+12|Quando li essa passagem e comparei com aquilo que havia visto, a semelhança da descrição me marcou profundamente. Na experiência, eu vi um homem vestido de branco e com cabelos longos e brancos. Não vi o rosto. Não ouvi uma apresentação dizendo quem Ele era.
+13|Mas, ao longo do tempo, fui compreendendo aquela experiência à luz da Palavra e passei a ter a convicção de que era Jesus. E existe ainda outro elemento que, para mim, torna essa experiência ainda mais significativa: as águas.
+
+# JESUS E OS RIOS DE ÁGUA VIVA
+14|Em João 7:37-39, Jesus estava no último dia da festa quando se levantou e declarou:
+15|“Se alguém tem sede, venha a mim e beba.”
+16|Em seguida, Jesus falou sobre os rios de água viva:
+17|“Quem crer em mim, como diz a Escritura, do seu interior fluirão rios de água viva.”
+18|E João, ao registrar essas palavras, explica exatamente o que Jesus estava falando:
+19|“Isto ele disse com respeito ao Espírito.”
+20|Essa explicação do próprio evangelista é fundamental. Jesus falou sobre água viva, e João explicou que Ele estava falando sobre o Espírito. Por isso, quando recordo aqueles rios de água vindo das mãos daquela figura sobre o meu ventre, compreendo essas águas como uma representação do Espírito Santo. A experiência não me levou para longe de Cristo.
+21|Ao contrário. Ela me fez lembrar exatamente daquilo que Cristo ensinou sobre a água viva. Jesus disse:
+22|“Se alguém tem sede, venha a mim e beba.”
+23|Depois declarou:
+24|“Quem crer em mim, como diz a Escritura, do seu interior fluirão rios de água viva.”
+25|E João esclareceu:
+26|“Isto ele disse com respeito ao Espírito.”
+27|Assim, na minha compreensão, existe uma relação muito significativa entre os dois elementos da experiência: A figura que reconheço como Jesus. E as águas que compreendo como o Espírito Santo.
+
+# CRISTO, A ÁGUA VIVA E O ESPÍRITO SANTO
+28|Essa compreensão também encontra correspondência em outras palavras de Jesus. Em João 4:14, Jesus falou à mulher samaritana sobre a água que Ele daria:
+29|“A água que eu lhe der será nele uma fonte a jorrar para a vida eterna.”
+30|Jesus não estava simplesmente falando de água física. Ele estava apresentando uma realidade espiritual. A água que Ele dá se torna uma fonte que conduz à vida eterna. Em João 7, novamente encontramos Jesus utilizando a imagem da água. Porém, dessa vez, a expressão é ainda mais forte: rios de água viva.
+31|E o próprio texto explica que Jesus estava falando do Espírito Santo. Por isso, quando penso naquilo que aconteceu comigo, não compreendo aquelas águas apenas como água física. Compreendo-as espiritualmente. E compreendo-as como uma representação da ação e da presença do Espírito Santo.
+
+# AS ÁGUAS QUE VINHAM DAS MÃOS
+32|Existe ainda um detalhe da experiência que permaneceu muito forte na minha memória. As águas não simplesmente apareceram. Elas vieram das mãos daquela figura. Ele estendeu as mãos em minha direção. E delas saíram rios de água muito forte que vieram sobre o meu ventre.
+33|Hoje, quando penso nisso à luz das Escrituras, vejo uma imagem que me conduz novamente a Cristo. Jesus é apresentado como aquele que oferece a água viva. Ele mesmo disse:
+34|“Se alguém tem sede, venha a mim e beba.”
+35|Essa frase de Jesus se tornou ainda mais significativa para mim depois daquela experiência. Eu não estava procurando interpretar a experiência naquele momento. Eu simplesmente estava vivendo aquilo. Vi as mãos. Vi as águas. Senti as águas. E depois a visão terminou.
+36|Mas, posteriormente, quando voltei para as Escrituras, encontrei Jesus falando sobre água viva. E encontrei João explicando que Jesus estava falando sobre o Espírito. Por isso, essa passagem passou a ocupar um lugar muito especial na minha compreensão daquele acontecimento.
+
+# O RIO DA ÁGUA DA VIDA
+37|Existe ainda outra passagem das Escrituras que chama minha atenção. Em Apocalipse 22:1, João relata:
+38|“Então, me mostrou o rio da água da vida, brilhante como cristal, que sai do trono de Deus e do Cordeiro.”
+39|Aqui aparece novamente a imagem de um rio de água da vida. E esse rio está relacionado ao trono de Deus e do Cordeiro. A Bíblia apresenta, portanto, uma linguagem muito profunda envolvendo Deus, o Cordeiro e a água da vida. No final das Escrituras, João vê o rio da água da vida procedendo do trono de Deus e do Cordeiro.
+40|Quando comparo isso com aquilo que vivi, não afirmo que minha experiência tenha a mesma autoridade ou natureza das revelações registradas na Bíblia. A Escritura continua sendo a Palavra de Deus e o fundamento. Mas não posso deixar de registrar a relação que encontrei posteriormente. Na experiência que tive: havia uma figura. havia mãos estendidas.
+41|havia rios de água. as águas vieram sobre mim. E, nas Escrituras, encontrei: Jesus oferecendo água viva. Jesus falando de rios de água viva. João explicando que esses rios estavam relacionados ao Espírito. E Apocalipse apresentando o rio da água da vida ligado ao trono de Deus e do Cordeiro.
+42|Essas relações fortaleceram profundamente minha compreensão daquilo que vivi.
+
+# UMA CONVICÇÃO PESSOAL, FIRMADA NA ESCRITURA
+43|Eu reconheço que não vi o rosto daquela figura. Essa informação continua fazendo parte do meu testemunho e não quero apagá-la. Não quero dizer que vi aquilo que não vi. Mas também não posso negar aquilo que vivi. Por isso, hoje posso registrar com clareza aquilo que creio: Para mim, era Jesus.
+44|Minha certeza não nasce de uma tentativa de criar uma doutrina a partir de uma experiência pessoal. Ela nasce da maneira como, ao longo do tempo, essa experiência permaneceu associada às palavras de Cristo e encontrou correspondências significativas nas Escrituras. A experiência me levou de volta para a Bíblia. E a Bíblia me levou novamente para Cristo.
+45|Por isso, mantenho uma ordem que considero essencial: Primeiro a Palavra. Depois o testemunho. A experiência é pessoal. A Escritura é o fundamento. E aquilo que vivi permanece como parte da minha caminhada de fé.
+
+# UM TESTEMUNHO QUE PERMANECE
+46|Nem todas as experiências da nossa caminhada podem ser explicadas completamente. Algumas simplesmente permanecem como acontecimentos que carregamos na memória. Esta é uma delas. Eu estava desperto. Vi. Senti. E aquela experiência ficou gravada em mim.
+47|Ao longo do tempo, quando recordei o que havia acontecido, as palavras de Jesus em João 7:38 vieram à minha memória:
+48|“Do seu interior fluirão rios de água viva.”
+49|Não apresento essa experiência como substituta da Bíblia. Pelo contrário. Registro-a como um testemunho pessoal que me levou novamente à Palavra. Quanto mais voltei às Escrituras, mais compreendi que o centro da experiência não deveria ser a experiência em si. O centro deveria ser Cristo.
+
+# A EXPERIÊNCIA ME CONDUZ A CRISTO
+50|Jesus é o centro de João 7:38. Ele chama as pessoas para si. Ele diz:
+51|“Se alguém tem sede, venha a mim e beba.”
+52|Depois fala daquele que crê nele e dos rios de água viva. E João explica que Jesus estava falando do Espírito Santo. Isso é muito importante para mim. Porque, quando olho para aquela experiência, não quero ficar apenas pensando na figura, nas águas ou na visão. Quero olhar para aquilo para o qual a experiência me conduziu: Jesus. A experiência foi marcante.
+53|A lembrança permanece. Mas a Palavra de Deus continua sendo o fundamento.
+
+# A ÁGUA QUE JESUS DÁ
+54|Jesus disse que aquele que beber da água que Ele dá terá dentro de si uma fonte que jorra para a vida eterna.
+55|“A água que eu lhe der será nele uma fonte a jorrar para a vida eterna.” João 4:14
+56|Essa palavra me faz compreender que a verdadeira fonte não está na experiência. A verdadeira fonte está em Cristo. A experiência apenas me fez lembrar de uma verdade que já estava registrada nas Escrituras. Jesus é aquele que dá a água. Jesus é aquele que chama o sedento. Jesus é aquele que fala dos rios de água viva.
+57|E o evangelista João revela que essa linguagem estava relacionada ao Espírito Santo. Por isso, quando penso nas águas que vieram sobre mim, minha compreensão é que elas apontavam para essa realidade espiritual: o Espírito Santo.
+
+# JESUS E O ESPÍRITO SANTO
+58|Existe, portanto, uma relação que para mim se tornou muito clara. Jesus é a fonte. O Espírito Santo é apresentado por Cristo na imagem dos rios de água viva. E essa compreensão está diretamente ligada ao texto de João 7:37-39. Não estou dizendo que a minha experiência estabelece uma nova interpretação das Escrituras.
+59|Estou dizendo que, ao confrontar aquilo que vivi com a Escritura, encontrei uma passagem que dialoga profundamente com aquilo que experimentei. Jesus falou sobre água. Eu vi águas. Jesus falou sobre rios de água viva. Eu vi rios de água. João explicou que Jesus estava falando sobre o Espírito.
+60|E eu compreendi aquelas águas como uma representação do Espírito Santo. Para mim, essa relação não é algo que eu queira esconder ou diminuir. É parte da maneira como compreendi a experiência.
+
+# EU VI JESUS
+61|Há uma diferença entre dizer simplesmente: “Eu vi uma figura.” E registrar aquilo que, depois de refletir sobre as Escrituras, passei a crer. Naquele momento, eu vi uma figura. Não vi o rosto. Mas hoje, depois de tantos anos e depois de relacionar aquela experiência com a Palavra, posso registrar minha convicção: Eu creio que era Jesus.
+62|A descrição dos cabelos brancos e da veste branca me faz lembrar a descrição do Filho do Homem em Apocalipse 1. As águas me fazem lembrar diretamente das palavras de Jesus em João 7. E João afirma que os rios de água viva estavam relacionados ao Espírito. Por isso, para mim, os dois elementos se unem: Jesus diante de mim.
+63|O Espírito Santo representado pelas águas.
+
+# NÃO QUERO ACRESCENTAR AO QUE VI
+64|Mesmo tendo essa convicção, existe algo que quero preservar neste testemunho: Eu não vi o rosto daquela figura. Não vou inventar uma fisionomia. Não vou dizer que ouvi palavras que não ouvi. Não vou acrescentar acontecimentos que não aconteceram. Não vou transformar uma experiência pessoal em algo diferente daquilo que realmente vivi.
+65|O testemunho precisa permanecer fiel. Eu estava desperto. Estava sentado na cama. Estava encostado na parede. Vi um lugar muito iluminado. Vi um homem vestido de branco. Vi cabelos longos e brancos. Não vi seu rosto. Ele estendeu as mãos. Das mãos vieram rios de água muito forte. As águas vieram sobre meu ventre. Eu senti as águas. Assustei-me.
+66|Olhei para o meu ventre. A visão terminou. Mas a sensação das águas continuou. Foi isso que aconteceu. E é isso que quero preservar.
+
+# PRIMEIRO A PALAVRA
+67|Uma experiência pode marcar uma vida. Mas a Palavra de Deus precisa permanecer como fundamento. Por isso, não quero construir minha fé somente sobre aquilo que vi. Minha fé está em Cristo. Minha referência é a Escritura. E é justamente a Escritura que me permite compreender a experiência de uma maneira que, para mim, faz sentido.
+68|João 7:37-39 apresenta Jesus falando sobre a água viva e explica que Ele se referia ao Espírito. Apocalipse 1 apresenta a figura semelhante ao Filho do Homem com cabelos brancos. Apocalipse 22 apresenta o rio da água da vida que procede do trono de Deus e do Cordeiro. Essas passagens não transformam minha experiência em Escritura.
+69|Mas me ajudam a compreender por que aquela experiência permaneceu tão profundamente associada a Cristo dentro de mim.
+
+# PARA GUARDAR NO CORAÇÃO
+70|“Quem crê em mim, como diz a Escritura, do seu interior fluirão rios de água viva.”
+71|Esta foi a palavra de Cristo que associei à experiência dos rios de água sobre o meu ventre. Mas, com o passar do tempo, compreendi algo ainda maior. Jesus não falou simplesmente de água. João explicou que Ele estava falando do Espírito. Por isso, quando recordo aquela experiência, lembro-me de Jesus. Lembro-me das águas. E lembro-me do Espírito Santo.
+72|A figura que vi permanece na minha memória. Os rios de água permanecem na minha memória. A sensação das águas permanece na minha memória. Mas, acima de tudo, permanece a Palavra.
+
+# JESUS E OS RIOS DE ÁGUA VIVA
+73|Este é o testemunho que registro: Eu estava desperto. Eu vi. Eu senti. Vi uma figura vestida de branco, com cabelos longos e brancos. Não vi o seu rosto. Vi suas mãos estendidas. Vi rios de água saindo delas. Senti aquelas águas sobre o meu ventre. E hoje, diante das Escrituras, registro aquilo que creio: Era Jesus.
+74|E as águas que vieram sobre mim, à luz das palavras de Cristo em João 7:37-39, eu compreendo como uma representação do Espírito Santo. Jesus é aquele que disse:
+75|“Se alguém tem sede, venha a mim e beba.”
+76|Jesus é aquele que declarou:
+77|“Do seu interior fluirão rios de água viva.”
+78|E João explicou:
+79|“Isto ele disse com respeito ao Espírito.”
+80|Por isso, quando volto àquela experiência, não quero olhar apenas para o que aconteceu. Quero olhar para quem estava diante de mim. E, para mim, naquele lugar iluminado, naquela experiência que jamais esqueci:
+81|ERA JESUS. E os rios que vieram sobre mim me fazem lembrar da promessa de Cristo: ÁGUA VIVA. O ESPÍRITO SANTO.
+82|ATOS 29 continua.
+`;
+
+/* Converte o texto em blocos mantendo títulos e numeração. */
+function lerBlocos(texto) {
+    return texto.trim().split("\n").map(linha => linha.trim()).filter(Boolean).map(linha => {
+        if (linha.startsWith("# ")) {
+            return {
+                tipo: linha === "# EPIGRAFE" ? "epigrafe" : "titulo",
+                texto: linha.substring(2)
+            };
+        }
+
+        const separador = linha.indexOf("|");
+
+        if (separador !== -1) {
+            return {
+                tipo: "paragrafo",
+                numero: linha.substring(0, separador),
+                texto: linha.substring(separador + 1)
+            };
+        }
+
+        return null;
+    }).filter(Boolean);
+}
+
+const blocos = lerBlocos(textoOriginal);
+
+/*
+  A paginação agrupa blocos inteiros. Os parágrafos não são
+  cortados no meio. Os títulos são mantidos junto ao texto seguinte.
+*/
+function calcularPaginas() {
+    const resultado = [];
+    let atual = [];
+    let caracteres = 0;
+
+    const limite = configuracao.caracteresPorPagina;
+
+    for (let i = 0; i < blocos.length; i++) {
+        const bloco = blocos[i];
+        const tamanho = bloco.texto.length + 35;
+
+        if (
+            atual.length > 0 &&
+            caracteres + tamanho > limite &&
+            bloco.tipo !== "titulo"
+        ) {
+            resultado.push(atual);
+            atual = [];
+            caracteres = 0;
+        }
+
+        if (
+            bloco.tipo === "titulo" &&
+            atual.length > 0 &&
+            caracteres > limite * .78
+        ) {
+            resultado.push(atual);
+            atual = [];
+            caracteres = 0;
+        }
+
+        atual.push(bloco);
+        caracteres += tamanho;
+    }
+
+    if (atual.length) resultado.push(atual);
+
+    return resultado;
+}
+
+const paginas = calcularPaginas();
+
+function escaparHTML(texto) {
+    return texto
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+}
+
+/* Destaca somente as palavras entre aspas, sem modificar o texto. */
+function formatarTexto(texto) {
+    const seguro = escaparHTML(texto);
+
+    return seguro.replace(
+        /“([^”]+)”/g,
+        '<span class="citacao">“$1”</span>'
+    );
+}
+
+function montarConteudo(blocosPagina, numeroPagina) {
+    let html = "";
+
+    if (numeroPagina === 0) {
+        html += `
+            <div class="abertura">
+                <span class="nome-livro">ATOS 29</span>
+                <span class="numero-capitulo">${configuracao.capitulo}</span>
+                <h2>${configuracao.titulo}</h2>
+                <span class="autor">${configuracao.autor}</span>
+                <div class="referencia-inicial">${configuracao.referencia}</div>
+            </div>
+        `;
+    }
+
+    for (const bloco of blocosPagina) {
+        if (bloco.tipo === "epigrafe") {
+            html += `
+                <div class="epigrafe">
+                    ${formatarTexto(bloco.texto)}
+                    <div class="referencia-inicial">João 7:38</div>
+                </div>
+            `;
+        } else if (bloco.tipo === "titulo") {
+            html += `<h3 class="titulo-secao">${escaparHTML(bloco.texto)}</h3>`;
+        } else {
+            html += `
+                <p class="paragrafo">
+                    <sup class="numero-versiculo">${escaparHTML(bloco.numero)}</sup>
+                    ${formatarTexto(bloco.texto)}
+                </p>
+            `;
+        }
+    }
+
+    return html;
+}
+
+function criarPagina(elemento, numero, classe) {
+    if (!paginas[numero]) {
+        elemento.className = "pagina " + classe + " vazia";
+        elemento.innerHTML = "";
+        return;
+    }
+
+    elemento.className = "pagina " + classe + " animar";
+
+    elemento.innerHTML = `
+        <div class="cabecalho-pagina">
+            <span>ATOS 29 • A HISTÓRIA CONTINUA</span>
+            <span>CAPÍTULO 4</span>
+        </div>
+
+        <div class="conteudo">
+            ${montarConteudo(paginas[numero], numero)}
+        </div>
+
+        <div class="rodape-pagina">
+            <span>MINISTÉRIO ATALAIA</span>
+            <span>${numero + 1}</span>
+        </div>
+    `;
+}
+
+let indiceAtual = 0;
+
+const paginaEsquerda = document.getElementById("paginaEsquerda");
+const paginaDireita = document.getElementById("paginaDireita");
+const paginaMovel = document.getElementById("paginaMovel");
+
+const botaoAnterior = document.getElementById("anterior");
+const botaoProxima = document.getElementById("proxima");
+const indicador = document.getElementById("indicador");
+
+function ehCelular() {
+    return window.matchMedia("(max-width: 760px)").matches;
+}
+
+function atualizarLivro() {
+    if (ehCelular()) {
+        paginaEsquerda.style.display = "none";
+        paginaDireita.style.display = "none";
+        paginaMovel.style.display = "block";
+
+        criarPagina(paginaMovel, indiceAtual, "movel");
+
+        indicador.textContent =
+            `Página ${indiceAtual + 1} de ${paginas.length}`;
+
+        botaoAnterior.disabled = indiceAtual === 0;
+        botaoProxima.disabled = indiceAtual >= paginas.length - 1;
+
+    } else {
+        paginaMovel.style.display = "none";
+        paginaEsquerda.style.display = "block";
+        paginaDireita.style.display = "block";
+
+        const par = Math.floor(indiceAtual / 2) * 2;
+
+        criarPagina(paginaEsquerda, par, "esquerda");
+        criarPagina(paginaDireita, par + 1, "direita");
+
+        indicador.textContent =
+            `Páginas ${par + 1}–${Math.min(par + 2, paginas.length)} de ${paginas.length}`;
+
+        botaoAnterior.disabled = par === 0;
+        botaoProxima.disabled = par + 2 >= paginas.length;
+    }
+}
+
+function avancar() {
+    if (ehCelular()) {
+        if (indiceAtual < paginas.length - 1) {
+            indiceAtual++;
+        }
+    } else {
+        const par = Math.floor(indiceAtual / 2) * 2;
+
+        if (par + 2 < paginas.length) {
+            indiceAtual = par + 2;
+        }
+    }
+
+    atualizarLivro();
+}
+
+function voltar() {
+    if (ehCelular()) {
+        if (indiceAtual > 0) {
+            indiceAtual--;
+        }
+    } else {
+        const par = Math.floor(indiceAtual / 2) * 2;
+
+        if (par > 0) {
+            indiceAtual = par - 2;
+        }
+    }
+
+    atualizarLivro();
+}
+
+botaoAnterior.addEventListener("click", voltar);
+botaoProxima.addEventListener("click", avancar);
+
+document.addEventListener("keydown", evento => {
+    if (evento.key === "ArrowRight") avancar();
+    if (evento.key === "ArrowLeft") voltar();
+});
+
+window.addEventListener("resize", atualizarLivro);
+
+atualizarLivro();
+</script>
+
+</body>
+</html>

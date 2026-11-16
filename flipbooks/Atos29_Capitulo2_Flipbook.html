@@ -1,0 +1,924 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ATOS 29 — Capítulo 2 | No Lugar Secreto</title>
+
+<style>
+:root {
+    --papel: #f5efdf;
+    --texto: #29261f;
+    --borda: #cfc3a9;
+    --secundaria: #776d59;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 18px;
+    min-height: 100vh;
+    background: radial-gradient(ellipse at center, #565047, #262421);
+    color: var(--texto);
+    font-family: Georgia, "Times New Roman", serif;
+}
+
+.cabecalho {
+    text-align: center;
+    color: #f3ead8;
+    margin-bottom: 18px;
+    font-family: Arial, sans-serif;
+    letter-spacing: 2px;
+}
+
+.cabecalho h1 {
+    font-size: 23px;
+    margin: 0 0 6px;
+}
+
+.cabecalho p {
+    font-size: 11px;
+    margin: 0;
+}
+
+.livro {
+    width: min(1250px, 98%);
+    margin: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    box-shadow: 0 18px 35px #0009;
+    perspective: 1800px;
+}
+
+.pagina {
+    position: relative;
+    height: min(82vh, 850px);
+    min-height: 650px;
+    padding: 27px 27px 42px;
+    overflow: hidden;
+
+    background:
+        linear-gradient(90deg, #00000008, transparent 8%, transparent 92%, #00000008),
+        repeating-linear-gradient(
+            0deg,
+            transparent 0,
+            transparent 28px,
+            #9d8e7010 29px
+        ),
+        var(--papel);
+}
+
+.pagina.esquerda {
+    border-right: 1px solid var(--borda);
+    border-radius: 5px 0 0 5px;
+    box-shadow: inset -13px 0 20px -20px #000;
+}
+
+.pagina.direita {
+    border-radius: 0 5px 5px 0;
+    box-shadow: inset 13px 0 20px -20px #000;
+}
+
+.topo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--borda);
+    padding-bottom: 8px;
+    margin-bottom: 13px;
+    color: var(--secundaria);
+    font-size: 10px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.titulo-capitulo {
+    text-align: center;
+    font-size: 17px;
+    margin: 10px 0 7px;
+    letter-spacing: 1px;
+    font-weight: bold;
+}
+
+.subtitulo {
+    text-align: center;
+    font-style: italic;
+    font-size: 12px;
+    margin: 0 0 14px;
+    color: #5e5749;
+    line-height: 1.4;
+}
+
+.credito {
+    text-align: center;
+    font-size: 10px;
+    margin-bottom: 13px;
+    color: var(--secundaria);
+}
+
+.colunas {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 22px;
+    height: calc(100% - 75px);
+}
+
+.coluna {
+    font-size: 12.8px;
+    line-height: 1.42;
+    text-align: justify;
+    hyphens: auto;
+    overflow-wrap: break-word;
+    overflow: hidden;
+}
+
+.versiculo {
+    margin: 0 0 8px;
+}
+
+.numero {
+    font-size: 9px;
+    vertical-align: super;
+    font-weight: bold;
+    margin-right: 3px;
+    color: #615944;
+}
+
+.secao {
+    font-size: 13px;
+    font-weight: bold;
+    line-height: 1.25;
+    margin: 11px 0 8px;
+    text-align: left;
+    text-transform: uppercase;
+    letter-spacing: .3px;
+}
+
+.citacao {
+    border-left: 1px solid #b7a98d;
+    padding-left: 8px;
+    margin: 9px 2px 11px 6px;
+    font-size: 12px;
+    line-height: 1.4;
+    font-style: italic;
+    text-align: left;
+}
+
+.referencia {
+    display: block;
+    text-align: right;
+    font-size: 10px;
+    font-style: normal;
+    margin-top: 4px;
+    color: #6f6655;
+}
+
+.epigrafe {
+    text-align: center;
+    margin: 10px 0 15px;
+    font-size: 12px;
+    font-style: italic;
+    line-height: 1.4;
+}
+
+.numero-pagina {
+    position: absolute;
+    bottom: 13px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    font-size: 11px;
+    color: #817762;
+}
+
+.controles {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 17px;
+    padding: 19px 8px;
+    color: white;
+    font: 14px Arial, sans-serif;
+}
+
+.controles button {
+    padding: 11px 19px;
+    border: 1px solid #cbbd9f;
+    background: #eee3ca;
+    color: #302a20;
+    border-radius: 3px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.controles button:hover {
+    background: #fff8e8;
+}
+
+.controles button:disabled {
+    opacity: .35;
+    cursor: not-allowed;
+}
+
+#contador {
+    min-width: 115px;
+    text-align: center;
+}
+
+.instrucao {
+    text-align: center;
+    color: #d5cbb8;
+    font: 12px Arial, sans-serif;
+    padding-bottom: 12px;
+}
+
+.pagina.animar {
+    animation: virar .35s ease;
+}
+
+@keyframes virar {
+    0% {
+        transform: rotateY(0);
+        opacity: 1;
+    }
+    50% {
+        opacity: .65;
+    }
+    100% {
+        transform: rotateY(-4deg);
+        opacity: 1;
+    }
+}
+
+@media(max-width: 760px) {
+
+    body {
+        padding: 10px;
+    }
+
+    .livro {
+        grid-template-columns: 1fr;
+        width: 100%;
+    }
+
+    .pagina {
+        height: 78vh;
+        min-height: 620px;
+        padding: 23px 19px 40px;
+        border-radius: 5px !important;
+    }
+
+    .pagina.esquerda {
+        display: none;
+    }
+
+    .pagina.direita {
+        display: block;
+    }
+
+    .colunas {
+        gap: 15px;
+    }
+
+    .coluna {
+        font-size: 12px;
+        line-height: 1.4;
+    }
+
+    .secao {
+        font-size: 12px;
+    }
+
+    .citacao {
+        font-size: 11px;
+    }
+
+    .titulo-capitulo {
+        font-size: 15px;
+    }
+}
+
+@media(max-width: 390px) {
+
+    .pagina {
+        padding-left: 14px;
+        padding-right: 14px;
+    }
+
+    .colunas {
+        gap: 10px;
+    }
+
+    .coluna {
+        font-size: 11px;
+    }
+
+    .citacao {
+        font-size: 10px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header class="cabecalho">
+    <h1>ATOS 29</h1>
+    <p>A HISTÓRIA CONTINUA • MINISTÉRIO ATALAIA</p>
+</header>
+
+<main>
+
+<div class="livro" id="livro">
+
+    <article class="pagina esquerda" id="paginaEsquerda"></article>
+
+    <article class="pagina direita" id="paginaDireita"></article>
+
+</div>
+
+<nav class="controles">
+
+    <button id="anterior" type="button">
+        ← Anterior
+    </button>
+
+    <span id="contador">1–2</span>
+
+    <button id="proxima" type="button">
+        Próxima →
+    </button>
+
+</nav>
+
+<p class="instrucao">
+    Utilize os botões ou as setas do teclado para navegar.
+</p>
+
+</main>
+
+<script>
+
+/* =========================================
+   ATOS 29 — CAPÍTULO 2
+   NO LUGAR SECRETO
+========================================= */
+
+const conteudo = [
+
+{tipo:"titulo", texto:"CAPÍTULO 2 — NO LUGAR SECRETO"},
+
+{tipo:"subtitulo", texto:"Quando Deus começa a formar o homem antes de usá-lo diante das pessoas"},
+
+{tipo:"credito", texto:"Ministério Atalaia • Diego Nascimento — Pastor Evangelista"},
+
+{tipo:"q", texto:"Mas tu, quando orares, entra no teu quarto e, fechando a tua porta, ora a teu Pai, que está em secreto.", ref:"Mateus 6:6"},
+
+{tipo:"secao", texto:"O INÍCIO DA BUSCA POR DEUS"},
+
+{tipo:"v", n:2, texto:"Logo após a minha conversão, nasceu dentro de mim uma sede que eu nunca havia experimentado. Eu queria conhecer a Deus. Não me bastava frequentar os cultos ou ouvir as pregações; eu desejava estar na presença do Senhor. Cada oportunidade que eu tinha era aproveitada para buscá-Lo em oração e meditar na Sua Palavra."},
+
+{tipo:"v", n:3, texto:"Quando chegava da faculdade, quase sempre seguia diretamente para o meu quarto. Trancava a porta, colocava o CD Águas Profundas, de David M. Quinlan, desligava-me de tudo o que acontecia ao meu redor e me colocava diante de Deus. O tempo parecia não existir quando eu estava na presença do Senhor."},
+
+{tipo:"v", n:4, texto:"Quanto mais O buscava, mais desejava buscá-Lo. Naquela época, eu ainda não compreendia claramente como Deus falava conosco. Entretanto, olhando para trás, percebo que Ele já estava comigo naquele quarto. Era o Espírito Santo quem iluminava meu entendimento, revelava o significado das Escrituras e me ensinava, pouco a pouco, cada verdade contida na Palavra de Deus."},
+
+{tipo:"v", n:5, texto:"Enquanto eu lia a Bíblia, Ele mostrava áreas da minha vida que precisavam ser transformadas, corrigia meus pensamentos, moldava meu caráter e conduzia meus passos no caminho da santidade."},
+
+{tipo:"secao", texto:"O LUGAR SECRETO"},
+
+{tipo:"v", n:6, texto:"Foi nesse tempo de intimidade com Deus que compreendi que a transformação do cristão não acontece apenas nos cultos públicos, mas também no lugar secreto. Jesus disse: “Mas tu, quando orares, entra no teu quarto e, fechando a tua porta, ora a teu Pai, que está em secreto.” Essas palavras de Mateus 6:6 passaram a ter um significado muito profundo para mim."},
+
+{tipo:"v", n:7, texto:"Jesus estava ensinando que existe uma dimensão da vida espiritual que não precisa ser vista pelos homens. Foi nesse ambiente que comecei a compreender que Deus não estava interessado apenas naquilo que eu faria diante das pessoas. Ele estava interessado, antes de tudo, naquilo que eu seria diante dEle."},
+
+{tipo:"secao", texto:"ANTES DE DEUS NOS USAR, ELE NOS FORMA"},
+
+{tipo:"v", n:8, texto:"Naquele período eu não sabia exatamente o que Deus faria comigo no futuro. Eu simplesmente queria conhecê-Lo. Eu não estava pensando em ministério, reconhecimento ou posição. Estava aprendendo a buscar a Deus. Foi no quarto, em oração, jejum e meditação nas Escrituras, que o Senhor começou a trabalhar profundamente em minha vida."},
+
+{tipo:"v", n:9, texto:"Aqueles momentos que pareciam simples e escondidos estavam construindo fundamentos que eu só compreenderia muitos anos depois."},
+
+{tipo:"secao", texto:"RAIZ, CARÁTER E PERSEVERANÇA"},
+
+{tipo:"v", n:10, texto:"Hoje, olhando para trás, percebo que aqueles longos períodos de oração, jejum e meditação na Palavra não eram apenas momentos de devoção pessoal. Deus estava me preparando para aquilo que eu ainda nem imaginava. Enquanto eu pensava estar apenas aprendendo a Bíblia, o Senhor estava formando um pregador, um mestre da Sua Palavra e um pastor segundo o Seu coração."},
+
+{tipo:"v", n:11, texto:"Cada hora investida no lugar secreto tornou-se um alicerce para o ministério que Ele, mais tarde, confiaria às minhas mãos. Foi isso que comecei a compreender. O secreto não era simplesmente o lugar onde eu passava algumas horas do meu dia. E, principalmente, ensinava-me que a presença de Deus deveria ser mais importante do que qualquer coisa que Ele pudesse colocar em minhas mãos."},
+
+{tipo:"secao", texto:"A PALAVRA DE DEUS TRANSFORMA A MENTE"},
+
+{tipo:"v", n:12, texto:"Quanto mais eu estudava as Escrituras, mais compreendia que a Bíblia não era apenas um livro religioso. Passei a desenvolver o hábito de ouvir, ler, estudar, examinar, anotar, memorizar e meditar nas Escrituras. A Palavra de Deus não havia sido dada apenas para aumentar meu conhecimento, mas para transformar minha maneira de viver."},
+
+{tipo:"v", n:13, texto:"A cada livro que eu lia, descobria novas dimensões daquilo que Deus havia revelado. Aprendi que não bastava conhecer versículos isolados. A Bíblia começou a formar minha maneira de pensar. Romanos 12:2 diz: “E não vos conformeis com este mundo, mas transformai-vos pela renovação do vosso entendimento.” Comecei a perceber que uma das grandes batalhas da vida cristã acontece na mente."},
+
+{tipo:"v", n:14, texto:"A Palavra precisava alcançar meus pensamentos. Precisava alcançar minhas decisões. Precisava alcançar meus desejos. Precisava alcançar minha maneira de enxergar as pessoas. Precisava alcançar minha maneira de enxergar a mim mesmo. Hebreus 4:12 declara que a Palavra de Deus é viva e eficaz e que ela discerne os pensamentos e as intenções do coração."},
+
+{tipo:"v", n:15, texto:"Eu abria as Escrituras pensando que iria aprender alguma coisa sobre Deus e, muitas vezes, terminava a leitura percebendo algo sobre mim. Havia passagens que fortaleciam minha fé, mas também havia verdades que exigiam mudanças. Foi assim que comecei a entender que estudar a Bíblia não deveria ser apenas uma atividade intelectual."},
+
+{tipo:"v", n:16, texto:"O conhecimento bíblico precisava produzir transformação. Jesus disse em João 8:31-32: “Se vós permanecerdes na minha palavra, verdadeiramente sereis meus discípulos; e conhecereis a verdade, e a verdade vos libertará.” Permanecer é diferente de visitar."},
+
+{tipo:"v", n:17, texto:"A Palavra não deveria simplesmente passar pelos meus olhos. Precisava entrar no meu coração."},
+
+{tipo:"secao", texto:"RAÍZES ANTES DOS FRUTOS"},
+
+{tipo:"v", n:18, texto:"Salmos 119:105 diz: “Lâmpada para os meus pés é tua palavra e luz para o meu caminho.” Essa palavra começou a ganhar vida dentro de mim. No lugar secreto, a Bíblia tornou-se alimento para minha alma. Eu não estava apenas lendo para terminar capítulos. Eu queria compreender."},
+
+{tipo:"v", n:19, texto:"Queria aprender. Queria conhecer o Deus que havia transformado minha vida. Jesus disse em Mateus 4:4: “Nem só de pão viverá o homem, mas de toda palavra que sai da boca de Deus.” Comecei a perceber que existe uma fome espiritual que não pode ser satisfeita pelas coisas deste mundo."},
+
+{tipo:"v", n:20, texto:"Foi essa fome que comecei a experimentar. Quanto mais eu conhecia a Palavra, mais desejava conhecer o Autor da Palavra. Quanto mais eu descobria sobre Deus, mais percebia o quanto ainda precisava aprender. Salmos 1 apresenta o homem que medita na lei do Senhor como uma árvore plantada junto às águas."},
+
+{tipo:"v", n:21, texto:"Foi assim que comecei a enxergar minha própria caminhada. Foi nesse período que aprendi que aquilo que sustenta uma vida espiritual não é aquilo que aparece, mas aquilo que foi construído quando ninguém estava olhando."},
+
+{tipo:"secao", texto:"A ESCOLA DA ORAÇÃO"},
+
+{tipo:"v", n:22, texto:"A oração também começou a ocupar um espaço cada vez maior na minha caminhada. Eu descobria que orar não significava simplesmente apresentar uma lista de pedidos diante de Deus. Jesus ensinou seus discípulos a orar dizendo: “Pai nosso, que estás nos céus, santificado seja o teu nome.” A oração começa com Deus."},
+
+{tipo:"v", n:23, texto:"Quando dizemos “santificado seja o teu nome”, colocamos Deus no centro. Eu comecei a entender que o jejum não era uma maneira de manipular Deus ou obrigá-Lo a fazer aquilo que eu desejava. Jesus ensinou em Mateus 6 que o jejum não deveria ser praticado para receber reconhecimento dos homens."},
+
+{tipo:"v", n:24, texto:"Isso chamou minha atenção. A oração estava no secreto. O jejum estava no secreto. A recompensa estava com o Pai. Deus estava me ensinando a fazer as coisas para Ele, e não para ser visto pelos homens."},
+
+{tipo:"secao", texto:"O SECRETO TRATA AS MOTIVAÇÕES"},
+
+{tipo:"v", n:25, texto:"É onde Deus pergunta não apenas: “O que você está fazendo?” Mas também: “Por que você está fazendo?”"},
+
+{tipo:"secao", texto:"DEUS OLHA PARA O CORAÇÃO"},
+
+{tipo:"v", n:26, texto:"Foi no lugar secreto que comecei a entender que Deus olha para o coração. Samuel ouviu de Deus uma palavra que marcou profundamente minha compreensão sobre caráter. Eu podia ser completamente honesto diante de Deus. Podia confessar minhas fraquezas. Podia reconhecer meus erros."},
+
+{tipo:"v", n:27, texto:"E foi justamente nesse ambiente de sinceridade que Deus começou a tratar meu caráter. Gálatas 5 fala sobre o fruto do Espírito: amor, alegria, paz, longanimidade, benignidade, bondade, fé, mansidão e domínio próprio. Comecei a compreender que o fruto do Espírito não é produzido por aparência religiosa."},
+
+{tipo:"v", n:28, texto:"O apóstolo Paulo escreveu em Romanos 8:29 que Deus nos predestinou para sermos conformes à imagem de Seu Filho. Foi no secreto que aprendi que ministério sem caráter pode se tornar perigoso. Por isso, antes de perguntar qual era o ministério que Deus tinha para mim, eu precisava permitir que Ele trabalhasse em mim."},
+
+{tipo:"secao", texto:"O SERVIÇO CRISTÃO E A VIDA PARTICULAR"},
+
+{tipo:"v", n:29, texto:"Enquanto eu permanecia naquele ambiente de oração e estudo das Escrituras, Deus começou a tratar também a minha maneira de enxergar o serviço cristão. Comecei a perceber que servir a Deus não significava simplesmente ocupar uma posição. Foi nesse período que comecei a compreender que o ministério não deveria ser uma busca por status, mas uma consequência de uma vida entregue a Deus."},
+
+{tipo:"v", n:30, texto:"Isso mudou minha maneira de compreender liderança espiritual. O lugar secreto começou a preparar meu coração para essa compreensão. Ali eu aprendia a servir a Deus quando ninguém estava me aplaudindo. Aprendia a buscar a Deus sem público. Aprendia a estudar sem precisar mostrar meu conhecimento."},
+
+{tipo:"v", n:31, texto:"Aprendia a orar sem precisar contar minhas orações. E, lentamente, Deus estava formando em mim uma convicção: O que fazemos diante das pessoas precisa ser sustentado pelo que somos diante de Deus. Foi no secreto que aprendi que não existe substituto para a presença de Deus."},
+
+{tipo:"secao", texto:"DISCERNINDO A VOZ DE DEUS"},
+
+{tipo:"v", n:32, texto:"Naquela época eu ainda não sabia explicar muitas das coisas que estava vivendo. Eu não conhecia profundamente os caminhos de Deus. Não sabia quais portas seriam abertas, quais seriam fechadas ou quais responsabilidades seriam colocadas diante de mim. Mas havia algo que eu começava a aprender: a reconhecer a direção de Deus por meio da Sua Palavra e da ação do Espírito Santo."},
+
+{tipo:"v", n:33, texto:"Jesus disse em João 10 que Suas ovelhas ouvem a Sua voz, conhecem-No e O seguem."},
+
+{tipo:"secao", texto:"APRENDENDO A ESPERAR EM DEUS"},
+
+{tipo:"v", n:34, texto:"Provérbios 3:5-6 diz: “Confia no Senhor de todo o teu coração e não te estribes no teu próprio entendimento. Reconhece-o em todos os teus caminhos, e ele endireitará as tuas veredas.” Essa palavra ganhou sentido na minha caminhada. Queremos compreender todo o processo, mas muitas vezes Ele simplesmente diz: “Continue caminhando comigo.” Foi assim que o lugar secreto se tornou também uma escola de discernimento."},
+
+{tipo:"v", n:35, texto:"Ali aprendi que nem sempre Deus responde imediatamente. Aprendi que esperar em Deus também é uma forma de fé. Isaías 40:31 declara que os que esperam no Senhor renovarão as suas forças. Foi nesse ambiente que comecei a desenvolver uma confiança que não dependia apenas daquilo que meus olhos podiam ver."},
+
+{tipo:"secao", texto:"FÉ MESMO SEM SENTIR"},
+
+{tipo:"v", n:36, texto:"Houve momentos em que eu não tinha respostas. Havia coisas que eu ainda não compreendia. Mas aprendi que não precisamos compreender tudo para obedecer. Abraão saiu sem saber exatamente para onde estava indo. Os discípulos frequentemente não compreendiam imediatamente aquilo que Cristo estava fazendo."},
+
+{tipo:"v", n:37, texto:"Foi no lugar secreto que comecei a aprender isso. Eu podia entregar a Deus aquilo que não conseguia resolver. Podia descansar sabendo que o Senhor continuava sendo Deus mesmo quando eu não tinha respostas. E a presença de Deus me ensinou que eu nunca estava sozinho."},
+
+{tipo:"v", n:38, texto:"Hebreus 11:1 afirma que a fé é a certeza das coisas que se esperam e a convicção de fatos que não se veem. Foi ali que comecei a descobrir que Deus queria mais do que minha atenção durante algumas horas. Ele queria minha vida."},
+
+{tipo:"secao", texto:"CONSAGRAÇÃO E ENTREGA TOTAL"},
+
+{tipo:"v", n:39, texto:"Eu comecei a perceber que Deus não desejava apenas uma parte da minha vida. Ele queria tudo. Romanos 12:1 apresenta um chamado à consagração do corpo como sacrifício vivo, santo e agradável a Deus. É dizer novamente: “Senhor, a minha vida pertence a Ti.” Foi isso que comecei a compreender no secreto."},
+
+{tipo:"v", n:40, texto:"Deus não queria apenas minhas palavras. Queria meus pensamentos. Não queria apenas minhas músicas. Queria meu coração. Não queria apenas meu tempo. Queria minha vontade. Não queria apenas meus dons. Queria minha vida. Tiago escreveu que não devemos ser apenas ouvintes da Palavra, mas praticantes."},
+
+{tipo:"v", n:41, texto:"Por isso, cada vez que eu saía daquele quarto, precisava levar comigo aquilo que Deus havia tratado comigo. O secreto precisava aparecer na vida. A intimidade precisava produzir fruto. A oração precisava mudar minhas atitudes. A Palavra precisava mudar minhas escolhas."},
+
+{tipo:"v", n:42, texto:"E a presença de Deus precisava mudar quem eu era."},
+
+{tipo:"secao", texto:"SANTIDADE E TRANSFORMAÇÃO"},
+
+{tipo:"v", n:43, texto:"Foi nesse processo que comecei a entender que santidade não é simplesmente deixar de fazer determinadas coisas. Pedro escreveu: “Sede santos, porque eu sou santo.” Essa chamada não é apenas para ministros. Por isso, cada momento no secreto precisava ser também um momento de rendição."},
+
+{tipo:"v", n:44, texto:"Outras vezes me mostrava que eu precisava mudar. Hoje consigo olhar para trás e perceber que aquela fase foi fundamental. Naquele momento eu não conseguia enxergar a dimensão do que estava acontecendo. Eu simplesmente buscava. Mas Deus estava construindo algo."},
+
+{tipo:"secao", texto:"O FUNDAMENTO ANTES DA EXPOSIÇÃO"},
+
+{tipo:"v", n:45, texto:"Existe uma verdade que nasceu naquele período e permanece viva em meu coração: Quem deseja falar de Deus aos homens precisa, primeiro, aprender a ouvir Deus em secreto. Foi assim que Deus começou a preparar minha vida. Eu ainda não sabia onde aquela caminhada me levaria."},
+
+{tipo:"v", n:46, texto:"Não sabia quantas pessoas conheceria. Não sabia quantas mensagens pregaria. Não sabia quantos lugares visitaria. Não sabia quais responsabilidades receberia. Eu só sabia que precisava estar na presença de Deus."},
+
+{tipo:"secao", texto:"O SECRETO É LUGAR DE REFÚGIO"},
+
+{tipo:"v", n:47, texto:"Pelo contrário, Ele disse: “No mundo tereis aflições, mas tende bom ânimo; eu venci o mundo.” A nossa esperança não está na ausência de tempestades. Foi isso que comecei a aprender. Foi no secreto que comecei a construir essa confiança. Mas porque ali eu me lembrava de quem Deus era."},
+
+{tipo:"v", n:48, texto:"Salmos 46:1 declara: “Deus é o nosso refúgio e fortaleza, socorro bem presente nas tribulações.” Essa verdade é poderosa. E foi aprendendo isso que minha relação com Deus começou a deixar de ser apenas conhecimento e passou a se tornar experiência de dependência."},
+
+{tipo:"v", n:49, texto:"Eu não queria apenas saber que Deus existia. Eu queria viver consciente de Sua presença. Hoje, olhando para trás, percebo que algumas das maiores obras de Deus em nossa vida acontecem em lugares que ninguém vê. Uma vida que aprendia a depender dEle. Uma vida que precisava da Palavra."},
+
+{tipo:"v", n:50, texto:"Uma vida que precisava da oração. Uma vida que precisava do Espírito Santo. O salmista escreveu: “Sonda-me, ó Deus, e conhece o meu coração; prova-me e conhece os meus pensamentos.” Essa oração revela disposição para ser examinado por Deus. É fácil pedir: “Senhor, abençoa-me.” Mais difícil é dizer: “Senhor, examina-me.” É fácil pedir: “Usa-me.” Mais difícil é dizer: “Transforma-me.” É fácil pedir: “Abre portas.” Mais difícil é dizer: “Fecha as portas que não vêm de Ti.” Foi no secreto que comecei a aprender essa diferença."},
+
+{tipo:"secao", texto:"A VONTADE DE DEUS E AS PORTAS"},
+
+{tipo:"v", n:51, texto:"Enquanto eu buscava a Deus, comecei a entender que algumas portas que desejamos não são necessariamente as portas que Deus deseja abrir. Aprendi que a vontade de Deus é mais importante do que a realização dos nossos próprios planos. Provérbios 16:9 diz: “O coração do homem planeja o seu caminho, mas o Senhor lhe dirige os passos.” Nós planejamos."},
+
+{tipo:"v", n:52, texto:"Porque eu não precisava controlar tudo. Eu precisava confiar. Foi também nesse período que aprendi que Deus pode usar tanto portas abertas quanto portas fechadas para nos conduzir. Mais tarde percebemos que Deus estava nos conduzindo para outro lugar. Por isso, comecei a aprender a não interpretar cada circunstância apenas pelo que meus olhos viam naquele momento."},
+
+{tipo:"v", n:53, texto:"Eu precisava voltar ao secreto. Foi ali que compreendi que a presença de Deus era mais importante do que a explicação de Deus. Nem sempre eu precisava saber por que algo estava acontecendo. Eu precisava saber com quem estava caminhando. Se Deus estava comigo, eu poderia continuar."},
+
+{tipo:"v", n:54, texto:"Hebreus 13:5 registra a promessa: “Não te deixarei, nem te desampararei.” Essa palavra me ensinou que a segurança do cristão não está na estabilidade das circunstâncias. E o secreto era o lugar onde eu constantemente me lembrava disso."},
+
+{tipo:"secao", texto:"DEUS TRATA ANTES DE ENVIAR"},
+
+{tipo:"v", n:55, texto:"Com o passar do tempo, percebi que a oração também começou a mudar minha maneira de enxergar outras pessoas. Isaías teve uma experiência semelhante quando viu a glória do Senhor e declarou: “Ai de mim! Pois estou perdido.” Antes de ser enviado, Isaías foi confrontado."},
+
+{tipo:"v", n:56, texto:"Antes de dizer “eis-me aqui”, ele precisou reconhecer sua própria condição. Essa sequência fala profundamente ao meu coração. Às vezes queremos imediatamente dizer: “Eis-me aqui, Senhor, envia-me.” Mas precisamos também permitir que Deus diga: “Deixe-me tratar você.” Foi assim comigo."},
+
+{tipo:"v", n:57, texto:"Antes de pensar em alcançar pessoas, eu precisava permitir que Deus alcançasse meu próprio coração. Antes de falar de perdão, eu precisava aprender a perdoar. Antes de falar de humildade, eu precisava ser confrontado em meu orgulho. Antes de falar de fé, eu precisava aprender a confiar."},
+
+{tipo:"v", n:58, texto:"Antes de falar de santidade, eu precisava permitir que Deus examinasse minha vida. Antes de falar de oração, eu precisava aprender a permanecer de joelhos. Eu não poderia construir um ministério baseado em minha própria capacidade. Precisava construir uma vida baseada na graça de Deus."},
+
+{tipo:"secao", texto:"DEPENDÊNCIA DA GRAÇA"},
+
+{tipo:"v", n:59, texto:"Foi nesse processo que compreendi outra verdade: ninguém permanece de pé apenas pela força de sua própria vontade. Paulo ouviu do Senhor: “A minha graça te basta, porque o meu poder se aperfeiçoa na fraqueza.” Essa palavra me ensinou que reconhecer nossas limitações não significa fracasso."},
+
+{tipo:"v", n:60, texto:"Jesus ensinou a pedir: “O pão nosso de cada dia nos dá hoje.” Existe uma dependência diária. Foi por isso que aquela experiência do início da minha caminhada nunca deixou de falar comigo. Mesmo depois de anos, ainda consigo voltar em pensamento para aquele quarto."},
+
+{tipo:"v", n:61, texto:"E lembrar de quem eu era. E perceber que aquele jovem que buscava a Deus sem saber exatamente o que aconteceria estava sendo preparado para uma história que ainda estava apenas começando. Existe algo muito especial em olhar para trás e perceber que Deus estava trabalhando antes mesmo de compreendermos o que Ele estava fazendo."},
+
+{tipo:"v", n:62, texto:"Naquele momento, eu não tinha todas as respostas. Eu não conhecia o caminho completo. Eu não sabia quantas experiências ainda viveria. E, antes que eu chegasse a esses lugares, Ele começou a preparar meu coração. Isso me faz lembrar das palavras do salmista: “Os teus olhos viram o meu corpo ainda informe, e no teu livro todas estas coisas foram escritas.” Deus conhece nossa história antes que consigamos compreendê-la."},
+
+{tipo:"v", n:63, texto:"Eu não precisava construir meu próprio futuro. Precisava ser fiel no presente. Se quisesse me ensinar, eu precisava estar disposto a aprender. Se quisesse me corrigir, eu precisava aceitar a correção. Se quisesse me esperar, eu precisava aprender a esperar."},
+
+{tipo:"secao", texto:"O MINISTÉRIO COMEÇA NO QUARTO"},
+
+{tipo:"v", n:64, texto:"Foi assim que aprendi que o verdadeiro ministério começa muito antes do púlpito. Começa quando fechamos a porta, dobramos os joelhos e dizemos: “Senhor, trata primeiro de mim.” Essa oração é simples, mas profunda. Mas aquilo que Deus estava fazendo ali era grande."},
+
+{tipo:"v", n:65, texto:"Essa continua sendo uma das maiores lições que carrego comigo. Foi isso que comecei a experimentar. Eu não precisava que ninguém soubesse que eu estava orando. Eu precisava que Deus soubesse. Eu não precisava que alguém reconhecesse meu esforço. Eu precisava permanecer fiel."},
+
+{tipo:"v", n:66, texto:"Eu não precisava de aplausos. Eu precisava da presença. E essa compreensão mudou minha maneira de enxergar o ministério. O ministério não poderia ser um palco para minha identidade. Precisava ser uma expressão de amor e obediência a Deus. Hoje, quando ensino sobre oração, não falo apenas de uma teoria que aprendi em livros."},
+
+{tipo:"v", n:67, texto:"Falo de uma experiência que marcou profundamente minha caminhada com Deus. Eu sei o que significa entrar em um quarto sem saber exatamente o que dizer. Mas aprendi que não devemos esperar sentir vontade para buscar a Deus. Daniel tinha o hábito de orar."},
+
+{tipo:"v", n:68, texto:"Foi isso que Deus começou a fazer comigo. Ele estava me ensinando a construir uma vida espiritual que não dependesse das circunstâncias. Uma vida que pudesse continuar caminhando porque estava fundamentada em Cristo."},
+
+{tipo:"secao", texto:"O SECRETO CONTINUA AO LONGO DA VIDA"},
+
+{tipo:"v", n:69, texto:"Ao longo dos anos, compreendi que aquilo que Deus começou no secreto precisava permanecer no centro da minha vida. Paulo escreveu: “Temos, porém, este tesouro em vasos de barro, para que a excelência do poder seja de Deus, e não de nós.” Essa imagem é poderosa."},
+
+{tipo:"secao", texto:"A PRESENÇA ACIMA DA PLATAFORMA"},
+
+{tipo:"v", n:70, texto:"Quando olho para o início da minha caminhada, percebo que Deus estava me ensinando algo que continua sendo essencial: A presença de Deus não pode ser substituída pelo trabalho para Deus. Ali eu não precisava produzir nada. Eu precisava estar. Essa experiência marcou minha compreensão do ministério."},
+
+{tipo:"v", n:71, texto:"Porque, se um dia eu estivesse diante de pessoas falando sobre Deus, precisaria continuar tendo um lugar onde pudesse simplesmente estar diante dEle. Somente eu e Deus."},
+
+{tipo:"secao", texto:"O VALOR DO SECRETO"},
+
+{tipo:"v", n:72, texto:"Talvez alguém esteja vivendo hoje exatamente aquilo que eu vivi naquele começo."},
+
+{tipo:"secao", texto:"NUNCA CONSTRUA EM PÚBLICO SEM CONSTRUIR EM SECRETO"},
+
+{tipo:"v", n:73, texto:"Existe uma verdade que aprendi e que gostaria de deixar registrada para aqueles que caminharão depois de mim: Nunca tente construir em público aquilo que você não está disposto a construir em secreto. Foi assim que Deus começou a formar minha vida."},
+
+{tipo:"secao", texto:"FUNDAMENTOS QUE PERMANECEM"},
+
+{tipo:"v", n:74, texto:"Hoje, olhando para trás, consigo perceber que aqueles momentos no quarto foram muito mais importantes do que eu imaginava. Eu pensava estar simplesmente buscando a Deus. Mas Deus estava preparando minha vida. Eu pensava estar apenas lendo a Bíblia. Mas Ele estava formando minha compreensão."},
+
+{tipo:"v", n:75, texto:"Eu pensava estar apenas orando. Mas Ele estava construindo minha dependência. Eu pensava estar apenas jejuando. Mas Ele estava ensinando minha vontade a se submeter à Sua. Eu pensava estar apenas chorando. Mas Deus estava tratando áreas profundas do meu coração."},
+
+{tipo:"v", n:76, texto:"Eu pensava estar escondido. Mas estava sendo preparado. O homem que um dia apareceria diante das pessoas estava sendo formado quando ninguém o via. E, muitas vezes, somente muitos anos depois conseguimos enxergar o que Ele estava fazendo. E continuo acreditando que tudo aquilo que Deus começou naquele lugar precisava permanecer comigo em todos os lugares para onde Ele me conduzisse."},
+
+{tipo:"secao", texto:"O CHAMADO PARA PERMANECER"},
+
+{tipo:"secao", texto:"O SECRETO É PARA TODO CRISTÃO"},
+
+{tipo:"v", n:77, texto:"Jesus disse: “Permanecei em mim, e eu permanecerei em vós.” Essa palavra é para todos nós. Essa talvez seja a palavra que melhor resume tudo aquilo que aprendi. Foi assim que começou minha caminhada. Foi naquele lugar que aprendi que a verdadeira autoridade espiritual não nasce simplesmente de um título."},
+
+{tipo:"v", n:78, texto:"Por isso, se algum dia alguém olhar para aquilo que Deus permitiu que eu realizasse e perguntar onde tudo começou, minha resposta será simples: Começou no secreto. Começou quando eu ainda não sabia o que Deus faria comigo. E Ele estava trabalhando."},
+
+{tipo:"secao", texto:"CONCLUSÃO — NUNCA ABANDONAR O LUGAR SECRETO"},
+
+{tipo:"v", n:79, texto:"Existe uma verdade que quero carregar comigo durante toda a minha caminhada: Nunca abandonar o lugar onde Deus começou a me formar. Posso cuidar de muitas vidas, mas ainda preciso permitir que Deus cuide da minha. Hoje, quando olho para trás, percebo que aquele jovem que simplesmente queria conhecer a Deus estava sendo conduzido para algo que ainda não conseguia enxergar."},
+
+{tipo:"v", n:80, texto:"Eu não sabia o que viria. Mas sabia de quem precisava. Que eu nunca troque a presença pela plataforma. Que eu nunca troque a intimidade pelo reconhecimento. Que eu nunca troque a Palavra pela opinião dos homens. Que eu nunca troque a oração pela atividade."},
+
+{tipo:"v", n:81, texto:"Que eu nunca troque o caráter pelo talento. Que eu nunca queira ser visto pelos homens mais do que ser conhecido por Deus. Porque, no fim, quando todas as luzes se apagarem, quando todos os aplausos cessarem e quando todo reconhecimento humano desaparecer, continuará existindo uma única realidade que realmente importa: Eu e Deus."},
+
+{tipo:"v", n:82, texto:"E foi ali, no secreto, que tudo começou."}
+
+];
+
+
+/* =========================================
+   DISTRIBUIÇÃO AUTOMÁTICA DAS PÁGINAS
+========================================= */
+
+const paginas = [];
+
+const BLOCOS_POR_COLUNA = 4;
+const BLOCOS_POR_PAGINA = BLOCOS_POR_COLUNA * 2;
+
+for (let i = 0; i < conteudo.length; i += BLOCOS_POR_PAGINA) {
+    paginas.push(conteudo.slice(i, i + BLOCOS_POR_PAGINA));
+}
+
+let indice = 0;
+
+
+/* =========================================
+   SEGURANÇA DO TEXTO HTML
+========================================= */
+
+function escapar(texto) {
+
+    return String(texto).replace(/[&<>"']/g, letra => ({
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;',
+        '"': '&quot;',
+        "'": '&#39;'
+    })[letra]);
+
+}
+
+
+/* =========================================
+   FORMATAÇÃO DOS BLOCOS
+========================================= */
+
+function montarBloco(item) {
+
+    if (item.tipo === "titulo") {
+        return `
+            <h2 class="titulo-capitulo">
+                ${escapar(item.texto)}
+            </h2>
+        `;
+    }
+
+    if (item.tipo === "subtitulo") {
+        return `
+            <div class="subtitulo">
+                ${escapar(item.texto)}
+            </div>
+        `;
+    }
+
+    if (item.tipo === "credito") {
+        return `
+            <div class="credito">
+                ${escapar(item.texto)}
+            </div>
+        `;
+    }
+
+    if (item.tipo === "secao") {
+        return `
+            <h3 class="secao">
+                ${escapar(item.texto)}
+            </h3>
+        `;
+    }
+
+    if (item.tipo === "q") {
+        return `
+            <blockquote class="citacao">
+                “${escapar(item.texto)}”
+                <cite class="referencia">
+                    ${escapar(item.ref)}
+                </cite>
+            </blockquote>
+        `;
+    }
+
+    if (item.tipo === "v") {
+        return `
+            <p class="versiculo">
+                <sup class="numero">${item.n}</sup>
+                ${escapar(item.texto)}
+            </p>
+        `;
+    }
+
+    return "";
+
+}
+
+
+/* =========================================
+   CONSTRUÇÃO DE CADA PÁGINA
+========================================= */
+
+function montarPagina(elemento, itens, numero) {
+
+    const coluna1 = itens.slice(0, BLOCOS_POR_COLUNA);
+    const coluna2 = itens.slice(BLOCOS_POR_COLUNA, BLOCOS_POR_PAGINA);
+
+    elemento.innerHTML = `
+
+        <div class="topo">
+            <span>ATOS 29 • A HISTÓRIA CONTINUA</span>
+            <span>CAPÍTULO 2</span>
+        </div>
+
+        <div class="colunas">
+
+            <div class="coluna">
+                ${coluna1.map(montarBloco).join("")}
+            </div>
+
+            <div class="coluna">
+                ${coluna2.map(montarBloco).join("")}
+            </div>
+
+        </div>
+
+        <div class="numero-pagina">
+            ${numero}
+        </div>
+
+    `;
+
+}
+
+
+/* =========================================
+   VERIFICAÇÃO DO MODO DE VISUALIZAÇÃO
+========================================= */
+
+function modoCelular() {
+    return window.matchMedia("(max-width: 760px)").matches;
+}
+
+
+/* =========================================
+   ATUALIZAÇÃO DO FLIPBOOK
+========================================= */
+
+function atualizar() {
+
+    const esquerda = document.getElementById("paginaEsquerda");
+    const direita = document.getElementById("paginaDireita");
+
+    const contador = document.getElementById("contador");
+
+    const anterior = document.getElementById("anterior");
+    const proxima = document.getElementById("proxima");
+
+    const celular = modoCelular();
+
+    if (celular) {
+
+        esquerda.style.display = "none";
+        direita.style.display = "block";
+
+        montarPagina(
+            direita,
+            paginas[indice] || [],
+            indice + 1
+        );
+
+        contador.textContent =
+            `Página ${indice + 1} de ${paginas.length}`;
+
+        anterior.disabled = indice === 0;
+        proxima.disabled = indice >= paginas.length - 1;
+
+    } else {
+
+        esquerda.style.display = "block";
+        direita.style.display = "block";
+
+        const primeira = indice * 2;
+
+        montarPagina(
+            esquerda,
+            paginas[primeira] || [],
+            primeira + 1
+        );
+
+        if (paginas[primeira + 1]) {
+
+            montarPagina(
+                direita,
+                paginas[primeira + 1],
+                primeira + 2
+            );
+
+        } else {
+
+            direita.innerHTML = `
+                <div class="topo">
+                    <span>ATOS 29</span>
+                    <span>MINISTÉRIO ATALAIA</span>
+                </div>
+
+                <div class="epigrafe">
+                    FIM DO CAPÍTULO 2
+                </div>
+
+                <div class="numero-pagina">
+                    ${primeira + 2}
+                </div>
+            `;
+
+        }
+
+        contador.textContent =
+            `Páginas ${primeira + 1}–${Math.min(primeira + 2, paginas.length)}`;
+
+        anterior.disabled = indice === 0;
+        proxima.disabled = (primeira + 2) >= paginas.length;
+
+    }
+
+}
+
+
+/* =========================================
+   NAVEGAÇÃO
+========================================= */
+
+function virarPagina(direcao) {
+
+    const total = paginas.length;
+
+    const maximo = modoCelular()
+        ? total - 1
+        : Math.ceil(total / 2) - 1;
+
+    const novoIndice = Math.max(
+        0,
+        Math.min(maximo, indice + direcao)
+    );
+
+    if (novoIndice === indice) return;
+
+    indice = novoIndice;
+
+    const paginasVisiveis = document.querySelectorAll(".pagina");
+
+    paginasVisiveis.forEach(pagina => {
+
+        pagina.classList.remove("animar");
+
+        void pagina.offsetWidth;
+
+        pagina.classList.add("animar");
+
+    });
+
+    atualizar();
+
+}
+
+document.getElementById("anterior").addEventListener("click", () => {
+    virarPagina(-1);
+});
+
+document.getElementById("proxima").addEventListener("click", () => {
+    virarPagina(1);
+});
+
+
+/* =========================================
+   SETAS DO TECLADO
+========================================= */
+
+document.addEventListener("keydown", evento => {
+
+    if (evento.key === "ArrowRight") {
+        virarPagina(1);
+    }
+
+    if (evento.key === "ArrowLeft") {
+        virarPagina(-1);
+    }
+
+});
+
+
+/* =========================================
+   ADAPTAÇÃO AO REDIMENSIONAMENTO
+========================================= */
+
+let modoAnterior = modoCelular();
+
+window.addEventListener("resize", () => {
+
+    const novoModo = modoCelular();
+
+    if (novoModo !== modoAnterior) {
+
+        indice = 0;
+        modoAnterior = novoModo;
+
+    }
+
+    atualizar();
+
+});
+
+
+/* =========================================
+   INICIALIZAÇÃO
+========================================= */
+
+atualizar();
+
+</script>
+
+</body>
+</html>
