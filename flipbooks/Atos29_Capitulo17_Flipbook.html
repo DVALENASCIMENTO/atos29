@@ -1,0 +1,1125 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#17130f">
+<title>ATOS 29 — Capítulo 17 | A Libertação da Minha Amiga</title>
+
+<style>
+:root {
+    --fundo: #17130f;
+    --papel: #f4ecd8;
+    --papel-claro: #f8f1df;
+    --texto: #292318;
+    --dourado: #b49a68;
+    --borda: #d5c6a7;
+    --altura-pagina: 690px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    background:
+        radial-gradient(ellipse at center, #393027 0%, #211b15 48%, #100d0a 100%);
+    color: #eee4d0;
+    font-family: Georgia, "Times New Roman", serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 22px 12px 30px;
+}
+
+.cabecalho-livro {
+    width: min(1180px, 100%);
+    text-align: center;
+    margin-bottom: 17px;
+}
+
+.cabecalho-livro .marca {
+    color: #d2bd91;
+    font-size: 13px;
+    letter-spacing: 3px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.cabecalho-livro .identificacao {
+    margin-top: 7px;
+    color: #f1e8d7;
+    font-size: 14px;
+    letter-spacing: 1px;
+}
+
+.livro {
+    width: min(1180px, 100%);
+    position: relative;
+    perspective: 1800px;
+}
+
+.abertura {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    position: relative;
+    align-items: stretch;
+    filter: drop-shadow(0 18px 24px rgba(0,0,0,.45));
+}
+
+.abertura::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 22px;
+    transform: translateX(-50%);
+    z-index: 5;
+    pointer-events: none;
+    background: linear-gradient(
+        to right,
+        rgba(54,39,20,.10),
+        rgba(56,39,18,.28),
+        rgba(255,255,255,.18),
+        rgba(48,33,16,.23)
+    );
+}
+
+.pagina {
+    height: var(--altura-pagina);
+    min-width: 0;
+    position: relative;
+    overflow: hidden;
+    color: var(--texto);
+    background:
+        radial-gradient(ellipse at 20% 15%, rgba(255,255,255,.32), transparent 55%),
+        radial-gradient(ellipse at 85% 90%, rgba(159,126,75,.08), transparent 55%),
+        repeating-linear-gradient(
+            0deg,
+            rgba(115,91,52,.018) 0px,
+            rgba(115,91,52,.018) 1px,
+            transparent 1px,
+            transparent 4px
+        ),
+        var(--papel);
+    border: 1px solid #c9b994;
+    padding: 27px 30px 39px;
+}
+
+.pagina.esquerda {
+    border-radius: 5px 0 0 5px;
+    box-shadow: inset -12px 0 18px -17px #4a321c;
+    padding-right: 34px;
+}
+
+.pagina.direita {
+    border-radius: 0 5px 5px 0;
+    box-shadow: inset 12px 0 18px -17px #4a321c;
+    padding-left: 34px;
+}
+
+.cabecalho-pagina {
+    text-align: center;
+    border-bottom: 1px solid var(--borda);
+    padding-bottom: 8px;
+    margin-bottom: 17px;
+    color: #66553a;
+    font-size: 9px;
+    font-weight: bold;
+    letter-spacing: 1.6px;
+    text-transform: uppercase;
+}
+
+.colunas {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 23px;
+    height: calc(100% - 48px);
+}
+
+.coluna {
+    min-width: 0;
+    height: 100%;
+    overflow: hidden;
+    text-align: justify;
+    font-size: 12px;
+    line-height: 1.48;
+    hyphens: auto;
+    overflow-wrap: break-word;
+}
+
+.coluna + .coluna {
+    border-left: 1px solid rgba(130,105,68,.22);
+    padding-left: 18px;
+}
+
+.unidade {
+    margin: 0 0 7px;
+    break-inside: avoid;
+}
+
+.unidade p {
+    margin: 0 0 7px;
+    text-indent: 0;
+}
+
+.numero {
+    font-size: .72em;
+    vertical-align: super;
+    line-height: 0;
+    font-weight: bold;
+    color: #76603b;
+    margin-right: 3px;
+}
+
+.titulo-principal {
+    text-align: center;
+    font-size: 17px;
+    line-height: 1.35;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: .6px;
+    margin: 5px 0 15px;
+}
+
+.subtitulo-principal {
+    text-align: center;
+    font-size: 11px;
+    line-height: 1.4;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: #59482e;
+    text-transform: uppercase;
+}
+
+.titulo-secao {
+    text-align: left;
+    font-size: 11px;
+    line-height: 1.35;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: .35px;
+    margin: 13px 0 7px;
+    color: #49391f;
+    break-after: avoid;
+}
+
+.citacao {
+    margin: 9px 5px 3px 13px;
+    padding-left: 9px;
+    border-left: 1px solid #b8a47e;
+    font-size: 11px;
+    line-height: 1.45;
+    font-style: italic;
+    text-align: left;
+}
+
+.referencia {
+    text-align: right;
+    font-size: 10px;
+    font-weight: bold;
+    font-style: normal;
+    margin: 4px 5px 10px 0;
+    color: #5c4a2d;
+}
+
+.destaque {
+    font-weight: bold;
+}
+
+.rodape-pagina {
+    position: absolute;
+    bottom: 13px;
+    left: 28px;
+    right: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 1px solid rgba(130,105,68,.28);
+    padding-top: 6px;
+    color: #786849;
+    font-size: 9px;
+    letter-spacing: 1px;
+}
+
+.numero-pagina {
+    font-size: 10px;
+    font-weight: bold;
+}
+
+.controles {
+    width: min(1180px, 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    margin-top: 21px;
+}
+
+.controles button {
+    border: 1px solid #a48a5b;
+    background: linear-gradient(#4b3d2b, #302619);
+    color: #f5ead5;
+    padding: 11px 23px;
+    font-family: Georgia, serif;
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    cursor: pointer;
+    border-radius: 3px;
+    transition: background .2s, transform .2s;
+}
+
+.controles button:hover:not(:disabled) {
+    background: #665237;
+    transform: translateY(-1px);
+}
+
+.controles button:disabled {
+    opacity: .35;
+    cursor: not-allowed;
+}
+
+.indicador {
+    color: #dfd1b5;
+    font-size: 12px;
+    min-width: 120px;
+    text-align: center;
+}
+
+.instrucao {
+    margin-top: 13px;
+    color: #b9a98c;
+    font-size: 11px;
+    text-align: center;
+    letter-spacing: .3px;
+}
+
+.fonte-original {
+    display: none;
+}
+
+/* Animação discreta */
+.abertura.animando {
+    animation: virar .28s ease;
+}
+
+@keyframes virar {
+    0% { opacity: .65; transform: rotateY(-2deg); }
+    100% { opacity: 1; transform: rotateY(0); }
+}
+
+/* Área de medição invisível */
+.medidor {
+    position: absolute;
+    left: -10000px;
+    top: 0;
+    visibility: hidden;
+    pointer-events: none;
+    width: 100%;
+}
+
+.medidor-pagina {
+    width: 100%;
+    height: var(--altura-pagina);
+    padding: 27px 30px 39px;
+    background: var(--papel);
+    color: var(--texto);
+}
+
+.medidor-colunas {
+    display: grid;
+    height: calc(100% - 48px);
+    grid-template-columns: 1fr 1fr;
+    gap: 23px;
+}
+
+.medidor-coluna {
+    height: 100%;
+    overflow: hidden;
+    min-width: 0;
+    font-size: 12px;
+    line-height: 1.48;
+    text-align: justify;
+    hyphens: auto;
+    overflow-wrap: break-word;
+}
+
+.medidor-coluna + .medidor-coluna {
+    border-left: 1px solid rgba(130,105,68,.22);
+    padding-left: 18px;
+}
+
+@media (max-width: 760px) {
+    body {
+        padding: 14px 8px 24px;
+    }
+
+    .cabecalho-livro .marca {
+        font-size: 11px;
+        letter-spacing: 2px;
+    }
+
+    .cabecalho-livro .identificacao {
+        font-size: 12px;
+    }
+
+    .abertura {
+        display: block;
+    }
+
+    .abertura::after {
+        display: none;
+    }
+
+    .pagina {
+        display: none;
+        height: min(76vh, 760px);
+        min-height: 510px;
+        border-radius: 4px !important;
+        padding: 22px 22px 40px !important;
+        box-shadow: 0 12px 24px rgba(0,0,0,.35);
+    }
+
+    .pagina.visivel {
+        display: block;
+    }
+
+    .pagina .colunas {
+        display: block;
+        height: calc(100% - 48px);
+    }
+
+    .pagina .coluna {
+        height: 100%;
+        font-size: 14px;
+        line-height: 1.55;
+        overflow: hidden;
+    }
+
+    .pagina .coluna + .coluna {
+        display: none;
+    }
+
+    .pagina .titulo-principal {
+        font-size: 19px;
+    }
+
+    .pagina .titulo-secao {
+        font-size: 12px;
+    }
+
+    .pagina .citacao {
+        font-size: 13px;
+    }
+
+    .controles {
+        gap: 8px;
+    }
+
+    .controles button {
+        padding: 11px 14px;
+        font-size: 10px;
+    }
+
+    .indicador {
+        min-width: 82px;
+        font-size: 11px;
+    }
+
+    .instrucao {
+        font-size: 10px;
+        line-height: 1.5;
+        padding: 0 10px;
+    }
+}
+
+@media (max-width: 380px) {
+    .pagina {
+        padding-left: 17px !important;
+        padding-right: 17px !important;
+    }
+
+    .pagina .coluna {
+        font-size: 13px;
+    }
+
+    .controles button {
+        padding: 10px 11px;
+    }
+}
+
+@media print {
+    body {
+        background: white;
+        padding: 0;
+    }
+
+    .cabecalho-livro,
+    .controles,
+    .instrucao {
+        display: none;
+    }
+
+    .abertura {
+        display: block;
+    }
+
+    .pagina {
+        display: block !important;
+        page-break-after: always;
+        box-shadow: none;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header class="cabecalho-livro">
+    <div class="marca">ATOS 29 • A HISTÓRIA CONTINUA</div>
+    <div class="identificacao">CAPÍTULO 17 — A LIBERTAÇÃO DA MINHA AMIGA</div>
+</header>
+
+<main class="livro">
+
+    <div class="abertura" id="abertura">
+        <!-- As páginas serão criadas automaticamente pelo JavaScript. -->
+    </div>
+
+    <div class="medidor" id="medidor"></div>
+
+</main>
+
+<nav class="controles" aria-label="Navegação do livro">
+    <button id="anterior" type="button">← ANTERIOR</button>
+    <div class="indicador" id="indicador">Preparando páginas...</div>
+    <button id="proxima" type="button">PRÓXIMA →</button>
+</nav>
+
+<div class="instrucao">
+    Utilize os botões ou as setas do teclado para virar as páginas.
+</div>
+
+<!-- =====================================================
+     TEXTO ORIGINAL DO CAPÍTULO 17
+     Os blocos são distribuídos automaticamente nas páginas.
+====================================================== -->
+
+<div class="fonte-original" id="conteudo-original">
+
+    <div class="unidade">
+        <h1 class="titulo-principal">A LIBERTAÇÃO DA MINHA AMIGA</h1>
+        <div class="subtitulo-principal">ATOS 29 — A HISTÓRIA CONTINUA</div>
+    </div>
+
+    <div class="unidade">
+        <h2 class="titulo-secao">QUANDO A DOR ESCONDE UMA BATALHA</h2>
+    </div>
+
+    <div class="unidade"><p><sup class="numero">1</sup>Ao longo da minha caminhada cristã, Deus permitiu que eu presenciasse situações que marcaram profundamente o meu coração.</p></div>
+    <div class="unidade"><p><sup class="numero">2</sup>Algumas delas envolveram enfermidades físicas.</p></div>
+    <div class="unidade"><p><sup class="numero">3</sup>Outras envolveram necessidades materiais.</p></div>
+    <div class="unidade"><p><sup class="numero">4</sup>E outras aconteceram em situações nas quais pessoas estavam enfrentando profundas lutas emocionais e espirituais.</p></div>
+    <div class="unidade"><p><sup class="numero">5</sup>Uma dessas experiências aconteceu com uma amiga que não víamos havia muito tempo.</p></div>
+    <div class="unidade"><p><sup class="numero">6</sup>Certo dia, ela foi nos visitar em nossa casa.</p></div>
+    <div class="unidade"><p><sup class="numero">7</sup>Durante a conversa, percebemos que havia algo diferente.</p></div>
+    <div class="unidade"><p><sup class="numero">8</sup>Ela não estava bem.</p></div>
+    <div class="unidade"><p><sup class="numero">9</sup>Mais tarde, soubemos que aquela mulher enfrentava uma <strong>profunda depressão</strong>, tinha <strong>pensamentos de suicídio</strong> e dizia ouvir <strong>vozes que a perturbavam constantemente</strong>.</p></div>
+    <div class="unidade"><p><sup class="numero">10</sup>Era uma situação muito séria.</p></div>
+    <div class="unidade"><p><sup class="numero">11</sup>Havia sofrimento.</p></div>
+    <div class="unidade"><p><sup class="numero">12</sup>Havia dor.</p></div>
+    <div class="unidade"><p><sup class="numero">13</sup>Havia uma vida que precisava de ajuda.</p></div>
+
+    <div class="unidade">
+        <h2 class="titulo-secao">UMA PREOCUPAÇÃO NO CORAÇÃO</h2>
+    </div>
+
+    <div class="unidade"><p><sup class="numero">14</sup>Enquanto conversávamos na sala, senti em meu coração que deveria proteger minha filha daquela situação.</p></div>
+    <div class="unidade"><p><sup class="numero">15</sup>Então disse calmamente à minha esposa:</p></div>
+    <div class="unidade"><p>— <strong>Leve a Rachel para o quarto.</strong></p></div>
+    <div class="unidade"><p><sup class="numero">16</sup>Minha esposa levou nossa filha para o quarto.</p></div>
+    <div class="unidade"><p><sup class="numero">17</sup>Foi nesse momento que, segundo aquilo que vivenciamos, aconteceu uma manifestação espiritual.</p></div>
+
+    <div class="unidade">
+        <h2 class="titulo-secao">A MANIFESTAÇÃO</h2>
+    </div>
+
+    <div class="unidade"><p><sup class="numero">18</sup>No mesmo instante em que minha esposa saiu da sala com Rachel, houve uma manifestação espiritual.</p></div>
+    <div class="unidade"><p><sup class="numero">19</sup>A voz que se manifestou declarou que aquela mulher lhe pertencia e que a levaria consigo.</p></div>
+    <div class="unidade"><p><sup class="numero">20</sup>Também mencionou o pai dela, fazendo referência àquilo que, naquela experiência, entendemos como uma ação espiritual semelhante que havia acontecido anteriormente com ele.</p></div>
+    <div class="unidade"><p><sup class="numero">21</sup>Naquele momento, compreendemos que não estávamos diante de uma situação que deveria ser enfrentada apenas com recursos humanos.</p></div>
+
+    <div class="unidade">
+        <blockquote class="citacao">“Porque a nossa luta não é contra o sangue e a carne, e sim contra os principados e potestades, contra os dominadores deste mundo tenebroso, contra as forças espirituais do mal, nas regiões celestes.”</blockquote>
+        <div class="referencia">Efésios 6:12</div>
+    </div>
+
+    <div class="unidade">
+        <h2 class="titulo-secao">NÃO HAVIA ESPAÇO PARA O MEDO</h2>
+    </div>
+
+    <div class="unidade"><p><sup class="numero">22</sup>Naquele momento, não havia espaço para medo.</p></div>
+    <div class="unidade"><p><sup class="numero">23</sup>Precisávamos permanecer firmes.</p></div>
+    <div class="unidade"><p><sup class="numero">24</sup>Sabíamos que nossa confiança deveria estar em Jesus Cristo.</p></div>
+    <div class="unidade"><p><sup class="numero">25</sup>Começamos a orar.</p></div>
+    <div class="unidade"><p><sup class="numero">26</sup>Clamamos ao Senhor.</p></div>
+    <div class="unidade"><p><sup class="numero">27</sup>Repreendemos toda ação que entendíamos como maligna e invocamos o nome de Jesus.</p></div>
+    <div class="unidade"><p><sup class="numero">28</sup>A nossa confiança não estava em nossa própria força.</p></div>
+    <div class="unidade"><p><sup class="numero">29</sup>Estava em Cristo.</p></div>
+
+    <div class="unidade">
+        <blockquote class="citacao">“Sujeitai-vos, portanto, a Deus; mas resisti ao diabo, e ele fugirá de vós.”</blockquote>
+        <div class="referencia">Tiago 4:7</div>
+    </div>
+
+    <div class="unidade"><p><sup class="numero">30</sup>Foi nessa confiança que permanecemos em oração.</p></div>
+
+    <div class="unidade">
+        <h2 class="titulo-secao">A AUTORIDADE ESTÁ EM CRISTO</h2>
+    </div>
+
+    <div class="unidade"><p><sup class="numero">31</sup>Naquele momento, ordenei, em nome do Senhor Jesus, que aquela ação maligna deixasse aquela mulher.</p></div>
+    <div class="unidade"><p><sup class="numero">32</sup>Não confiávamos em capacidade humana.</p></div>
+    <div class="unidade"><p><sup class="numero">33</sup>Não confiávamos em uma fórmula.</p></div>
+    <div class="unidade"><p><sup class="numero">34</sup>Não confiávamos em nós mesmos.</p></div>
+    <div class="unidade"><p><sup class="numero">35</sup>Nossa confiança estava no nome de Jesus Cristo.</p></div>
+
+    <div class="unidade">
+        <blockquote class="citacao">“E estes sinais hão de acompanhar aqueles que creem: em meu nome, expelirão demônios...”</blockquote>
+        <div class="referencia">Marcos 16:17</div>
+    </div>
+
+    <div class="unidade"><p><sup class="numero">36</sup>O poder não está no homem.</p></div>
+    <div class="unidade"><p class="destaque">O poder pertence a Cristo.</p></div>
+
+    <div class="unidade">
+        <h2 class="titulo-secao">A LIBERTAÇÃO</h2>
+    </div>
+
+    <div class="unidade"><p><sup class="numero">37</sup>Pela autoridade de Cristo, entendemos que aquela mulher foi completamente liberta.</p></div>
+    <div class="unidade"><p><sup class="numero">38</sup>Depois daquele dia, segundo o meu testemunho, ela não voltou a sofrer aqueles mesmos episódios de depressão e pensamentos de suicídio.</p></div>
+    <div class="unidade"><p><sup class="numero">39</sup>Sua vida começou a tomar uma nova direção.</p></div>
+    <div class="unidade"><p><sup class="numero">40</sup>A esperança foi restaurada.</p></div>
+    <div class="unidade"><p><sup class="numero">41</sup>Aquilo que parecia ser uma história marcada pela dor começou a ser transformado.</p></div>
+    <div class="unidade"><p><sup class="numero">42</sup>E, para mim, aquela experiência se tornou mais uma lembrança de que Jesus Cristo continua sendo poderoso para salvar, restaurar e libertar.</p></div>
+
+    <div class="unidade">
+        <h2 class="titulo-secao">JESUS RESTAURA A ESPERANÇA</h2>
+    </div>
+
+    <div class="unidade"><p><sup class="numero">43</sup>Quando penso naquela mulher, uma das coisas que mais me marca é lembrar de como ela estava naquele momento.</p></div>
+    <div class="unidade"><p><sup class="numero">44</sup>Havia sofrimento.</p></div>
+    <div class="unidade"><p><sup class="numero">45</sup>Havia pensamentos de morte.</p></div>
+    <div class="unidade"><p><sup class="numero">46</sup>Havia uma profunda perturbação.</p></div>
+    <div class="unidade"><p><sup class="numero">47</sup>Mas aquela história não terminou ali.</p></div>
+    <div class="unidade"><p><sup class="numero">48</sup>Deus restaurou sua vida e lhe concedeu uma nova esperança.</p></div>
+
+    <div class="unidade">
+        <blockquote class="citacao">“O ladrão vem somente para roubar, matar e destruir; eu vim para que tenham vida e a tenham em abundância.”</blockquote>
+        <div class="referencia">João 10:10</div>
+    </div>
+
+    <div class="unidade"><p><sup class="numero">49</sup>Cristo veio para dar vida.</p></div>
+    <div class="unidade"><p><sup class="numero">50</sup>Onde existe desespero, Ele pode trazer esperança.</p></div>
+    <div class="unidade"><p><sup class="numero">51</sup>Onde existe escravidão, Ele pode trazer liberdade.</p></div>
+    <div class="unidade"><p><sup class="numero">52</sup>Onde existe destruição, Ele pode restaurar.</p></div>
+
+    <div class="unidade">
+        <h2 class="titulo-secao">UMA LIÇÃO SOBRE O EVANGELHO</h2>
+    </div>
+
+    <div class="unidade"><p><sup class="numero">53</sup>Essa experiência reforçou algo muito importante no meu coração:</p></div>
+    <div class="unidade"><p class="destaque">o Evangelho alcança o ser humano por inteiro.</p></div>
+    <div class="unidade"><p><sup class="numero">54</sup>Jesus não veio apenas para tratar de uma parte da nossa existência.</p></div>
+    <div class="unidade"><p><sup class="numero">55</sup>Ele veio para salvar.</p></div>
+    <div class="unidade"><p><sup class="numero">56</sup>Para restaurar.</p></div>
+    <div class="unidade"><p><sup class="numero">57</sup>Para libertar.</p></div>
+    <div class="unidade"><p><sup class="numero">58</sup>Para transformar.</p></div>
+    <div class="unidade"><p><sup class="numero">59</sup>Ao longo da minha caminhada, compreendi que a Igreja precisa anunciar todo o Evangelho.</p></div>
+    <div class="unidade"><p><sup class="numero">60</sup>O mesmo Cristo que perdoa pecados também cura enfermos, consola os abatidos, restaura famílias e liberta aqueles que vivem debaixo de opressão.</p></div>
+    <div class="unidade"><p><sup class="numero">61</sup>Tudo isso deve apontar para Ele.</p></div>
+
+    <div class="unidade">
+        <h2 class="titulo-secao">O PODER NÃO ESTÁ EM QUEM ORA</h2>
+    </div>
+
+    <div class="unidade"><p><sup class="numero">62</sup>Existe algo que preciso deixar muito claro ao contar essa experiência:</p></div>
+    <div class="unidade"><p class="destaque">o poder não estava em mim.</p></div>
+    <div class="unidade"><p><sup class="numero">63</sup>Eu não tinha capacidade própria para libertar aquela mulher.</p></div>
+    <div class="unidade"><p><sup class="numero">64</sup>O poder estava em Jesus Cristo.</p></div>
+    <div class="unidade"><p><sup class="numero">65</sup>Foi em Seu nome que oramos.</p></div>
+    <div class="unidade"><p><sup class="numero">66</sup>Foi em Seu nome que enfrentamos aquela situação.</p></div>
+    <div class="unidade"><p><sup class="numero">67</sup>E foi a Ele que atribuímos a libertação.</p></div>
+
+    <div class="unidade">
+        <blockquote class="citacao">“Filhinhos, vós sois de Deus e tendes vencido os falsos profetas, porque maior é aquele que está em vós do que aquele que está no mundo.”</blockquote>
+        <div class="referencia">1 João 4:4</div>
+    </div>
+
+    <div class="unidade">
+        <h2 class="titulo-secao">QUANDO UMA VIDA RECEBE NOVA ESPERANÇA</h2>
+    </div>
+
+    <div class="unidade"><p><sup class="numero">68</sup>Depois daquela experiência, o que mais me marcou não foi simplesmente o que aconteceu naquele momento.</p></div>
+    <div class="unidade"><p><sup class="numero">69</sup>Foi aquilo que veio depois.</p></div>
+    <div class="unidade"><p><sup class="numero">70</sup>Ver uma pessoa que estava sofrendo recuperar a esperança é algo que toca profundamente o coração.</p></div>
+    <div class="unidade"><p><sup class="numero">71</sup>Aquela mulher precisava de esperança.</p></div>
+    <div class="unidade"><p><sup class="numero">72</sup>Precisava de uma nova perspectiva.</p></div>
+    <div class="unidade"><p><sup class="numero">73</sup>Precisava conhecer a liberdade que há em Cristo.</p></div>
+    <div class="unidade"><p><sup class="numero">74</sup>E, segundo o meu testemunho, Deus transformou aquela situação.</p></div>
+
+    <div class="unidade">
+        <h2 class="titulo-secao">A BATALHA PERTENCE AO SENHOR</h2>
+    </div>
+
+    <div class="unidade"><p><sup class="numero">75</sup>Aprendi também que, quando enfrentamos situações espirituais, precisamos lembrar que a batalha não é nossa.</p></div>
+    <div class="unidade"><p><sup class="numero">76</sup>Nossa força vem do Senhor.</p></div>
+
+    <div class="unidade">
+        <blockquote class="citacao">“Quanto ao mais, sede fortalecidos no Senhor e na força do seu poder.”</blockquote>
+        <div class="referencia">Efésios 6:10</div>
+    </div>
+
+    <div class="unidade"><p><sup class="numero">77</sup>Não somos chamados para viver dominados pelo medo.</p></div>
+    <div class="unidade"><p><sup class="numero">78</sup>Somos chamados para permanecer firmes em Deus.</p></div>
+    <div class="unidade"><p><sup class="numero">79</sup>Por isso, quando enfrentamos situações difíceis, precisamos buscar ao Senhor, permanecer em oração e confiar na Sua Palavra.</p></div>
+
+    <div class="unidade">
+        <h2 class="titulo-secao">UMA VIDA RESTAURADA</h2>
+    </div>
+
+    <div class="unidade"><p><sup class="numero">80</sup>A história daquela amiga permaneceu em meu coração porque me fez compreender ainda mais profundamente o valor de uma vida.</p></div>
+    <div class="unidade"><p><sup class="numero">81</sup>Uma pessoa que estava pensando em morrer passou a experimentar uma nova esperança.</p></div>
+    <div class="unidade"><p><sup class="numero">82</sup>Isso é precioso.</p></div>
+    <div class="unidade"><p><sup class="numero">83</sup>Cada vida importa.</p></div>
+    <div class="unidade"><p><sup class="numero">84</sup>Cada pessoa tem valor diante de Deus.</p></div>
+    <div class="unidade"><p><sup class="numero">85</sup>E cada história de restauração deve nos levar a glorificar o Senhor.</p></div>
+
+    <div class="unidade">
+        <blockquote class="citacao">“Pois que aproveita ao homem ganhar o mundo inteiro e perder a sua alma?”</blockquote>
+        <div class="referencia">Marcos 8:36</div>
+    </div>
+
+    <div class="unidade"><p><sup class="numero">86</sup>Nenhuma conquista deste mundo pode ser comparada ao valor de uma alma.</p></div>
+
+    <div class="unidade">
+        <h2 class="titulo-secao">ATOS 29</h2>
+    </div>
+
+    <div class="unidade"><p><sup class="numero">87</sup>Essa experiência faz parte da minha caminhada e do testemunho daquilo que compreendi que Deus estava realizando diante dos meus olhos.</p></div>
+    <div class="unidade"><p><sup class="numero">88</sup>Minha amiga chegou carregando uma profunda dor.</p></div>
+    <div class="unidade"><p><sup class="numero">89</sup>Enfrentava depressão, pensamentos de suicídio e aquilo que ela relatava como vozes que a perturbavam constantemente.</p></div>
+    <div class="unidade"><p><sup class="numero">90</sup>Naquele dia, uma situação espiritual se manifestou diante de nós.</p></div>
+    <div class="unidade"><p><sup class="numero">91</sup>Levamos nossa confiança ao Senhor.</p></div>
+    <div class="unidade"><p><sup class="numero">92</sup>Oramos.</p></div>
+    <div class="unidade"><p><sup class="numero">93</sup>Repreendemos aquilo que entendíamos ser uma ação maligna.</p></div>
+    <div class="unidade"><p><sup class="numero">94</sup>Invocamos o nome de Jesus.</p></div>
+    <div class="unidade"><p><sup class="numero">95</sup>E, pela autoridade de Cristo, entendemos que aquela mulher foi liberta.</p></div>
+    <div class="unidade"><p><sup class="numero">96</sup>Depois daquele dia, segundo o meu testemunho, aqueles episódios não voltaram a acontecer da mesma maneira.</p></div>
+    <div class="unidade"><p><sup class="numero">97</sup>Deus restaurou sua vida.</p></div>
+    <div class="unidade"><p><sup class="numero">98</sup>Deus lhe deu nova esperança.</p></div>
+    <div class="unidade"><p><sup class="numero">99</sup>E aquela experiência deixou uma verdade profundamente gravada em meu coração:</p></div>
+    <div class="unidade"><p class="destaque">Jesus Cristo salva, cura, restaura e liberta.</p></div>
+    <div class="unidade"><p><sup class="numero">100</sup>Não é o homem.</p></div>
+    <div class="unidade"><p><sup class="numero">101</sup>Não é a capacidade humana.</p></div>
+    <div class="unidade"><p><sup class="numero">102</sup>Não é uma experiência.</p></div>
+    <div class="unidade"><p class="destaque">É Jesus.</p></div>
+    <div class="unidade"><p><sup class="numero">103</sup>Toda honra pertence a Ele.</p></div>
+    <div class="unidade"><p><sup class="numero">104</sup>Toda glória pertence a Ele.</p></div>
+    <div class="unidade"><p><sup class="numero">105</sup>Todo louvor pertence a Ele.</p></div>
+    <div class="unidade"><p><sup class="numero">106</sup>E se existe algo que aprendi naquela ocasião é que, diante das trevas, não precisamos exaltar as trevas.</p></div>
+    <div class="unidade"><p><sup class="numero">107</sup>Precisamos anunciar a luz.</p></div>
+
+    <div class="unidade">
+        <blockquote class="citacao">“A luz resplandece nas trevas, e as trevas não prevaleceram contra ela.”</blockquote>
+        <div class="referencia">João 1:5</div>
+    </div>
+
+    <div class="unidade"><p><sup class="numero">108</sup>Cristo continua sendo a nossa esperança.</p></div>
+    <div class="unidade"><p><sup class="numero">109</sup>Cristo continua sendo a nossa liberdade.</p></div>
+    <div class="unidade"><p><sup class="numero">110</sup>Cristo continua sendo suficiente.</p></div>
+
+    <div class="unidade">
+        <p class="destaque">A Ele seja toda a honra, toda a glória e todo o louvor.</p>
+    </div>
+
+    <div class="unidade">
+        <p class="destaque" style="text-align:center; margin-top:12px;">ATOS 29 continua.</p>
+    </div>
+
+</div>
+
+<script>
+(() => {
+    "use strict";
+
+    const abertura = document.getElementById("abertura");
+    const medidor = document.getElementById("medidor");
+    const conteudoOriginal = document.getElementById("conteudo-original");
+    const botaoAnterior = document.getElementById("anterior");
+    const botaoProxima = document.getElementById("proxima");
+    const indicador = document.getElementById("indicador");
+
+    let paginas = [];
+    let paginaAtual = 0;
+    let modoCelular = window.matchMedia("(max-width: 760px)").matches;
+    let temporizadorRedimensionamento = null;
+
+    function criarCabecalhoPagina() {
+        const cabecalho = document.createElement("div");
+        cabecalho.className = "cabecalho-pagina";
+        cabecalho.textContent = "ATOS 29 • A HISTÓRIA CONTINUA";
+        return cabecalho;
+    }
+
+    function criarRodapePagina(numero) {
+        const rodape = document.createElement("div");
+        rodape.className = "rodape-pagina";
+
+        const marca = document.createElement("span");
+        marca.textContent = "MINISTÉRIO ATALAIA";
+
+        const numeroPagina = document.createElement("span");
+        numeroPagina.className = "numero-pagina";
+        numeroPagina.textContent = numero;
+
+        rodape.append(marca, numeroPagina);
+        return rodape;
+    }
+
+    function criarPagina(numero, lado, paraMedicao = false) {
+        const pagina = document.createElement("section");
+        pagina.className = paraMedicao
+            ? "medidor-pagina"
+            : "pagina " + lado;
+
+        pagina.appendChild(criarCabecalhoPagina());
+
+        const colunas = document.createElement("div");
+        colunas.className = paraMedicao
+            ? "medidor-colunas"
+            : "colunas";
+
+        const quantidadeColunas = modoCelular ? 1 : 2;
+
+        for (let i = 0; i < quantidadeColunas; i++) {
+            const coluna = document.createElement("div");
+            coluna.className = paraMedicao
+                ? "medidor-coluna"
+                : "coluna";
+
+            colunas.appendChild(coluna);
+        }
+
+        pagina.appendChild(colunas);
+
+        if (!paraMedicao) {
+            pagina.appendChild(criarRodapePagina(numero));
+        }
+
+        return pagina;
+    }
+
+    function obterColunas(pagina) {
+        return Array.from(pagina.querySelectorAll(
+            ".coluna, .medidor-coluna"
+        ));
+    }
+
+    function alturaExcedida(coluna) {
+        return coluna.scrollHeight > coluna.clientHeight + 1;
+    }
+
+    function construirPaginas() {
+        const unidades = Array.from(
+            conteudoOriginal.querySelectorAll(":scope > .unidade")
+        );
+
+        if (!unidades.length) return;
+
+        abertura.innerHTML = "";
+        medidor.innerHTML = "";
+        paginas = [];
+        paginaAtual = 0;
+
+        const quantidadeColunas = modoCelular ? 1 : 2;
+
+        let paginaMedicao = criarPagina(1, "esquerda", true);
+        medidor.appendChild(paginaMedicao);
+
+        let colunasMedicao = obterColunas(paginaMedicao);
+        let indiceColuna = 0;
+        let colunaAtual = colunasMedicao[indiceColuna];
+
+        let paginasDeConteudo = [];
+        let paginaLogica = {
+            colunas: []
+        };
+
+        function novaPaginaLogica() {
+            paginaLogica = { colunas: [] };
+
+            for (let i = 0; i < quantidadeColunas; i++) {
+                paginaLogica.colunas.push([]);
+            }
+
+            paginasDeConteudo.push(paginaLogica);
+        }
+
+        novaPaginaLogica();
+
+        function avancarColuna() {
+            indiceColuna++;
+
+            if (indiceColuna >= quantidadeColunas) {
+                indiceColuna = 0;
+
+                paginaMedicao = criarPagina(
+                    paginasDeConteudo.length + 1,
+                    "esquerda",
+                    true
+                );
+
+                medidor.innerHTML = "";
+                medidor.appendChild(paginaMedicao);
+
+                colunasMedicao = obterColunas(paginaMedicao);
+                novaPaginaLogica();
+            }
+
+            colunaAtual = colunasMedicao[indiceColuna];
+        }
+
+        function inserirUnidade(unidade, preservarComProximo = false) {
+            const copia = unidade.cloneNode(true);
+
+            colunaAtual.appendChild(copia);
+
+            if (alturaExcedida(colunaAtual)) {
+                colunaAtual.removeChild(copia);
+
+                // Não deixa um título isolado no final da coluna.
+                if (
+                    preservarComProximo &&
+                    paginaLogica.colunas[indiceColuna].length > 0
+                ) {
+                    avancarColuna();
+                    colunaAtual.appendChild(copia);
+                } else {
+                    avancarColuna();
+                    colunaAtual.appendChild(copia);
+                }
+            }
+
+            paginaLogica.colunas[indiceColuna].push(unidade.cloneNode(true));
+
+            // Verifica se um bloco isolado é maior que a coluna.
+            if (alturaExcedida(colunaAtual)) {
+                copia.style.fontSize = "0.92em";
+                copia.style.lineHeight = "1.35";
+            }
+        }
+
+        unidades.forEach((unidade, indice) => {
+            const ehTitulo = unidade.querySelector(".titulo-secao");
+
+            inserirUnidade(unidade, Boolean(ehTitulo));
+        });
+
+        medidor.innerHTML = "";
+
+        // Remove páginas finais que não receberam conteúdo.
+        paginasDeConteudo = paginasDeConteudo.filter(pagina =>
+            pagina.colunas.some(coluna => coluna.length > 0)
+        );
+
+        paginasDeConteudo.forEach((paginaConteudo, indicePagina) => {
+            const lado = indicePagina % 2 === 0 ? "esquerda" : "direita";
+            const pagina = criarPagina(indicePagina + 1, lado);
+
+            const colunas = obterColunas(pagina);
+
+            paginaConteudo.colunas.forEach((blocos, indiceColuna) => {
+                const coluna = colunas[indiceColuna];
+
+                blocos.forEach(bloco => {
+                    coluna.appendChild(bloco.cloneNode(true));
+                });
+            });
+
+            paginas.push(pagina);
+        });
+
+        if (paginas.length === 0) {
+            const pagina = criarPagina(1, "esquerda");
+            paginas.push(pagina);
+        }
+
+        atualizarVisualizacao();
+    }
+
+    function atualizarVisualizacao() {
+        abertura.innerHTML = "";
+
+        if (modoCelular) {
+            const pagina = paginas[paginaAtual];
+
+            if (pagina) {
+                pagina.classList.add("visivel");
+                abertura.appendChild(pagina);
+            }
+
+            indicador.textContent =
+                "Página " + (paginaAtual + 1) + " de " + paginas.length;
+
+            botaoAnterior.disabled = paginaAtual <= 0;
+            botaoProxima.disabled = paginaAtual >= paginas.length - 1;
+
+        } else {
+            const indiceEsquerda = paginaAtual * 2;
+            const esquerda = paginas[indiceEsquerda];
+            const direita = paginas[indiceEsquerda + 1];
+
+            if (esquerda) abertura.appendChild(esquerda);
+            if (direita) abertura.appendChild(direita);
+
+            const totalAberturas = Math.ceil(paginas.length / 2);
+
+            const inicio = indiceEsquerda + 1;
+            const fim = Math.min(indiceEsquerda + 2, paginas.length);
+
+            indicador.textContent =
+                "Páginas " + inicio + "–" + fim + " de " + paginas.length;
+
+            botaoAnterior.disabled = paginaAtual <= 0;
+            botaoProxima.disabled = paginaAtual >= totalAberturas - 1;
+        }
+    }
+
+    function avancar() {
+        if (modoCelular) {
+            if (paginaAtual < paginas.length - 1) {
+                paginaAtual++;
+            }
+        } else {
+            const totalAberturas = Math.ceil(paginas.length / 2);
+
+            if (paginaAtual < totalAberturas - 1) {
+                paginaAtual++;
+            }
+        }
+
+        animarPagina();
+        atualizarVisualizacao();
+    }
+
+    function voltar() {
+        if (paginaAtual > 0) {
+            paginaAtual--;
+        }
+
+        animarPagina();
+        atualizarVisualizacao();
+    }
+
+    function animarPagina() {
+        abertura.classList.remove("animando");
+
+        // Reinicia a animação.
+        void abertura.offsetWidth;
+
+        abertura.classList.add("animando");
+    }
+
+    botaoAnterior.addEventListener("click", voltar);
+    botaoProxima.addEventListener("click", avancar);
+
+    document.addEventListener("keydown", evento => {
+        if (
+            evento.key === "ArrowRight" ||
+            evento.key === "PageDown"
+        ) {
+            evento.preventDefault();
+            avancar();
+        }
+
+        if (
+            evento.key === "ArrowLeft" ||
+            evento.key === "PageUp"
+        ) {
+            evento.preventDefault();
+            voltar();
+        }
+    });
+
+    // Navegação por gestos em telas sensíveis ao toque.
+    let inicioToqueX = 0;
+    let inicioToqueY = 0;
+
+    abertura.addEventListener("touchstart", evento => {
+        if (!evento.touches.length) return;
+
+        inicioToqueX = evento.touches[0].clientX;
+        inicioToqueY = evento.touches[0].clientY;
+    }, { passive: true });
+
+    abertura.addEventListener("touchend", evento => {
+        if (!evento.changedTouches.length) return;
+
+        const fimX = evento.changedTouches[0].clientX;
+        const fimY = evento.changedTouches[0].clientY;
+
+        const diferencaX = fimX - inicioToqueX;
+        const diferencaY = fimY - inicioToqueY;
+
+        if (
+            Math.abs(diferencaX) > 55 &&
+            Math.abs(diferencaX) > Math.abs(diferencaY)
+        ) {
+            if (diferencaX < 0) {
+                avancar();
+            } else {
+                voltar();
+            }
+        }
+    }, { passive: true });
+
+    function verificarModo() {
+        const novoModo = window.matchMedia(
+            "(max-width: 760px)"
+        ).matches;
+
+        if (novoModo !== modoCelular) {
+            modoCelular = novoModo;
+            construirPaginas();
+        }
+    }
+
+    window.addEventListener("resize", () => {
+        clearTimeout(temporizadorRedimensionamento);
+
+        temporizadorRedimensionamento = setTimeout(() => {
+            verificarModo();
+            construirPaginas();
+        }, 250);
+    });
+
+    // Aguarda o navegador calcular as dimensões antes de paginar.
+    window.addEventListener("load", () => {
+        requestAnimationFrame(() => {
+            verificarModo();
+            construirPaginas();
+        });
+    });
+
+})();
+</script>
+
+</body>
+</html>

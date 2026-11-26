@@ -1,0 +1,1123 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#211a14">
+<title>ATOS 29 — Capítulo 22 | Quando a Festa se Transforma em Culto</title>
+
+<style>
+:root {
+    --fundo: #211a14;
+    --papel: #f3e8c9;
+    --papel-escuro: #e9dcb8;
+    --texto: #302719;
+    --dourado: #9a8150;
+    --largura-pagina: 560px;
+    --altura-pagina: 760px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    background:
+        radial-gradient(ellipse at center, #493a2b 0%, #2b2119 55%, #17120e 100%);
+    color: #eee2c7;
+    font-family: Georgia, "Times New Roman", serif;
+}
+
+button {
+    font-family: inherit;
+}
+
+.cabecalho-livro {
+    text-align: center;
+    padding: 24px 12px 12px;
+    color: #e8d9b7;
+}
+
+.cabecalho-livro h1 {
+    margin: 0;
+    font-size: 17px;
+    font-weight: normal;
+    letter-spacing: 3px;
+}
+
+.cabecalho-livro p {
+    margin: 7px 0 0;
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: #b9a681;
+}
+
+.area-livro {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 12px 20px 20px;
+    overflow: hidden;
+}
+
+.livro {
+    width: min(100%, 1120px);
+    perspective: 1800px;
+}
+
+.abertura {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: stretch;
+    position: relative;
+    filter: drop-shadow(0 16px 22px rgba(0,0,0,.55));
+}
+
+.abertura::after {
+    content: "";
+    position: absolute;
+    z-index: 5;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 24px;
+    transform: translateX(-50%);
+    pointer-events: none;
+    background: linear-gradient(
+        to right,
+        rgba(73,53,29,.20),
+        rgba(76,54,30,.04) 35%,
+        rgba(55,38,21,.20) 50%,
+        rgba(255,255,255,.12) 70%,
+        rgba(65,45,25,.12)
+    );
+}
+
+.pagina {
+    position: relative;
+    height: var(--altura-pagina);
+    min-width: 0;
+    padding: 34px 31px 43px;
+    overflow: hidden;
+    color: var(--texto);
+    background:
+        radial-gradient(ellipse at 20% 15%, rgba(255,255,255,.25), transparent 55%),
+        radial-gradient(ellipse at 85% 80%, rgba(160,125,65,.08), transparent 60%),
+        repeating-linear-gradient(
+            0deg,
+            rgba(100,75,35,.018) 0px,
+            rgba(100,75,35,.018) 1px,
+            transparent 1px,
+            transparent 4px
+        ),
+        linear-gradient(110deg, var(--papel), #f7edcf 48%, var(--papel-escuro));
+    box-shadow:
+        inset 0 0 24px rgba(91,64,29,.12),
+        inset 0 0 3px rgba(75,50,20,.25);
+}
+
+.pagina-esquerda {
+    border-radius: 5px 0 0 5px;
+    box-shadow:
+        inset -12px 0 18px -17px rgba(55,35,17,.7),
+        inset 0 0 24px rgba(91,64,29,.12);
+}
+
+.pagina-direita {
+    border-radius: 0 5px 5px 0;
+    box-shadow:
+        inset 12px 0 18px -17px rgba(55,35,17,.7),
+        inset 0 0 24px rgba(91,64,29,.12);
+}
+
+.cabecalho-pagina {
+    position: absolute;
+    top: 15px;
+    left: 30px;
+    right: 30px;
+    text-align: center;
+    border-bottom: 1px solid rgba(90,68,37,.38);
+    padding-bottom: 7px;
+    color: #665538;
+    font-size: 9px;
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+}
+
+.conteudo-pagina {
+    height: 100%;
+    padding-top: 5px;
+    padding-bottom: 4px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 19px;
+    overflow: hidden;
+}
+
+.coluna {
+    min-width: 0;
+    height: 100%;
+    overflow: hidden;
+    text-align: justify;
+    font-size: 11.2px;
+    line-height: 1.47;
+    hyphens: auto;
+    overflow-wrap: break-word;
+}
+
+.coluna p {
+    margin: 0 0 5px;
+    text-indent: 10px;
+}
+
+.coluna p.sem-recuo {
+    text-indent: 0;
+}
+
+.coluna sup {
+    font-size: 7px;
+    line-height: 0;
+    vertical-align: super;
+    font-weight: bold;
+    margin-right: 2px;
+}
+
+.titulo-principal {
+    text-align: center !important;
+    text-indent: 0 !important;
+    font-size: 15px;
+    line-height: 1.3;
+    font-weight: bold;
+    margin: 8px 0 8px !important;
+    letter-spacing: .4px;
+}
+
+.subtitulo-principal {
+    text-align: center !important;
+    text-indent: 0 !important;
+    font-size: 10px;
+    line-height: 1.35;
+    font-style: italic;
+    margin: 0 0 13px !important;
+}
+
+.identificacao {
+    text-align: center !important;
+    text-indent: 0 !important;
+    font-size: 9px;
+    letter-spacing: 1px;
+    margin-bottom: 7px !important;
+}
+
+.credito {
+    text-align: center !important;
+    text-indent: 0 !important;
+    font-size: 9px;
+    font-style: italic;
+    margin-bottom: 14px !important;
+}
+
+.titulo-secao {
+    text-align: left !important;
+    text-indent: 0 !important;
+    font-size: 10px;
+    line-height: 1.3;
+    font-weight: bold;
+    letter-spacing: .45px;
+    margin: 12px 0 6px !important;
+    break-after: avoid;
+}
+
+.citacao {
+    margin: 8px 8px 9px 13px;
+    padding-left: 9px;
+    border-left: 1px solid rgba(105,80,43,.45);
+    font-size: 10.5px;
+    line-height: 1.45;
+    font-style: italic;
+    text-align: left;
+}
+
+.citacao p {
+    text-indent: 0;
+    margin: 0 0 3px;
+}
+
+.referencia {
+    display: block;
+    margin-top: 3px;
+    text-align: right;
+    font-size: 9px;
+    font-style: normal;
+    font-weight: bold;
+}
+
+.frase-destaque {
+    text-align: center !important;
+    text-indent: 0 !important;
+    font-weight: bold;
+    font-style: italic;
+    margin: 7px 5px !important;
+}
+
+.oracao {
+    font-style: italic;
+}
+
+.rodape-pagina {
+    position: absolute;
+    bottom: 15px;
+    left: 30px;
+    right: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid rgba(90,68,37,.35);
+    padding-top: 6px;
+    color: #725e3c;
+    font-size: 8px;
+    letter-spacing: 1px;
+}
+
+.numero-pagina {
+    font-size: 9px;
+    font-weight: bold;
+}
+
+.controles {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+    padding: 12px 12px 28px;
+}
+
+.controles button {
+    min-width: 118px;
+    padding: 10px 18px;
+    border: 1px solid #8f7954;
+    border-radius: 3px;
+    background: linear-gradient(#51412e, #30251b);
+    color: #f0e4c8;
+    font-size: 11px;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: background .2s, transform .2s;
+}
+
+.controles button:hover:not(:disabled) {
+    background: #695338;
+    transform: translateY(-1px);
+}
+
+.controles button:disabled {
+    opacity: .35;
+    cursor: not-allowed;
+}
+
+.indicador {
+    min-width: 100px;
+    text-align: center;
+    color: #d8c7a4;
+    font-size: 12px;
+}
+
+.instrucoes {
+    text-align: center;
+    padding: 0 12px 22px;
+    color: #a99675;
+    font-size: 10px;
+    letter-spacing: .4px;
+}
+
+#fonte-conteudo {
+    display: none;
+}
+
+@media (max-width: 760px) {
+    .cabecalho-livro {
+        padding-top: 17px;
+    }
+
+    .cabecalho-livro h1 {
+        font-size: 14px;
+    }
+
+    .area-livro {
+        padding: 8px 9px 12px;
+    }
+
+    .abertura {
+        display: block;
+        width: 100%;
+    }
+
+    .abertura::after {
+        display: none;
+    }
+
+    .pagina {
+        display: none;
+        width: 100%;
+        height: min(78vh, 780px);
+        min-height: 520px;
+        padding: 34px 24px 42px;
+        border-radius: 4px;
+    }
+
+    .pagina.pagina-visivel {
+        display: block;
+        animation: virar .25s ease;
+    }
+
+    @keyframes virar {
+        from { opacity: .65; transform: translateX(5px); }
+        to { opacity: 1; transform: translateX(0); }
+    }
+
+    .pagina-esquerda,
+    .pagina-direita {
+        box-shadow: inset 0 0 24px rgba(91,64,29,.12);
+    }
+
+    .cabecalho-pagina {
+        left: 22px;
+        right: 22px;
+    }
+
+    .conteudo-pagina {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+
+    .coluna {
+        font-size: 12px;
+        line-height: 1.52;
+    }
+
+    .coluna:nth-child(2) {
+        display: none;
+    }
+
+    .titulo-principal {
+        font-size: 16px;
+    }
+
+    .titulo-secao {
+        font-size: 11px;
+    }
+
+    .citacao {
+        font-size: 11px;
+    }
+
+    .rodape-pagina {
+        left: 22px;
+        right: 22px;
+    }
+
+    .controles {
+        gap: 8px;
+        padding-top: 10px;
+    }
+
+    .controles button {
+        min-width: 95px;
+        padding: 10px 9px;
+        font-size: 10px;
+    }
+
+    .indicador {
+        min-width: 75px;
+        font-size: 11px;
+    }
+}
+
+@media (max-width: 380px) {
+    .pagina {
+        padding-left: 19px;
+        padding-right: 19px;
+    }
+
+    .coluna {
+        font-size: 11px;
+    }
+
+    .controles button {
+        min-width: 82px;
+    }
+}
+
+@media print {
+    body {
+        background: white;
+    }
+
+    .cabecalho-livro,
+    .controles,
+    .instrucoes {
+        display: none;
+    }
+
+    .area-livro {
+        padding: 0;
+    }
+
+    .pagina {
+        print-color-adjust: exact;
+        -webkit-print-color-adjust: exact;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header class="cabecalho-livro">
+    <h1>ATOS 29 • A HISTÓRIA CONTINUA</h1>
+    <p>MINISTÉRIO ATALAIA</p>
+</header>
+
+<main class="area-livro">
+    <div class="livro">
+        <div class="abertura" id="abertura"></div>
+    </div>
+</main>
+
+<nav class="controles" aria-label="Navegação do livro">
+    <button id="anterior" type="button">← ANTERIOR</button>
+    <span class="indicador" id="indicador">Página 1</span>
+    <button id="proxima" type="button">PRÓXIMA →</button>
+</nav>
+
+<p class="instrucoes">
+    Utilize os botões ou as setas do teclado para virar as páginas.
+</p>
+
+<!-- =====================================================
+     TEXTO COMPLETO DO CAPÍTULO 22
+====================================================== -->
+
+<div id="fonte-conteudo">
+
+    <p class="identificacao">ATOS 29 — A HISTÓRIA CONTINUA</p>
+    <p class="credito">Ministério Atalaia • Diego Nascimento — Pastor Evangelista</p>
+
+    <p class="titulo-principal">CAPÍTULO 22<br>QUANDO A FESTA SE TRANSFORMA EM CULTO</p>
+    <p class="subtitulo-principal">Há lugares onde não planejamos pregar, mas Deus já havia preparado alguém para ouvir</p>
+
+    <p><sup>1</sup> Eu não havia ido àquela festa pensando em pregar.</p>
+    <p><sup>2</sup> Era aniversário do meu tio Joaquim. Ele estava completando 60 anos, e a família estava reunida para celebrar sua vida.</p>
+    <p><sup>3</sup> Era uma noite comum de família.</p>
+    <p><sup>4</sup> Conversas, risadas, abraços, comida, música e a alegria própria de uma comemoração.</p>
+    <p><sup>5</sup> Até que, antes dos parabéns, meu outro tio me pediu:</p>
+    <p class="sem-recuo">— Diego, dê uma Palavra.</p>
+    <p><sup>6</sup> Não havia púlpito.</p>
+    <p><sup>7</sup> Não havia uma programação de culto.</p>
+    <p><sup>8</sup> Não havia preparação para uma mensagem.</p>
+    <p><sup>9</sup> Havia apenas um microfone e uma oportunidade.</p>
+    <p><sup>10</sup> E eu havia aprendido, ao longo da minha caminhada com Deus, que, quando Ele abria uma porta, eu não deveria perguntar se o ambiente era adequado para pregar. Eu deveria simplesmente entrar pela porta.</p>
+    <p><sup>11</sup> Peguei o microfone.</p>
+    <p><sup>12</sup> E comecei a falar da Palavra de Deus.</p>
+    <p><sup>13</sup> Foram aproximadamente dez minutos.</p>
+    <p><sup>14</sup> Dez minutos poderiam parecer pouco.</p>
+    <p><sup>15</sup> Mas, nas mãos de Deus, dez minutos poderiam carregar uma eternidade.</p>
+    <p><sup>16</sup> Enquanto eu falava, não sabia exatamente o que estava acontecendo no coração de cada pessoa.</p>
+    <p><sup>17</sup> Eu não sabia quem estava ouvindo com atenção.</p>
+    <p><sup>18</sup> Não sabia quem estava enfrentando uma luta.</p>
+    <p><sup>19</sup> Não sabia quem precisava daquela Palavra.</p>
+    <p><sup>20</sup> Não sabia que havia alguém naquela família que seria profundamente tocado.</p>
+    <p><sup>21</sup> Eu apenas preguei.</p>
+    <p><sup>22</sup> Quando terminei, entreguei o microfone.</p>
+    <p><sup>23</sup> E então aconteceu algo que não estava no roteiro.</p>
+
+    <p class="titulo-secao">MINHA AVÓ SE AJOELHOU</p>
+
+    <p><sup>24</sup> Minha avó, aos 83 anos, se ajoelhou.</p>
+    <p><sup>25</sup> E começou a orar.</p>
+    <p><sup>26</sup> Ela agradecia ao Senhor.</p>
+    <p><sup>27</sup> Sua voz carregava emoção.</p>
+    <p><sup>28</sup> Seus olhos revelavam aquilo que as palavras não conseguiam explicar.</p>
+    <p><sup>29</sup> Naquele momento, olhando para aquela senhora de 83 anos ajoelhada diante de Deus, eu compreendi algo:</p>
+    <p class="frase-destaque">A Palavra não terminava quando o pregador terminava de falar.</p>
+    <p><sup>30</sup> Ela continuava trabalhando.</p>
+    <p><sup>31</sup> Continuava entrando no coração.</p>
+    <p><sup>32</sup> Continuava produzindo frutos.</p>
+
+    <blockquote class="citacao">
+        <p>“Assim será a palavra que sair da minha boca: ela não voltará para mim vazia, antes fará o que me apraz e prosperará naquilo para que a enviei.”</p>
+        <span class="referencia">Isaías 55:11</span>
+    </blockquote>
+
+    <p><sup>33</sup> Às vezes, nós pregamos esperando uma reação imediata.</p>
+    <p><sup>34</sup> Esperamos que alguém levante a mão.</p>
+    <p><sup>35</sup> Esperamos que alguém venha à frente.</p>
+    <p><sup>36</sup> Esperamos uma manifestação visível.</p>
+    <p><sup>37</sup> Mas Deus trabalha de maneiras que nem sempre conseguimos enxergar.</p>
+    <p><sup>38</sup> Eu havia terminado a mensagem.</p>
+    <p><sup>39</sup> Mas Deus ainda estava falando.</p>
+    <p><sup>40</sup> E agora minha avó estava ajoelhada.</p>
+
+    <p class="titulo-secao">O TESTEMUNHO QUE VEIO DEPOIS</p>
+
+    <p><sup>41</sup> Quando minha avó terminou sua oração, meu primo pediu o microfone.</p>
+    <p><sup>42</sup> Ele disse algo que me marcou profundamente.</p>
+    <p><sup>43</sup> Ele já havia servido ao Senhor.</p>
+    <p><sup>44</sup> Mas estava afastado.</p>
+    <p><sup>45</sup> Não tentou esconder.</p>
+    <p><sup>46</sup> Não procurou criar uma aparência espiritual.</p>
+    <p><sup>47</sup> Simplesmente reconheceu sua realidade.</p>
+    <p><sup>48</sup> Mas então disse que queria orar pelo aniversariante.</p>
+    <p><sup>49</sup> E orou.</p>
+    <p><sup>50</sup> Foi uma oração linda.</p>
+    <p><sup>51</sup> Sincera.</p>
+    <p><sup>52</sup> Daquelas que não precisavam de palavras difíceis.</p>
+    <p><sup>53</sup> Daquelas que não precisavam de uma grande eloquência.</p>
+    <p><sup>54</sup> Porque existem orações que impressionam pessoas.</p>
+    <p><sup>55</sup> E existem orações que revelam um coração diante de Deus.</p>
+    <p><sup>56</sup> Aquela oração revelou um coração.</p>
+    <p><sup>57</sup> Enquanto ele orava, pensei:</p>
+    <p class="frase-destaque">Talvez Deus estivesse fazendo algo aqui que iria muito além do aniversário.</p>
+    <p><sup>58</sup> Talvez aquela oração pelo meu tio Joaquim fosse também uma oração pela própria vida dele.</p>
+    <p><sup>59</sup> Talvez Deus estivesse despertando dentro daquele homem uma lembrança.</p>
+    <p><sup>60</sup> Uma lembrança dos dias em que servia ao Senhor.</p>
+    <p><sup>61</sup> Uma lembrança da comunhão.</p>
+    <p><sup>62</sup> Uma lembrança da Palavra.</p>
+    <p><sup>63</sup> Uma lembrança de quando sua vida estava mais próxima de Deus.</p>
+    <p><sup>64</sup> E talvez aquela oração tivesse sido um pequeno passo de volta.</p>
+
+    <blockquote class="citacao">
+        <p>“Chegai-vos a Deus, e ele se chegará a vós.”</p>
+        <span class="referencia">Tiago 4:8</span>
+    </blockquote>
+
+    <p><sup>65</sup> O retorno começa quando o coração reconhece sua distância e novamente se volta para Deus.</p>
+
+    <p class="titulo-secao">JESUS ESTAVA ALI</p>
+
+    <p><sup>66</sup> Naquele momento, lembrei-me das palavras de Jesus:</p>
+
+    <blockquote class="citacao">
+        <p>“Porque onde estiverem dois ou três reunidos em meu nome, aí estou eu no meio deles.”</p>
+        <span class="referencia">Mateus 18:20</span>
+    </blockquote>
+
+    <p><sup>67</sup> Eu olhei ao redor.</p>
+    <p><sup>68</sup> Não estávamos em uma igreja.</p>
+    <p><sup>69</sup> Não estávamos em um culto tradicional.</p>
+    <p><sup>70</sup> Não havia uma liturgia.</p>
+    <p><sup>71</sup> Não havia um púlpito.</p>
+    <p><sup>72</sup> Era uma festa de aniversário.</p>
+    <p><sup>73</sup> Mas Jesus estava ali.</p>
+    <p><sup>74</sup> E isso me marcou.</p>
+    <p><sup>75</sup> Porque muitas vezes pensamos que precisamos estar dentro de um templo para experimentar a presença de Deus.</p>
+    <p><sup>76</sup> Mas Jesus não está limitado a quatro paredes.</p>
+    <p><sup>77</sup> Ele está onde Seu nome é honrado.</p>
+    <p><sup>78</sup> Ele está onde Sua Palavra é anunciada.</p>
+    <p><sup>79</sup> Ele está onde um coração se quebranta.</p>
+    <p><sup>80</sup> Ele está onde alguém dobra os joelhos.</p>
+    <p><sup>81</sup> Ele está onde alguém diz:</p>
+    <p class="frase-destaque">“Senhor, eu preciso de Ti.”</p>
+    <p><sup>82</sup> Naquela noite, a festa continuou.</p>
+    <p><sup>83</sup> Mas algo havia mudado.</p>
+    <p class="frase-destaque">A festa havia se transformado em culto.</p>
+
+    <p class="titulo-secao">O CAMPO MISSIONÁRIO PODIA ESTAR DENTRO DE CASA</p>
+
+    <p><sup>84</sup> Durante muito tempo, quando pensamos em evangelização, imaginamos grandes cruzadas, praças cheias, viagens missionárias, igrejas lotadas e multidões ouvindo a Palavra.</p>
+    <p><sup>85</sup> Mas Jesus disse:</p>
+
+    <blockquote class="citacao">
+        <p>“Mas recebereis a virtude do Espírito Santo, que há de vir sobre vós; e ser-me-eis testemunhas tanto em Jerusalém como em toda a Judeia e Samaria, e até aos confins da terra.”</p>
+        <span class="referencia">Atos 1:8</span>
+    </blockquote>
+
+    <p><sup>86</sup> Jerusalém começava perto.</p>
+    <p><sup>87</sup> Muito perto.</p>
+    <p><sup>88</sup> E talvez existisse uma “Jerusalém” dentro da nossa própria família.</p>
+    <p><sup>89</sup> Pessoas que conhecíamos pelo nome.</p>
+    <p><sup>90</sup> Pessoas com quem crescemos.</p>
+    <p><sup>91</sup> Pessoas que abraçávamos.</p>
+    <p><sup>92</sup> Pessoas com quem comemorávamos aniversários.</p>
+    <p><sup>93</sup> Pessoas que sentavam à mesma mesa.</p>
+    <p><sup>94</sup> E, muitas vezes, eram justamente essas pessoas que precisavam ouvir de nós que <strong>Jesus continuava vivo</strong>.</p>
+    <p><sup>95</sup> Naquela noite, eu não estava em uma cruzada evangelística.</p>
+    <p><sup>96</sup> Eu estava em um aniversário.</p>
+    <p><sup>97</sup> Mas a missão continuava.</p>
+    <p><sup>98</sup> Porque o campo missionário não desaparecia quando saíamos da igreja.</p>
+    <p class="frase-destaque">O campo missionário nos acompanhava.</p>
+    <p><sup>99</sup> Ele estava em casa.</p>
+    <p><sup>100</sup> Estava no trabalho.</p>
+    <p><sup>101</sup> Estava entre amigos.</p>
+    <p><sup>102</sup> Estava nas reuniões de família.</p>
+    <p><sup>103</sup> Estava nas conversas.</p>
+    <p><sup>104</sup> Estava nos momentos inesperados.</p>
+
+    <p class="titulo-secao">DEZ MINUTOS</p>
+
+    <p><sup>105</sup> Talvez alguém pudesse pensar:</p>
+    <p class="sem-recuo">“Foi apenas uma Palavra de dez minutos.”</p>
+    <p><sup>106</sup> Mas eu não pensava assim.</p>
+    <p><sup>107</sup> Aprendi que não deveríamos medir a importância de uma Palavra pelo tempo que levávamos para pregá-la.</p>
+    <p><sup>108</sup> Jesus poderia usar cinco minutos.</p>
+    <p><sup>109</sup> Poderia usar dez.</p>
+    <p><sup>110</sup> Poderia usar uma frase.</p>
+    <p><sup>111</sup> Poderia usar um versículo.</p>
+    <p><sup>112</sup> Poderia usar uma oração.</p>
+    <p><sup>113</sup> Poderia usar um testemunho.</p>
+    <p><sup>114</sup> O que importava não era o tamanho da mensagem.</p>
+    <p class="frase-destaque">Era quem estava por trás dela.</p>
+    <p><sup>115</sup> Eu apenas fui um instrumento.</p>
+    <p><sup>116</sup> A Palavra era dEle.</p>
+    <p><sup>117</sup> A presença era dEle.</p>
+    <p><sup>118</sup> O quebrantamento era dEle.</p>
+    <p><sup>119</sup> A oração era dEle.</p>
+    <p><sup>120</sup> E a obra no coração das pessoas também era dEle.</p>
+
+    <blockquote class="citacao">
+        <p>“Eu plantei, Apolo regou; mas Deus deu o crescimento.”</p>
+        <span class="referencia">1 Coríntios 3:6</span>
+    </blockquote>
+
+    <p><sup>121</sup> Essa verdade coloca cada servo no seu devido lugar.</p>
+    <p><sup>122</sup> Podemos plantar.</p>
+    <p><sup>123</sup> Podemos regar.</p>
+    <p><sup>124</sup> Podemos anunciar.</p>
+    <p><sup>125</sup> Podemos testemunhar.</p>
+    <p><sup>126</sup> Mas o crescimento pertence a Deus.</p>
+
+    <p class="titulo-secao">MINHA AVÓ ME ENSINOU SEM PREGAR</p>
+
+    <p><sup>127</sup> Naquela noite, minha avó pregou sem fazer um sermão.</p>
+    <p><sup>128</sup> Ela simplesmente se ajoelhou.</p>
+    <p><sup>129</sup> Aos 83 anos.</p>
+    <p><sup>130</sup> E agradeceu.</p>
+    <p><sup>131</sup> Eu olhei para aquela cena e pensei em quantas coisas uma pessoa poderia viver em 83 anos.</p>
+    <p><sup>132</sup> Quantas lutas.</p>
+    <p><sup>133</sup> Quantas perdas.</p>
+    <p><sup>134</sup> Quantas alegrias.</p>
+    <p><sup>135</sup> Quantas respostas de oração.</p>
+    <p><sup>136</sup> Quantas experiências com Deus.</p>
+    <p><sup>137</sup> E, depois de tudo isso, ela ainda estava ali:</p>
+    <p class="frase-destaque">de joelhos.</p>
+    <p><sup>138</sup> Talvez essa fosse uma das maiores pregações que alguém poderia deixar para a próxima geração.</p>
+    <p><sup>139</sup> Não era apenas dizer aos filhos e netos para orarem.</p>
+    <p><sup>140</sup> Era deixar que eles a vissem orando.</p>
+    <p><sup>141</sup> Não era apenas falar sobre fé.</p>
+    <p><sup>142</sup> Era viver pela fé.</p>
+    <p><sup>143</sup> Não era apenas dizer que Deus é fiel.</p>
+    <p><sup>144</sup> Era agradecer a Deus depois de atravessar todas as estações da vida.</p>
+    <p><sup>145</sup> Minha avó não precisou explicar nada.</p>
+    <p><sup>146</sup> Seus joelhos disseram:</p>
+    <p class="frase-destaque">“Até aqui o Senhor me ajudou.”</p>
+
+    <blockquote class="citacao">
+        <p>“Até aqui nos ajudou o Senhor.”</p>
+        <span class="referencia">1 Samuel 7:12</span>
+    </blockquote>
+
+    <p class="titulo-secao">E MEU PRIMO ME ENSINOU OUTRA COISA</p>
+
+    <p><sup>147</sup> Meu primo me ensinou que uma pessoa poderia estar distante e ainda sentir saudade de Deus.</p>
+    <p><sup>148</sup> Talvez existissem pessoas que haviam se afastado da igreja.</p>
+    <p><sup>149</sup> Talvez tivessem se afastado de irmãos.</p>
+    <p><sup>150</sup> Talvez tivessem deixado de frequentar os cultos.</p>
+    <p><sup>151</sup> Talvez tivessem parado de orar como antes.</p>
+    <p><sup>152</sup> Mas isso não significava que Deus tivesse desistido delas.</p>
+    <p><sup>153</sup> A Escritura mostra o coração do Pai na parábola do filho pródigo. Quando o filho voltou, o pai o recebeu:</p>
+
+    <blockquote class="citacao">
+        <p>“Porque este meu filho estava morto e reviveu; tinha-se perdido e foi achado.”</p>
+        <span class="referencia">Lucas 15:24</span>
+    </blockquote>
+
+    <p><sup>154</sup> Às vezes, por trás de uma aparência distante, existe um coração que ainda deseja voltar.</p>
+    <p><sup>155</sup> E Deus pode usar uma noite qualquer.</p>
+    <p><sup>156</sup> Uma festa.</p>
+    <p><sup>157</sup> Uma Palavra.</p>
+    <p><sup>158</sup> Uma música.</p>
+    <p><sup>159</sup> Uma oração.</p>
+    <p><sup>160</sup> Uma conversa.</p>
+    <p><sup>161</sup> Para despertar novamente esse desejo.</p>
+    <p><sup>162</sup> Meu primo pediu o microfone.</p>
+    <p><sup>163</sup> Ele não fez um discurso sobre sua volta.</p>
+    <p><sup>164</sup> Ele simplesmente orou.</p>
+    <p><sup>165</sup> Mas talvez aquela oração tivesse sido o começo de alguma coisa.</p>
+
+    <p class="titulo-secao">DEUS AINDA FALA</p>
+
+    <p><sup>166</sup> Depois daquela noite, fiquei pensando sobre tudo o que havia acontecido.</p>
+    <p><sup>167</sup> Eu havia sido chamado para ministrar uma Palavra.</p>
+    <p><sup>168</sup> Minha avó se ajoelhou.</p>
+    <p><sup>169</sup> Meu primo abriu o coração.</p>
+    <p><sup>170</sup> E uma oração sincera foi feita.</p>
+    <p><sup>171</sup> Tudo aconteceu em poucos minutos.</p>
+    <p><sup>172</sup> Mas ficou gravado em mim.</p>
+    <p><sup>173</sup> Porque compreendi mais uma vez que <strong>Deus ainda fala.</strong></p>
+    <p><sup>174</sup> Ele fala através da Sua Palavra.</p>
+    <p><sup>175</sup> Fala através de Seus servos.</p>
+    <p><sup>176</sup> Fala através de circunstâncias.</p>
+    <p><sup>177</sup> Fala através de testemunhos.</p>
+    <p><sup>178</sup> Fala através de uma oração.</p>
+    <p><sup>179</sup> E quando ouvimos a Palavra e o coração arde, precisamos prestar atenção.</p>
+    <p><sup>180</sup> Foi isso que aconteceu no caminho de Emaús.</p>
+    <p><sup>181</sup> Dois discípulos caminhavam tristes, sem compreender plenamente o que havia acontecido.</p>
+    <p><sup>182</sup> Jesus se aproximou deles.</p>
+    <p><sup>183</sup> Caminhou com eles.</p>
+    <p><sup>184</sup> E começou a explicar as Escrituras.</p>
+    <p><sup>185</sup> Mais tarde, eles disseram:</p>
+
+    <blockquote class="citacao">
+        <p>“Porventura não ardia em nós o nosso coração quando, pelo caminho, nos falava?”</p>
+        <span class="referencia">Lucas 24:32</span>
+    </blockquote>
+
+    <p><sup>186</sup> O coração ardia porque <strong>Jesus estava falando</strong>.</p>
+    <p><sup>187</sup> E acredito que Deus continua fazendo isso.</p>
+    <p><sup>188</sup> Quando ouvimos alguém anunciar fielmente a Palavra e algo dentro de nós é despertado, confrontado, consolado ou renovado, precisamos voltar nosso coração para Cristo.</p>
+    <p><sup>189</sup> A Palavra não aponta para o mensageiro.</p>
+    <p><sup>190</sup> A Palavra aponta para Jesus.</p>
+
+    <p class="titulo-secao">A FESTA TERMINOU, MAS A PALAVRA CONTINUOU</p>
+
+    <p><sup>191</sup> Os parabéns aconteceram.</p>
+    <p><sup>192</sup> O bolo foi cortado.</p>
+    <p><sup>193</sup> A família continuou celebrando.</p>
+    <p><sup>194</sup> A festa seguiu seu curso.</p>
+    <p><sup>195</sup> Mas algo havia acontecido naquela noite que nenhum bolo, nenhuma música ou nenhum presente poderia produzir.</p>
+    <p><sup>196</sup> Uma família havia parado por alguns minutos para ouvir a Palavra.</p>
+    <p><sup>197</sup> Uma senhora de 83 anos havia dobrado os joelhos.</p>
+    <p><sup>198</sup> Um homem que estava afastado havia novamente levantado sua voz em oração.</p>
+    <p><sup>199</sup> E eu compreendi que aquele aniversário não havia sido apenas uma celebração dos 60 anos do meu tio Joaquim.</p>
+    <p><sup>200</sup> Para mim, foi também um lembrete de que <strong>Jesus estava presente.</strong></p>
+    <p><sup>201</sup> Ele continuava procurando corações.</p>
+    <p><sup>202</sup> Continuava chamando pessoas.</p>
+    <p><sup>203</sup> Continuava restaurando vidas.</p>
+    <p><sup>204</sup> Continuava usando Seus servos.</p>
+    <p><sup>205</sup> Continuava falando.</p>
+    <p><sup>206</sup> E continuava transformando momentos comuns em encontros extraordinários.</p>
+
+    <p class="titulo-secao">O CHAMADO CONTINUAVA</p>
+
+    <p><sup>207</sup> Talvez esse fosse o verdadeiro sentido de Atos 1:8 para mim.</p>
+    <p><sup>208</sup> Ser testemunha não significava apenas pregar para multidões.</p>
+    <p><sup>209</sup> Significava estar disponível.</p>
+    <p><sup>210</sup> Significava falar quando Deus abrisse a oportunidade.</p>
+    <p><sup>211</sup> Significava não desprezar os pequenos momentos.</p>
+    <p><sup>212</sup> Significava entender que uma Palavra aparentemente simples poderia alcançar alguém que Deus havia colocado naquele lugar.</p>
+    <p><sup>213</sup> Naquela noite, eu não sabia quem Deus queria alcançar.</p>
+    <p><sup>214</sup> Mas Ele sabia.</p>
+    <p><sup>215</sup> E isso era suficiente.</p>
+    <p><sup>216</sup> Por isso, quando alguém me pedisse:</p>
+    <p class="frase-destaque">“Dê uma Palavra.”</p>
+    <p><sup>217</sup> Eu queria continuar dizendo:</p>
+    <p class="frase-destaque">“Eis-me aqui.”</p>
+    <p><sup>218</sup> Porque talvez existisse uma pessoa precisando ouvir.</p>
+    <p><sup>219</sup> Talvez existisse uma avó prestes a dobrar os joelhos.</p>
+    <p><sup>220</sup> Talvez existisse alguém afastado prestes a fazer sua primeira oração depois de muito tempo.</p>
+    <p><sup>221</sup> Talvez existisse um coração esperando uma oportunidade para voltar.</p>
+    <p><sup>222</sup> E talvez Deus estivesse apenas esperando alguém abrir a boca e anunciar:</p>
+    <p class="frase-destaque">Jesus está vivo.</p>
+
+    <p class="titulo-secao">O QUE AQUELA NOITE ME ENSINOU</p>
+
+    <p><sup>223</sup> Aquela experiência me mostrou que o chamado para testemunhar não estava restrito aos grandes eventos.</p>
+    <p><sup>224</sup> A missão começava perto.</p>
+    <p><sup>225</sup> Começava dentro de casa.</p>
+    <p><sup>226</sup> Começava na família.</p>
+    <p><sup>227</sup> Começava quando surgia uma oportunidade aparentemente simples.</p>
+    <p><sup>228</sup> Jesus disse:</p>
+
+    <blockquote class="citacao">
+        <p>“Vós sois as minhas testemunhas.”</p>
+        <span class="referencia">Lucas 24:48</span>
+    </blockquote>
+
+    <p><sup>229</sup> Uma testemunha não precisa inventar uma história.</p>
+    <p><sup>230</sup> Ela simplesmente conta aquilo que viu e experimentou.</p>
+    <p><sup>231</sup> Foi isso que aconteceu naquela noite.</p>
+    <p><sup>232</sup> Eu não fui para aquela festa pensando em pregar.</p>
+    <p><sup>233</sup> Mas uma oportunidade surgiu.</p>
+    <p><sup>234</sup> E eu falei.</p>
+    <p><sup>235</sup> Depois, Deus conduziu aquilo de uma maneira que eu não poderia planejar.</p>
+    <p><sup>236</sup> Minha avó se ajoelhou.</p>
+    <p><sup>237</sup> Meu primo orou.</p>
+    <p><sup>238</sup> Um coração que estava distante se aproximou novamente.</p>
+    <p><sup>239</sup> E eu apenas pude observar.</p>
+    <p class="frase-destaque">A Palavra havia sido anunciada.</p>
+    <p><sup>240</sup> Agora cabia a Deus continuar a obra.</p>
+
+    <p class="titulo-secao">ORAÇÃO</p>
+
+    <p class="oracao sem-recuo"><sup>241</sup> Senhor Jesus,</p>
+    <p class="oracao"><sup>242</sup> Obrigado porque Tu continuas presente.</p>
+    <p class="oracao"><sup>243</sup> Obrigado porque não estás limitado aos templos, aos púlpitos ou às grandes reuniões.</p>
+    <p class="oracao"><sup>244</sup> Obrigado porque podes entrar em uma festa, sentar à mesa com uma família e transformar alguns minutos em um momento eterno.</p>
+    <p class="oracao"><sup>245</sup> Ensina-me a reconhecer as oportunidades que Tu colocas diante de mim.</p>
+    <p class="oracao"><sup>246</sup> Que eu nunca despreze uma pequena oportunidade de falar da Tua Palavra.</p>
+    <p class="oracao"><sup>247</sup> Que eu seja uma testemunha em Jerusalém, na minha casa, na minha família, no meu trabalho, entre meus amigos e onde quer que Tu me enviares.</p>
+    <p class="oracao"><sup>248</sup> Alcança aqueles que estão afastados.</p>
+    <p class="oracao"><sup>249</sup> Desperta novamente o desejo de Te buscar.</p>
+    <p class="oracao"><sup>250</sup> Que aqueles que um dia caminharam contigo possam ouvir novamente a Tua voz e encontrar o caminho de volta.</p>
+    <p class="oracao"><sup>251</sup> E que a nossa família conheça a Tua presença.</p>
+    <p class="oracao"><sup>252</sup> Que nossas casas sejam lugares de oração.</p>
+    <p class="oracao"><sup>253</sup> Que nossas mesas sejam lugares de comunhão.</p>
+    <p class="oracao"><sup>254</sup> Que nossas festas possam se transformar em momentos de testemunho.</p>
+    <p class="oracao"><sup>255</sup> E que, através da nossa vida, muitas pessoas possam descobrir que <strong>Jesus ainda fala, Jesus ainda salva, Jesus ainda restaura e Jesus ainda está entre nós.</strong></p>
+    <p class="oracao"><sup>256</sup> Em Teu nome,</p>
+    <p class="frase-destaque">Amém.</p>
+
+    <p class="titulo-secao">PARA GUARDAR NO CORAÇÃO</p>
+
+    <p class="frase-destaque">Não espere estar diante de uma multidão para ser testemunha de Jesus.</p>
+
+    <p><sup>257</sup> Às vezes, seu maior campo missionário estará sentado ao seu lado.</p>
+    <p><sup>258</sup> Às vezes, uma Palavra de dez minutos será suficiente para Deus iniciar uma obra.</p>
+    <p><sup>259</sup> Às vezes, você terminará de pregar e pensará que nada aconteceu.</p>
+    <p><sup>260</sup> Mas então alguém se ajoelhará.</p>
+    <p><sup>261</sup> Alguém chorará.</p>
+    <p><sup>262</sup> Alguém orará.</p>
+    <p><sup>263</sup> Alguém voltará a lembrar-se de Deus.</p>
+    <p><sup>264</sup> E você descobrirá:</p>
+    <p class="frase-destaque">A Palavra não voltou vazia.</p>
+    <p><sup>265</sup> A festa era de aniversário.</p>
+    <p><sup>266</sup> Mas Jesus estava presente.</p>
+    <p><sup>267</sup> E quando Jesus está presente,</p>
+
+    <p class="frase-destaque">
+        a festa pode virar culto.<br>
+        A lágrima pode virar oração.<br>
+        A oração pode virar recomeço.<br>
+        E o encontro pode virar testemunho.
+    </p>
+
+    <p class="frase-destaque">Atos 1:8 continua ecoando: somos testemunhas onde Deus nos coloca.</p>
+
+</div>
+
+<script>
+(() => {
+    "use strict";
+
+    const abertura = document.getElementById("abertura");
+    const fonte = document.getElementById("fonte-conteudo");
+    const botaoAnterior = document.getElementById("anterior");
+    const botaoProxima = document.getElementById("proxima");
+    const indicador = document.getElementById("indicador");
+
+    let paginas = [];
+    let indiceSpread = 0;
+    let paginaMobile = 0;
+    let modoMobile = window.matchMedia("(max-width: 760px)");
+
+    function criarPagina(numero, lado) {
+        const pagina = document.createElement("section");
+        pagina.className = "pagina " + (lado === "esquerda" ? "pagina-esquerda" : "pagina-direita");
+
+        const cabecalho = document.createElement("div");
+        cabecalho.className = "cabecalho-pagina";
+        cabecalho.textContent = "ATOS 29 • A HISTÓRIA CONTINUA — CAPÍTULO 22";
+
+        const conteudo = document.createElement("div");
+        conteudo.className = "conteudo-pagina";
+
+        const coluna1 = document.createElement("div");
+        coluna1.className = "coluna";
+
+        const coluna2 = document.createElement("div");
+        coluna2.className = "coluna";
+
+        conteudo.appendChild(coluna1);
+        conteudo.appendChild(coluna2);
+
+        const rodape = document.createElement("div");
+        rodape.className = "rodape-pagina";
+
+        const marca = document.createElement("span");
+        marca.textContent = "MINISTÉRIO ATALAIA";
+
+        const numeroPagina = document.createElement("span");
+        numeroPagina.className = "numero-pagina";
+        numeroPagina.textContent = numero;
+
+        rodape.appendChild(marca);
+        rodape.appendChild(numeroPagina);
+
+        pagina.appendChild(cabecalho);
+        pagina.appendChild(conteudo);
+        pagina.appendChild(rodape);
+
+        return {
+            elemento: pagina,
+            colunas: [coluna1, coluna2]
+        };
+    }
+
+    function criarSpread() {
+        const spread = document.createElement("div");
+        spread.className = "spread";
+        spread.style.display = "contents";
+        return spread;
+    }
+
+    function medirExcesso(coluna) {
+        return coluna.scrollHeight > coluna.clientHeight + 1;
+    }
+
+    function construirLivro() {
+        abertura.innerHTML = "";
+        paginas = [];
+
+        const blocos = Array.from(fonte.children);
+        let numeroPagina = 1;
+        let paginaAtual = criarPagina(numeroPagina, "esquerda");
+        let indiceColuna = 0;
+
+        abertura.appendChild(paginaAtual.elemento);
+
+        function novaPagina() {
+            numeroPagina++;
+            paginaAtual = criarPagina(numeroPagina, numeroPagina % 2 === 0 ? "direita" : "esquerda");
+            indiceColuna = 0;
+            abertura.appendChild(paginaAtual.elemento);
+        }
+
+        function avancarColuna() {
+            indiceColuna++;
+
+            if (indiceColuna > 1) {
+                novaPagina();
+            }
+        }
+
+        blocos.forEach((bloco) => {
+            const copia = bloco.cloneNode(true);
+            const colunaAtual = paginaAtual.colunas[indiceColuna];
+
+            colunaAtual.appendChild(copia);
+
+            if (medirExcesso(colunaAtual)) {
+                colunaAtual.removeChild(copia);
+
+                if (colunaAtual.children.length === 0) {
+                    colunaAtual.appendChild(copia);
+                    return;
+                }
+
+                avancarColuna();
+                paginaAtual.colunas[indiceColuna].appendChild(copia);
+
+                if (medirExcesso(paginaAtual.colunas[indiceColuna])) {
+                    // Mantém o bloco inteiro e evita cortar o texto.
+                    // O conteúdo pode ocupar a coluna seguinte se necessário.
+                    paginaAtual.colunas[indiceColuna].removeChild(copia);
+                    avancarColuna();
+                    paginaAtual.colunas[indiceColuna].appendChild(copia);
+                }
+            }
+        });
+
+        // Garante uma quantidade par de páginas para formar as aberturas.
+        if (abertura.children.length % 2 !== 0) {
+            numeroPagina++;
+            const paginaVazia = criarPagina(numeroPagina, "direita");
+            abertura.appendChild(paginaVazia.elemento);
+        }
+
+        paginas = Array.from(abertura.querySelectorAll(".pagina"));
+
+        paginas.forEach((pagina, indice) => {
+            const numero = pagina.querySelector(".numero-pagina");
+            numero.textContent = indice + 1;
+        });
+
+        indiceSpread = 0;
+        paginaMobile = 0;
+        atualizarVisualizacao();
+    }
+
+    function atualizarVisualizacao() {
+        const totalPaginas = paginas.length;
+
+        if (modoMobile.matches) {
+            paginas.forEach((pagina, indice) => {
+                pagina.classList.toggle("pagina-visivel", indice === paginaMobile);
+            });
+
+            indicador.textContent = `Página ${paginaMobile + 1} de ${totalPaginas}`;
+            botaoAnterior.disabled = paginaMobile === 0;
+            botaoProxima.disabled = paginaMobile >= totalPaginas - 1;
+        } else {
+            paginas.forEach((pagina, indice) => {
+                const spreadAtual = Math.floor(indice / 2);
+                pagina.style.display = spreadAtual === indiceSpread ? "block" : "none";
+            });
+
+            const inicio = indiceSpread * 2 + 1;
+            const fim = Math.min(inicio + 1, totalPaginas);
+
+            indicador.textContent = `Páginas ${inicio}–${fim} de ${totalPaginas}`;
+            botaoAnterior.disabled = indiceSpread === 0;
+            botaoProxima.disabled = (indiceSpread + 1) * 2 >= totalPaginas;
+        }
+    }
+
+    function anterior() {
+        if (modoMobile.matches) {
+            if (paginaMobile > 0) paginaMobile--;
+        } else {
+            if (indiceSpread > 0) indiceSpread--;
+        }
+        atualizarVisualizacao();
+    }
+
+    function proxima() {
+        if (modoMobile.matches) {
+            if (paginaMobile < paginas.length - 1) paginaMobile++;
+        } else {
+            if ((indiceSpread + 1) * 2 < paginas.length) indiceSpread++;
+        }
+        atualizarVisualizacao();
+    }
+
+    botaoAnterior.addEventListener("click", anterior);
+    botaoProxima.addEventListener("click", proxima);
+
+    document.addEventListener("keydown", (evento) => {
+        if (evento.key === "ArrowLeft") anterior();
+        if (evento.key === "ArrowRight") proxima();
+    });
+
+    let temporizadorRedimensionamento;
+
+    window.addEventListener("resize", () => {
+        clearTimeout(temporizadorRedimensionamento);
+        temporizadorRedimensionamento = setTimeout(() => {
+            const paginaAtual = modoMobile.matches
+                ? paginaMobile
+                : indiceSpread * 2;
+
+            construirLivro();
+
+            if (modoMobile.matches) {
+                paginaMobile = Math.min(paginaAtual, paginas.length - 1);
+            } else {
+                indiceSpread = Math.min(
+                    Math.floor(paginaAtual / 2),
+                    Math.floor((paginas.length - 1) / 2)
+                );
+            }
+
+            atualizarVisualizacao();
+        }, 180);
+    });
+
+    construirLivro();
+})();
+</script>
+
+</body>
+</html>

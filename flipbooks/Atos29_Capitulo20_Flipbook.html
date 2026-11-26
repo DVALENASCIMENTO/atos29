@@ -1,0 +1,1036 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#17130f">
+<title>ATOS 29 — Capítulo 20 | Eu Te Conheço</title>
+
+<style>
+:root {
+    --fundo: #17130f;
+    --papel: #f2e8cf;
+    --papel-claro: #f8f0dc;
+    --tinta: #302719;
+    --tinta-suave: #655640;
+    --borda: #c8b58e;
+    --dourado: #a88b55;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    min-height: 100%;
+    background: var(--fundo);
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    color: #eee5d4;
+    font-family: Georgia, "Times New Roman", serif;
+    background:
+        radial-gradient(ellipse at center, #40372b 0%, #211b15 58%, #100d0a 100%);
+}
+
+button {
+    font-family: inherit;
+}
+
+.cabecalho-site {
+    text-align: center;
+    padding: 23px 12px 12px;
+    color: #e5d5b5;
+}
+
+.cabecalho-site h1 {
+    margin: 0;
+    font-size: 17px;
+    letter-spacing: 3px;
+    font-weight: normal;
+}
+
+.cabecalho-site p {
+    margin: 7px 0 0;
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: #b9a783;
+}
+
+.area-livro {
+    width: 100%;
+    padding: 15px 18px 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.livro {
+    position: relative;
+    width: min(1160px, 100%);
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    perspective: 1800px;
+    filter: drop-shadow(0 18px 22px rgba(0,0,0,.45));
+}
+
+.pagina {
+    position: relative;
+    width: 50%;
+    height: min(760px, calc(100vh - 190px));
+    min-height: 570px;
+    overflow: hidden;
+    color: var(--tinta);
+    padding: 37px 36px 39px;
+    background-color: var(--papel);
+    background-image:
+        radial-gradient(ellipse at 15% 12%, rgba(255,255,255,.35), transparent 45%),
+        radial-gradient(ellipse at 85% 80%, rgba(151,116,64,.08), transparent 50%),
+        repeating-linear-gradient(
+            0deg,
+            rgba(120,94,53,.018) 0px,
+            rgba(120,94,53,.018) 1px,
+            transparent 1px,
+            transparent 4px
+        );
+    border-top: 1px solid #d8c8a7;
+    border-bottom: 1px solid #b6a17b;
+}
+
+.pagina-esquerda {
+    border-radius: 5px 0 0 5px;
+    box-shadow:
+        inset -15px 0 20px -19px rgba(0,0,0,.65),
+        inset 0 0 22px rgba(118,91,48,.08);
+}
+
+.pagina-direita {
+    border-radius: 0 5px 5px 0;
+    box-shadow:
+        inset 15px 0 20px -19px rgba(0,0,0,.65),
+        inset 0 0 22px rgba(118,91,48,.08);
+}
+
+.pagina-direita::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 13px;
+    pointer-events: none;
+    background: linear-gradient(to right, rgba(69,48,22,.15), transparent);
+}
+
+.lombada {
+    position: absolute;
+    z-index: 5;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 18px;
+    transform: translateX(-50%);
+    pointer-events: none;
+    background: linear-gradient(
+        to right,
+        rgba(74,52,25,.13),
+        rgba(255,255,255,.12) 35%,
+        rgba(69,48,22,.18) 50%,
+        rgba(255,255,255,.08) 70%,
+        rgba(74,52,25,.12)
+    );
+}
+
+.pagina-conteudo {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    column-count: 2;
+    column-gap: 25px;
+    column-rule: 1px solid rgba(119,94,56,.19);
+    column-fill: auto;
+    font-size: 12.4px;
+    line-height: 1.48;
+    text-align: justify;
+    hyphens: auto;
+}
+
+.cabecalho-pagina {
+    display: block;
+    width: 100%;
+    margin: 0 0 15px;
+    padding-bottom: 7px;
+    border-bottom: 1px solid rgba(105,81,45,.35);
+    color: #75613f;
+    font-size: 9px;
+    letter-spacing: 1.4px;
+    text-align: center;
+    text-transform: uppercase;
+    break-inside: avoid;
+}
+
+.titulo-principal {
+    display: block;
+    width: 100%;
+    margin: 12px 0 19px;
+    text-align: center;
+    font-size: 19px;
+    line-height: 1.3;
+    letter-spacing: 1px;
+    font-weight: bold;
+    text-transform: uppercase;
+    break-inside: avoid;
+}
+
+.credito {
+    display: block;
+    width: 100%;
+    margin: -9px 0 17px;
+    text-align: center;
+    font-size: 10px;
+    font-style: italic;
+    color: var(--tinta-suave);
+    break-inside: avoid;
+}
+
+.subtitulo-secao {
+    display: block;
+    width: 100%;
+    margin: 17px 0 8px;
+    color: #382b1b;
+    font-size: 11.4px;
+    line-height: 1.3;
+    text-align: left;
+    font-weight: bold;
+    letter-spacing: .35px;
+    text-transform: uppercase;
+    break-after: avoid;
+    break-inside: avoid;
+}
+
+.paragrafo {
+    display: block;
+    margin: 0 0 6px;
+    text-indent: 0;
+    break-inside: avoid;
+    orphans: 2;
+    widows: 2;
+}
+
+.numero {
+    display: inline;
+    position: relative;
+    top: -.35em;
+    margin-right: 3px;
+    font-size: .68em;
+    line-height: 0;
+    font-weight: bold;
+    color: #725b36;
+    vertical-align: baseline;
+}
+
+.citacao {
+    display: block;
+    margin: 9px 8px 12px;
+    padding-left: 9px;
+    border-left: 1px solid rgba(123,94,51,.48);
+    color: #51432e;
+    font-size: 11.5px;
+    line-height: 1.48;
+    font-style: italic;
+    text-align: left;
+    break-inside: avoid;
+}
+
+.citacao-texto {
+    display: block;
+}
+
+.citacao-referencia {
+    display: block;
+    margin-top: 4px;
+    font-size: 10px;
+    font-style: normal;
+    font-weight: bold;
+    text-align: right;
+    color: #6b583b;
+}
+
+.rodape-pagina {
+    position: absolute;
+    bottom: 13px;
+    left: 36px;
+    right: 36px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #806d4d;
+    font-size: 9px;
+    letter-spacing: 1px;
+    border-top: 1px solid rgba(105,81,45,.25);
+    padding-top: 6px;
+}
+
+.pagina-vazia {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #9b8967;
+    font-style: italic;
+    font-size: 12px;
+}
+
+.controles {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+    padding: 15px 12px 10px;
+}
+
+.controles button {
+    min-width: 125px;
+    padding: 11px 17px;
+    border: 1px solid #9b8152;
+    border-radius: 3px;
+    background: linear-gradient(#4b3d2b, #30271d);
+    color: #f0e3c8;
+    font-size: 11px;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: background .2s, transform .2s;
+}
+
+.controles button:hover:not(:disabled) {
+    background: linear-gradient(#685438, #443521);
+    transform: translateY(-1px);
+}
+
+.controles button:disabled {
+    opacity: .35;
+    cursor: not-allowed;
+}
+
+.indicador {
+    min-width: 105px;
+    color: #d9c7a4;
+    text-align: center;
+    font-size: 12px;
+    letter-spacing: 1px;
+}
+
+.institucional {
+    padding: 9px 10px 20px;
+    color: #9f8b67;
+    font-size: 10px;
+    text-align: center;
+    letter-spacing: 2px;
+}
+
+.animacao {
+    animation: virar .32s ease;
+}
+
+@keyframes virar {
+    from {
+        opacity: .55;
+        transform: rotateY(-2deg);
+    }
+    to {
+        opacity: 1;
+        transform: rotateY(0);
+    }
+}
+
+/* Área de medição invisível usada pelo JavaScript */
+.medidor {
+    position: fixed;
+    left: -20000px;
+    top: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+@media (max-width: 760px) {
+    .cabecalho-site {
+        padding-top: 16px;
+    }
+
+    .cabecalho-site h1 {
+        font-size: 14px;
+        letter-spacing: 2px;
+    }
+
+    .area-livro {
+        padding: 8px 9px;
+    }
+
+    .livro {
+        width: min(520px, 100%);
+    }
+
+    .pagina {
+        width: 100%;
+        height: calc(100dvh - 185px);
+        min-height: 470px;
+        padding: 31px 27px 39px;
+        border-radius: 4px;
+        box-shadow: inset 0 0 22px rgba(118,91,48,.08);
+    }
+
+    .pagina-esquerda {
+        display: none;
+    }
+
+    .pagina-direita {
+        display: block;
+    }
+
+    .pagina-direita::before,
+    .lombada {
+        display: none;
+    }
+
+    .pagina-conteudo {
+        column-count: 1;
+        column-gap: 0;
+        column-rule: none;
+        font-size: 13.2px;
+        line-height: 1.55;
+    }
+
+    .titulo-principal {
+        font-size: 20px;
+    }
+
+    .subtitulo-secao {
+        font-size: 12px;
+    }
+
+    .paragrafo {
+        margin-bottom: 8px;
+    }
+
+    .citacao {
+        font-size: 12px;
+        margin-left: 12px;
+        margin-right: 5px;
+    }
+
+    .rodape-pagina {
+        left: 27px;
+        right: 27px;
+    }
+
+    .controles {
+        gap: 8px;
+        padding-top: 12px;
+    }
+
+    .controles button {
+        min-width: 105px;
+        padding: 10px 9px;
+        font-size: 10px;
+    }
+
+    .indicador {
+        min-width: 85px;
+        font-size: 11px;
+    }
+}
+
+@media (max-width: 380px) {
+    .pagina {
+        padding-left: 21px;
+        padding-right: 21px;
+    }
+
+    .pagina-conteudo {
+        font-size: 12.4px;
+    }
+
+    .rodape-pagina {
+        left: 21px;
+        right: 21px;
+    }
+
+    .controles button {
+        min-width: 88px;
+        font-size: 9px;
+    }
+}
+
+@media (min-width: 761px) and (max-height: 700px) {
+    .pagina {
+        height: calc(100vh - 160px);
+        min-height: 490px;
+        padding-top: 28px;
+    }
+
+    .pagina-conteudo {
+        font-size: 11.7px;
+        line-height: 1.4;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header class="cabecalho-site">
+    <h1>ATOS 29 • A HISTÓRIA CONTINUA</h1>
+    <p>MINISTÉRIO ATALAIA</p>
+</header>
+
+<main>
+    <section class="area-livro">
+        <div class="livro" id="livro">
+
+            <section class="pagina pagina-esquerda" id="paginaEsquerda">
+                <div class="pagina-conteudo" id="conteudoEsquerda"></div>
+                <footer class="rodape-pagina">
+                    <span>MINISTÉRIO ATALAIA</span>
+                    <span id="numeroEsquerda"></span>
+                </footer>
+            </section>
+
+            <div class="lombada"></div>
+
+            <section class="pagina pagina-direita" id="paginaDireita">
+                <div class="pagina-conteudo" id="conteudoDireita"></div>
+                <footer class="rodape-pagina">
+                    <span>MINISTÉRIO ATALAIA</span>
+                    <span id="numeroDireita"></span>
+                </footer>
+            </section>
+
+        </div>
+    </section>
+
+    <nav class="controles" aria-label="Navegação do livro">
+        <button id="anterior" type="button">← ANTERIOR</button>
+        <span class="indicador" id="indicador">Páginas 1–2</span>
+        <button id="proxima" type="button">PRÓXIMA →</button>
+    </nav>
+</main>
+
+<footer class="institucional">
+    ATOS 29 — A HISTÓRIA CONTINUA • MINISTÉRIO ATALAIA
+</footer>
+
+<div class="medidor" id="medidor">
+    <div class="pagina">
+        <div class="pagina-conteudo" id="conteudoMedidor"></div>
+    </div>
+</div>
+
+<script>
+"use strict";
+
+/*
+=========================================================
+ATOS 29 — CAPÍTULO 20
+EU TE CONHEÇO
+=========================================================
+O conteúdo foi organizado em unidades:
+h = título de seção
+p = parágrafo numerado
+q = citação bíblica
+t = título principal
+c = crédito editorial
+=========================================================
+*/
+
+const conteudo = [
+
+{tipo:"t", texto:"CAPÍTULO 20<br>EU TE CONHEÇO"},
+{tipo:"c", texto:"Ministério Atalaia<br>Diego Nascimento — Pastor Evangelista"},
+
+{tipo:"q", texto:"Eu nunca vos conheci; apartai-vos de mim, vós que praticais a iniquidade.", referencia:"Mateus 7:23"},
+
+{tipo:"h", texto:"UMA ORAÇÃO DO CORAÇÃO"},
+
+{tipo:"p", numero:"1", texto:"Eu sempre fiz uma oração ao Senhor:"},
+{tipo:"p", numero:"2", texto:"“Que o Senhor não me deixe enganado, pensando que estou a agradá-Lo. Eu quero ser conhecido por Jesus e não quero ouvir naquele dia que Ele não me conhece.”"},
+{tipo:"p", numero:"3", texto:"Essa oração não era apenas uma preocupação com aquilo que os homens poderiam pensar a meu respeito. Era o desejo profundo de que minha vida diante de Deus fosse verdadeira."},
+{tipo:"p", numero:"4", texto:"Eu não queria apenas falar de Jesus."},
+{tipo:"p", numero:"5", texto:"Eu queria pertencer a Jesus."},
+{tipo:"p", numero:"6", texto:"Eu não queria apenas ser conhecido pelas pessoas."},
+{tipo:"p", numero:"7", texto:"Eu queria ser conhecido por Ele."},
+{tipo:"p", numero:"8", texto:"Pois um certo dia, eu estava em pé no fundo do templo, no final do culto. Fiz esta oração com todas as minhas forças, em lágrimas, como se fosse a minha última oração."},
+{tipo:"p", numero:"9", texto:"Naquele momento, não havia palavras bonitas. Havia apenas o clamor de um coração que queria ter certeza de que estava diante de Deus de maneira verdadeira."},
+{tipo:"p", numero:"10", texto:"Então, do altar do templo, bradou a voz de Jesus:"},
+{tipo:"p", numero:"11", texto:"“Eu te conheço.”"},
+{tipo:"p", numero:"12", texto:"Uma voz doce, suave, poderosa, com autoridade."},
+{tipo:"p", numero:"13", texto:"Por mais que eu tente replicar a Sua voz na minha cabeça, não consigo."},
+{tipo:"p", numero:"14", texto:"É como se outra dimensão tivesse sido aberta naquele momento."},
+{tipo:"p", numero:"15", texto:"Então, chorei mais ainda."},
+
+{tipo:"h", texto:"CONHECIDO POR JESUS"},
+
+{tipo:"p", numero:"16", texto:"As palavras que eu havia lido tantas vezes nas Escrituras ganharam um significado muito profundo para mim."},
+{tipo:"p", numero:"17", texto:"Jesus ensinou que não basta simplesmente dizer que O conhecemos. Existe uma relação verdadeira entre o Senhor e aqueles que pertencem a Ele."},
+{tipo:"q", texto:"Eu sou o bom Pastor, e conheço as minhas ovelhas, e das minhas sou conhecido.", referencia:"João 10:14"},
+{tipo:"p", numero:"18", texto:"Jesus não falou apenas sobre pessoas que sabem quem Ele é. Ele falou sobre o Pastor que conhece as Suas ovelhas."},
+{tipo:"p", numero:"19", texto:"Conhecer Jesus vai muito além de conhecer informações sobre Ele."},
+{tipo:"p", numero:"20", texto:"É pertencer a Ele."},
+{tipo:"p", numero:"21", texto:"É ouvi-Lo."},
+{tipo:"p", numero:"22", texto:"É segui-Lo."},
+{tipo:"p", numero:"23", texto:"É reconhecer a Sua voz."},
+{tipo:"q", texto:"As minhas ovelhas ouvem a minha voz, e eu conheço-as, e elas me seguem.", referencia:"João 10:27"},
+{tipo:"p", numero:"24", texto:"A minha oração sempre foi: “Eu quero ser conhecido por Jesus.”"},
+{tipo:"p", numero:"25", texto:"E naquele momento, no final daquele culto, em meio às lágrimas, ouvi:"},
+{tipo:"p", numero:"26", texto:"“Eu te conheço.”"},
+
+{tipo:"h", texto:"NÃO VIVER DE APARÊNCIAS"},
+
+{tipo:"p", numero:"27", texto:"A advertência de Jesus em Mateus 7 é séria."},
+{tipo:"q", texto:"Nem todo o que me diz: Senhor, Senhor! entrará no Reino dos céus, mas aquele que faz a vontade de meu Pai, que está nos céus.", referencia:"Mateus 7:21"},
+{tipo:"p", numero:"28", texto:"Jesus estava ensinando que existe uma diferença entre uma aparência religiosa e uma vida verdadeiramente entregue a Deus."},
+{tipo:"p", numero:"29", texto:"Podemos ser vistos pelos homens."},
+{tipo:"p", numero:"30", texto:"Podemos ser reconhecidos por nossas palavras."},
+{tipo:"p", numero:"31", texto:"Podemos exercer atividades religiosas."},
+{tipo:"p", numero:"32", texto:"Podemos falar sobre Jesus."},
+{tipo:"p", numero:"33", texto:"Mas a pergunta mais profunda permanece:"},
+{tipo:"p", numero:"34", texto:"Somos conhecidos por Ele?"},
+{tipo:"p", numero:"35", texto:"Foi justamente esse temor que me levou a fazer aquela oração."},
+{tipo:"p", numero:"36", texto:"Eu não queria viver uma vida diante dos homens e descobrir, no fim, que meu coração estava distante de Deus."},
+{tipo:"q", texto:"Porque o Senhor não vê como vê o homem; pois o homem vê o que está diante dos olhos, porém o Senhor olha para o coração.", referencia:"1 Samuel 16:7"},
+
+{tipo:"h", texto:"O DEUS QUE CONHECE O CORAÇÃO"},
+
+{tipo:"p", numero:"37", texto:"A Bíblia mostra repetidamente que Deus conhece aquilo que está dentro de nós."},
+{tipo:"q", texto:"Senhor, tu me sondaste, e me conheces.", referencia:"Salmo 139:1"},
+{tipo:"p", numero:"38", texto:"Deus conhece nossas palavras antes que sejam pronunciadas."},
+{tipo:"p", numero:"39", texto:"Conhece nossos pensamentos."},
+{tipo:"p", numero:"40", texto:"Conhece nossas intenções."},
+{tipo:"p", numero:"41", texto:"Conhece nossas lágrimas."},
+{tipo:"p", numero:"42", texto:"Conhece aquilo que ninguém mais conhece."},
+{tipo:"q", texto:"Não havendo ainda palavra alguma na minha língua, eis que logo, ó Senhor, tudo conheces.", referencia:"Salmo 139:4"},
+{tipo:"p", numero:"43", texto:"Por isso, aquela oração não precisava ser feita para impressionar ninguém."},
+{tipo:"p", numero:"44", texto:"Era uma oração entre mim e Deus."},
+{tipo:"p", numero:"45", texto:"E foi justamente nesse lugar de quebrantamento que aconteceu aquela experiência que marcou minha caminhada."},
+
+{tipo:"h", texto:"“EU TE CONHEÇO”"},
+
+{tipo:"p", numero:"46", texto:"A frase foi simples:"},
+{tipo:"p", numero:"47", texto:"“Eu te conheço.”"},
+{tipo:"p", numero:"48", texto:"Mas para mim, aquelas palavras carregaram um peso que não consigo explicar completamente."},
+{tipo:"p", numero:"49", texto:"Eu havia pedido para ser conhecido por Jesus."},
+{tipo:"p", numero:"50", texto:"E ouvi:"},
+{tipo:"p", numero:"51", texto:"“Eu te conheço.”"},
+{tipo:"p", numero:"52", texto:"Não foi uma resposta que eu estava esperando ouvir daquela maneira."},
+{tipo:"p", numero:"53", texto:"Foi algo que me levou às lágrimas."},
+{tipo:"p", numero:"54", texto:"A voz era doce, suave, poderosa e cheia de autoridade."},
+{tipo:"p", numero:"55", texto:"Até hoje, por mais que eu tente replicá-la na minha cabeça, não consigo."},
+{tipo:"p", numero:"56", texto:"Não consigo reproduzir aquilo que ouvi."},
+{tipo:"p", numero:"57", texto:"Ficou marcado em mim não apenas o que foi dito, mas a maneira como aquela voz se manifestou naquele momento."},
+{tipo:"p", numero:"58", texto:"E eu chorei ainda mais."},
+
+{tipo:"h", texto:"UMA VIDA DIANTE DE DEUS"},
+
+{tipo:"p", numero:"59", texto:"A experiência também me faz lembrar de uma verdade fundamental das Escrituras: Deus deseja verdade no interior."},
+{tipo:"q", texto:"Eis que amas a verdade no íntimo, e no oculto me fazes conhecer a sabedoria.", referencia:"Salmo 51:6"},
+{tipo:"p", numero:"60", texto:"O Senhor não procura apenas manifestações exteriores."},
+{tipo:"p", numero:"61", texto:"Ele procura um coração sincero."},
+{tipo:"p", numero:"62", texto:"Um coração quebrantado."},
+{tipo:"p", numero:"63", texto:"Um coração que deseja agradá-Lo."},
+{tipo:"q", texto:"Perto está o Senhor dos que têm o coração quebrantado e salva os contritos de espírito.", referencia:"Salmo 34:18"},
+{tipo:"p", numero:"64", texto:"Por isso, aquela oração continua sendo uma oração que expressa algo essencial:"},
+{tipo:"p", numero:"65", texto:"“Senhor, não permita que eu viva enganado a respeito da minha própria vida diante de Ti.”"},
+{tipo:"p", numero:"66", texto:"Que eu não confunda atividade com intimidade."},
+{tipo:"p", numero:"67", texto:"Que eu não confunda conhecimento com relacionamento."},
+{tipo:"p", numero:"68", texto:"Que eu não confunda reconhecimento dos homens com aprovação de Deus."},
+{tipo:"p", numero:"69", texto:"Que eu não viva apenas falando sobre Jesus, mas viva para Jesus."},
+
+{tipo:"h", texto:"CONHECER E SER CONHECIDO"},
+
+{tipo:"p", numero:"70", texto:"Paulo escreveu:"},
+{tipo:"q", texto:"Mas, se alguém ama a Deus, esse é conhecido dele.", referencia:"1 Coríntios 8:3"},
+{tipo:"p", numero:"71", texto:"Existe algo profundamente consolador nessa verdade."},
+{tipo:"p", numero:"72", texto:"O cristão não vive tentando chamar a atenção de Deus para ser finalmente percebido por Ele."},
+{tipo:"p", numero:"73", texto:"Deus já conhece."},
+{tipo:"p", numero:"74", texto:"Ele conhece o coração."},
+{tipo:"p", numero:"75", texto:"Ele conhece a caminhada."},
+{tipo:"p", numero:"76", texto:"Ele conhece as lágrimas."},
+{tipo:"p", numero:"77", texto:"Ele conhece as lutas."},
+{tipo:"p", numero:"78", texto:"Ele conhece a sinceridade."},
+{tipo:"p", numero:"79", texto:"E, acima de tudo, Ele conhece aqueles que são Seus."},
+{tipo:"q", texto:"Todavia o fundamento de Deus fica firme, tendo este selo: O Senhor conhece os que são seus.", referencia:"2 Timóteo 2:19"},
+{tipo:"p", numero:"80", texto:"Essa palavra permanece como um fundamento."},
+{tipo:"p", numero:"81", texto:"O Senhor conhece os que são Seus."},
+
+{tipo:"h", texto:"A ORAÇÃO QUE PERMANECE"},
+
+{tipo:"p", numero:"82", texto:"Depois daquela experiência, aquela oração ganhou ainda mais significado para mim."},
+{tipo:"p", numero:"83", texto:"Eu continuo entendendo que uma das maiores necessidades de quem serve a Deus é permanecer diante dEle com sinceridade."},
+{tipo:"p", numero:"84", texto:"Não buscar apenas ser visto."},
+{tipo:"p", numero:"85", texto:"Não buscar apenas ser ouvido."},
+{tipo:"p", numero:"86", texto:"Não buscar apenas reconhecimento."},
+{tipo:"p", numero:"87", texto:"Mas buscar o próprio Senhor."},
+{tipo:"p", numero:"88", texto:"Jesus disse:"},
+{tipo:"q", texto:"Permanecei em mim, e eu permanecerei em vós.", referencia:"João 15:4"},
+{tipo:"p", numero:"89", texto:"A vida cristã não é construída somente por momentos extraordinários."},
+{tipo:"p", numero:"90", texto:"Ela é construída na permanência."},
+{tipo:"p", numero:"91", texto:"Na oração."},
+{tipo:"p", numero:"92", texto:"Na Palavra."},
+{tipo:"p", numero:"93", texto:"Na obediência."},
+{tipo:"p", numero:"94", texto:"Na comunhão."},
+{tipo:"p", numero:"95", texto:"No arrependimento."},
+{tipo:"p", numero:"96", texto:"Na fé."},
+{tipo:"p", numero:"97", texto:"Na dependência de Deus."},
+{tipo:"p", numero:"98", texto:"E talvez uma das perguntas mais importantes que alguém possa fazer diante do Senhor seja justamente aquela que nasceu daquela oração:"},
+{tipo:"p", numero:"99", texto:"“Senhor, eu estou verdadeiramente vivendo para Ti?”"},
+{tipo:"p", numero:"100", texto:"Não para provocar medo."},
+{tipo:"p", numero:"101", texto:"Mas para buscar verdade."},
+{tipo:"p", numero:"102", texto:"Não para viver em desespero."},
+{tipo:"p", numero:"103", texto:"Mas para permanecer em Cristo."},
+{tipo:"p", numero:"104", texto:"Não para tentar conquistar o amor de Deus."},
+{tipo:"p", numero:"105", texto:"Mas para viver debaixo da graça que Ele nos concedeu."},
+{tipo:"q", texto:"Examinai-vos a vós mesmos, se permaneceis na fé; provai-vos a vós mesmos.", referencia:"2 Coríntios 13:5"},
+{tipo:"p", numero:"106", texto:"Naquele dia, no fundo do templo, entre lágrimas, fiz uma oração como se fosse a minha última oração."},
+{tipo:"p", numero:"107", texto:"E então ouvi:"},
+{tipo:"p", numero:"108", texto:"“Eu te conheço.”"},
+{tipo:"p", numero:"109", texto:"Até hoje, não consigo reproduzir aquela voz."},
+{tipo:"p", numero:"110", texto:"Mas consigo lembrar das palavras."},
+{tipo:"p", numero:"111", texto:"Eu te conheço."},
+{tipo:"p", numero:"112", texto:"E essa frase permanece comigo como uma lembrança profunda de que, acima de qualquer reconhecimento humano, existe algo infinitamente maior:"},
+{tipo:"p", numero:"113", texto:"ser conhecido por Jesus."}
+
+];
+
+/* =====================================================
+   CONSTRUÇÃO DOS ELEMENTOS
+===================================================== */
+
+function criarElemento(unidade) {
+    let elemento;
+
+    if (unidade.tipo === "t") {
+        elemento = document.createElement("div");
+        elemento.className = "titulo-principal";
+        elemento.innerHTML = unidade.texto;
+    }
+
+    else if (unidade.tipo === "c") {
+        elemento = document.createElement("div");
+        elemento.className = "credito";
+        elemento.innerHTML = unidade.texto;
+    }
+
+    else if (unidade.tipo === "h") {
+        elemento = document.createElement("h2");
+        elemento.className = "subtitulo-secao";
+        elemento.textContent = unidade.texto;
+    }
+
+    else if (unidade.tipo === "p") {
+        elemento = document.createElement("p");
+        elemento.className = "paragrafo";
+
+        const numero = document.createElement("sup");
+        numero.className = "numero";
+        numero.textContent = unidade.numero;
+
+        const texto = document.createElement("span");
+        texto.textContent = unidade.texto;
+
+        elemento.appendChild(numero);
+        elemento.appendChild(texto);
+    }
+
+    else if (unidade.tipo === "q") {
+        elemento = document.createElement("blockquote");
+        elemento.className = "citacao";
+
+        const texto = document.createElement("span");
+        texto.className = "citacao-texto";
+        texto.textContent = "“" + unidade.texto + "”";
+
+        const referencia = document.createElement("span");
+        referencia.className = "citacao-referencia";
+        referencia.textContent = unidade.referencia;
+
+        elemento.appendChild(texto);
+        elemento.appendChild(referencia);
+    }
+
+    return elemento;
+}
+
+/* =====================================================
+   PAGINAÇÃO AUTOMÁTICA
+===================================================== */
+
+const conteudoMedidor = document.getElementById("conteudoMedidor");
+const paginaMedidora = document.querySelector("#medidor .pagina");
+
+let paginas = [];
+let paginaAtual = 0;
+let modoCelular = window.matchMedia("(max-width: 760px)").matches;
+
+function criarCabecalho() {
+    const cabecalho = document.createElement("div");
+    cabecalho.className = "cabecalho-pagina";
+    cabecalho.textContent = "ATOS 29 • A HISTÓRIA CONTINUA — CAPÍTULO 20";
+    return cabecalho;
+}
+
+function limparMedidor() {
+    conteudoMedidor.innerHTML = "";
+    conteudoMedidor.appendChild(criarCabecalho());
+}
+
+function excedeuLimite() {
+    const larguraExcedida =
+        conteudoMedidor.scrollWidth > conteudoMedidor.clientWidth + 2;
+
+    const alturaExcedida =
+        conteudoMedidor.scrollHeight > conteudoMedidor.clientHeight + 2;
+
+    return larguraExcedida || alturaExcedida;
+}
+
+function gerarPaginas() {
+    paginas = [];
+
+    const largura = window.innerWidth;
+
+    const altura = window.innerHeight;
+
+    modoCelular = window.matchMedia("(max-width: 760px)").matches;
+
+    const paginaModelo = document.querySelector("#medidor .pagina");
+
+    paginaModelo.style.width = modoCelular ? "520px" : "580px";
+    paginaModelo.style.height = modoCelular
+        ? Math.max(470, altura - 185) + "px"
+        : Math.min(760, altura - 190) + "px";
+
+    const estiloConteudo = conteudoMedidor;
+
+    estiloConteudo.style.columnCount = modoCelular ? "1" : "2";
+    estiloConteudo.style.columnGap = modoCelular ? "0" : "25px";
+    estiloConteudo.style.columnRule = modoCelular
+        ? "none"
+        : "1px solid rgba(119,94,56,.19)";
+
+    estiloConteudo.style.fontSize = modoCelular ? "13.2px" : "12.4px";
+    estiloConteudo.style.lineHeight = modoCelular ? "1.55" : "1.48";
+
+    limparMedidor();
+
+    const unidades = conteudo.map(criarElemento);
+
+    let pagina = [];
+
+    for (const unidade of unidades) {
+        conteudoMedidor.appendChild(unidade);
+
+        if (excedeuLimite()) {
+            conteudoMedidor.removeChild(unidade);
+
+            if (pagina.length > 0) {
+                paginas.push(pagina);
+            }
+
+            pagina = [unidade];
+
+            limparMedidor();
+            conteudoMedidor.appendChild(unidade);
+
+            /*
+              Se uma unidade isolada ultrapassar o espaço,
+              ela continua inteira na página. A fonte poderá
+              ser ajustada pelo navegador sem cortar o texto.
+            */
+        } else {
+            pagina.push(unidade);
+        }
+    }
+
+    if (pagina.length > 0) {
+        paginas.push(pagina);
+    }
+
+    if (paginas.length === 0) {
+        paginas = [[]];
+    }
+
+    paginaAtual = Math.min(paginaAtual, paginas.length - 1);
+    desenharAbertura();
+}
+
+/* =====================================================
+   EXIBIÇÃO DAS PÁGINAS
+===================================================== */
+
+const esquerda = document.getElementById("conteudoEsquerda");
+const direita = document.getElementById("conteudoDireita");
+
+const numeroEsquerda = document.getElementById("numeroEsquerda");
+const numeroDireita = document.getElementById("numeroDireita");
+
+const indicador = document.getElementById("indicador");
+const botaoAnterior = document.getElementById("anterior");
+const botaoProxima = document.getElementById("proxima");
+
+function montarPagina(elemento, unidades) {
+    elemento.innerHTML = "";
+    elemento.appendChild(criarCabecalho());
+
+    if (!unidades) {
+        return;
+    }
+
+    unidades.forEach(unidade => {
+        elemento.appendChild(criarElemento(unidade));
+    });
+}
+
+function desenharAbertura() {
+    const celular = window.matchMedia("(max-width: 760px)").matches;
+
+    const paginaEsquerda = document.getElementById("paginaEsquerda");
+
+    if (celular) {
+        paginaEsquerda.style.display = "none";
+
+        montarPagina(direita, paginas[paginaAtual]);
+
+        numeroDireita.textContent = paginaAtual + 1;
+        numeroEsquerda.textContent = "";
+
+        indicador.textContent =
+            "Página " + (paginaAtual + 1) + " de " + paginas.length;
+    } else {
+        paginaEsquerda.style.display = "block";
+
+        const indiceEsquerda = paginaAtual;
+        const indiceDireita = paginaAtual + 1;
+
+        montarPagina(esquerda, paginas[indiceEsquerda]);
+        montarPagina(direita, paginas[indiceDireita]);
+
+        numeroEsquerda.textContent = indiceEsquerda + 1;
+        numeroDireita.textContent =
+            indiceDireita < paginas.length ? indiceDireita + 1 : "";
+
+        indicador.textContent =
+            "Páginas " + (indiceEsquerda + 1) + "–" +
+            Math.min(indiceDireita + 1, paginas.length) +
+            " de " + paginas.length;
+    }
+
+    botaoAnterior.disabled = paginaAtual <= 0;
+    botaoProxima.disabled = celular
+        ? paginaAtual >= paginas.length - 1
+        : paginaAtual + 2 >= paginas.length;
+
+    const livro = document.getElementById("livro");
+    livro.classList.remove("animacao");
+
+    void livro.offsetWidth;
+
+    livro.classList.add("animacao");
+}
+
+/* =====================================================
+   NAVEGAÇÃO
+===================================================== */
+
+function avancar() {
+    const celular = window.matchMedia("(max-width: 760px)").matches;
+
+    const passo = celular ? 1 : 2;
+
+    if (paginaAtual + passo < paginas.length) {
+        paginaAtual += passo;
+        desenharAbertura();
+    }
+}
+
+function voltar() {
+    const celular = window.matchMedia("(max-width: 760px)").matches;
+
+    const passo = celular ? 1 : 2;
+
+    if (paginaAtual - passo >= 0) {
+        paginaAtual -= passo;
+        desenharAbertura();
+    } else {
+        paginaAtual = 0;
+        desenharAbertura();
+    }
+}
+
+botaoAnterior.addEventListener("click", voltar);
+botaoProxima.addEventListener("click", avancar);
+
+document.addEventListener("keydown", function(evento) {
+    if (evento.key === "ArrowRight") {
+        avancar();
+    }
+
+    if (evento.key === "ArrowLeft") {
+        voltar();
+    }
+});
+
+/* =====================================================
+   GESTOS DE TOQUE
+===================================================== */
+
+let toqueInicialX = 0;
+let toqueFinalX = 0;
+
+const livro = document.getElementById("livro");
+
+livro.addEventListener("touchstart", function(evento) {
+    toqueInicialX = evento.changedTouches[0].screenX;
+}, {passive:true});
+
+livro.addEventListener("touchend", function(evento) {
+    toqueFinalX = evento.changedTouches[0].screenX;
+
+    const diferenca = toqueFinalX - toqueInicialX;
+
+    if (Math.abs(diferenca) > 45) {
+        if (diferenca < 0) {
+            avancar();
+        } else {
+            voltar();
+        }
+    }
+}, {passive:true});
+
+/* =====================================================
+   AJUSTE DE TELA E INICIALIZAÇÃO
+===================================================== */
+
+let redimensionamento;
+
+window.addEventListener("resize", function() {
+    clearTimeout(redimensionamento);
+
+    redimensionamento = setTimeout(function() {
+        gerarPaginas();
+    }, 180);
+});
+
+window.addEventListener("orientationchange", function() {
+    setTimeout(gerarPaginas, 250);
+});
+
+window.addEventListener("load", function() {
+    gerarPaginas();
+});
+</script>
+
+</body>
+</html>

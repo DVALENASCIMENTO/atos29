@@ -1,0 +1,962 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#17130f">
+<title>ATOS 29 — Capítulo 8 | A Mulher com Câncer no Olho</title>
+
+<style>
+:root {
+    --fundo: #17130f;
+    --papel: #f3e9ce;
+    --papel-claro: #f8f0dc;
+    --tinta: #292116;
+    --linha: rgba(83, 64, 39, .25);
+    --largura-pagina: 540px;
+    --altura-pagina: 740px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    background:
+        radial-gradient(ellipse at center, #393027 0%, #211b15 58%, #100e0b 100%);
+    color: #eee5d3;
+    font-family: Georgia, "Times New Roman", serif;
+}
+
+.topo {
+    text-align: center;
+    padding: 22px 12px 15px;
+}
+
+.topo h1 {
+    margin: 0;
+    font-size: 17px;
+    letter-spacing: 3px;
+    font-weight: normal;
+    color: #e8dcc4;
+}
+
+.topo p {
+    margin: 7px 0 0;
+    font-family: Arial, sans-serif;
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: #b7a991;
+    text-transform: uppercase;
+}
+
+.area-livro {
+    width: 100%;
+    padding: 10px 18px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.livro {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    perspective: 1800px;
+    filter: drop-shadow(0 20px 22px rgba(0,0,0,.48));
+}
+
+.pagina {
+    position: relative;
+    width: min(var(--largura-pagina), calc((100vw - 60px) / 2));
+    height: min(var(--altura-pagina), calc(100vh - 180px));
+    min-height: 540px;
+    padding: 34px 31px 43px;
+    overflow: hidden;
+    color: var(--tinta);
+    background:
+        radial-gradient(ellipse at 15% 10%, rgba(255,255,255,.27), transparent 40%),
+        radial-gradient(ellipse at 90% 85%, rgba(145,111,60,.08), transparent 45%),
+        repeating-linear-gradient(0deg, rgba(95,72,40,.018) 0px, rgba(95,72,40,.018) 1px, transparent 1px, transparent 4px),
+        var(--papel);
+    border: 1px solid rgba(100,75,42,.28);
+}
+
+.pagina.esquerda {
+    border-radius: 5px 0 0 5px;
+    box-shadow: inset -13px 0 18px -17px #3a2917;
+}
+
+.pagina.direita {
+    border-radius: 0 5px 5px 0;
+    box-shadow: inset 13px 0 18px -17px #3a2917;
+}
+
+.lombada {
+    width: 15px;
+    flex: 0 0 15px;
+    background:
+        linear-gradient(90deg,
+        #4a3928 0%,
+        #b6a17b 18%,
+        #4e3b27 45%,
+        #2b2118 55%,
+        #b29a70 82%,
+        #463423 100%);
+    box-shadow: 0 0 12px rgba(0,0,0,.5);
+    z-index: 2;
+}
+
+.cabecalho-pagina {
+    position: absolute;
+    top: 15px;
+    left: 30px;
+    right: 30px;
+    padding-bottom: 7px;
+    border-bottom: 1px solid var(--linha);
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+    color: #594a35;
+    font-size: 9px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.miolo {
+    position: absolute;
+    top: 43px;
+    bottom: 42px;
+    left: 31px;
+    right: 31px;
+    overflow: hidden;
+    column-count: 2;
+    column-gap: 24px;
+    column-rule: 1px solid rgba(92,72,43,.13);
+    column-fill: auto;
+    font-size: 12px;
+    line-height: 1.48;
+    text-align: justify;
+    hyphens: auto;
+}
+
+.miolo p {
+    margin: 0 0 6px;
+    break-inside: avoid;
+    page-break-inside: avoid;
+}
+
+.miolo .numero {
+    display: inline;
+    vertical-align: super;
+    font-size: 8px;
+    line-height: 0;
+    font-weight: bold;
+    margin-right: 2px;
+    color: #5b482e;
+}
+
+.miolo .titulo-capitulo {
+    column-span: all;
+    text-align: center;
+    font-size: 15px;
+    line-height: 1.35;
+    font-weight: bold;
+    letter-spacing: .7px;
+    margin: 7px 0 13px;
+    text-transform: uppercase;
+    break-after: avoid;
+}
+
+.miolo .credito {
+    column-span: all;
+    text-align: center;
+    font-size: 9px;
+    letter-spacing: .6px;
+    margin: 0 0 18px;
+    color: #65543b;
+    font-style: italic;
+}
+
+.miolo h2 {
+    font-size: 11px;
+    line-height: 1.35;
+    font-weight: bold;
+    letter-spacing: .35px;
+    text-align: left;
+    text-transform: uppercase;
+    margin: 12px 0 7px;
+    break-after: avoid;
+    break-inside: avoid;
+}
+
+.miolo .citacao {
+    margin: 7px 8px 3px;
+    padding-left: 8px;
+    border-left: 1px solid rgba(90,69,41,.4);
+    font-style: italic;
+    text-align: left;
+    break-inside: avoid;
+}
+
+.miolo .referencia {
+    margin: 0 8px 8px;
+    font-size: 10px;
+    font-weight: bold;
+    text-align: right;
+    break-inside: avoid;
+}
+
+.miolo .destaque {
+    font-weight: bold;
+}
+
+.miolo .abertura {
+    column-span: all;
+}
+
+.rodape-pagina {
+    position: absolute;
+    bottom: 14px;
+    left: 30px;
+    right: 30px;
+    padding-top: 7px;
+    border-top: 1px solid var(--linha);
+    display: flex;
+    justify-content: space-between;
+    color: #65543b;
+    font-size: 9px;
+    letter-spacing: 1px;
+}
+
+.controles {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+    padding: 12px 12px 22px;
+    font-family: Arial, sans-serif;
+}
+
+.controles button {
+    border: 1px solid #8e7959;
+    background: linear-gradient(#554633, #30261b);
+    color: #f1e5ce;
+    padding: 11px 22px;
+    border-radius: 3px;
+    font-size: 11px;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: background .2s, transform .2s, opacity .2s;
+}
+
+.controles button:hover:not(:disabled) {
+    background: #705a3d;
+    transform: translateY(-1px);
+}
+
+.controles button:disabled {
+    opacity: .35;
+    cursor: not-allowed;
+}
+
+.contador {
+    min-width: 110px;
+    text-align: center;
+    color: #d7c8ad;
+    font-size: 11px;
+    letter-spacing: 1px;
+}
+
+.animar-proxima {
+    animation: virarDireita .32s ease;
+}
+
+.animar-anterior {
+    animation: virarEsquerda .32s ease;
+}
+
+@keyframes virarDireita {
+    0% { transform: rotateY(-3deg); opacity: .75; }
+    100% { transform: rotateY(0); opacity: 1; }
+}
+
+@keyframes virarEsquerda {
+    0% { transform: rotateY(3deg); opacity: .75; }
+    100% { transform: rotateY(0); opacity: 1; }
+}
+
+/* Área invisível utilizada para calcular a paginação */
+#medidor {
+    position: fixed;
+    left: -10000px;
+    top: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+#medidor .pagina {
+    width: var(--largura-pagina);
+    height: var(--altura-pagina);
+}
+
+@media (max-width: 850px) {
+    :root {
+        --largura-pagina: 520px;
+        --altura-pagina: 720px;
+    }
+
+    .pagina {
+        width: min(520px, calc(100vw - 30px));
+        height: min(720px, calc(100vh - 165px));
+        min-height: 480px;
+    }
+
+    .pagina.esquerda,
+    .pagina.direita {
+        border-radius: 5px;
+    }
+
+    .lombada {
+        display: none;
+    }
+
+    .pagina.oculta {
+        display: none;
+    }
+}
+
+@media (max-width: 520px) {
+    .topo {
+        padding-top: 17px;
+    }
+
+    .topo h1 {
+        font-size: 14px;
+        letter-spacing: 2px;
+    }
+
+    .area-livro {
+        padding: 5px 10px 10px;
+    }
+
+    .pagina {
+        width: calc(100vw - 24px);
+        height: calc(100dvh - 175px);
+        min-height: 420px;
+        padding: 32px 22px 42px;
+    }
+
+    .cabecalho-pagina {
+        left: 21px;
+        right: 21px;
+        font-size: 8px;
+    }
+
+    .miolo {
+        left: 22px;
+        right: 22px;
+        column-gap: 15px;
+        font-size: 11.5px;
+        line-height: 1.48;
+    }
+
+    .miolo .titulo-capitulo {
+        font-size: 14px;
+    }
+
+    .rodape-pagina {
+        left: 21px;
+        right: 21px;
+    }
+
+    .controles {
+        gap: 8px;
+        padding-top: 8px;
+    }
+
+    .controles button {
+        padding: 10px 13px;
+        font-size: 10px;
+    }
+
+    .contador {
+        min-width: 85px;
+        font-size: 10px;
+    }
+}
+
+@media (max-height: 650px) and (min-width: 851px) {
+    .pagina {
+        height: calc(100vh - 150px);
+        min-height: 440px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header class="topo">
+    <h1>ATOS 29 • A HISTÓRIA CONTINUA</h1>
+    <p>Ministério Atalaia</p>
+</header>
+
+<main class="area-livro">
+    <div class="livro" id="livro">
+        <div class="pagina esquerda" id="paginaEsquerda"></div>
+        <div class="lombada"></div>
+        <div class="pagina direita" id="paginaDireita"></div>
+    </div>
+</main>
+
+<nav class="controles" aria-label="Navegação do livro">
+    <button id="anterior" type="button">◀ ANTERIOR</button>
+    <span class="contador" id="contador">Página 1</span>
+    <button id="proxima" type="button">PRÓXIMA ▶</button>
+</nav>
+
+<div id="medidor" aria-hidden="true"></div>
+
+<script>
+/*
+    ATOS 29 — A HISTÓRIA CONTINUA
+    CAPÍTULO 8 — A MULHER COM CÂNCER NO OLHO
+
+    O conteúdo abaixo mantém a narrativa organizada.
+    Os números sobrescritos identificam os parágrafos.
+*/
+
+const conteudo = [
+    {tipo:"titulo", texto:"CAPÍTULO 8 — A MULHER COM CÂNCER NO OLHO"},
+    {tipo:"credito", texto:"Ministério Atalaia • Diego Nascimento — Pastor Evangelista"},
+
+    {tipo:"subtitulo", texto:"UMA DAS PRIMEIRAS EXPERIÊNCIAS"},
+    {tipo:"p", n:"¹", texto:"Uma das primeiras experiências que marcaram minha caminhada cristã aconteceu quando eu ainda era um novo convertido."},
+    {tipo:"p", n:"²", texto:"Eu estava juntamente com meu primo, que também havia se convertido recentemente, e com nossa discipuladora."},
+    {tipo:"p", n:"³", texto:"Naquele período, estávamos começando a conhecer mais profundamente a vida cristã e a aprender a confiar em Deus."},
+    {tipo:"p", n:"⁴", texto:"Certo dia, uma irmã da igreja chegou apressadamente pedindo que fôssemos visitar uma senhora que se encontrava em estado gravíssimo."},
+    {tipo:"p", n:"⁵", texto:"Ela precisava de oração."},
+    {tipo:"p", n:"⁶", texto:"Disseram-nos que aquela mulher estava morrendo em consequência de um câncer que havia atingido um dos seus olhos."},
+    {tipo:"p", n:"⁷", texto:"Então fomos até sua casa."},
+    {tipo:"p", n:"⁸", texto:"Eu ainda era novo convertido."},
+    {tipo:"p", n:"⁹", texto:"Ainda estava aprendendo muitas coisas."},
+    {tipo:"p", n:"¹⁰", texto:"Mas naquela ocasião aprendi uma das lições que jamais esqueci:"},
+    {tipo:"p", n:"¹¹", texto:"quando não temos recursos humanos para resolver uma situação, ainda podemos colocar aquela situação diante de Deus.", destaque:true},
+
+    {tipo:"subtitulo", texto:"UMA CENA QUE JAMAIS ESQUECI"},
+    {tipo:"p", n:"¹²", texto:"Quando chegamos à sua casa, encontramos uma cena que jamais esquecerei."},
+    {tipo:"p", n:"¹³", texto:"O tumor havia crescido de tal maneira que uma grande massa de carne saía da cavidade do olho."},
+    {tipo:"p", n:"¹⁴", texto:"Seu esposo estava ao seu lado, despedindo-se dela, acreditando que aqueles seriam seus últimos momentos."},
+    {tipo:"p", n:"¹⁵", texto:"Ela estava consumida por uma febre muito alta e gemia de dor."},
+    {tipo:"p", n:"¹⁶", texto:"A situação diante dos nossos olhos era extremamente grave."},
+    {tipo:"p", n:"¹⁷", texto:"Não havia, naquele momento, recursos humanos que pudéssemos oferecer para solucionar aquela situação."},
+    {tipo:"p", n:"¹⁸", texto:"Éramos apenas servos de Deus diante de uma mulher enferma."},
+    {tipo:"p", n:"¹⁹", texto:"Mas tínhamos algo que podíamos fazer:"},
+    {tipo:"p", n:"²⁰", texto:"orar.", destaque:true},
+
+    {tipo:"subtitulo", texto:"COMEÇAMOS A LOUVAR"},
+    {tipo:"p", n:"²¹", texto:"Em vez de olharmos apenas para a gravidade da enfermidade, começamos a louvar a Deus."},
+    {tipo:"p", n:"²²", texto:"Começamos a entoar cânticos."},
+    {tipo:"p", n:"²³", texto:"Enquanto adorávamos, algo começou a acontecer naquele ambiente."},
+    {tipo:"p", n:"²⁴", texto:"A presença do Espírito Santo encheu aquele lugar de uma maneira tão intensa que nenhum de nós conseguia conter as lágrimas."},
+    {tipo:"p", n:"²⁵", texto:"Chorávamos diante da presença de Deus.", destaque:true},
+    {tipo:"p", n:"²⁶", texto:"Não estávamos diante de uma situação comum."},
+    {tipo:"p", n:"²⁷", texto:"Estávamos diante de uma mulher sofrendo."},
+    {tipo:"p", n:"²⁸", texto:"Diante de uma família aflita."},
+    {tipo:"p", n:"²⁹", texto:"Diante de uma enfermidade que parecia ter chegado ao seu limite."},
+    {tipo:"p", n:"³⁰", texto:"E, naquele momento, decidimos colocar nossa confiança no Senhor."},
+
+    {tipo:"subtitulo", texto:"A FEBRE DESAPARECEU"},
+    {tipo:"p", n:"³¹", texto:"Enquanto adorávamos, percebemos algo que jamais esquecemos."},
+    {tipo:"p", n:"³²", texto:"A febre desapareceu completamente.", destaque:true},
+    {tipo:"p", n:"³³", texto:"Seu semblante começou a mudar."},
+    {tipo:"p", n:"³⁴", texto:"Aquela mulher que estava consumida pela febre e gemendo de dor começou a apresentar outra aparência."},
+    {tipo:"p", n:"³⁵", texto:"Todos nós entendemos que Deus estava operando naquele lugar."},
+    {tipo:"p", n:"³⁶", texto:"Não estávamos dizendo que possuíamos algum poder."},
+    {tipo:"p", n:"³⁷", texto:"Não estávamos confiando em nós mesmos."},
+    {tipo:"p", n:"³⁸", texto:"Estávamos confiando no Senhor."},
+    {tipo:"p", n:"³⁹", texto:"A Bíblia declara:"},
+    {tipo:"citacao", n:"⁴⁰", texto:"“Jesus Cristo é o mesmo ontem, e hoje, e eternamente.”", referencia:"Hebreus 13:8"},
+    {tipo:"p", n:"⁴¹", texto:"O Deus que encontramos nas páginas das Escrituras não é um Deus distante."},
+    {tipo:"p", n:"⁴²", texto:"Ele continua sendo Deus."},
+    {tipo:"p", n:"⁴³", texto:"Continua ouvindo."},
+    {tipo:"p", n:"⁴⁴", texto:"Continua sustentando."},
+    {tipo:"p", n:"⁴⁵", texto:"Continua agindo conforme Sua vontade."},
+
+    {tipo:"subtitulo", texto:"DEUS É QUEM OPERA"},
+    {tipo:"p", n:"⁴⁶", texto:"Aquela experiência também me ensinou algo importante sobre milagres."},
+    {tipo:"p", n:"⁴⁷", texto:"O milagre não pertence ao homem.", destaque:true},
+    {tipo:"p", n:"⁴⁸", texto:"O homem pode orar."},
+    {tipo:"p", n:"⁴⁹", texto:"Pode clamar."},
+    {tipo:"p", n:"⁵⁰", texto:"Pode adorar."},
+    {tipo:"p", n:"⁵¹", texto:"Pode interceder."},
+    {tipo:"p", n:"⁵²", texto:"Mas quem opera é Deus."},
+    {tipo:"p", n:"⁵³", texto:"A Palavra diz:"},
+    {tipo:"citacao", n:"⁵⁴", texto:"“Eu sou o Senhor que te sara.”", referencia:"Êxodo 15:26"},
+    {tipo:"p", n:"⁵⁵", texto:"E o salmista declara:"},
+    {tipo:"citacao", n:"⁵⁶", texto:"“É ele que perdoa todas as tuas iniquidades e sara todas as tuas enfermidades.”", referencia:"Salmo 103:3"},
+    {tipo:"p", n:"⁵⁷", texto:"Quando oramos por alguém, nossa confiança não deve estar na pessoa que ora."},
+    {tipo:"p", n:"⁵⁸", texto:"Nossa confiança deve estar naquele que recebe a oração."},
+    {tipo:"p", n:"⁵⁹", texto:"Jesus é o centro.", destaque:true},
+
+    {tipo:"subtitulo", texto:"A CIRURGIA"},
+    {tipo:"p", n:"⁶⁰", texto:"Algum tempo depois daquela visita, aquela mulher conseguiu realizar a cirurgia para a retirada do câncer."},
+    {tipo:"p", n:"⁶¹", texto:"A enfermidade exigiu tratamento."},
+    {tipo:"p", n:"⁶²", texto:"Houve uma intervenção médica."},
+    {tipo:"p", n:"⁶³", texto:"E isso também faz parte do testemunho."},
+    {tipo:"p", n:"⁶⁴", texto:"A fé em Deus não significa negar os recursos disponíveis."},
+    {tipo:"p", n:"⁶⁵", texto:"Deus pode agir de diferentes maneiras."},
+    {tipo:"p", n:"⁶⁶", texto:"Naquela situação, a cirurgia fez parte do processo pelo qual aquela mulher passou."},
+    {tipo:"p", n:"⁶⁷", texto:"E continuamos reconhecendo que Deus estava cuidando dela."},
+
+    {tipo:"subtitulo", texto:"UM DIA ELA VOLTOU"},
+    {tipo:"p", n:"⁶⁸", texto:"Tempos mais tarde, aquela mulher voltou para nos visitar."},
+    {tipo:"p", n:"⁶⁹", texto:"Ela já estava em recuperação."},
+    {tipo:"p", n:"⁷⁰", texto:"Trazia apenas o curativo sobre o olho."},
+    {tipo:"p", n:"⁷¹", texto:"Aquela imagem ficou gravada em minha memória."},
+    {tipo:"p", n:"⁷²", texto:"A mulher que havíamos encontrado em estado gravíssimo estava ali novamente."},
+    {tipo:"p", n:"⁷³", texto:"Viva."},
+    {tipo:"p", n:"⁷⁴", texto:"Em recuperação."},
+    {tipo:"p", n:"⁷⁵", texto:"Diante dos nossos olhos."},
+    {tipo:"p", n:"⁷⁶", texto:"Aquela visita fortaleceu profundamente nossa fé."},
+    {tipo:"p", n:"⁷⁷", texto:"A experiência nos mostrou, de maneira muito pessoal, aquilo que a Palavra de Deus declara:"},
+    {tipo:"citacao", n:"⁷⁸", texto:"“Eis que a mão do Senhor não está encolhida, para que não possa salvar; nem agravado o seu ouvido, para não poder ouvir.”", referencia:"Isaías 59:1"},
+
+    {tipo:"subtitulo", texto:"UMA EXPERIÊNCIA NO INÍCIO DA CAMINHADA"},
+    {tipo:"p", n:"⁷⁹", texto:"Eu ainda estava dando os primeiros passos na vida cristã."},
+    {tipo:"p", n:"⁸⁰", texto:"Não tinha experiência ministerial."},
+    {tipo:"p", n:"⁸¹", texto:"Ainda estava aprendendo a Bíblia."},
+    {tipo:"p", n:"⁸²", texto:"Ainda estava conhecendo os caminhos do Senhor."},
+    {tipo:"p", n:"⁸³", texto:"Mas Deus permitiu que eu testemunhasse aquela situação logo no início da minha caminhada."},
+    {tipo:"p", n:"⁸⁴", texto:"Talvez justamente para que eu compreendesse desde cedo que o Evangelho não é apenas teoria."},
+    {tipo:"p", n:"⁸⁵", texto:"A fé cristã não consiste apenas em conhecer histórias sobre aquilo que Deus fez no passado."},
+    {tipo:"p", n:"⁸⁶", texto:"É também confiar nEle no presente."},
+    {tipo:"p", n:"⁸⁷", texto:"A Bíblia registra:"},
+    {tipo:"citacao", n:"⁸⁸", texto:"“Jesus Cristo é o mesmo ontem, e hoje, e eternamente.”", referencia:"Hebreus 13:8"},
+    {tipo:"p", n:"⁸⁹", texto:"O Deus que curou no passado continua sendo Deus."},
+    {tipo:"p", n:"⁹⁰", texto:"Mas também aprendi que Ele permanece soberano."},
+    {tipo:"p", n:"⁹¹", texto:"Nós oramos."},
+    {tipo:"p", n:"⁹²", texto:"Nós pedimos."},
+    {tipo:"p", n:"⁹³", texto:"Nós confiamos."},
+    {tipo:"p", n:"⁹⁴", texto:"Mas Deus continua sendo Deus.", destaque:true},
+
+    {tipo:"subtitulo", texto:"MILAGRES NÃO SÃO PARA EXALTAR HOMENS"},
+    {tipo:"p", n:"⁹⁵", texto:"Ao longo da minha caminhada, compreendi que experiências como essa não devem servir para promover homens."},
+    {tipo:"p", n:"⁹⁶", texto:"Se existe algo extraordinário em um testemunho, a glória precisa ser direcionada para Deus."},
+    {tipo:"p", n:"⁹⁷", texto:"Não para quem orou."},
+    {tipo:"p", n:"⁹⁸", texto:"Não para quem pregou."},
+    {tipo:"p", n:"⁹⁹", texto:"Não para quem estava presente."},
+    {tipo:"p", n:"¹⁰⁰", texto:"Para Deus.", destaque:true},
+    {tipo:"p", n:"¹⁰¹", texto:"Jesus disse:"},
+    {tipo:"citacao", n:"¹⁰²", texto:"“E tudo quanto pedirdes em meu nome, eu o farei, para que o Pai seja glorificado no Filho.”", referencia:"João 14:13"},
+    {tipo:"p", n:"¹⁰³", texto:"O propósito maior é a glória de Deus."},
+    {tipo:"p", n:"¹⁰⁴", texto:"Por isso, quando conto essa experiência, não quero que as pessoas olhem para mim."},
+    {tipo:"p", n:"¹⁰⁵", texto:"Quero que olhem para Cristo."},
+
+    {tipo:"subtitulo", texto:"A FÉ QUE ORA"},
+    {tipo:"p", n:"¹⁰⁶", texto:"Aquela experiência me ensinou a importância da intercessão."},
+    {tipo:"p", n:"¹⁰⁷", texto:"Às vezes encontramos pessoas diante de situações que não conseguimos resolver."},
+    {tipo:"p", n:"¹⁰⁸", texto:"Não temos dinheiro suficiente."},
+    {tipo:"p", n:"¹⁰⁹", texto:"Não temos conhecimento médico."},
+    {tipo:"p", n:"¹¹⁰", texto:"Não temos recursos."},
+    {tipo:"p", n:"¹¹¹", texto:"Não temos respostas."},
+    {tipo:"p", n:"¹¹²", texto:"Mas podemos orar."},
+    {tipo:"p", n:"¹¹³", texto:"Podemos clamar."},
+    {tipo:"p", n:"¹¹⁴", texto:"Podemos adorar."},
+    {tipo:"p", n:"¹¹⁵", texto:"Podemos colocar aquela vida diante do Senhor."},
+    {tipo:"p", n:"¹¹⁶", texto:"Tiago escreveu:"},
+    {tipo:"citacao", n:"¹¹⁷", texto:"“A oração da fé salvará o doente, e o Senhor o levantará.”", referencia:"Tiago 5:15"},
+    {tipo:"p", n:"¹¹⁸", texto:"E logo depois a Escritura afirma:"},
+    {tipo:"citacao", n:"¹¹⁹", texto:"“A oração feita por um justo pode muito em seus efeitos.”", referencia:"Tiago 5:16"},
+    {tipo:"p", n:"¹²⁰", texto:"A oração não é uma fórmula."},
+    {tipo:"p", n:"¹²¹", texto:"Não é uma tentativa de controlar Deus."},
+    {tipo:"p", n:"¹²²", texto:"É uma expressão de confiança e dependência."},
+
+    {tipo:"subtitulo", texto:"O QUE EU APRENDI"},
+    {tipo:"p", n:"¹²³", texto:"Quando penso naquela mulher, lembro-me de três coisas."},
+    {tipo:"p", n:"¹²⁴", texto:"Primeiro: havia uma situação que parecia impossível.", destaque:true},
+    {tipo:"p", n:"¹²⁵", texto:"Segundo: nós não tínhamos recursos humanos suficientes para resolver aquela situação.", destaque:true},
+    {tipo:"p", n:"¹²⁶", texto:"Terceiro: colocamos aquela situação diante de Deus.", destaque:true},
+    {tipo:"p", n:"¹²⁷", texto:"A febre desapareceu."},
+    {tipo:"p", n:"¹²⁸", texto:"Depois veio a cirurgia."},
+    {tipo:"p", n:"¹²⁹", texto:"E posteriormente aquela mulher voltou para nos visitar, já em recuperação."},
+    {tipo:"p", n:"¹³⁰", texto:"A experiência ficou gravada em minha memória."},
+    {tipo:"p", n:"¹³¹", texto:"Não porque eu tenha feito alguma coisa extraordinária."},
+    {tipo:"p", n:"¹³²", texto:"Mas porque, ainda no começo da minha caminhada, Deus me permitiu testemunhar aquilo que fortaleceu minha fé."},
+
+    {tipo:"subtitulo", texto:"O DEUS QUE CONTINUA OPERANDO"},
+    {tipo:"p", n:"¹³³", texto:"Desde aquele dia, passei a compreender ainda mais profundamente uma verdade:"},
+    {tipo:"p", n:"¹³⁴", texto:"Deus continua operando.", destaque:true},
+    {tipo:"p", n:"¹³⁵", texto:"Ele continua ouvindo orações."},
+    {tipo:"p", n:"¹³⁶", texto:"Continua sustentando os enfermos."},
+    {tipo:"p", n:"¹³⁷", texto:"Continua fortalecendo famílias."},
+    {tipo:"p", n:"¹³⁸", texto:"Continua abrindo caminhos."},
+    {tipo:"p", n:"¹³⁹", texto:"Continua realizando Sua vontade."},
+    {tipo:"p", n:"¹⁴⁰", texto:"Mas Ele continua sendo soberano."},
+    {tipo:"p", n:"¹⁴¹", texto:"Por isso, nossa fé não pode estar baseada na exigência de que Deus faça exatamente aquilo que esperamos."},
+    {tipo:"p", n:"¹⁴²", texto:"Nossa fé está baseada em quem Ele é."},
+    {tipo:"p", n:"¹⁴³", texto:"Quando Deus cura, damos glória a Deus."},
+    {tipo:"p", n:"¹⁴⁴", texto:"Quando Deus sustenta, damos glória a Deus."},
+    {tipo:"p", n:"¹⁴⁵", texto:"Quando Deus conduz através de um tratamento, damos glória a Deus."},
+    {tipo:"p", n:"¹⁴⁶", texto:"Quando precisamos esperar, continuamos confiando nEle."},
+    {tipo:"p", n:"¹⁴⁷", texto:"Porque o nosso Deus não deixa de ser Deus quando a resposta demora."},
+
+    {tipo:"subtitulo", texto:"UMA MEMÓRIA QUE PERMANECE"},
+    {tipo:"p", n:"¹⁴⁸", texto:"Aquela mulher voltou."},
+    {tipo:"p", n:"¹⁴⁹", texto:"Trouxe consigo o testemunho da recuperação."},
+    {tipo:"p", n:"¹⁵⁰", texto:"E nós pudemos contemplar aquilo que, para nós, se tornou uma experiência marcante da ação de Deus."},
+    {tipo:"p", n:"¹⁵¹", texto:"Eu era um novo convertido."},
+    {tipo:"p", n:"¹⁵²", texto:"Meu primo também era novo convertido."},
+    {tipo:"p", n:"¹⁵³", texto:"Nossa discipuladora estava conosco."},
+    {tipo:"p", n:"¹⁵⁴", texto:"E Deus nos permitiu participar daquele momento."},
+    {tipo:"p", n:"¹⁵⁵", texto:"Hoje, olhando para trás, compreendo que aquela experiência fazia parte da formação da minha fé."},
+    {tipo:"p", n:"¹⁵⁶", texto:"Antes de grandes responsabilidades ministeriais, Deus estava me ensinando a confiar."},
+    {tipo:"p", n:"¹⁵⁷", texto:"Antes de falar para multidões, eu precisava aprender a interceder por uma pessoa."},
+    {tipo:"p", n:"¹⁵⁸", texto:"Antes de testemunhar publicamente, eu precisava aprender a reconhecer a ação de Deus em uma casa simples."},
+    {tipo:"p", n:"¹⁵⁹", texto:"E aquela experiência permaneceu comigo."},
+
+    {tipo:"subtitulo", texto:"A LIÇÃO"},
+    {tipo:"p", n:"¹⁶⁰", texto:"Nem sempre saberemos como Deus irá agir."},
+    {tipo:"p", n:"¹⁶¹", texto:"Nem sempre compreenderemos os processos."},
+    {tipo:"p", n:"¹⁶²", texto:"Nem sempre veremos a resposta imediatamente."},
+    {tipo:"p", n:"¹⁶³", texto:"Mas podemos continuar orando."},
+    {tipo:"p", n:"¹⁶⁴", texto:"Podemos continuar adorando."},
+    {tipo:"p", n:"¹⁶⁵", texto:"Podemos continuar confiando."},
+    {tipo:"p", n:"¹⁶⁶", texto:"Porque a nossa esperança não está na gravidade da enfermidade."},
+    {tipo:"p", n:"¹⁶⁷", texto:"Nossa esperança está no Senhor."},
+    {tipo:"citacao", n:"¹⁶⁸", texto:"“Clame a mim, e responder-te-ei, e anunciar-te-ei coisas grandes e firmes que não sabes.”", referencia:"Jeremias 33:3"},
+    {tipo:"p", n:"¹⁶⁹", texto:"Aquela mulher estava sofrendo."},
+    {tipo:"p", n:"¹⁷⁰", texto:"Nós fomos até ela para orar."},
+    {tipo:"p", n:"¹⁷¹", texto:"Adoramos."},
+    {tipo:"p", n:"¹⁷²", texto:"Choramos."},
+    {tipo:"p", n:"¹⁷³", texto:"Vimos a febre desaparecer."},
+    {tipo:"p", n:"¹⁷⁴", texto:"Depois acompanhamos sua recuperação."},
+    {tipo:"p", n:"¹⁷⁵", texto:"E aquela experiência ficou registrada em minha memória como uma das primeiras experiências que marcaram profundamente minha caminhada cristã."},
+    {tipo:"p", n:"¹⁷⁶", texto:"O Deus que operava milagres continua sendo Deus.", destaque:true},
+    {tipo:"p", n:"¹⁷⁷", texto:"O Deus que ouve a oração continua ouvindo.", destaque:true},
+    {tipo:"p", n:"¹⁷⁸", texto:"E toda a glória pertence a Ele.", destaque:true}
+];
+
+/* Cria os elementos de cada unidade editorial */
+function criarUnidade(item) {
+    let elemento;
+
+    if (item.tipo === "titulo") {
+        elemento = document.createElement("div");
+        elemento.className = "titulo-capitulo";
+        elemento.textContent = item.texto;
+        return elemento;
+    }
+
+    if (item.tipo === "credito") {
+        elemento = document.createElement("div");
+        elemento.className = "credito";
+        elemento.textContent = item.texto;
+        return elemento;
+    }
+
+    if (item.tipo === "subtitulo") {
+        elemento = document.createElement("h2");
+        elemento.textContent = item.texto;
+        return elemento;
+    }
+
+    if (item.tipo === "citacao") {
+        const grupo = document.createElement("div");
+        grupo.className = "grupo-citacao";
+
+        const citacao = document.createElement("p");
+        citacao.className = "citacao";
+        citacao.innerHTML = `<span class="numero">${item.n}</span>${item.texto}`;
+
+        const referencia = document.createElement("p");
+        referencia.className = "referencia";
+        referencia.textContent = "📖 " + item.referencia;
+
+        grupo.appendChild(citacao);
+        grupo.appendChild(referencia);
+        return grupo;
+    }
+
+    elemento = document.createElement("p");
+    if (item.destaque) elemento.classList.add("destaque");
+
+    const numero = document.createElement("span");
+    numero.className = "numero";
+    numero.textContent = item.n;
+
+    elemento.appendChild(numero);
+    elemento.appendChild(document.createTextNode(item.texto));
+
+    return elemento;
+}
+
+/* Cria a estrutura de uma página */
+function criarPagina(numero, lado) {
+    const pagina = document.createElement("section");
+    pagina.className = `pagina ${lado}`;
+
+    const cabecalho = document.createElement("div");
+    cabecalho.className = "cabecalho-pagina";
+
+    const esquerda = document.createElement("span");
+    esquerda.textContent = "ATOS 29 • A HISTÓRIA CONTINUA";
+
+    const direita = document.createElement("span");
+    direita.textContent = "CAPÍTULO 8";
+
+    cabecalho.append(esquerda, direita);
+
+    const miolo = document.createElement("div");
+    miolo.className = "miolo";
+
+    const rodape = document.createElement("div");
+    rodape.className = "rodape-pagina";
+
+    const instituicao = document.createElement("span");
+    instituicao.textContent = "MINISTÉRIO ATALAIA";
+
+    const numeroPagina = document.createElement("span");
+    numeroPagina.textContent = numero;
+
+    rodape.append(instituicao, numeroPagina);
+    pagina.append(cabecalho, miolo, rodape);
+
+    return {pagina, miolo};
+}
+
+/*
+    Paginação automática:
+    O navegador calcula a ocupação das duas colunas.
+    Quando o conteúdo ultrapassa a largura disponível,
+    a unidade é transferida integralmente para a página seguinte.
+*/
+function calcularPaginas() {
+    const medidor = document.getElementById("medidor");
+    medidor.innerHTML = "";
+
+    const paginas = [];
+    let unidades = [];
+
+    let estrutura = criarPagina("", "direita");
+    medidor.appendChild(estrutura.pagina);
+
+    function finalizarPagina() {
+        if (unidades.length) {
+            paginas.push(unidades);
+        }
+        unidades = [];
+    }
+
+    conteudo.forEach(item => {
+        const unidade = criarUnidade(item);
+        estrutura.miolo.appendChild(unidade);
+
+        const ultrapassou =
+            estrutura.miolo.scrollWidth > estrutura.miolo.clientWidth + 2;
+
+        if (ultrapassou && unidades.length > 0) {
+            estrutura.miolo.removeChild(unidade);
+            finalizarPagina();
+
+            medidor.removeChild(estrutura.pagina);
+            estrutura = criarPagina("", "direita");
+            medidor.appendChild(estrutura.pagina);
+
+            estrutura.miolo.appendChild(unidade);
+            unidades.push(item);
+        } else {
+            unidades.push(item);
+        }
+    });
+
+    finalizarPagina();
+    medidor.innerHTML = "";
+
+    return paginas;
+}
+
+let paginas = [];
+let paginaAtual = 0;
+let modoCelular = window.matchMedia("(max-width: 850px)");
+
+const paginaEsquerda = document.getElementById("paginaEsquerda");
+const paginaDireita = document.getElementById("paginaDireita");
+const contador = document.getElementById("contador");
+const botaoAnterior = document.getElementById("anterior");
+const botaoProxima = document.getElementById("proxima");
+
+function preencherPagina(destino, unidades, numero, lado) {
+    const estrutura = criarPagina(numero, lado);
+    destino.replaceWith(estrutura.pagina);
+    destino = estrutura.pagina;
+
+    unidades.forEach(item => {
+        estrutura.miolo.appendChild(criarUnidade(item));
+    });
+
+    return destino;
+}
+
+function atualizarLivro(animacao = "") {
+    const celular = modoCelular.matches;
+
+    let esquerdaIndex;
+    let direitaIndex;
+
+    if (celular) {
+        esquerdaIndex = paginaAtual;
+        direitaIndex = -1;
+    } else {
+        esquerdaIndex = paginaAtual;
+        direitaIndex = paginaAtual + 1;
+    }
+
+    if (celular) {
+        const dados = paginas[esquerdaIndex] || [];
+        const numero = esquerdaIndex + 1;
+
+        const nova = criarPagina(numero, "direita");
+        dados.forEach(item => nova.miolo.appendChild(criarUnidade(item)));
+
+        paginaEsquerda.replaceWith(nova.pagina);
+        paginaDireita.style.display = "none";
+
+        const livro = document.getElementById("livro");
+        livro.innerHTML = "";
+        livro.appendChild(nova.pagina);
+    } else {
+        const esquerda = criarPagina(
+            esquerdaIndex + 1,
+            "esquerda"
+        );
+
+        (paginas[esquerdaIndex] || []).forEach(item => {
+            esquerda.miolo.appendChild(criarUnidade(item));
+        });
+
+        const direita = criarPagina(
+            direitaIndex + 1,
+            "direita"
+        );
+
+        (paginas[direitaIndex] || []).forEach(item => {
+            direita.miolo.appendChild(criarUnidade(item));
+        });
+
+        const livro = document.getElementById("livro");
+        livro.innerHTML = "";
+
+        livro.appendChild(esquerda.pagina);
+
+        const lombada = document.createElement("div");
+        lombada.className = "lombada";
+        livro.appendChild(lombada);
+
+        if (direitaIndex < paginas.length) {
+            livro.appendChild(direita.pagina);
+        } else {
+            const paginaVazia = criarPagina("", "direita");
+            livro.appendChild(paginaVazia.pagina);
+        }
+    }
+
+    const totalVisivel = celular ? paginas.length : Math.ceil(paginas.length / 2);
+    const paginaExibida = celular
+        ? paginaAtual + 1
+        : Math.min(paginaAtual + 1, paginas.length);
+
+    contador.textContent = celular
+        ? `Página ${paginaExibida} de ${paginas.length}`
+        : `Páginas ${paginaExibida}–${Math.min(paginaAtual + 2, paginas.length)} de ${paginas.length}`;
+
+    botaoAnterior.disabled = paginaAtual <= 0;
+    botaoProxima.disabled = celular
+        ? paginaAtual >= paginas.length - 1
+        : paginaAtual + 2 >= paginas.length;
+
+    const livro = document.getElementById("livro");
+    livro.classList.remove("animar-proxima", "animar-anterior");
+
+    if (animacao) {
+        void livro.offsetWidth;
+        livro.classList.add(animacao);
+    }
+}
+
+function avancar() {
+    const passo = modoCelular.matches ? 1 : 2;
+    const limite = modoCelular.matches
+        ? paginas.length - 1
+        : paginas.length - 2;
+
+    if (paginaAtual < limite) {
+        paginaAtual += passo;
+        atualizarLivro("animar-proxima");
+    }
+}
+
+function voltar() {
+    const passo = modoCelular.matches ? 1 : 2;
+
+    if (paginaAtual > 0) {
+        paginaAtual = Math.max(0, paginaAtual - passo);
+        atualizarLivro("animar-anterior");
+    }
+}
+
+botaoAnterior.addEventListener("click", voltar);
+botaoProxima.addEventListener("click", avancar);
+
+document.addEventListener("keydown", evento => {
+    if (evento.key === "ArrowRight") avancar();
+    if (evento.key === "ArrowLeft") voltar();
+});
+
+/* Recalcula a diagramação quando a tela muda de tamanho */
+let temporizadorRedimensionamento;
+
+window.addEventListener("resize", () => {
+    clearTimeout(temporizadorRedimensionamento);
+
+    temporizadorRedimensionamento = setTimeout(() => {
+        const estavaNoCelular = modoCelular.matches;
+        const novaPagina = modoCelular.matches ? paginaAtual : paginaAtual;
+
+        paginas = calcularPaginas();
+
+        if (modoCelular.matches) {
+            paginaAtual = Math.min(novaPagina, paginas.length - 1);
+        } else {
+            paginaAtual = Math.min(
+                Math.floor(novaPagina / 2) * 2,
+                Math.max(0, paginas.length - 1)
+            );
+        }
+
+        atualizarLivro();
+    }, 250);
+});
+
+/* Inicialização */
+function iniciarFlipbook() {
+    paginas = calcularPaginas();
+
+    if (!paginas.length) {
+        paginas = [[]];
+    }
+
+    paginaAtual = 0;
+    atualizarLivro();
+}
+
+window.addEventListener("load", iniciarFlipbook);
+</script>
+
+</body>
+</html>

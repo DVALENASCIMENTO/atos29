@@ -1,0 +1,936 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#17130f">
+<title>ATOS 29 — Capítulo 18 | Ministério Atalaia</title>
+
+<style>
+:root {
+    --papel: #f3ecd9;
+    --papel-escuro: #e8ddc4;
+    --tinta: #292317;
+    --dourado: #b99a62;
+    --fundo: #17130f;
+}
+
+* { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    padding: 24px 12px 30px;
+    color: #eee5d3;
+    background:
+        radial-gradient(ellipse at center, #403528 0%, #211b15 55%, #100e0b 100%);
+    font-family: Georgia, "Times New Roman", serif;
+}
+
+.cabecalho-site {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #e6d5b4;
+}
+
+.cabecalho-site .marca {
+    font-size: 12px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+.cabecalho-site h1 {
+    margin: 9px 0 4px;
+    font-size: clamp(18px, 3vw, 27px);
+    letter-spacing: 1.5px;
+    font-weight: normal;
+}
+
+.cabecalho-site p {
+    margin: 0;
+    color: #bca987;
+    font-size: 12px;
+    letter-spacing: 2px;
+}
+
+.livro-area {
+    width: min(1160px, 100%);
+    margin: auto;
+}
+
+.livro {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    gap: 0;
+    min-height: 700px;
+    perspective: 1800px;
+    filter: drop-shadow(0 18px 24px rgba(0,0,0,.55));
+}
+
+.pagina {
+    position: relative;
+    display: none;
+    width: 50%;
+    height: min(78vh, 850px);
+    min-height: 620px;
+    padding: 30px 28px 38px;
+    overflow: hidden;
+    color: var(--tinta);
+    background:
+        radial-gradient(ellipse at 20% 15%, rgba(255,255,255,.36), transparent 50%),
+        radial-gradient(ellipse at 80% 85%, rgba(130,100,50,.08), transparent 55%),
+        repeating-linear-gradient(
+            0deg,
+            rgba(90,70,40,.018) 0px,
+            rgba(90,70,40,.018) 1px,
+            transparent 1px,
+            transparent 4px
+        ),
+        linear-gradient(100deg, var(--papel), #f6efdf 48%, var(--papel-escuro));
+    border: 1px solid rgba(104,83,48,.35);
+}
+
+.pagina.esquerda {
+    border-radius: 5px 0 0 5px;
+    box-shadow: inset -13px 0 20px -18px #342719;
+}
+
+.pagina.direita {
+    border-radius: 0 5px 5px 0;
+    background:
+        radial-gradient(ellipse at 80% 15%, rgba(255,255,255,.3), transparent 50%),
+        repeating-linear-gradient(
+            0deg,
+            rgba(90,70,40,.018) 0px,
+            rgba(90,70,40,.018) 1px,
+            transparent 1px,
+            transparent 4px
+        ),
+        linear-gradient(260deg, var(--papel), #f6efdf 48%, var(--papel-escuro));
+    box-shadow: inset 13px 0 20px -18px #342719;
+}
+
+.pagina.visivel { display: block; }
+
+.pagina.animar {
+    animation: virar .38s ease;
+}
+
+@keyframes virar {
+    from { opacity: .45; transform: rotateY(-3deg); }
+    to { opacity: 1; transform: rotateY(0); }
+}
+
+.lombada {
+    display: none;
+    width: 14px;
+    height: min(78vh, 850px);
+    min-height: 620px;
+    z-index: 2;
+    background: linear-gradient(
+        90deg,
+        rgba(50,35,20,.18),
+        rgba(35,25,15,.55),
+        rgba(255,255,255,.15),
+        rgba(50,35,20,.18)
+    );
+}
+
+.pagina-cabecalho {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 8px;
+    margin-bottom: 14px;
+    border-bottom: 1px solid rgba(70,55,30,.55);
+    color: #67583d;
+    font-size: 9px;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+}
+
+.pagina-cabecalho span:last-child {
+    text-align: right;
+}
+
+.colunas {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 23px;
+    height: calc(100% - 78px);
+}
+
+.coluna {
+    min-width: 0;
+    height: 100%;
+    overflow: hidden;
+    text-align: justify;
+    font-size: 12px;
+    line-height: 1.48;
+    hyphens: auto;
+    overflow-wrap: break-word;
+}
+
+.coluna + .coluna {
+    border-left: 1px solid rgba(110,90,55,.18);
+    padding-left: 12px;
+}
+
+.coluna p {
+    margin: 0 0 6px;
+    text-indent: 10px;
+}
+
+.coluna p.sem-recuo { text-indent: 0; }
+
+.coluna sup {
+    font-size: .72em;
+    line-height: 0;
+    vertical-align: super;
+    font-weight: bold;
+    margin-right: 2px;
+}
+
+.coluna h2 {
+    margin: 0 0 9px;
+    text-align: center;
+    font-size: 15px;
+    line-height: 1.25;
+    font-weight: bold;
+    letter-spacing: .4px;
+    text-transform: uppercase;
+}
+
+.coluna h3 {
+    margin: 12px 0 7px;
+    font-size: 10px;
+    line-height: 1.3;
+    text-align: left;
+    font-weight: bold;
+    letter-spacing: .35px;
+    text-transform: uppercase;
+    break-after: avoid;
+}
+
+.coluna .titulo-principal {
+    font-size: 17px;
+    margin: 6px 0 16px;
+}
+
+.coluna blockquote {
+    margin: 8px 8px 3px 13px;
+    padding-left: 9px;
+    border-left: 1px solid #a18b62;
+    font-style: italic;
+    font-size: .96em;
+    line-height: 1.42;
+    text-align: left;
+}
+
+.coluna .referencia {
+    margin: 3px 8px 10px 22px;
+    font-size: .86em;
+    text-align: right;
+    font-weight: bold;
+    font-style: normal;
+}
+
+.coluna .destaque {
+    font-weight: bold;
+    text-indent: 0;
+}
+
+.rodape-pagina {
+    position: absolute;
+    bottom: 12px;
+    left: 28px;
+    right: 28px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #756447;
+    font-size: 9px;
+    letter-spacing: 1px;
+    border-top: 1px solid rgba(70,55,30,.35);
+    padding-top: 6px;
+}
+
+.controles {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin: 22px auto 0;
+}
+
+.controles button {
+    border: 1px solid #8f7954;
+    background: linear-gradient(#4b3d2b, #2d241a);
+    color: #f3e7d0;
+    padding: 11px 20px;
+    font-family: Georgia, serif;
+    font-size: 11px;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: .2s;
+}
+
+.controles button:hover:not(:disabled) {
+    background: linear-gradient(#665239, #40301f);
+    border-color: #c1a16b;
+}
+
+.controles button:disabled {
+    opacity: .35;
+    cursor: not-allowed;
+}
+
+.contador {
+    min-width: 115px;
+    text-align: center;
+    color: #e0cfad;
+    font-size: 12px;
+}
+
+.institucional {
+    margin-top: 20px;
+    text-align: center;
+    color: #b8a27d;
+    font-size: 10px;
+    letter-spacing: 3px;
+}
+
+#medidor {
+    position: absolute;
+    left: -100000px;
+    top: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+#medidor .pagina {
+    display: block;
+}
+
+#medidor .pagina .coluna {
+    overflow: visible;
+    height: auto;
+}
+
+@media (max-width: 760px) {
+    body { padding: 12px 7px 22px; }
+
+    .livro {
+        min-height: 0;
+        display: block;
+    }
+
+    .pagina {
+        display: none;
+        width: 100%;
+        height: 78vh;
+        min-height: 540px;
+        max-height: 790px;
+        padding: 22px 19px 36px;
+        border-radius: 4px !important;
+        box-shadow: 0 8px 22px rgba(0,0,0,.4) !important;
+    }
+
+    .pagina.visivel { display: block; }
+
+    .pagina.direita { display: none !important; }
+
+    .lombada { display: none !important; }
+
+    .colunas {
+        display: block;
+        height: calc(100% - 72px);
+    }
+
+    .coluna {
+        height: 100%;
+        font-size: 12.5px;
+        line-height: 1.52;
+    }
+
+    .coluna + .coluna { display: none; }
+
+    .rodape-pagina {
+        left: 19px;
+        right: 19px;
+    }
+
+    .controles { gap: 7px; }
+
+    .controles button {
+        padding: 10px 13px;
+        font-size: 10px;
+    }
+}
+
+@media (max-width: 380px) {
+    .coluna { font-size: 11.5px; }
+    .pagina { padding-left: 15px; padding-right: 15px; }
+}
+</style>
+</head>
+
+<body>
+
+<header class="cabecalho-site">
+    <div class="marca">Ministério Atalaia</div>
+    <h1>ATOS 29 — A HISTÓRIA CONTINUA</h1>
+    <p>CAPÍTULO 18</p>
+</header>
+
+<main class="livro-area">
+    <div class="livro" id="livro" aria-label="Flipbook do capítulo 18"></div>
+
+    <div class="controles">
+        <button id="anterior" type="button">◀ ANTERIOR</button>
+        <span class="contador" id="contador">Página 1</span>
+        <button id="proxima" type="button">PRÓXIMA ▶</button>
+    </div>
+
+    <div class="institucional">MINISTÉRIO ATALAIA</div>
+</main>
+
+<div id="medidor" aria-hidden="true"></div>
+
+<!-- CONTEÚDO ORIGINAL DO CAPÍTULO -->
+<div id="conteudo" hidden>
+
+<h2 class="titulo-principal">QUANDO DEUS DEVOLVE A ESPERANÇA</h2>
+
+<h3>UM ENCONTRO NO POSTO DE COMBUSTÍVEIS</h3>
+<p><sup>1</sup> Certa vez, parei em um posto de combustíveis para abastecer o carro.</p>
+<p><sup>2</sup> Enquanto estávamos ali, um homem se aproximou pedindo uma esmola.</p>
+<p><sup>3</sup> À primeira vista, poderia parecer apenas mais uma pessoa necessitada pedindo ajuda.</p>
+<p><sup>4</sup> Mas, naquele momento, senti que Deus queria fazer algo maior.</p>
+<p><sup>5</sup> Em vez de simplesmente ajudá-lo financeiramente, comecei a conversar com ele.</p>
+<p><sup>6</sup> Anunciei o Evangelho de Jesus Cristo.</p>
+<p><sup>7</sup> Falei sobre o amor de Deus, sobre o perdão dos pecados e sobre a esperança que existe para todo aquele que entrega sua vida ao Senhor.</p>
+<p><sup>8</sup> Aquele encontro, que começou de maneira tão simples, logo revelou uma história de profunda dor.</p>
+
+<h3>UMA VIDA CHEGANDO AO LIMITE</h3>
+<p><sup>9</sup> Enquanto conversávamos, aquele homem abriu o coração.</p>
+<p><sup>10</sup> Ele contou que sua vida estava completamente destruída.</p>
+<p><sup>11</sup> Estava <strong>desempregado</strong>.</p>
+<p><sup>12</sup> Não havia alimento em sua casa.</p>
+<p><sup>13</sup> O <strong>botijão de gás estava vazio</strong>.</p>
+<p><sup>14</sup> Morava em uma casa alugada.</p>
+<p><sup>15</sup> E, como não conseguia pagar os aluguéis atrasados, sabia que poderia ser despejado a qualquer momento.</p>
+<p><sup>16</sup> As dificuldades haviam se acumulado.</p>
+<p><sup>17</sup> Faltava trabalho.</p>
+<p><sup>18</sup> Faltava alimento.</p>
+<p><sup>19</sup> Faltava gás.</p>
+<p><sup>20</sup> Havia a ameaça de perder a própria casa.</p>
+<p><sup>21</sup> E, acima de tudo, havia algo ainda mais grave:</p>
+<p class="destaque"><sup>22</sup> ele havia perdido a esperança.</p>
+<p><sup>23</sup> Aquela situação me fez lembrar das palavras de Jesus:</p>
+<blockquote>“O ladrão não vem senão a roubar, a matar e a destruir; eu vim para que tenham vida e a tenham em abundância.”</blockquote>
+<p class="referencia">João 10:10</p>
+
+<h3>UMA NOVA DECISÃO</h3>
+<p><sup>24</sup> Naquele mesmo posto de combustíveis, Deus começou a transformar aquela história.</p>
+<p><sup>25</sup> Depois de ouvir a mensagem do Evangelho, aquele homem reconheceu sua necessidade de Cristo.</p>
+<p><sup>26</sup> Arrependeu-se dos seus pecados.</p>
+<p><sup>27</sup> E entregou sua vida ao Senhor Jesus.</p>
+<p><sup>28</sup> Ali mesmo, naquele lugar tão comum, aconteceu algo que considero muito maior do que o simples encontro entre duas pessoas.</p>
+<p><sup>29</sup> Para mim, ali nasceu uma nova esperança.</p>
+<p><sup>30</sup> Ali começou uma nova caminhada.</p>
+<p><sup>31</sup> Ali começou uma nova história.</p>
+
+<h3>“O SENHOR PODE IR ATÉ A MINHA CASA?”</h3>
+<p><sup>32</sup> Logo depois de aceitar Jesus, aquele homem nos fez um pedido inesperado:</p>
+<p><sup>33</sup> — <strong>O senhor pode ir até a minha casa?</strong></p>
+<p><sup>34</sup> Aceitamos o convite.</p>
+<p><sup>35</sup> E seguimos com ele.</p>
+<p><sup>36</sup> Naquele momento, ainda não sabíamos completamente o que encontraríamos.</p>
+<p><sup>37</sup> Mas, quando chegamos, compreendemos por que ele havia insistido tanto para que fôssemos até sua casa.</p>
+
+<h3>A CORDA</h3>
+<p><sup>38</sup> Assim que entramos, ele nos mostrou uma <strong>corda pendurada</strong>.</p>
+<p><sup>39</sup> Com profunda tristeza, contou que havia preparado aquela corda porque pretendia tirar a própria vida.</p>
+<p><sup>40</sup> Aquela revelação tornou ainda mais evidente a dimensão do desespero que ele estava enfrentando.</p>
+<p><sup>41</sup> Não era apenas desemprego.</p>
+<p><sup>42</sup> Não era apenas falta de alimento.</p>
+<p><sup>43</sup> Não era apenas uma dívida de aluguel.</p>
+<p><sup>44</sup> Era uma pessoa que havia chegado ao ponto de acreditar que não havia mais saída.</p>
+<p><sup>45</sup> A falta de trabalho, a fome, a ameaça de despejo e o desespero haviam roubado sua esperança.</p>
+<p><sup>46</sup> Naquele momento, compreendemos a gravidade da situação.</p>
+
+<h3>UMA VIDA PRECISAVA SER PRESERVADA</h3>
+<p><sup>47</sup> Aquela experiência me fez compreender ainda mais o valor de uma vida.</p>
+<p><sup>48</sup> Enquanto muitos poderiam olhar apenas para um homem pedindo esmola, Deus me permitiu enxergar uma pessoa que precisava ouvir sobre Jesus.</p>
+<p><sup>49</sup> Por trás daquele pedido havia uma história.</p>
+<p><sup>50</sup> Por trás daquela aparência havia sofrimento.</p>
+<p><sup>51</sup> Por trás daquela situação havia uma vida que precisava de esperança.</p>
+<p><sup>52</sup> E naquele momento, nossa atenção estava voltada para aquilo que realmente importava:</p>
+<p class="destaque"><sup>53</sup> a vida daquele homem.</p>
+
+<h3>ORAÇÃO</h3>
+<p><sup>54</sup> Reunimo-nos em oração.</p>
+<p><sup>55</sup> Clamamos ao Senhor pela vida daquele homem, por sua família e por todas as suas necessidades.</p>
+<p><sup>56</sup> Naquele momento, oramos para que Deus interviesse naquela situação.</p>
+<p><sup>57</sup> Em nome de Jesus Cristo, repreendi os pensamentos de suicídio e ordenei que ele retirasse imediatamente aquela corda de sua casa, declarando que sua vida agora pertencia ao Senhor.</p>
+<p><sup>58</sup> Ele obedeceu.</p>
+<p class="destaque"><sup>59</sup> Retirou a corda.</p>
+<p><sup>60</sup> Aquele gesto representou, para mim, uma mudança muito importante.</p>
+<p><sup>61</sup> A corda que havia sido preparada para a morte foi retirada.</p>
+<p><sup>62</sup> A esperança começava a ocupar novamente aquele lugar.</p>
+
+<h3>UMA NOVA CAMINHADA</h3>
+<p><sup>63</sup> A partir daquele dia, aquele homem começou a frequentar a igreja.</p>
+<p><sup>64</sup> Começou uma nova caminhada com Cristo.</p>
+<p><sup>65</sup> Aquele que havia chegado ao ponto de desejar tirar a própria vida agora estava dando os primeiros passos em uma nova direção.</p>
+<p><sup>66</sup> O encontro no posto de combustíveis havia se transformado em um encontro com o Evangelho.</p>
+<p><sup>67</sup> E aquele encontro estava produzindo mudanças.</p>
+
+<h3>DEUS DEVOLVE A ESPERANÇA</h3>
+<p><sup>68</sup> A fidelidade de Deus não demorou a se manifestar.</p>
+<p><sup>69</sup> Ainda naquela mesma semana, aquele homem recebeu uma <strong>botija de gás</strong>.</p>
+<p><sup>70</sup> Também recebeu <strong>alimento para sua casa</strong>.</p>
+<p><sup>71</sup> E, para completar aquela sequência de acontecimentos, foi <strong>chamado de volta ao último emprego onde havia trabalhado</strong>.</p>
+<p><sup>72</sup> Aquilo representou, para mim, um sinal da provisão e do cuidado de Deus naquela situação.</p>
+<p><sup>73</sup> O homem que não tinha alimento.</p>
+<p><sup>74</sup> O homem cujo botijão estava vazio.</p>
+<p><sup>75</sup> O homem que estava ameaçado de despejo.</p>
+<p><sup>76</sup> O homem que havia perdido a esperança.</p>
+<p><sup>77</sup> Agora começava a experimentar uma mudança em sua realidade.</p>
+
+<h3>A PROVISÃO</h3>
+<p><sup>78</sup> Quando penso nessa história, vejo que a necessidade daquele homem não era apenas financeira.</p>
+<p><sup>79</sup> Ele precisava de Cristo.</p>
+<p><sup>80</sup> Precisava de esperança.</p>
+<p><sup>81</sup> Precisava de uma nova direção.</p>
+<p><sup>82</sup> Mas Deus também cuidou de necessidades concretas que faziam parte daquela realidade.</p>
+<p><sup>83</sup> Havia uma casa sem alimento.</p>
+<p><sup>84</sup> Havia um botijão vazio.</p>
+<p><sup>85</sup> Havia falta de trabalho.</p>
+<p><sup>86</sup> E Deus começou a suprir aquelas necessidades.</p>
+<p><sup>87</sup> A Palavra de Deus declara:</p>
+<blockquote>“E o meu Deus, segundo a sua riqueza em glória, há de suprir, em Cristo Jesus, cada uma de vossas necessidades.”</blockquote>
+<p class="referencia">Filipenses 4:19</p>
+
+<h3>UM ENCONTRO QUE NÃO PARECIA POR ACASO</h3>
+<p><sup>88</sup> Naquele momento, tivemos a certeza, segundo a minha percepção daquela experiência, de que Deus havia preparado aquele encontro.</p>
+<p><sup>89</sup> Não havíamos parado naquele posto apenas para abastecer o carro.</p>
+<p><sup>90</sup> Ali estava um homem pedindo ajuda.</p>
+<p><sup>91</sup> Ali estava uma oportunidade de anunciar o Evangelho.</p>
+<p><sup>92</sup> Ali estava uma vida que precisava ouvir sobre Jesus.</p>
+<p><sup>93</sup> E aquele simples encontro acabou conduzindo a uma transformação muito maior.</p>
+<p><sup>94</sup> Um simples abastecimento de combustível tornou-se o início de uma nova história para aquele homem.</p>
+
+<h3>DEUS PODE USAR MOMENTOS COMUNS</h3>
+<p><sup>95</sup> Essa experiência também me ensinou que Deus pode usar acontecimentos aparentemente comuns para realizar algo significativo.</p>
+<p><sup>96</sup> Um posto de combustíveis.</p>
+<p><sup>97</sup> Um homem pedindo esmola.</p>
+<p><sup>98</sup> Uma conversa.</p>
+<p><sup>99</sup> Uma mensagem do Evangelho.</p>
+<p><sup>100</sup> Um convite para ir até sua casa.</p>
+<p><sup>101</sup> Uma corda pendurada.</p>
+<p><sup>102</sup> Uma oração.</p>
+<p><sup>103</sup> Uma decisão.</p>
+<p><sup>104</sup> E, depois, portas começando a se abrir.</p>
+<p><sup>105</sup> Tudo aquilo ficou marcado na minha memória.</p>
+<p><sup>106</sup> Aprendi que não devemos desprezar os encontros que Deus coloca diante de nós.</p>
+<p><sup>107</sup> Às vezes, uma simples conversa pode se transformar em uma oportunidade de anunciar Cristo.</p>
+
+<h3>O VALOR DE UMA VIDA</h3>
+<p><sup>108</sup> Aquela história me fez lembrar que uma vida vale muito.</p>
+<p><sup>109</sup> Jesus ensinou:</p>
+<blockquote>“Pois que aproveita ao homem ganhar o mundo inteiro e perder a sua alma?”</blockquote>
+<p class="referencia">Marcos 8:36</p>
+<p><sup>110</sup> Aquele homem não precisava apenas de dinheiro.</p>
+<p><sup>111</sup> Ele precisava descobrir que sua vida tinha valor.</p>
+<p><sup>112</sup> Precisava compreender que ainda havia esperança.</p>
+<p><sup>113</sup> Precisava saber que sua história não precisava terminar naquele momento.</p>
+<p><sup>114</sup> E o Evangelho lhe apresentou exatamente isso:</p>
+<p class="destaque"><sup>115</sup> Jesus Cristo.</p>
+
+<h3>DO DESESPERO À ESPERANÇA</h3>
+<p><sup>116</sup> Quando chegamos àquela casa, havia uma corda.</p>
+<p><sup>117</sup> Quando saímos dali, havia uma decisão de continuar vivendo.</p>
+<p><sup>118</sup> Quando aquela semana terminou, havia alimento.</p>
+<p><sup>119</sup> Havia gás.</p>
+<p><sup>120</sup> Havia uma oportunidade de trabalho.</p>
+<p><sup>121</sup> E havia também uma nova caminhada com Cristo.</p>
+<p><sup>122</sup> Essa sequência ficou profundamente marcada em meu coração.</p>
+<p><sup>123</sup> Porque mostra como uma situação pode começar a mudar quando a esperança volta a existir.</p>
+
+<h3>JESUS É A NOSSA ESPERANÇA</h3>
+<p><sup>124</sup> A grande mensagem daquela experiência não é sobre mim.</p>
+<p><sup>125</sup> Também não é sobre a corda.</p>
+<p><sup>126</sup> Não é sobre o posto de combustíveis.</p>
+<p><sup>127</sup> Não é sobre o alimento.</p>
+<p><sup>128</sup> Não é sobre o emprego.</p>
+<p><sup>129</sup> É sobre <strong>Jesus Cristo</strong>.</p>
+<p><sup>130</sup> Foi o Evangelho que aquele homem ouviu.</p>
+<p><sup>131</sup> Foi Cristo quem ele recebeu.</p>
+<p><sup>132</sup> E foi a partir daquele encontro que sua história começou a tomar uma nova direção.</p>
+<p><sup>133</sup> A Bíblia declara:</p>
+<blockquote>“Porque para mim o viver é Cristo, e o morrer é lucro.”</blockquote>
+<p class="referencia">Filipenses 1:21</p>
+<p><sup>134</sup> A vida daquele homem precisava encontrar um novo sentido.</p>
+<p><sup>135</sup> E o Evangelho apresentou a ele uma nova esperança.</p>
+
+<h3>QUANDO DEUS RESTAURA</h3>
+<p><sup>136</sup> A restauração nem sempre acontece de uma única maneira.</p>
+<p><sup>137</sup> Às vezes, Deus começa restaurando o coração.</p>
+<p><sup>138</sup> Depois, abre uma porta.</p>
+<p><sup>139</sup> Supre uma necessidade.</p>
+<p><sup>140</sup> Coloca pessoas no caminho.</p>
+<p><sup>141</sup> Dá forças para continuar.</p>
+<p><sup>142</sup> E conduz a pessoa passo a passo.</p>
+<p><sup>143</sup> Foi assim que compreendi aquela experiência.</p>
+<p><sup>144</sup> Primeiro, aquele homem ouviu o Evangelho.</p>
+<p><sup>145</sup> Depois, entregou sua vida a Cristo.</p>
+<p><sup>146</sup> Em seguida, abandonou aquela decisão de tirar a própria vida.</p>
+<p><sup>147</sup> Começou a frequentar a igreja.</p>
+<p><sup>148</sup> E, naquela mesma semana, recebeu provisão para necessidades básicas e foi chamado novamente para trabalhar.</p>
+<p><sup>149</sup> Era o começo de uma restauração.</p>
+
+<h3>UMA LIÇÃO PARA MIM</h3>
+<p><sup>150</sup> Aquele encontro também transformou alguma coisa dentro de mim.</p>
+<p><sup>151</sup> Aprendi novamente que não devemos olhar apenas para aquilo que está diante dos nossos olhos.</p>
+<p><sup>152</sup> Um homem pedindo esmola poderia ser visto apenas como alguém necessitado de dinheiro.</p>
+<p><sup>153</sup> Mas havia uma história escondida.</p>
+<p><sup>154</sup> Havia uma família.</p>
+<p><sup>155</sup> Havia necessidades.</p>
+<p><sup>156</sup> Havia desespero.</p>
+<p><sup>157</sup> Havia uma vida em risco.</p>
+<p><sup>158</sup> E havia uma oportunidade para anunciar Jesus.</p>
+<p><sup>159</sup> Por isso, aprendi a prestar mais atenção às pessoas.</p>
+<p><sup>160</sup> A ouvir.</p>
+<p><sup>161</sup> A conversar.</p>
+<p><sup>162</sup> A anunciar o Evangelho.</p>
+<p><sup>163</sup> Porque nunca sabemos o que alguém está enfrentando por dentro.</p>
+
+<h3>ATOS 29</h3>
+<p><sup>164</sup> Quando olho para trás e lembro daquele dia, vejo uma das experiências mais fortes da minha caminhada.</p>
+<p><sup>165</sup> Eu parei em um posto de combustíveis para abastecer o carro.</p>
+<p><sup>166</sup> Um homem se aproximou pedindo esmola.</p>
+<p><sup>167</sup> Conversei com ele.</p>
+<p><sup>168</sup> Anunciei o Evangelho.</p>
+<p><sup>169</sup> Ele abriu o coração e contou tudo aquilo que estava vivendo.</p>
+<p><sup>170</sup> Estava desempregado.</p>
+<p><sup>171</sup> Não havia alimento em casa.</p>
+<p><sup>172</sup> O botijão estava vazio.</p>
+<p><sup>173</sup> O aluguel estava atrasado.</p>
+<p><sup>174</sup> E ele estava prestes a ser despejado.</p>
+<p><sup>175</sup> Mas a situação era ainda mais grave.</p>
+<p><sup>176</sup> Ele havia preparado uma corda para tirar a própria vida.</p>
+<p><sup>177</sup> Fomos até sua casa.</p>
+<p><sup>178</sup> Oramos.</p>
+<p><sup>179</sup> Clamamos ao Senhor.</p>
+<p><sup>180</sup> E ele retirou a corda.</p>
+<p><sup>181</sup> Depois daquele dia, começou a frequentar a igreja.</p>
+<p><sup>182</sup> E, ainda naquela mesma semana, recebeu uma botija de gás, alimento para sua casa e foi chamado de volta ao seu antigo emprego.</p>
+<p><sup>183</sup> Para mim, aquela história ficou marcada como uma história de <strong>transformação, restauração e esperança</strong>.</p>
+<p><sup>184</sup> Aquele homem estava pensando na morte.</p>
+<p><sup>185</sup> Mas encontrou uma razão para continuar.</p>
+<p><sup>186</sup> Estava sem esperança.</p>
+<p><sup>187</sup> Mas ouviu falar de Jesus.</p>
+<p><sup>188</sup> Estava sem trabalho.</p>
+<p><sup>189</sup> Mas uma porta se abriu.</p>
+<p><sup>190</sup> Estava sem alimento.</p>
+<p><sup>191</sup> Mas recebeu provisão.</p>
+<p><sup>192</sup> Estava diante de uma decisão de morte.</p>
+<p><sup>193</sup> Mas escolheu continuar vivendo.</p>
+<p><sup>194</sup> E, acima de tudo, encontrou Cristo.</p>
+<p><sup>195</sup> Hoje, quando me lembro daquele encontro, lembro-me das palavras de Jesus:</p>
+<blockquote>“Eu vim para que tenham vida e a tenham em abundância.”</blockquote>
+<p class="referencia">João 10:10</p>
+<p><sup>196</sup> Naquele dia, Deus transformou um cenário de morte em um testemunho de <strong>salvação, esperança e restauração</strong>.</p>
+<p><sup>197</sup> E aquela experiência me ensinou uma verdade que carrego comigo:</p>
+<p class="destaque"><sup>198</sup> nunca devemos olhar para uma pessoa apenas pela situação em que ela se encontra.</p>
+<p><sup>199</sup> Porque Deus pode começar uma nova história justamente no lugar onde alguém acredita que tudo terminou.</p>
+<p class="destaque"><sup>200</sup> Enquanto há vida, há esperança.</p>
+<p class="destaque"><sup>201</sup> Enquanto há esperança, há oportunidade de anunciar Jesus.</p>
+<p><sup>202</sup> E enquanto houver pessoas precisando ouvir o Evangelho, continuaremos anunciando:</p>
+<p class="destaque"><sup>203</sup> Jesus Cristo salva.</p>
+<p class="destaque"><sup>204</sup> Jesus Cristo restaura.</p>
+<p class="destaque"><sup>205</sup> Jesus Cristo transforma.</p>
+<p class="destaque"><sup>206</sup> Jesus Cristo dá esperança.</p>
+<p><sup>207</sup> A Ele seja toda a honra, toda a glória e todo o louvor.</p>
+<p class="destaque"><sup>208</sup> ATOS 29 continua.</p>
+
+</div>
+
+<script>
+(() => {
+    "use strict";
+
+    const livro = document.getElementById("livro");
+    const medidor = document.getElementById("medidor");
+    const conteudo = document.getElementById("conteudo");
+    const anterior = document.getElementById("anterior");
+    const proxima = document.getElementById("proxima");
+    const contador = document.getElementById("contador");
+
+    let paginas = [];
+    let paginaAtual = 0;
+    let colunasPorPagina = 2;
+    let temporizadorRedimensionamento = null;
+
+    function criarPagina(numero, medicao = false) {
+        const pagina = document.createElement("section");
+        pagina.className = "pagina";
+
+        if (numero % 2 === 0) {
+            pagina.classList.add("direita");
+        } else {
+            pagina.classList.add("esquerda");
+        }
+
+        const cabecalho = document.createElement("div");
+        cabecalho.className = "pagina-cabecalho";
+        cabecalho.innerHTML = `
+            <span>ATOS 29 • A HISTÓRIA CONTINUA</span>
+            <span>CAPÍTULO 18</span>
+        `;
+
+        const colunas = document.createElement("div");
+        colunas.className = "colunas";
+
+        const coluna1 = document.createElement("div");
+        coluna1.className = "coluna";
+
+        const coluna2 = document.createElement("div");
+        coluna2.className = "coluna";
+
+        colunas.appendChild(coluna1);
+
+        if (colunasPorPagina === 2) {
+            colunas.appendChild(coluna2);
+        }
+
+        const rodape = document.createElement("div");
+        rodape.className = "rodape-pagina";
+        rodape.innerHTML = `
+            <span>MINISTÉRIO ATALAIA</span>
+            <span class="numero-pagina">${numero}</span>
+        `;
+
+        pagina.append(cabecalho, colunas, rodape);
+
+        if (medicao) {
+            medidor.appendChild(pagina);
+        } else {
+            livro.appendChild(pagina);
+        }
+
+        return {
+            pagina,
+            colunas: colunasPorPagina === 2
+                ? [coluna1, coluna2]
+                : [coluna1]
+        };
+    }
+
+    function obterUnidades() {
+        const elementos = Array.from(conteudo.children);
+        const unidades = [];
+
+        for (let i = 0; i < elementos.length; i++) {
+            const atual = elementos[i];
+
+            if (atual.tagName === "H3") {
+                const grupo = [atual];
+
+                if (elementos[i + 1]) {
+                    grupo.push(elementos[i + 1]);
+                    i++;
+                }
+
+                unidades.push(grupo);
+            } else if (atual.tagName === "BLOCKQUOTE") {
+                const grupo = [atual];
+
+                if (
+                    elementos[i + 1] &&
+                    elementos[i + 1].classList.contains("referencia")
+                ) {
+                    grupo.push(elementos[i + 1]);
+                    i++;
+                }
+
+                unidades.push(grupo);
+            } else {
+                unidades.push([atual]);
+            }
+        }
+
+        return unidades;
+    }
+
+    function montarFlipbook() {
+        livro.innerHTML = "";
+        medidor.innerHTML = "";
+        paginas = [];
+        paginaAtual = 0;
+
+        colunasPorPagina = window.matchMedia("(max-width: 760px)").matches ? 1 : 2;
+
+        const unidades = obterUnidades();
+
+        let numeroPagina = 1;
+        let estrutura = criarPagina(numeroPagina, true);
+        let indiceColuna = 0;
+
+        function avancarColuna() {
+            indiceColuna++;
+
+            if (indiceColuna >= colunasPorPagina) {
+                numeroPagina++;
+                estrutura = criarPagina(numeroPagina, true);
+                indiceColuna = 0;
+            }
+        }
+
+        function alturaExcedida(coluna) {
+            return coluna.scrollHeight > coluna.clientHeight + 1;
+        }
+
+        unidades.forEach(grupo => {
+            const coluna = estrutura.colunas[indiceColuna];
+            const marcadores = [];
+
+            grupo.forEach(elemento => {
+                const clone = elemento.cloneNode(true);
+                coluna.appendChild(clone);
+                marcadores.push(clone);
+            });
+
+            if (alturaExcedida(coluna) && coluna.children.length > grupo.length) {
+                marcadores.forEach(elemento => elemento.remove());
+                avancarColuna();
+
+                const novaColuna = estrutura.colunas[indiceColuna];
+
+                grupo.forEach(elemento => {
+                    novaColuna.appendChild(elemento.cloneNode(true));
+                });
+
+                if (alturaExcedida(novaColuna)) {
+                    // Um bloco excepcionalmente grande permanece inteiro.
+                    // O conteúdo não é removido nem truncado pelo JavaScript.
+                }
+            } else if (alturaExcedida(coluna) && coluna.children.length === grupo.length) {
+                // Mantém o grupo completo caso ele seja maior que uma coluna.
+            }
+        });
+
+        const paginasMedidas = Array.from(medidor.querySelectorAll(".pagina"));
+
+        paginasMedidas.forEach((pagina, indice) => {
+            const copia = pagina.cloneNode(true);
+            copia.classList.remove("visivel");
+            copia.classList.add(indice % 2 === 0 ? "esquerda" : "direita");
+            copia.querySelector(".numero-pagina").textContent = indice + 1;
+            livro.appendChild(copia);
+            paginas.push(copia);
+        });
+
+        medidor.innerHTML = "";
+        renderizar();
+    }
+
+    function quantidadePorAbertura() {
+        return colunasPorPagina === 1 ? 1 : 2;
+    }
+
+    function renderizar() {
+        const mobile = colunasPorPagina === 1;
+        const total = paginas.length;
+        const inicio = mobile ? paginaAtual : paginaAtual * 2;
+
+        paginas.forEach((pagina, indice) => {
+            pagina.classList.remove("visivel", "animar");
+
+            const deveMostrar = mobile
+                ? indice === inicio
+                : indice === inicio || indice === inicio + 1;
+
+            if (deveMostrar) {
+                pagina.classList.add("visivel");
+                void pagina.offsetWidth;
+                pagina.classList.add("animar");
+            }
+        });
+
+        if (mobile) {
+            contador.textContent = `Página ${Math.min(paginaAtual + 1, total)} de ${total}`;
+            anterior.disabled = paginaAtual <= 0;
+            proxima.disabled = paginaAtual >= total - 1;
+        } else {
+            const primeira = Math.min(inicio + 1, total);
+            const ultima = Math.min(inicio + 2, total);
+
+            contador.textContent = total
+                ? `Páginas ${primeira}–${ultima} de ${total}`
+                : "Página 0";
+
+            anterior.disabled = paginaAtual <= 0;
+            proxima.disabled = inicio + 2 >= total;
+        }
+    }
+
+    function irAnterior() {
+        if (paginaAtual > 0) {
+            paginaAtual--;
+            renderizar();
+        }
+    }
+
+    function irProxima() {
+        const limite = colunasPorPagina === 1
+            ? paginas.length - 1
+            : Math.ceil(paginas.length / 2) - 1;
+
+        if (paginaAtual < limite) {
+            paginaAtual++;
+            renderizar();
+        }
+    }
+
+    anterior.addEventListener("click", irAnterior);
+    proxima.addEventListener("click", irProxima);
+
+    document.addEventListener("keydown", evento => {
+        if (evento.key === "ArrowLeft") irAnterior();
+        if (evento.key === "ArrowRight") irProxima();
+    });
+
+    let toqueInicial = 0;
+
+    livro.addEventListener("touchstart", evento => {
+        toqueInicial = evento.changedTouches[0].screenX;
+    }, { passive: true });
+
+    livro.addEventListener("touchend", evento => {
+        const toqueFinal = evento.changedTouches[0].screenX;
+        const diferenca = toqueFinal - toqueInicial;
+
+        if (Math.abs(diferenca) > 55) {
+            if (diferenca < 0) irProxima();
+            else irAnterior();
+        }
+    }, { passive: true });
+
+    window.addEventListener("resize", () => {
+        clearTimeout(temporizadorRedimensionamento);
+        temporizadorRedimensionamento = setTimeout(montarFlipbook, 180);
+    });
+
+    montarFlipbook();
+})();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,1305 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#17130f">
+<title>ATOS 29 — Capítulo 16 | A Cura de Minha Filha Rachel</title>
+
+<style>
+:root {
+    --papel: #f3ecd9;
+    --papel-claro: #f8f3e7;
+    --tinta: #302719;
+    --tinta-suave: #685b47;
+    --borda: #d4c7a9;
+    --fundo: #17130f;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    background:
+        radial-gradient(ellipse at center, #383027 0%, #211b15 55%, #100e0b 100%);
+    color: var(--tinta);
+    font-family: Georgia, "Times New Roman", serif;
+}
+
+/* =========================================
+   ÁREA EXTERNA DO LIVRO
+========================================= */
+
+.aplicacao {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 24px 18px;
+}
+
+.identidade-superior {
+    color: #e4d7bb;
+    text-align: center;
+    margin-bottom: 18px;
+    letter-spacing: 2px;
+}
+
+.identidade-superior strong {
+    display: block;
+    font-size: 17px;
+    font-weight: normal;
+}
+
+.identidade-superior span {
+    display: block;
+    margin-top: 6px;
+    font-family: Arial, sans-serif;
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: #b9a98b;
+}
+
+/* =========================================
+   LIVRO ABERTO
+========================================= */
+
+.livro {
+    width: min(1180px, 100%);
+    position: relative;
+    perspective: 1800px;
+}
+
+.abertura {
+    display: none;
+    width: 100%;
+    min-height: 690px;
+    position: relative;
+    transform-origin: center;
+    animation: abrirPagina .35s ease;
+}
+
+.abertura.ativa {
+    display: flex;
+}
+
+@keyframes abrirPagina {
+    from {
+        opacity: .65;
+        transform: rotateY(-2deg);
+    }
+    to {
+        opacity: 1;
+        transform: rotateY(0);
+    }
+}
+
+/* =========================================
+   PÁGINAS
+========================================= */
+
+.pagina {
+    width: 50%;
+    min-width: 0;
+    height: 690px;
+    position: relative;
+    overflow: hidden;
+    padding: 34px 35px 44px;
+    background:
+        linear-gradient(
+            90deg,
+            rgba(130, 104, 62, .08),
+            transparent 9%,
+            transparent 90%,
+            rgba(130, 104, 62, .06)
+        ),
+        repeating-linear-gradient(
+            0deg,
+            rgba(120, 96, 60, .018) 0px,
+            rgba(120, 96, 60, .018) 1px,
+            transparent 1px,
+            transparent 4px
+        ),
+        var(--papel);
+    box-shadow:
+        inset 0 0 25px rgba(91, 69, 37, .09),
+        0 9px 24px rgba(0, 0, 0, .35);
+}
+
+.pagina.esquerda {
+    border-radius: 5px 0 0 5px;
+    border-right: 1px solid #d1c3a5;
+    box-shadow:
+        inset -12px 0 18px rgba(93, 68, 35, .07),
+        -5px 8px 20px rgba(0, 0, 0, .24);
+}
+
+.pagina.direita {
+    border-radius: 0 5px 5px 0;
+    border-left: 1px solid #fff9e9;
+    box-shadow:
+        inset 12px 0 18px rgba(93, 68, 35, .055),
+        5px 8px 20px rgba(0, 0, 0, .24);
+}
+
+.pagina::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 7px;
+    pointer-events: none;
+    background: linear-gradient(
+        90deg,
+        rgba(94, 71, 39, .08),
+        transparent
+    );
+}
+
+.pagina.direita::before {
+    left: auto;
+    right: 0;
+    background: linear-gradient(
+        270deg,
+        rgba(94, 71, 39, .08),
+        transparent
+    );
+}
+
+/* =========================================
+   CABEÇALHO E RODAPÉ
+========================================= */
+
+.cabecalho-pagina {
+    height: 25px;
+    margin-bottom: 17px;
+    padding-bottom: 7px;
+    border-bottom: 1px solid #b9aa8b;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    color: #65563e;
+    font-size: 9px;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.cabecalho-pagina span:last-child {
+    font-size: 8px;
+    letter-spacing: .7px;
+}
+
+.rodape-pagina {
+    position: absolute;
+    left: 30px;
+    right: 30px;
+    bottom: 17px;
+    height: 17px;
+    border-top: 1px solid #cbbd9f;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    color: #76664c;
+    font-size: 9px;
+    letter-spacing: 1px;
+}
+
+.numero-pagina {
+    font-size: 11px;
+    font-weight: bold;
+}
+
+/* =========================================
+   COLUNAS BÍBLICAS
+========================================= */
+
+.colunas {
+    height: calc(100% - 82px);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 22px;
+    overflow: hidden;
+}
+
+.coluna {
+    min-width: 0;
+    height: 100%;
+    overflow: hidden;
+    text-align: justify;
+    overflow-wrap: break-word;
+    hyphens: auto;
+    font-size: 12.2px;
+    line-height: 1.48;
+    color: var(--tinta);
+}
+
+.coluna p {
+    margin: 0 0 8px;
+    text-indent: 12px;
+}
+
+.coluna p.destaque {
+    text-indent: 0;
+    font-weight: bold;
+    text-align: center;
+    margin: 9px 2px;
+}
+
+.coluna h2 {
+    margin: 12px 0 15px;
+    text-align: center;
+    font-size: 16px;
+    line-height: 1.35;
+    letter-spacing: .5px;
+    text-transform: uppercase;
+    color: #382d1e;
+}
+
+.coluna h3 {
+    margin: 13px 0 8px;
+    text-align: left;
+    font-size: 11px;
+    line-height: 1.35;
+    font-weight: bold;
+    letter-spacing: .35px;
+    text-transform: uppercase;
+    color: #51432e;
+    break-after: avoid;
+}
+
+.coluna blockquote {
+    margin: 10px 8px 4px 14px;
+    padding-left: 10px;
+    border-left: 1px solid #a89978;
+    font-size: 11.5px;
+    line-height: 1.48;
+    font-style: italic;
+    text-align: left;
+}
+
+.coluna .referencia {
+    margin: 3px 8px 10px 24px;
+    font-size: 10px;
+    text-align: right;
+    font-weight: bold;
+    color: #68583d;
+}
+
+.coluna sup {
+    font-size: .7em;
+    vertical-align: super;
+    line-height: 0;
+    margin-right: 2px;
+    color: #756346;
+}
+
+/* =========================================
+   LOMBADA CENTRAL
+========================================= */
+
+.lombada {
+    position: absolute;
+    z-index: 5;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 18px;
+    transform: translateX(-50%);
+    pointer-events: none;
+    background: linear-gradient(
+        90deg,
+        rgba(66, 48, 27, .02),
+        rgba(67, 49, 28, .13),
+        rgba(255, 248, 226, .24),
+        rgba(65, 46, 25, .13),
+        rgba(65, 46, 25, .02)
+    );
+}
+
+/* =========================================
+   NAVEGAÇÃO
+========================================= */
+
+.controles {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin-top: 24px;
+    color: #e8dcc2;
+    font-family: Arial, sans-serif;
+}
+
+.controles button {
+    border: 1px solid #8c7959;
+    background: linear-gradient(#42382b, #292219);
+    color: #f1e5cc;
+    padding: 11px 23px;
+    min-width: 125px;
+    cursor: pointer;
+    font-size: 11px;
+    letter-spacing: 1.2px;
+    transition: background .2s, transform .2s;
+}
+
+.controles button:hover {
+    background: #5b4b36;
+    transform: translateY(-2px);
+}
+
+.controles button:disabled {
+    opacity: .35;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.indicador {
+    min-width: 110px;
+    text-align: center;
+    font-size: 12px;
+    color: #d8c9aa;
+    letter-spacing: 1px;
+}
+
+.instrucao {
+    margin-top: 14px;
+    color: #9f9178;
+    font-family: Arial, sans-serif;
+    font-size: 10px;
+    text-align: center;
+    letter-spacing: .5px;
+}
+
+/* =========================================
+   CONTEÚDO ORIGINAL
+========================================= */
+
+#conteudo-original {
+    display: none;
+}
+
+/* =========================================
+   RESPONSIVIDADE
+========================================= */
+
+@media (max-width: 760px) {
+    .aplicacao {
+        padding: 15px 8px 25px;
+        justify-content: flex-start;
+    }
+
+    .identidade-superior {
+        margin-bottom: 13px;
+    }
+
+    .identidade-superior strong {
+        font-size: 14px;
+    }
+
+    .livro {
+        width: min(520px, 100%);
+    }
+
+    .abertura {
+        min-height: 690px;
+    }
+
+    .pagina {
+        width: 100%;
+        height: 690px;
+        padding: 27px 25px 43px;
+        border-radius: 4px !important;
+        border: 0 !important;
+    }
+
+    .pagina.direita {
+        display: none;
+    }
+
+    .pagina.direita.mobile-ativa {
+        display: block;
+    }
+
+    .pagina.esquerda.mobile-oculta {
+        display: none;
+    }
+
+    .pagina.esquerda,
+    .pagina.direita {
+        box-shadow: 0 7px 22px rgba(0,0,0,.3);
+    }
+
+    .lombada {
+        display: none;
+    }
+
+    .coluna {
+        font-size: 12.4px;
+        line-height: 1.5;
+    }
+
+    .colunas {
+        gap: 18px;
+    }
+
+    .controles {
+        gap: 8px;
+        width: 100%;
+        margin-top: 18px;
+    }
+
+    .controles button {
+        min-width: 0;
+        flex: 1;
+        padding: 12px 7px;
+        font-size: 10px;
+    }
+
+    .indicador {
+        min-width: 76px;
+        font-size: 10px;
+    }
+
+    .instrucao {
+        max-width: 300px;
+        line-height: 1.5;
+    }
+}
+
+@media (max-width: 390px) {
+    .pagina {
+        padding-left: 19px;
+        padding-right: 19px;
+    }
+
+    .coluna {
+        font-size: 11.8px;
+    }
+
+    .colunas {
+        gap: 14px;
+    }
+
+    .cabecalho-pagina {
+        font-size: 8px;
+    }
+}
+
+@media (max-height: 760px) and (min-width: 761px) {
+    .aplicacao {
+        padding-top: 12px;
+        padding-bottom: 12px;
+    }
+
+    .pagina,
+    .abertura {
+        height: 610px;
+        min-height: 610px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="aplicacao">
+
+    <div class="identidade-superior">
+        <strong>ATOS 29 • A HISTÓRIA CONTINUA</strong>
+        <span>MINISTÉRIO ATALAIA</span>
+    </div>
+
+    <main class="livro" aria-label="Flipbook Atos 29 Capítulo 16">
+
+        <div id="paginas"></div>
+
+        <div class="lombada"></div>
+
+    </main>
+
+    <nav class="controles" aria-label="Navegação do livro">
+
+        <button id="anterior" type="button">
+            ← ANTERIOR
+        </button>
+
+        <div class="indicador" id="indicador">
+            Página 1
+        </div>
+
+        <button id="proxima" type="button">
+            PRÓXIMA →
+        </button>
+
+    </nav>
+
+    <div class="instrucao">
+        Utilize os botões ou as setas do teclado para virar as páginas.
+    </div>
+
+</div>
+
+<!-- =========================================
+     TEXTO INTEGRAL DO CAPÍTULO 16
+========================================== -->
+
+<div id="conteudo-original">
+
+    <h2>CAPÍTULO 16 — A CURA DE MINHA FILHA RACHEL</h2>
+
+    <h3>UMA FILHA QUE SOFRIA COM BRONQUIOLITE</h3>
+
+    <p><sup>¹</sup> Entre as experiências que marcaram profundamente a minha caminhada com Deus está aquilo que aconteceu com minha filha, <strong>Rachel Chirano do Nascimento</strong>.</p>
+
+    <p><sup>²</sup> Desde pequena, Rachel sofria constantemente com problemas respiratórios, especialmente com <strong>bronquiolite</strong>.</p>
+
+    <p><sup>³</sup> Como pai, era doloroso vê-la passar por aqueles momentos.</p>
+
+    <p><sup>⁴</sup> Uma criança sofrendo com dificuldades para respirar desperta no coração dos pais preocupação, medo e desejo de fazer tudo o que estiver ao alcance para ajudá-la.</p>
+
+    <p><sup>⁵</sup> Mas, naquela situação, Deus me ensinaria novamente que a nossa esperança precisa estar nEle.</p>
+
+    <p><sup>⁶</sup> A Bíblia declara:</p>
+
+    <blockquote>“Eu sou o SENHOR, que te sara.”</blockquote>
+    <p class="referencia">Êxodo 15:26</p>
+
+    <h3>UM SONHO</h3>
+
+    <p><sup>⁷</sup> Certa noite, tive um sonho envolvendo minha filha.</p>
+
+    <p><sup>⁸</sup> No sonho, Rachel estava dormindo em uma <strong>rede</strong>.</p>
+
+    <p><sup>⁹</sup> Então o Senhor me orientava a <strong>assoprar sobre ela</strong>.</p>
+
+    <p><sup>¹⁰</sup> Eu fiz aquilo que havia recebido como orientação no sonho.</p>
+
+    <p><sup>¹¹</sup> Ao acordar, aquela experiência permaneceu em meu coração.</p>
+
+    <p><sup>¹²</sup> Eu não sabia exatamente como aquilo aconteceria, mas guardei aquela experiência.</p>
+
+    <h3>UMA PALAVRA NA IGREJA</h3>
+
+    <p><sup>¹³</sup> Algum tempo depois, estávamos em um culto.</p>
+
+    <p><sup>¹⁴</sup> Durante o culto, o pastor me chamou e disse que Deus estava realizando uma obra relacionada aos <strong>pulmões</strong>.</p>
+
+    <p><sup>¹⁵</sup> Naquele momento, eu pensei:</p>
+
+    <p class="destaque">“Mas eu não tenho nenhum problema nos pulmões.”</p>
+
+    <p><sup>¹⁶</sup> Então eu disse ao pastor:</p>
+
+    <p class="destaque">— <strong>A cura não é em mim.</strong></p>
+
+    <p><sup>¹⁷</sup> Ele não entendeu o que eu estava dizendo.</p>
+
+    <p><sup>¹⁸</sup> Eu sabia que aquela palavra não poderia estar falando de mim.</p>
+
+    <p><sup>¹⁹</sup> Naquele instante, aquilo que eu havia sonhado voltou fortemente à minha memória.</p>
+
+    <p><sup>²⁰</sup> Eu lembrei de Rachel.</p>
+
+    <p><sup>²¹</sup> Lembrei-me da rede.</p>
+
+    <p><sup>²²</sup> Lembrei-me de que, no sonho, eu havia assoprado sobre ela.</p>
+
+    <p><sup>²³</sup> Então compreendi que a palavra recebida naquele culto não era para mim.</p>
+
+    <p class="destaque"><strong>Era para minha filha.</strong></p>
+
+    <p><sup>²⁴</sup> O pastor continuava falando, mas eu já havia entendido aquilo que precisava entender.</p>
+
+    <p><sup>²⁵</sup> Então, naquele momento, <strong>deixei-o falando sozinho e corri para minha casa.</strong></p>
+
+    <p><sup>²⁶</sup> Eu precisava chegar até Rachel.</p>
+
+    <h3>AO CHEGAR EM CASA</h3>
+
+    <p><sup>²⁷</sup> Quando cheguei em casa, aconteceu algo que marcou profundamente o meu coração.</p>
+
+    <p><sup>²⁸</sup> Rachel estava exatamente como eu havia visto no sonho.</p>
+
+    <p><sup>²⁹</sup> Ela estava <strong>dormindo na rede</strong>.</p>
+
+    <p><sup>³⁰</sup> Aquela cena confirmou imediatamente aquilo que havia acontecido no sonho.</p>
+
+    <p><sup>³¹</sup> Era como se Deus tivesse colocado diante dos meus olhos exatamente a mesma situação que eu havia contemplado enquanto dormia.</p>
+
+    <p><sup>³²</sup> Eu não tinha planejado aquilo.</p>
+
+    <p><sup>³³</sup> Não havia preparado aquela cena.</p>
+
+    <p><sup>³⁴</sup> Quando cheguei, simplesmente encontrei minha filha dormindo na rede.</p>
+
+    <p><sup>³⁵</sup> Então me aproximei dela.</p>
+
+    <p><sup>³⁶</sup> Eu sabia o que havia visto no sonho.</p>
+
+    <p><sup>³⁷</sup> E fiz aquilo que havia sido mostrado:</p>
+
+    <p class="destaque"><strong>assoprei sobre ela.</strong></p>
+
+    <h3>NAQUELE INSTANTE</h3>
+
+    <p><sup>³⁸</sup> Naquele mesmo instante, Rachel respirou profundamente.</p>
+
+    <p><sup>³⁹</sup> Foi naquele momento que aquela experiência ganhou um significado ainda maior para mim.</p>
+
+    <p><sup>⁴⁰</sup> Eu havia acabado de sair de uma situação em que o pastor falava sobre uma cura relacionada aos pulmões.</p>
+
+    <p><sup>⁴¹</sup> Eu havia dito que a cura não era em mim.</p>
+
+    <p><sup>⁴²</sup> E agora estava diante da minha filha, exatamente como no sonho.</p>
+
+    <p><sup>⁴³</sup> Tudo aquilo me levou a compreender que a palavra que havia sido anunciada na igreja estava relacionada a ela.</p>
+
+    <h3>A CURA</h3>
+
+    <p><sup>⁴⁴</sup> Depois daquele momento, aconteceu algo que até hoje permanece marcado em minha memória.</p>
+
+    <p class="destaque"><strong>Pela graça do Senhor, Rachel nunca mais sofreu com aqueles problemas respiratórios.</strong></p>
+
+    <p><sup>⁴⁵</sup> Aquilo foi, para mim, uma experiência muito forte da bondade e do cuidado de Deus.</p>
+
+    <p><sup>⁴⁶</sup> Como pai, eu havia acompanhado suas dificuldades.</p>
+
+    <p><sup>⁴⁷</sup> Eu sabia o quanto aqueles problemas respiratórios haviam causado preocupação.</p>
+
+    <p><sup>⁴⁸</sup> Por isso, contemplar aquela mudança foi motivo de profunda gratidão.</p>
+
+    <p><sup>⁴⁹</sup> Não atribuo a mim o poder daquela cura.</p>
+
+    <p><sup>⁵⁰</sup> Toda a honra pertence ao Senhor.</p>
+
+    <p><sup>⁵¹</sup> A Palavra declara:</p>
+
+    <blockquote>“É ele quem perdoa todas as tuas iniquidades; quem sara todas as tuas enfermidades.”</blockquote>
+    <p class="referencia">Salmo 103:3</p>
+
+    <h3>DEUS CUIDA DOS NOSSOS FILHOS</h3>
+
+    <p><sup>⁵²</sup> Essa experiência também me ensinou algo sobre a maneira como devemos apresentar nossos filhos diante de Deus.</p>
+
+    <p><sup>⁵³</sup> Nossos filhos são preciosos para nós.</p>
+
+    <p><sup>⁵⁴</sup> Nós os amamos, queremos protegê-los e desejamos vê-los bem.</p>
+
+    <p><sup>⁵⁵</sup> Mas existe um lugar onde precisamos aprender a colocá-los:</p>
+
+    <p class="destaque"><strong>nas mãos do Senhor.</strong></p>
+
+    <p><sup>⁵⁶</sup> Não podemos controlar todas as circunstâncias.</p>
+
+    <p><sup>⁵⁷</sup> Não podemos prever tudo o que acontecerá.</p>
+
+    <p><sup>⁵⁸</sup> Mas podemos orar.</p>
+
+    <p><sup>⁵⁹</sup> Podemos confiar.</p>
+
+    <p><sup>⁶⁰</sup> Podemos apresentar nossos filhos diante de Deus.</p>
+
+    <p><sup>⁶¹</sup> A Bíblia diz:</p>
+
+    <blockquote>“Lança o teu cuidado sobre o SENHOR, e ele te susterá.”</blockquote>
+    <p class="referencia">Salmo 55:22</p>
+
+    <h3>UMA EXPERIÊNCIA DE FÉ</h3>
+
+    <p><sup>⁶²</sup> A história de Rachel não me ensinou simplesmente sobre uma enfermidade que desapareceu.</p>
+
+    <p><sup>⁶³</sup> Ela me ensinou sobre <strong>fé</strong>.</p>
+
+    <p><sup>⁶⁴</sup> Eu aprendi novamente que Deus pode nos surpreender em momentos que não esperamos.</p>
+
+    <p><sup>⁶⁵</sup> Aprendi também que devemos permanecer atentos àquilo que Deus está fazendo em nossa caminhada, sempre submetendo nossas experiências à Palavra de Deus.</p>
+
+    <p><sup>⁶⁶</sup> A experiência pessoal não substitui as Escrituras.</p>
+
+    <p><sup>⁶⁷</sup> A Palavra de Deus continua sendo o fundamento da nossa fé.</p>
+
+    <p><sup>⁶⁸</sup> E é justamente por isso que, ao recordar aquilo que aconteceu com Rachel, meu coração não deseja exaltar uma experiência.</p>
+
+    <p><sup>⁶⁹</sup> Deseja exaltar <strong>Jesus Cristo</strong>.</p>
+
+    <h3>O DEUS QUE CURA</h3>
+
+    <p><sup>⁷⁰</sup> Ao longo da minha caminhada cristã, testemunhei diferentes situações de enfermidade, oração e restauração.</p>
+
+    <p><sup>⁷¹</sup> Mas cada experiência reforçou em mim uma convicção:</p>
+
+    <p class="destaque"><strong>Deus continua sendo Deus.</strong></p>
+
+    <p><sup>⁷²</sup> Ele continua sendo digno de confiança.</p>
+
+    <p><sup>⁷³</sup> Ele continua sendo Senhor.</p>
+
+    <p><sup>⁷⁴</sup> E toda cura deve conduzir o coração para Ele.</p>
+
+    <p><sup>⁷⁵</sup> Quando vejo Rachel bem, lembro-me daquele período.</p>
+
+    <p><sup>⁷⁶</sup> Lembro-me da preocupação.</p>
+
+    <p><sup>⁷⁷</sup> Lembro-me do sonho.</p>
+
+    <p><sup>⁷⁸</sup> Lembro-me da palavra recebida no culto.</p>
+
+    <p><sup>⁷⁹</sup> Lembro-me de ter dito ao pastor que a cura não era em mim.</p>
+
+    <p><sup>⁸⁰</sup> Lembro-me de ter deixado aquela conversa e corrido para casa.</p>
+
+    <p><sup>⁸¹</sup> Lembro-me de chegar e encontrá-la dormindo na rede.</p>
+
+    <p><sup>⁸²</sup> E lembro-me de como tudo aquilo aconteceu.</p>
+
+    <h3>A GRATIDÃO DE UM PAI</h3>
+
+    <p><sup>⁸³</sup> Existe uma gratidão que somente um pai consegue compreender plenamente.</p>
+
+    <p><sup>⁸⁴</sup> É olhar para um filho que estava sofrendo e vê-lo bem.</p>
+
+    <p><sup>⁸⁵</sup> É lembrar dos dias difíceis e perceber que eles ficaram para trás.</p>
+
+    <p><sup>⁸⁶</sup> É olhar para aquela vida e reconhecer:</p>
+
+    <p class="destaque"><strong>“Foi Deus quem cuidou.”</strong></p>
+
+    <p><sup>⁸⁷</sup> Por isso, quando penso na cura de Rachel, não posso deixar de agradecer ao Senhor.</p>
+
+    <p><sup>⁸⁸</sup> A Ele pertence toda a glória.</p>
+
+    <p><sup>⁸⁹</sup> A Ele pertence todo o louvor.</p>
+
+    <p><sup>⁹⁰</sup> A Ele pertence toda a honra.</p>
+
+    <h3>QUANDO DEUS TRANSFORMA UMA EXPERIÊNCIA EM TESTEMUNHO</h3>
+
+    <p><sup>⁹¹</sup> O que aconteceu com Rachel tornou-se parte do meu testemunho.</p>
+
+    <p><sup>⁹²</sup> Não para colocar a experiência acima da Palavra.</p>
+
+    <p><sup>⁹³</sup> Não para exaltar o homem.</p>
+
+    <p><sup>⁹⁴</sup> Mas para testemunhar aquilo que Deus fez em nossa família.</p>
+
+    <p><sup>⁹⁵</sup> A Bíblia diz:</p>
+
+    <blockquote>“Para que todas as nações da terra saibam que a mão do SENHOR é forte, para que temais ao SENHOR, vosso Deus, todos os dias.”</blockquote>
+    <p class="referencia">Josué 4:24</p>
+
+    <p><sup>⁹⁶</sup> Um testemunho existe para apontar para Deus.</p>
+
+    <p><sup>⁹⁷</sup> Quando contamos aquilo que Ele fez, nossa intenção deve ser conduzir as pessoas para aquele que é digno de toda a glória.</p>
+
+    <h3>A FÉ DE UM PAI</h3>
+
+    <p><sup>⁹⁸</sup> A experiência com Rachel também me fez compreender que, muitas vezes, nossa fé é exercitada justamente quando estamos diante daquilo que mais amamos.</p>
+
+    <p><sup>⁹⁹</sup> Quando um filho sofre, o coração dos pais sofre junto.</p>
+
+    <p><sup>¹⁰⁰</sup> Mas foi justamente naquele contexto que aprendi novamente a colocar minha confiança no Senhor.</p>
+
+    <p><sup>¹⁰¹</sup> Eu não tinha todas as respostas.</p>
+
+    <p><sup>¹⁰²</sup> Não sabia como tudo aconteceria.</p>
+
+    <p><sup>¹⁰³</sup> Mas aprendi a confiar.</p>
+
+    <p><sup>¹⁰⁴</sup> E, olhando para trás, posso dizer:</p>
+
+    <p class="destaque"><strong>Deus foi fiel.</strong></p>
+
+    <h3>JESUS CONTINUA SENDO O MESMO</h3>
+
+    <p><sup>¹⁰⁵</sup> A Bíblia declara:</p>
+
+    <blockquote>“Jesus Cristo, ontem e hoje, é o mesmo e o será para sempre.”</blockquote>
+    <p class="referencia">Hebreus 13:8</p>
+
+    <p><sup>¹⁰⁶</sup> Essa verdade permanece.</p>
+
+    <p><sup>¹⁰⁷</sup> Minha experiência mudou.</p>
+
+    <p><sup>¹⁰⁸</sup> As circunstâncias mudaram.</p>
+
+    <p><sup>¹⁰⁹</sup> O tempo passou.</p>
+
+    <p><sup>¹¹⁰</sup> Rachel cresceu.</p>
+
+    <p><sup>¹¹¹</sup> Mas Deus continua sendo Deus.</p>
+
+    <p><sup>¹¹²</sup> Por isso, quando conto essa história, não estou dizendo que devemos buscar experiências.</p>
+
+    <p><sup>¹¹³</sup> Estou dizendo que podemos confiar no Senhor.</p>
+
+    <p><sup>¹¹⁴</sup> Podemos orar.</p>
+
+    <p><sup>¹¹⁵</sup> Podemos clamar.</p>
+
+    <p><sup>¹¹⁶</sup> Podemos entregar nossas famílias em Suas mãos.</p>
+
+    <p><sup>¹¹⁷</sup> E podemos reconhecer Sua soberania em todas as circunstâncias.</p>
+
+    <h3>ATOS 29</h3>
+
+    <p><sup>¹¹⁸</sup> A cura de minha filha Rachel é uma das páginas mais preciosas da minha caminhada.</p>
+
+    <p><sup>¹¹⁹</sup> Eu vi minha filha sofrer com problemas respiratórios.</p>
+
+    <p><sup>¹²⁰</sup> Tive um sonho.</p>
+
+    <p><sup>¹²¹</sup> Durante um culto, o pastor falou sobre uma cura relacionada aos pulmões.</p>
+
+    <p><sup>¹²²</sup> Eu disse a ele que a cura não era em mim.</p>
+
+    <p><sup>¹²³</sup> Ele não entendeu.</p>
+
+    <p><sup>¹²⁴</sup> Enquanto ele continuava falando, eu já havia compreendido que aquela palavra dizia respeito à minha filha.</p>
+
+    <p><sup>¹²⁵</sup> Então deixei-o falando sozinho e <strong>corri para minha casa</strong>.</p>
+
+    <p><sup>¹²⁶</sup> Quando cheguei, encontrei Rachel exatamente como eu havia visto no sonho:</p>
+
+    <p class="destaque"><strong>dormindo na rede.</strong></p>
+
+    <p><sup>¹²⁷</sup> Aproximei-me dela e fiz aquilo que havia acontecido no sonho.</p>
+
+    <p class="destaque"><strong>Assoprei sobre ela.</strong></p>
+
+    <p><sup>¹²⁸</sup> Naquele instante, ela respirou profundamente.</p>
+
+    <p><sup>¹²⁹</sup> E, pela graça do Senhor, Rachel nunca mais sofreu com aqueles problemas respiratórios.</p>
+
+    <p><sup>¹³⁰</sup> Hoje, quando lembro dessa história, não consigo olhar apenas para o acontecimento.</p>
+
+    <p><sup>¹³¹</sup> Olho para trás e vejo a fidelidade de Deus.</p>
+
+    <p><sup>¹³²</sup> Vejo o cuidado de um Pai.</p>
+
+    <p><sup>¹³³</sup> Vejo a misericórdia do Senhor.</p>
+
+    <p><sup>¹³⁴</sup> E vejo mais uma vez que toda a glória pertence a Jesus Cristo.</p>
+
+    <p><sup>¹³⁵</sup> Minha filha é uma dádiva que Deus confiou à nossa família.</p>
+
+    <p><sup>¹³⁶</sup> E sempre que olho para sua vida, meu coração se enche de gratidão.</p>
+
+    <p><sup>¹³⁷</sup> Porque algumas histórias Deus escreve dentro da nossa própria casa.</p>
+
+    <p><sup>¹³⁸</sup> Alguns testemunhos nascem dentro da nossa família.</p>
+
+    <p><sup>¹³⁹</sup> E algumas experiências permanecem para sempre como lembrança daquilo que o Senhor fez.</p>
+
+    <p class="destaque"><strong>A Ele seja toda a honra, toda a glória e todo o louvor.</strong></p>
+
+    <p class="destaque"><strong>ATOS 29 continua.</strong></p>
+
+</div>
+
+<script>
+/* =========================================
+   FLIPBOOK ATOS 29 — CAPÍTULO 16
+   Paginação automática em quatro colunas
+========================================== */
+
+const paginasContainer = document.getElementById("paginas");
+const conteudoOriginal = document.getElementById("conteudo-original");
+
+const botaoAnterior = document.getElementById("anterior");
+const botaoProxima = document.getElementById("proxima");
+const indicador = document.getElementById("indicador");
+
+let aberturas = [];
+let totalPaginas = 0;
+let paginaAtual = 0;
+
+/* Cria uma página física com duas colunas */
+
+function criarPagina(numero, lado) {
+
+    const pagina = document.createElement("section");
+
+    pagina.className = "pagina " + lado;
+    pagina.dataset.numero = numero;
+
+    pagina.innerHTML = `
+        <div class="cabecalho-pagina">
+            <span>ATOS 29 • A HISTÓRIA CONTINUA</span>
+            <span>CAPÍTULO 16</span>
+        </div>
+
+        <div class="colunas">
+            <div class="coluna"></div>
+            <div class="coluna"></div>
+        </div>
+
+        <div class="rodape-pagina">
+            <span>MINISTÉRIO ATALAIA</span>
+            <span class="numero-pagina">${numero}</span>
+        </div>
+    `;
+
+    return pagina;
+}
+
+/* Mede se o conteúdo ultrapassou o espaço disponível */
+
+function ultrapassouColuna(coluna) {
+    return coluna.scrollHeight > coluna.clientHeight + 2;
+}
+
+/* Cria uma abertura contendo duas páginas */
+
+function criarAbertura(numeroAbertura) {
+
+    const abertura = document.createElement("div");
+
+    abertura.className = "abertura";
+    abertura.dataset.abertura = numeroAbertura;
+
+    const paginaEsquerda = criarPagina(
+        numeroAbertura * 2 + 1,
+        "esquerda"
+    );
+
+    const paginaDireita = criarPagina(
+        numeroAbertura * 2 + 2,
+        "direita"
+    );
+
+    abertura.appendChild(paginaEsquerda);
+    abertura.appendChild(paginaDireita);
+
+    paginasContainer.appendChild(abertura);
+
+    const colunas = [
+        ...paginaEsquerda.querySelectorAll(".coluna"),
+        ...paginaDireita.querySelectorAll(".coluna")
+    ];
+
+    aberturas.push({
+        elemento: abertura,
+        paginas: [paginaEsquerda, paginaDireita],
+        colunas: colunas
+    });
+
+    return aberturas[aberturas.length - 1];
+}
+
+/* Distribui o conteúdo sem cortar os parágrafos */
+
+function distribuirConteudo() {
+
+    paginasContainer.innerHTML = "";
+    aberturas = [];
+
+    let indiceColuna = 0;
+    let aberturaAtual = criarAbertura(0);
+
+    const elementos = Array.from(conteudoOriginal.children);
+
+    function obterColunaAtual() {
+        return aberturaAtual.colunas[indiceColuna];
+    }
+
+    function avancarColuna() {
+
+        indiceColuna++;
+
+        if (indiceColuna >= 4) {
+            aberturaAtual = criarAbertura(aberturas.length);
+            indiceColuna = 0;
+        }
+    }
+
+    function adicionarGrupo(grupo) {
+
+        const coluna = obterColunaAtual();
+
+        const fragmento = document.createDocumentFragment();
+
+        grupo.forEach(elemento => {
+            fragmento.appendChild(elemento.cloneNode(true));
+        });
+
+        coluna.appendChild(fragmento);
+
+        if (ultrapassouColuna(coluna)) {
+
+            grupo.forEach(() => {});
+
+            grupo.forEach((elemento, indice) => {
+                const ultimo = coluna.lastElementChild;
+                if (ultimo) ultimo.remove();
+            });
+
+            avancarColuna();
+
+            const novaColuna = obterColunaAtual();
+
+            grupo.forEach(elemento => {
+                novaColuna.appendChild(elemento.cloneNode(true));
+            });
+
+            /*
+             * Parágrafos individuais do capítulo são pequenos
+             * o suficiente para caber em uma coluna.
+             * A verificação abaixo protege contra conteúdo
+             * maior do que o espaço disponível.
+             */
+
+            if (ultrapassouColuna(novaColuna)) {
+                novaColuna.classList.add("conteudo-extenso");
+            }
+        }
+    }
+
+    for (let i = 0; i < elementos.length; i++) {
+
+        const elemento = elementos[i];
+
+        /*
+         * Mantém o título ou subtítulo junto do elemento
+         * seguinte sempre que possível.
+         */
+
+        if (elemento.tagName === "H2" || elemento.tagName === "H3") {
+
+            const proximo = elementos[i + 1];
+
+            if (proximo) {
+                adicionarGrupo([elemento, proximo]);
+                i++;
+            } else {
+                adicionarGrupo([elemento]);
+            }
+
+        } else {
+            adicionarGrupo([elemento]);
+        }
+    }
+
+    totalPaginas = aberturas.length * 2;
+
+    if (aberturas.length > 0) {
+        mostrarAbertura(0);
+    }
+
+    atualizarControles();
+}
+
+/* Mostra a abertura correspondente */
+
+function mostrarAbertura(indice) {
+
+    if (indice < 0 || indice >= aberturas.length) return;
+
+    paginaAtual = indice;
+
+    aberturas.forEach((abertura, i) => {
+        abertura.elemento.classList.toggle(
+            "ativa",
+            i === indice
+        );
+    });
+
+    atualizarControles();
+}
+
+/* Atualiza a navegação */
+
+function atualizarControles() {
+
+    const abertura = aberturas[paginaAtual];
+
+    if (!abertura) return;
+
+    const numeroEsquerda = paginaAtual * 2 + 1;
+    const numeroDireita = numeroEsquerda + 1;
+
+    const celular = window.matchMedia("(max-width: 760px)").matches;
+
+    if (celular) {
+
+        const esquerda = abertura.paginas[0];
+        const direita = abertura.paginas[1];
+
+        esquerda.classList.remove("mobile-oculta");
+        direita.classList.remove("mobile-ativa");
+
+        /*
+         * Em telas pequenas, a navegação alterna entre
+         * as duas páginas da abertura.
+         */
+
+        if (paginaAtualMobile === 1) {
+            esquerda.classList.add("mobile-oculta");
+            direita.classList.add("mobile-ativa");
+            indicador.textContent = "Página " + numeroDireita;
+        } else {
+            indicador.textContent = "Página " + numeroEsquerda;
+        }
+
+    } else {
+
+        indicador.textContent =
+            "Páginas " + numeroEsquerda + "–" + numeroDireita;
+    }
+
+    botaoAnterior.disabled =
+        paginaAtual === 0 && (!celular || paginaAtualMobile === 0);
+
+    botaoProxima.disabled =
+        paginaAtual === aberturas.length - 1 &&
+        (!celular || paginaAtualMobile === 1);
+}
+
+let paginaAtualMobile = 0;
+
+/* Avançar */
+
+function proximaPagina() {
+
+    const celular = window.matchMedia("(max-width: 760px)").matches;
+
+    if (celular) {
+
+        if (paginaAtualMobile === 0) {
+            paginaAtualMobile = 1;
+            atualizarControles();
+            return;
+        }
+
+        if (paginaAtual < aberturas.length - 1) {
+            paginaAtual++;
+            paginaAtualMobile = 0;
+            mostrarAbertura(paginaAtual);
+        }
+
+    } else {
+
+        if (paginaAtual < aberturas.length - 1) {
+            mostrarAbertura(paginaAtual + 1);
+        }
+    }
+}
+
+/* Voltar */
+
+function paginaAnterior() {
+
+    const celular = window.matchMedia("(max-width: 760px)").matches;
+
+    if (celular) {
+
+        if (paginaAtualMobile === 1) {
+            paginaAtualMobile = 0;
+            atualizarControles();
+            return;
+        }
+
+        if (paginaAtual > 0) {
+            paginaAtual--;
+            paginaAtualMobile = 1;
+            mostrarAbertura(paginaAtual);
+            atualizarControles();
+        }
+
+    } else {
+
+        if (paginaAtual > 0) {
+            mostrarAbertura(paginaAtual - 1);
+        }
+    }
+}
+
+/* Eventos dos botões */
+
+botaoAnterior.addEventListener("click", paginaAnterior);
+botaoProxima.addEventListener("click", proximaPagina);
+
+/* Teclado */
+
+document.addEventListener("keydown", function(evento) {
+
+    if (evento.key === "ArrowRight") {
+        proximaPagina();
+    }
+
+    if (evento.key === "ArrowLeft") {
+        paginaAnterior();
+    }
+});
+
+/* Gestos de deslizar no celular */
+
+let toqueInicialX = 0;
+let toqueFinalX = 0;
+
+paginasContainer.addEventListener("touchstart", function(evento) {
+
+    toqueInicialX = evento.changedTouches[0].screenX;
+
+}, { passive: true });
+
+paginasContainer.addEventListener("touchend", function(evento) {
+
+    toqueFinalX = evento.changedTouches[0].screenX;
+
+    const diferenca = toqueFinalX - toqueInicialX;
+
+    if (Math.abs(diferenca) > 50) {
+
+        if (diferenca < 0) {
+            proximaPagina();
+        } else {
+            paginaAnterior();
+        }
+    }
+
+}, { passive: true });
+
+/* Recalcula a paginação quando a tela muda de orientação */
+
+let temporizadorRedimensionamento;
+
+window.addEventListener("resize", function() {
+
+    clearTimeout(temporizadorRedimensionamento);
+
+    temporizadorRedimensionamento = setTimeout(function() {
+
+        const aberturaAnterior = paginaAtual;
+
+        distribuirConteudo();
+
+        mostrarAbertura(
+            Math.min(aberturaAnterior, aberturas.length - 1)
+        );
+
+    }, 250);
+});
+
+/* Inicialização */
+
+window.addEventListener("load", function() {
+
+    distribuirConteudo();
+
+});
+</script>
+
+</body>
+</html>

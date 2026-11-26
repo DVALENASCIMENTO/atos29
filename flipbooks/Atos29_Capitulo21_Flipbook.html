@@ -1,0 +1,1121 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#17130f">
+<title>ATOS 29 — Capítulo 21 | Quando Ele Disse: Eu Ouvi a Tua Oração</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+:root {
+    --papel: #f4ecd8;
+    --papel-escuro: #e9dec3;
+    --tinta: #292318;
+    --marrom: #5a4932;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    color: #eee5d5;
+    background:
+        radial-gradient(ellipse at center, #40362a 0%, #211b15 65%, #100e0b 100%);
+    font-family: Georgia, "Times New Roman", serif;
+}
+
+.topo {
+    text-align: center;
+    padding: 22px 12px 12px;
+}
+
+.topo h1 {
+    margin: 0;
+    font-size: 20px;
+    letter-spacing: 3px;
+    font-weight: normal;
+}
+
+.topo p {
+    margin: 7px 0 0;
+    color: #c6b89e;
+    font-size: 12px;
+    letter-spacing: 2px;
+}
+
+.livro-area {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 18px 15px 10px;
+}
+
+.livro {
+    width: min(1180px, 100%);
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    perspective: 1800px;
+    gap: 0;
+}
+
+.pagina {
+    position: relative;
+    width: 50%;
+    height: 760px;
+    overflow: hidden;
+    color: var(--tinta);
+    background:
+        linear-gradient(90deg, rgba(110,85,45,.07), transparent 9%, transparent 90%, rgba(110,85,45,.06)),
+        repeating-linear-gradient(
+            0deg,
+            rgba(115,95,60,.018) 0px,
+            rgba(115,95,60,.018) 1px,
+            transparent 1px,
+            transparent 4px
+        ),
+        var(--papel);
+    box-shadow:
+        0 12px 30px rgba(0,0,0,.48),
+        inset 0 0 28px rgba(116,88,45,.10);
+    padding: 28px 29px 45px;
+}
+
+.pagina.esquerda {
+    border-radius: 5px 0 0 5px;
+    border-right: 1px solid rgba(80,60,35,.28);
+    transform-origin: right center;
+}
+
+.pagina.direita {
+    border-radius: 0 5px 5px 0;
+    border-left: 1px solid rgba(255,255,255,.28);
+    transform-origin: left center;
+}
+
+.pagina.esquerda::after,
+.pagina.direita::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 12px;
+    pointer-events: none;
+}
+
+.pagina.esquerda::after {
+    right: 0;
+    background: linear-gradient(to left, rgba(70,48,20,.12), transparent);
+}
+
+.pagina.direita::after {
+    left: 0;
+    background: linear-gradient(to right, rgba(70,48,20,.12), transparent);
+}
+
+.cabecalho-pagina {
+    position: absolute;
+    top: 13px;
+    left: 25px;
+    right: 25px;
+    text-align: center;
+    color: #65553c;
+    font-size: 9px;
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+    border-bottom: 1px solid rgba(90,70,40,.35);
+    padding-bottom: 7px;
+}
+
+.conteudo-pagina {
+    position: absolute;
+    top: 42px;
+    left: 29px;
+    right: 29px;
+    bottom: 48px;
+    overflow: hidden;
+    column-count: 2;
+    column-gap: 27px;
+    column-rule: 1px solid rgba(100,80,50,.18);
+    column-fill: auto;
+    font-size: 12.1px;
+    line-height: 1.48;
+    text-align: justify;
+    hyphens: auto;
+}
+
+.conteudo-pagina p {
+    margin: 0 0 7px;
+    break-inside: avoid;
+    page-break-inside: avoid;
+    text-indent: 0;
+}
+
+.conteudo-pagina .titulo-capitulo {
+    column-span: all;
+    display: block;
+    text-align: center;
+    font-size: 17px;
+    line-height: 1.35;
+    font-weight: bold;
+    letter-spacing: .5px;
+    margin: 10px 0 16px;
+    text-transform: uppercase;
+}
+
+.conteudo-pagina .identificacao {
+    column-span: all;
+    text-align: center;
+    font-size: 10px;
+    letter-spacing: 1px;
+    margin: 0 0 14px;
+    color: #5d4b32;
+}
+
+.conteudo-pagina h2 {
+    column-span: all;
+    display: block;
+    font-size: 12px;
+    line-height: 1.35;
+    text-align: left;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin: 13px 0 8px;
+    color: #3c3020;
+    break-after: avoid;
+}
+
+.conteudo-pagina blockquote {
+    margin: 8px 5px 10px;
+    padding: 0 5px;
+    font-style: italic;
+    font-size: 11.8px;
+    line-height: 1.45;
+    text-align: left;
+    break-inside: avoid;
+}
+
+.conteudo-pagina blockquote p {
+    margin-bottom: 4px;
+}
+
+.conteudo-pagina .referencia {
+    display: block;
+    font-style: normal;
+    font-weight: bold;
+    text-align: right;
+    font-size: 10.5px;
+    margin-top: 3px;
+}
+
+.numero {
+    font-size: 8px;
+    vertical-align: super;
+    line-height: 0;
+    font-weight: bold;
+    margin-right: 2px;
+    color: #665238;
+}
+
+.rodape-pagina {
+    position: absolute;
+    bottom: 14px;
+    left: 25px;
+    right: 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #6c5a40;
+    font-size: 9px;
+    letter-spacing: 1px;
+    border-top: 1px solid rgba(90,70,40,.3);
+    padding-top: 7px;
+}
+
+.lombada {
+    width: 8px;
+    flex: 0 0 8px;
+    background: linear-gradient(
+        to right,
+        rgba(25,18,10,.65),
+        rgba(255,255,255,.10),
+        rgba(25,18,10,.5)
+    );
+    z-index: 2;
+}
+
+.controles {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 18px;
+    padding: 16px 10px 25px;
+    flex-wrap: wrap;
+}
+
+.controles button {
+    background: #4b3b29;
+    border: 1px solid #887354;
+    color: #f5ead5;
+    padding: 11px 23px;
+    font-family: Georgia, serif;
+    font-size: 12px;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: background .2s, transform .2s;
+}
+
+.controles button:hover {
+    background: #6a5438;
+    transform: translateY(-1px);
+}
+
+.controles button:disabled {
+    opacity: .35;
+    cursor: not-allowed;
+    transform: none;
+}
+
+#indicador {
+    color: #d8c8aa;
+    min-width: 110px;
+    text-align: center;
+    font-size: 12px;
+}
+
+.assinatura {
+    text-align: center;
+    padding: 0 10px 22px;
+    color: #a9997e;
+    font-size: 10px;
+    letter-spacing: 2px;
+}
+
+@media (max-width: 760px) {
+    .topo {
+        padding-top: 16px;
+    }
+
+    .topo h1 {
+        font-size: 16px;
+        letter-spacing: 2px;
+    }
+
+    .livro-area {
+        padding: 12px 8px 5px;
+    }
+
+    .livro {
+        width: 100%;
+        max-width: 560px;
+    }
+
+    .pagina {
+        width: 100%;
+        height: min(76vh, 760px);
+        min-height: 510px;
+        padding: 25px 23px 42px;
+        border-radius: 4px !important;
+        border: none !important;
+    }
+
+    .pagina.direita {
+        display: none;
+    }
+
+    .pagina.esquerda {
+        display: block;
+    }
+
+    .lombada {
+        display: none;
+    }
+
+    .conteudo-pagina {
+        left: 24px;
+        right: 24px;
+        top: 40px;
+        bottom: 45px;
+        column-count: 1;
+        column-gap: 0;
+        column-rule: none;
+        font-size: 13px;
+        line-height: 1.55;
+        text-align: justify;
+    }
+
+    .conteudo-pagina .titulo-capitulo {
+        font-size: 16px;
+    }
+
+    .conteudo-pagina h2 {
+        font-size: 12px;
+    }
+
+    .conteudo-pagina blockquote {
+        font-size: 12.5px;
+    }
+
+    .controles {
+        gap: 9px;
+        padding-top: 13px;
+    }
+
+    .controles button {
+        padding: 10px 14px;
+        font-size: 10px;
+    }
+}
+
+@media (max-width: 380px) {
+    .pagina {
+        min-height: 480px;
+    }
+
+    .conteudo-pagina {
+        font-size: 12px;
+    }
+
+    .controles button {
+        padding: 9px 10px;
+    }
+}
+
+@media print {
+    body {
+        background: white;
+    }
+
+    .topo, .controles, .assinatura {
+        display: none;
+    }
+
+    .livro-area {
+        padding: 0;
+    }
+
+    .pagina {
+        box-shadow: none;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header class="topo">
+    <h1>ATOS 29 • A HISTÓRIA CONTINUA</h1>
+    <p>CAPÍTULO 21 — QUANDO ELE DISSE: “EU OUVI A TUA ORAÇÃO”</p>
+</header>
+
+<main class="livro-area">
+    <div class="livro" id="livro">
+
+        <section class="pagina esquerda">
+            <div class="cabecalho-pagina">ATOS 29 • A HISTÓRIA CONTINUA</div>
+            <div class="conteudo-pagina" id="conteudoEsquerda"></div>
+            <div class="rodape-pagina">
+                <span>MINISTÉRIO ATALAIA</span>
+                <span id="numeroEsquerda">1</span>
+            </div>
+        </section>
+
+        <div class="lombada"></div>
+
+        <section class="pagina direita">
+            <div class="cabecalho-pagina">QUANDO ELE DISSE: “EU OUVI A TUA ORAÇÃO”</div>
+            <div class="conteudo-pagina" id="conteudoDireita"></div>
+            <div class="rodape-pagina">
+                <span id="numeroDireita">2</span>
+                <span>MINISTÉRIO ATALAIA</span>
+            </div>
+        </section>
+
+    </div>
+</main>
+
+<nav class="controles">
+    <button id="anterior" onclick="mudarPagina(-1)">← ANTERIOR</button>
+    <span id="indicador">Páginas 1–2</span>
+    <button id="proxima" onclick="mudarPagina(1)">PRÓXIMA →</button>
+</nav>
+
+<footer class="assinatura">
+    MINISTÉRIO ATALAIA
+</footer>
+
+<script>
+const texto = `
+<div class="identificacao">MINISTÉRIO ATALAIA • DIEGO NASCIMENTO — PASTOR EVANGELISTA</div>
+<h1 class="titulo-capitulo">CAPÍTULO 21<br>QUANDO ELE DISSE: “EU OUVI A TUA ORAÇÃO”</h1>
+
+<p><sup class="numero">1</sup>Há momentos na caminhada com Deus que não conseguimos explicar completamente com palavras. Podemos contar o que aconteceu, podemos descrever o que sentimos, mas algumas experiências permanecem maiores do que a nossa capacidade de explicá-las.</p>
+
+<p><sup class="numero">2</sup><strong>Certo dia, vivi um desses momentos.</strong></p>
+
+<p><sup class="numero">3</sup>Eu estava diante do Senhor em oração, aflito por uma causa ministerial. Havia dentro de mim um clamor profundo para que Ele desatasse o ministério dEle em minha vida — especialmente o ministério evangelístico.</p>
+
+<p><sup class="numero">4</sup>Não era uma oração superficial. Era uma oração que vinha de dentro.</p>
+
+<p><sup class="numero">5</sup>Eu falava com Deus sobre aquilo que estava no meu coração. Coloquei diante dEle meus anseios, minhas inquietações e o desejo de servir. Pedi que, se esse ministério realmente procedesse dEle, que Ele mesmo abrisse o caminho, removesse os impedimentos e conduzisse todas as coisas segundo a Sua vontade.</p>
+
+<p><sup class="numero">6</sup>Então terminei a oração.</p>
+
+<p><sup class="numero">7</sup>E foi naquele momento que aconteceu algo que jamais esqueci.</p>
+
+<p><sup class="numero">8</sup>Ouvi a voz do Senhor Jesus novamente.</p>
+
+<p><sup class="numero">9</sup>Uma voz suave.</p>
+
+<p><sup class="numero">10</sup>Mansa.</p>
+
+<p><sup class="numero">11</sup>Mas, ao mesmo tempo, carregada de autoridade.</p>
+
+<p><sup class="numero">12</sup>E as palavras foram simples:</p>
+
+<p><strong>“Eu ouvi a tua oração.”</strong></p>
+
+<p><sup class="numero">13</sup>Não foram muitas palavras.</p>
+
+<p><sup class="numero">14</sup>Não houve uma longa explicação.</p>
+
+<p><sup class="numero">15</sup>Apenas isso.</p>
+
+<p><strong>“Eu ouvi a tua oração.”</strong></p>
+
+<p><sup class="numero">16</sup>E aquelas palavras foram suficientes.</p>
+
+<p><sup class="numero">17</sup>Eu não consegui permanecer como estava. Comecei a chorar muito. Meu coração começou a arder de uma maneira que não conseguia descrever adequadamente.</p>
+
+<p><sup class="numero">18</sup>Era como se toda aquela aflição que eu havia carregado diante de Deus encontrasse, naquele instante, um lugar para descansar.</p>
+
+<p><sup class="numero">19</sup>Eu chorava, mas não era apenas tristeza.</p>
+
+<p><sup class="numero">20</sup>Havia alívio.</p>
+
+<p><sup class="numero">21</sup>Havia consolo.</p>
+
+<p><sup class="numero">22</sup>Havia uma sensação profunda de que eu não estava sozinho.</p>
+
+<p><sup class="numero">23</sup>E, em meio às lágrimas, comecei a rir.</p>
+
+<p><sup class="numero">24</sup>Eu ria chorando.</p>
+
+<p><sup class="numero">25</sup>E quanto mais eu ria, mais as lágrimas continuavam.</p>
+
+<p><sup class="numero">26</sup>Era uma alegria que surgiu justamente no lugar onde antes havia angústia.</p>
+
+<p><sup class="numero">27</sup>Meu coração estava sendo consolado.</p>
+
+<p><sup class="numero">28</sup>Então veio algo ainda mais profundo: o descanso.</p>
+
+<p><sup class="numero">29</sup>Comecei a sentir sono.</p>
+
+<p><sup class="numero">30</sup>Não um sono provocado simplesmente pelo cansaço físico, mas uma sensação de descanso interior. Como se minha alma tivesse finalmente deixado de lutar contra aquilo que eu havia colocado diante de Deus.</p>
+
+<p><sup class="numero">31</sup>Eu havia chegado aflito.</p>
+
+<p><sup class="numero">32</sup>Agora estava em paz.</p>
+
+<p><sup class="numero">33</sup>Aquela paz que não dependia das circunstâncias.</p>
+
+<p><sup class="numero">34</sup>A paz de quem havia entregado algo nas mãos de Deus e, de alguma maneira, conseguia descansar.</p>
+
+<h2>DEUS OUVE A ORAÇÃO</h2>
+
+<p><sup class="numero">35</sup>A experiência me fez lembrar de uma verdade que atravessa as Escrituras: Deus ouve aqueles que clamam a Ele.</p>
+
+<blockquote>
+<p>“Clamou este pobre, e o Senhor o ouviu, e o livrou de todas as suas angústias.”</p>
+<span class="referencia">Salmo 34:6</span>
+</blockquote>
+
+<p><sup class="numero">36</sup>O salmista não apresentou a oração como uma conversa lançada ao vazio. Ele testemunhou que o Senhor ouviu.</p>
+
+<p><sup class="numero">37</sup>Isso não significa que Deus sempre responde exatamente da maneira ou no tempo que esperamos. A própria Escritura mostra homens e mulheres que clamaram e precisaram esperar.</p>
+
+<p><sup class="numero">38</sup>Mas esperar não significa que Deus esteja indiferente.</p>
+
+<p><sup class="numero">39</sup>O silêncio não significa ausência.</p>
+
+<p><sup class="numero">40</sup>A demora não significa esquecimento.</p>
+
+<p><sup class="numero">41</sup>Davi escreveu:</p>
+
+<blockquote>
+<p>“Amo ao Senhor, porque ele ouviu a minha voz e a minha súplica.”</p>
+<span class="referencia">Salmo 116:1</span>
+</blockquote>
+
+<p><sup class="numero">42</sup>A oração coloca diante de Deus aquilo que muitas vezes não conseguimos carregar sozinhos.</p>
+
+<h2>QUANDO A ALMA ESTÁ AFLITA</h2>
+
+<p><sup class="numero">43</sup>Eu havia chegado diante do Senhor aflito.</p>
+
+<p><sup class="numero">44</sup>Essa realidade também aparece nas Escrituras.</p>
+
+<p><sup class="numero">45</sup>Jesus ensinou:</p>
+
+<blockquote>
+<p>“Não andeis cuidadosos quanto à vossa vida...”</p>
+<span class="referencia">Mateus 6:25</span>
+</blockquote>
+
+<p><sup class="numero">46</sup>Ele não estava ensinando que as pessoas jamais enfrentariam problemas. Estava ensinando que a ansiedade não deveria governar o coração daqueles que confiam no Pai.</p>
+
+<p><sup class="numero">47</sup>Pedro escreveu:</p>
+
+<blockquote>
+<p>“Lançando sobre ele toda a vossa ansiedade, porque ele tem cuidado de vós.”</p>
+<span class="referencia">1 Pedro 5:7</span>
+</blockquote>
+
+<p><sup class="numero">48</sup>Existe uma ação necessária aqui: <strong>lançar</strong>.</p>
+
+<p><sup class="numero">49</sup>Aquilo que carregamos precisa ser colocado diante de Deus.</p>
+
+<p><sup class="numero">50</sup>Foi exatamente isso que aconteceu naquela oração. Eu havia colocado diante do Senhor meus anseios, minhas inquietações e o desejo de servir.</p>
+
+<p><sup class="numero">51</sup>E, depois de colocar tudo diante dEle, veio o descanso.</p>
+
+<h2>A RESPOSTA NEM SEMPRE É UMA EXPLICAÇÃO</h2>
+
+<p><sup class="numero">52</sup>Talvez eu quisesse saber quando.</p>
+
+<p><sup class="numero">53</sup>Talvez quisesse saber como.</p>
+
+<p><sup class="numero">54</sup>Talvez quisesse saber quais portas seriam abertas, quais caminhos seriam percorridos e como tudo aconteceria.</p>
+
+<p><sup class="numero">55</sup>Mas Deus não me deu naquele momento todas essas respostas.</p>
+
+<p><sup class="numero">56</sup>Ele simplesmente me fez descansar.</p>
+
+<p><strong>“Eu ouvi a tua oração.”</strong></p>
+
+<p><sup class="numero">57</sup>Isso me fez lembrar de uma das declarações mais conhecidas das Escrituras:</p>
+
+<blockquote>
+<p>“Aquietai-vos e sabei que eu sou Deus.”</p>
+<span class="referencia">Salmo 46:10</span>
+</blockquote>
+
+<p><sup class="numero">58</sup>Há momentos em que queremos respostas para todas as perguntas.</p>
+
+<p><sup class="numero">59</sup>Queremos saber o caminho inteiro.</p>
+
+<p><sup class="numero">60</sup>Queremos enxergar o próximo passo e também todos os passos seguintes.</p>
+
+<p><sup class="numero">61</sup>Mas Deus, muitas vezes, nos chama primeiro à confiança.</p>
+
+<p><sup class="numero">62</sup>Abraão saiu sem saber completamente para onde iria:</p>
+
+<blockquote>
+<p>“Pela fé, Abraão, sendo chamado, obedeceu, indo para um lugar que havia de receber por herança; e saiu, sem saber para onde ia.”</p>
+<span class="referencia">Hebreus 11:8</span>
+</blockquote>
+
+<p><sup class="numero">63</sup>A fé não exige conhecer todo o caminho antes de começar a caminhar.</p>
+
+<h2>O DESCANSO DEPOIS DO CLAMOR</h2>
+
+<p><sup class="numero">64</sup>Eu havia pedido ao Senhor que desatasse o ministério dEle em minha vida. Mas, antes de qualquer resposta sobre o ministério, recebi algo que naquele momento era ainda mais necessário:</p>
+
+<p><strong>descanso.</strong></p>
+
+<p><sup class="numero">65</sup>A Bíblia apresenta o descanso como uma consequência da confiança em Deus.</p>
+
+<blockquote>
+<p>“Tu conservarás em paz aquele cuja mente está firme em ti; porque ele confia em ti.”</p>
+<span class="referencia">Isaías 26:3</span>
+</blockquote>
+
+<p><sup class="numero">66</sup>A paz não estava necessariamente relacionada à mudança imediata das circunstâncias.</p>
+
+<p><sup class="numero">67</sup>As circunstâncias poderiam continuar iguais.</p>
+
+<p><sup class="numero">68</sup>O ministério ainda poderia estar diante de mim.</p>
+
+<p><sup class="numero">69</sup>As portas ainda poderiam não ter se aberto.</p>
+
+<p><sup class="numero">70</sup>Mas alguma coisa havia mudado dentro de mim.</p>
+
+<p><sup class="numero">71</sup>Eu havia chegado aflito.</p>
+
+<p><sup class="numero">72</sup>Saí descansado.</p>
+
+<h2>“EU OUVI A TUA ORAÇÃO”</h2>
+
+<p><sup class="numero">73</sup>A frase ficou dentro de mim.</p>
+
+<p><sup class="numero">74</sup>Porque saber que Deus ouviu muda a maneira como esperamos.</p>
+
+<p><sup class="numero">75</sup>Quando não sabemos o que Deus fará, podemos descansar sabendo que Ele ouviu.</p>
+
+<p><sup class="numero">76</sup>Quando não enxergamos o caminho, podemos continuar caminhando sabendo que Ele ouviu.</p>
+
+<p><sup class="numero">77</sup>Quando a porta ainda não se abriu, podemos esperar sabendo que Ele ouviu.</p>
+
+<p><sup class="numero">78</sup>E quando o ministério parecia distante daquilo que eu havia pedido, podia permanecer fiel sabendo que aquilo que pertence a Deus não depende apenas da minha força.</p>
+
+<p><sup class="numero">79</sup>O ministério era dEle.</p>
+
+<p><sup class="numero">80</sup>A obra era dEle.</p>
+
+<p><sup class="numero">81</sup>A chamada era dEle.</p>
+
+<p><sup class="numero">82</sup>Paulo expressou essa mesma consciência:</p>
+
+<blockquote>
+<p>“Porque dele, e por ele, e para ele são todas as coisas; glória, pois, a ele eternamente. Amém.”</p>
+<span class="referencia">Romanos 11:36</span>
+</blockquote>
+
+<p><sup class="numero">83</sup>Se a obra é de Deus, então ela não precisa ser sustentada pela ansiedade humana.</p>
+
+<p><sup class="numero">84</sup>Isso não significa passividade. Significa dependência.</p>
+
+<p><sup class="numero">85</sup>É possível trabalhar, orar, preparar-se, evangelizar e servir sem tentar assumir o lugar de Deus.</p>
+
+<h2>QUANDO DEUS NÃO MOSTRA TUDO</h2>
+
+<p><sup class="numero">86</sup>Naquele momento, não recebi um mapa do futuro.</p>
+
+<p><sup class="numero">87</sup>Recebi paz.</p>
+
+<p><sup class="numero">88</sup>Não recebi todas as respostas.</p>
+
+<p><sup class="numero">89</sup>Recebi consolo.</p>
+
+<p><sup class="numero">90</sup>Não recebi a explicação de como tudo aconteceria.</p>
+
+<p><sup class="numero">91</sup>Recebi a certeza de que minha oração havia sido ouvida.</p>
+
+<p><sup class="numero">92</sup>E talvez essa tenha sido a resposta que eu precisava naquele dia.</p>
+
+<p><sup class="numero">93</sup>A Palavra diz:</p>
+
+<blockquote>
+<p>“Confia no Senhor de todo o teu coração e não te estribes no teu próprio entendimento.”</p>
+<span class="referencia">Provérbios 3:5</span>
+</blockquote>
+
+<p><sup class="numero">94</sup>Confiar significa reconhecer que Deus enxerga aquilo que nós não enxergamos.</p>
+
+<p><sup class="numero">95</sup>Nós vemos uma parte.</p>
+
+<p><sup class="numero">96</sup>Ele vê o todo.</p>
+
+<p><sup class="numero">97</sup>Nós vemos o presente.</p>
+
+<p><sup class="numero">98</sup>Ele conhece o caminho completo.</p>
+
+<p><sup class="numero">99</sup>Por isso, a oração não precisa terminar sempre com todas as respostas.</p>
+
+<p><sup class="numero">100</sup>Às vezes ela termina com confiança.</p>
+
+<h2>DEUS MUDA PRIMEIRO O CORAÇÃO</h2>
+
+<p><sup class="numero">101</sup>Porque algumas vezes queremos que Deus mude imediatamente as circunstâncias, quando Deus começa mudando o nosso coração diante delas.</p>
+
+<p><sup class="numero">102</sup>Eu entrei naquela oração aflito.</p>
+
+<p><sup class="numero">103</sup>Saí dela descansado.</p>
+
+<p><sup class="numero">104</sup>Entrei carregando uma causa.</p>
+
+<p><sup class="numero">105</sup>Saí lembrando que Deus podia carregá-la por mim.</p>
+
+<p><sup class="numero">106</sup>Entrei buscando uma resposta.</p>
+
+<p><sup class="numero">107</sup>Saí com uma certeza:</p>
+
+<p><strong>Ele ouviu.</strong></p>
+
+<p><sup class="numero">108</sup>Paulo escreveu aos filipenses:</p>
+
+<blockquote>
+<p>“Não estejais inquietos por coisa alguma; antes as vossas petições sejam em tudo conhecidas diante de Deus, pela oração e súplica, com ação de graças.”</p>
+<span class="referencia">Filipenses 4:6</span>
+</blockquote>
+
+<p><sup class="numero">109</sup>E então vem a consequência:</p>
+
+<blockquote>
+<p>“E a paz de Deus, que excede todo o entendimento, guardará os vossos corações e os vossos sentimentos em Cristo Jesus.”</p>
+<span class="referencia">Filipenses 4:7</span>
+</blockquote>
+
+<p><sup class="numero">110</sup>Foi justamente isso que aquela experiência me fez compreender.</p>
+
+<p><sup class="numero">111</sup>Eu havia apresentado minha petição.</p>
+
+<p><sup class="numero">112</sup>E depois veio a paz.</p>
+
+<p><sup class="numero">113</sup>Não porque eu já soubesse tudo.</p>
+
+<p><sup class="numero">114</sup>Mas porque havia colocado tudo diante de Deus.</p>
+
+<h2>O MINISTÉRIO PERTENCE AO SENHOR</h2>
+
+<p><sup class="numero">115</sup>Eu havia pedido que o Senhor desatasse o ministério dEle em minha vida, especialmente o ministério evangelístico.</p>
+
+<p><sup class="numero">116</sup>Essa expressão — <strong>“o ministério dEle”</strong> — carrega uma verdade importante.</p>
+
+<p><sup class="numero">117</sup>O ministério não começa no homem.</p>
+
+<p><sup class="numero">118</sup>A obra pertence a Deus.</p>
+
+<p><sup class="numero">119</sup>Jesus disse:</p>
+
+<blockquote>
+<p>“Não me escolhestes vós a mim, mas eu vos escolhi a vós, e vos nomeei, para que vades e deis fruto...”</p>
+<span class="referencia">João 15:16</span>
+</blockquote>
+
+<p><sup class="numero">120</sup>O chamado precisa ser recebido com humildade.</p>
+
+<p><sup class="numero">121</sup>Quem chama é Deus.</p>
+
+<p><sup class="numero">122</sup>Quem capacita é Deus.</p>
+
+<p><sup class="numero">123</sup>Quem abre portas é Deus.</p>
+
+<p><sup class="numero">124</sup>Quem conduz é Deus.</p>
+
+<p><sup class="numero">125</sup>E a nós cabe permanecer disponíveis, obedientes e fiéis.</p>
+
+<p><sup class="numero">126</sup>Paulo também declarou:</p>
+
+<blockquote>
+<p>“Mas pela graça de Deus sou o que sou; e a sua graça para comigo não foi vã...”</p>
+<span class="referencia">1 Coríntios 15:10</span>
+</blockquote>
+
+<p><sup class="numero">127</sup>Isso protege o coração do orgulho e também do desespero.</p>
+
+<p><sup class="numero">128</sup>Se Deus chamou, devemos servi-Lo.</p>
+
+<p><sup class="numero">129</sup>Se Deus está conduzindo, devemos confiar.</p>
+
+<p><sup class="numero">130</sup>Se precisamos esperar, devemos esperar.</p>
+
+<h2>A PAZ ANTES DA PORTA</h2>
+
+<p><sup class="numero">131</sup>Eu não sabia tudo o que aconteceria dali para frente.</p>
+
+<p><sup class="numero">132</sup>Não sabia quando o ministério evangelístico seria desatado da maneira que havia pedido.</p>
+
+<p><sup class="numero">133</sup>Não sabia quais portas Deus abriria, quais caminhos seriam percorridos ou quais desafios ainda estariam pela frente.</p>
+
+<p><sup class="numero">134</sup>Mas naquele dia aprendi que nem sempre precisamos sair da presença de Deus sabendo tudo.</p>
+
+<p><sup class="numero">135</sup>Às vezes basta sair sabendo que fomos ouvidos.</p>
+
+<p><sup class="numero">136</sup>A Escritura diz:</p>
+
+<blockquote>
+<p>“Entrega o teu caminho ao Senhor; confia nele, e ele tudo fará.”</p>
+<span class="referencia">Salmo 37:5</span>
+</blockquote>
+
+<p><sup class="numero">137</sup>Entregar o caminho significa deixar de tentar controlar aquilo que pertence a Deus.</p>
+
+<p><sup class="numero">138</sup>A porta poderia abrir depois.</p>
+
+<p><sup class="numero">139</sup>O caminho poderia ser diferente.</p>
+
+<p><sup class="numero">140</sup>A resposta poderia vir de outra maneira.</p>
+
+<p><sup class="numero">141</sup>Mas minha responsabilidade continuava sendo confiar e permanecer fiel.</p>
+
+<h2>UMA EXPERIÊNCIA QUE APONTOU PARA A PALAVRA</h2>
+
+<p><sup class="numero">142</sup>A experiência que vivi foi pessoal.</p>
+
+<p><sup class="numero">143</sup>Não a apresento como uma nova revelação para acrescentar às Escrituras.</p>
+
+<p><sup class="numero">144</sup>A Palavra de Deus permanece como autoridade.</p>
+
+<p><sup class="numero">145</sup>Toda experiência precisa ser examinada à luz dela.</p>
+
+<p><sup class="numero">146</sup>João escreveu:</p>
+
+<blockquote>
+<p>“Amados, não creiais a todo espírito, mas provai se os espíritos são de Deus...”</p>
+<span class="referencia">1 João 4:1</span>
+</blockquote>
+
+<p><sup class="numero">147</sup>Por isso, uma experiência nunca deve ocupar o lugar da Palavra.</p>
+
+<p><sup class="numero">148</sup>Se uma experiência nos leva para mais perto de Cristo, para a oração, para a humildade, para a obediência e para as Escrituras, devemos recebê-la com temor e discernimento.</p>
+
+<p><sup class="numero">149</sup>A experiência não é o fundamento.</p>
+
+<p><strong>Cristo é o fundamento.</strong></p>
+
+<h2>QUANDO O CORAÇÃO CONSEGUE DESCANSAR</h2>
+
+<p><sup class="numero">150</sup>E enquanto as lágrimas ainda escorriam pelo meu rosto, enquanto eu ria sem conseguir explicar aquela alegria, enquanto o sono de descanso tomava conta de mim, uma verdade permanecia em meu coração:</p>
+
+<p><strong>Deus não havia ignorado o meu clamor.</strong></p>
+
+<p><sup class="numero">151</sup>Eu havia falado.</p>
+
+<p><sup class="numero">152</sup>Ele havia ouvido.</p>
+
+<p><sup class="numero">153</sup>E agora eu podia descansar.</p>
+
+<p><sup class="numero">154</sup>Jesus ensinou:</p>
+
+<blockquote>
+<p>“Vinde a mim, todos os que estais cansados e oprimidos, e eu vos aliviarei.”</p>
+<span class="referencia">Mateus 11:28</span>
+</blockquote>
+
+<p><sup class="numero">155</sup>Aquele convite de Cristo continua sendo profundamente necessário.</p>
+
+<p><sup class="numero">156</sup>Há pessoas cansadas de tentar resolver tudo.</p>
+
+<p><sup class="numero">157</sup>Cansadas de carregar sozinhas.</p>
+
+<p><sup class="numero">158</sup>Cansadas de esperar.</p>
+
+<p><sup class="numero">159</sup>Cansadas de lutar.</p>
+
+<p><sup class="numero">160</sup>Mas Jesus chama:</p>
+
+<p><strong>“Vinde a mim.”</strong></p>
+
+<p><sup class="numero">161</sup>O descanso verdadeiro não está simplesmente na ausência de problemas.</p>
+
+<p><sup class="numero">162</sup>Está em Cristo.</p>
+
+<h2>PERMANECER</h2>
+
+<p><sup class="numero">163</sup>Talvez o ministério ainda estivesse diante de mim.</p>
+
+<p><sup class="numero">164</sup>Talvez existissem portas que ainda seriam abertas.</p>
+
+<p><sup class="numero">165</sup>Talvez houvesse um longo caminho até aquilo que Deus desejava realizar.</p>
+
+<p><sup class="numero">166</sup>Mas naquele dia compreendi que não precisava controlar o caminho.</p>
+
+<p><sup class="numero">167</sup>Precisava apenas permanecer diante dEle.</p>
+
+<p><sup class="numero">168</sup>Jesus disse:</p>
+
+<blockquote>
+<p>“Permanecei em mim, e eu permanecerei em vós.”</p>
+<span class="referencia">João 15:4</span>
+</blockquote>
+
+<p><sup class="numero">169</sup>Antes de fazer grandes coisas para Deus, precisamos aprender a permanecer nEle.</p>
+
+<p><sup class="numero">170</sup>Antes do ministério, a comunhão.</p>
+
+<p><sup class="numero">171</sup>Antes da plataforma, o secreto.</p>
+
+<p><sup class="numero">172</sup>Antes das portas abertas, a fidelidade.</p>
+
+<p><sup class="numero">173</sup>Antes dos resultados, a permanência.</p>
+
+<p><sup class="numero">174</sup>Porque o fruto verdadeiro nasce de uma vida ligada à Videira.</p>
+
+<h2>ELE OUVIU</h2>
+
+<p><sup class="numero">175</sup>Porque aquele que ouve a oração também sabe conduzir a resposta.</p>
+
+<p><sup class="numero">176</sup>E, naquela experiência, antes mesmo de me mostrar o que faria, o Senhor me ensinou a descansar nEle.</p>
+
+<p><strong>“Eu ouvi a tua oração.”</strong></p>
+
+<p><sup class="numero">177</sup>E foi suficiente.</p>
+
+<p><sup class="numero">178</sup>Naquele dia, minha maior resposta não foi uma porta aberta.</p>
+
+<p><sup class="numero">179</sup>Foi a paz.</p>
+
+<p><sup class="numero">180</sup>Não foi o início visível de um ministério.</p>
+
+<p><sup class="numero">181</sup>Foi o descanso de saber que Deus estava ouvindo.</p>
+
+<p><sup class="numero">182</sup>A Bíblia diz:</p>
+
+<blockquote>
+<p>“A esperança que se vê não é esperança; porque o que alguém vê, como o esperará?”</p>
+<span class="referencia">Romanos 8:24</span>
+</blockquote>
+
+<p><sup class="numero">183</sup>Esperar também faz parte da caminhada.</p>
+
+<p><sup class="numero">184</sup>E esperar em Deus não significa estar parado sem propósito.</p>
+
+<p><sup class="numero">185</sup>Significa continuar confiando enquanto Deus conduz aquilo que ainda não conseguimos enxergar.</p>
+
+<p><sup class="numero">186</sup>E, às vezes, é exatamente assim que Deus começa uma grande obra:</p>
+
+<p><strong>primeiro Ele acalma o coração daquele que está esperando.</strong></p>
+
+<p><sup class="numero">187</sup>Naquele dia, eu não recebi todas as respostas.</p>
+
+<p><sup class="numero">188</sup>Recebi algo que foi suficiente para continuar:</p>
+
+<p><strong>“Eu ouvi a tua oração.”</strong></p>
+`;
+
+const modelo = document.createElement("div");
+modelo.innerHTML = texto;
+
+const blocos = Array.from(modelo.children);
+let paginas = [];
+let paginaAtual = 0;
+
+const esquerda = document.getElementById("conteudoEsquerda");
+const direita = document.getElementById("conteudoDireita");
+const paginaEsquerda = document.querySelector(".pagina.esquerda");
+const paginaDireita = document.querySelector(".pagina.direita");
+
+function criarPaginaTemporaria() {
+    const elemento = document.createElement("div");
+    elemento.className = "conteudo-pagina";
+    elemento.style.position = "fixed";
+    elemento.style.left = "-10000px";
+    elemento.style.top = "0";
+    elemento.style.visibility = "hidden";
+    elemento.style.width = window.innerWidth <= 760 ? "calc(100vw - 62px)" : "calc((min(1180px, 100vw) / 2) - 58px)";
+    elemento.style.height = window.innerWidth <= 760 ? "calc(min(76vh, 760px) - 85px)" : "670px";
+    elemento.style.overflow = "hidden";
+    elemento.style.columnCount = window.innerWidth <= 760 ? "1" : "2";
+    elemento.style.columnGap = window.innerWidth <= 760 ? "0" : "27px";
+    elemento.style.columnFill = "auto";
+    document.body.appendChild(elemento);
+    return elemento;
+}
+
+function montarPaginas() {
+    paginas = [];
+
+    const medidor = criarPaginaTemporaria();
+    let atual = [];
+    
+    blocos.forEach((bloco) => {
+        const copia = bloco.cloneNode(true);
+        medidor.appendChild(copia);
+
+        const excedeu = medidor.scrollWidth > medidor.clientWidth + 2;
+
+        if (excedeu && atual.length > 0) {
+            medidor.removeChild(copia);
+            paginas.push(atual);
+            atual = [];
+
+            medidor.innerHTML = "";
+            medidor.appendChild(bloco.cloneNode(true));
+            atual.push(bloco.cloneNode(true));
+        } else {
+            atual.push(bloco.cloneNode(true));
+        }
+    });
+
+    if (atual.length) {
+        paginas.push(atual);
+    }
+
+    medidor.remove();
+    paginaAtual = Math.min(paginaAtual, Math.max(0, paginas.length - 1));
+    renderizar();
+}
+
+function renderizar() {
+    const mobile = window.innerWidth <= 760;
+
+    esquerda.innerHTML = "";
+    direita.innerHTML = "";
+
+    const primeira = paginas[paginaAtual] || [];
+    primeira.forEach(bloco => esquerda.appendChild(bloco.cloneNode(true)));
+
+    if (!mobile) {
+        const segunda = paginas[paginaAtual + 1] || [];
+        segunda.forEach(bloco => direita.appendChild(bloco.cloneNode(true)));
+        paginaDireita.style.display = "block";
+    } else {
+        paginaDireita.style.display = "none";
+    }
+
+    const numero1 = paginaAtual + 1;
+    const numero2 = mobile ? "" : Math.min(paginaAtual + 2, paginas.length);
+
+    document.getElementById("numeroEsquerda").textContent = numero1;
+    document.getElementById("numeroDireita").textContent = numero2;
+
+    document.getElementById("indicador").textContent = mobile
+        ? `Página ${numero1} de ${paginas.length}`
+        : `Páginas ${numero1}–${numero2} de ${paginas.length}`;
+
+    document.getElementById("anterior").disabled = paginaAtual === 0;
+    document.getElementById("proxima").disabled =
+        paginaAtual >= paginas.length - (mobile ? 1 : 2);
+
+    document.getElementById("livro").style.animation = "none";
+    void document.getElementById("livro").offsetWidth;
+    document.getElementById("livro").style.animation = "virar .25s ease";
+}
+
+function mudarPagina(direcao) {
+    const mobile = window.innerWidth <= 760;
+    const passo = mobile ? 1 : 2;
+    const destino = paginaAtual + (direcao * passo);
+
+    if (destino < 0 || destino >= paginas.length) return;
+
+    paginaAtual = destino;
+    renderizar();
+}
+
+document.addEventListener("keydown", function(evento) {
+    if (evento.key === "ArrowRight") mudarPagina(1);
+    if (evento.key === "ArrowLeft") mudarPagina(-1);
+});
+
+let inicioToque = 0;
+
+document.getElementById("livro").addEventListener("touchstart", function(evento) {
+    inicioToque = evento.changedTouches[0].screenX;
+}, { passive: true });
+
+document.getElementById("livro").addEventListener("touchend", function(evento) {
+    const fimToque = evento.changedTouches[0].screenX;
+    const diferenca = fimToque - inicioToque;
+
+    if (Math.abs(diferenca) > 55) {
+        mudarPagina(diferenca < 0 ? 1 : -1);
+    }
+}, { passive: true });
+
+let temporizadorRedimensionamento;
+
+window.addEventListener("resize", function() {
+    clearTimeout(temporizadorRedimensionamento);
+    temporizadorRedimensionamento = setTimeout(montarPaginas, 250);
+});
+
+const estiloAnimacao = document.createElement("style");
+estiloAnimacao.textContent = `
+@keyframes virar {
+    from { opacity: .75; transform: translateX(5px); }
+    to { opacity: 1; transform: translateX(0); }
+}`;
+document.head.appendChild(estiloAnimacao);
+
+montarPaginas();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,1174 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#17130f">
+<title>Atos 29 — Capítulo 24 | Ministério Atalaia</title>
+
+<style>
+:root {
+    --fundo: #17130f;
+    --papel: #eee2bd;
+    --papel-claro: #f5ebd0;
+    --texto: #302719;
+    --destaque: #5a472c;
+    --borda: #c9b98e;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    background:
+        radial-gradient(ellipse at center, #40372b 0%, #211c16 55%, #100e0b 100%);
+    color: #eee4d0;
+    font-family: Georgia, "Times New Roman", serif;
+}
+
+/* ÁREA PRINCIPAL */
+
+.livro {
+    width: 100%;
+    min-height: 100vh;
+    padding: 28px 20px 22px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.identidade {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #d8c8a6;
+}
+
+.identidade h1 {
+    margin: 0;
+    font-size: 19px;
+    letter-spacing: 3px;
+    font-weight: normal;
+}
+
+.identidade p {
+    margin: 7px 0 0;
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: #a99a7d;
+}
+
+/* LIVRO ABERTO */
+
+.livro-aberto {
+    width: min(1250px, 100%);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5px;
+    perspective: 1800px;
+}
+
+.pagina {
+    position: relative;
+    height: min(820px, calc(100vh - 190px));
+    min-height: 570px;
+    overflow: hidden;
+    color: var(--texto);
+    background:
+        radial-gradient(ellipse at 20% 15%, rgba(255,255,255,.35), transparent 50%),
+        radial-gradient(ellipse at 80% 90%, rgba(139,105,48,.09), transparent 55%),
+        repeating-linear-gradient(
+            0deg,
+            rgba(90,65,30,.018) 0px,
+            rgba(90,65,30,.018) 1px,
+            transparent 1px,
+            transparent 4px
+        ),
+        linear-gradient(100deg, #e9dcb7, var(--papel-claro) 45%, #eadbb4);
+    box-shadow:
+        0 10px 30px rgba(0,0,0,.45),
+        inset 0 0 35px rgba(100,72,30,.12);
+    padding: 25px 29px 45px;
+}
+
+.pagina-esquerda {
+    border-radius: 5px 0 0 5px;
+    box-shadow:
+        -8px 10px 25px rgba(0,0,0,.35),
+        inset -12px 0 18px rgba(80,55,25,.09);
+}
+
+.pagina-direita {
+    border-radius: 0 5px 5px 0;
+    box-shadow:
+        8px 10px 25px rgba(0,0,0,.35),
+        inset 12px 0 18px rgba(80,55,25,.09);
+}
+
+.cabecalho-pagina {
+    height: 27px;
+    border-bottom: 1px solid rgba(87,66,38,.45);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 10px;
+    color: #665337;
+    font-size: 9px;
+    letter-spacing: 1.1px;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.conteudo-pagina {
+    height: calc(100% - 57px);
+    margin-top: 15px;
+    column-count: 2;
+    column-gap: 27px;
+    column-rule: 1px solid rgba(91,69,40,.20);
+    column-fill: auto;
+    overflow: hidden;
+    text-align: justify;
+    font-size: 12.4px;
+    line-height: 1.48;
+    hyphens: auto;
+}
+
+.conteudo-pagina p {
+    margin: 0 0 7px;
+    text-indent: 0;
+    break-inside: avoid;
+}
+
+.conteudo-pagina .versiculo {
+    font-size: .68em;
+    vertical-align: super;
+    font-weight: bold;
+    color: #745b35;
+    margin-right: 3px;
+}
+
+.conteudo-pagina h2 {
+    font-size: 13px;
+    line-height: 1.25;
+    letter-spacing: .45px;
+    text-transform: uppercase;
+    text-align: left;
+    margin: 12px 0 7px;
+    color: #47371f;
+    break-after: avoid;
+    break-inside: avoid;
+}
+
+.conteudo-pagina h3 {
+    font-size: 11px;
+    line-height: 1.3;
+    text-align: center;
+    font-weight: normal;
+    font-style: italic;
+    margin: 8px 0 12px;
+    break-inside: avoid;
+}
+
+.conteudo-pagina .titulo-capitulo {
+    text-align: center;
+    font-size: 17px;
+    line-height: 1.3;
+    letter-spacing: .7px;
+    margin: 22px 0 12px;
+    color: #44331d;
+}
+
+.conteudo-pagina .subtitulo-inicial {
+    text-align: center;
+    font-size: 11px;
+    font-style: italic;
+    margin: 0 0 18px;
+}
+
+.conteudo-pagina blockquote {
+    margin: 9px 12px 11px;
+    padding-left: 11px;
+    border-left: 2px solid rgba(102,78,42,.45);
+    font-style: italic;
+    text-align: left;
+    color: #493b29;
+    break-inside: avoid;
+}
+
+.conteudo-pagina blockquote p {
+    margin-bottom: 3px;
+}
+
+.conteudo-pagina .referencia {
+    font-size: 10px;
+    font-weight: bold;
+    font-style: normal;
+    text-align: right;
+    color: #705a37;
+}
+
+.conteudo-pagina .frase-destaque {
+    font-weight: bold;
+    text-align: center;
+    margin: 9px 5px;
+    break-inside: avoid;
+}
+
+.conteudo-pagina .assinatura {
+    text-align: center;
+    font-weight: bold;
+    margin-top: 12px;
+}
+
+.rodape-pagina {
+    position: absolute;
+    bottom: 15px;
+    left: 29px;
+    right: 29px;
+    border-top: 1px solid rgba(87,66,38,.35);
+    padding-top: 7px;
+    display: flex;
+    justify-content: space-between;
+    color: #715d3c;
+    font-size: 9px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.lombada {
+    position: absolute;
+    z-index: 5;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 12px;
+    transform: translateX(-50%);
+    pointer-events: none;
+    background: linear-gradient(
+        90deg,
+        rgba(65,45,20,.02),
+        rgba(65,45,20,.20),
+        rgba(255,255,255,.18),
+        rgba(65,45,20,.17),
+        rgba(65,45,20,.02)
+    );
+}
+
+/* CONTROLES */
+
+.controles {
+    width: min(700px, 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin-top: 22px;
+}
+
+.controles button {
+    border: 1px solid #796746;
+    background: linear-gradient(#4a3c2a, #30271d);
+    color: #eee2c5;
+    padding: 11px 24px;
+    font-family: Georgia, serif;
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    cursor: pointer;
+    transition: background .2s, transform .2s;
+}
+
+.controles button:hover:not(:disabled) {
+    background: #655238;
+    transform: translateY(-1px);
+}
+
+.controles button:disabled {
+    opacity: .35;
+    cursor: not-allowed;
+}
+
+.indicador {
+    min-width: 100px;
+    text-align: center;
+    color: #d8c8a6;
+    font-size: 12px;
+    letter-spacing: 1px;
+}
+
+.credito {
+    margin-top: 22px;
+    text-align: center;
+    color: #9e8e70;
+    font-size: 10px;
+    letter-spacing: 2px;
+}
+
+/* ANIMAÇÃO */
+
+.pagina.animar {
+    animation: virar .35s ease;
+}
+
+@keyframes virar {
+    0% { opacity: .65; transform: rotateY(-3deg); }
+    100% { opacity: 1; transform: rotateY(0); }
+}
+
+/* CELULAR E TABLET */
+
+@media (max-width: 760px) {
+    .livro {
+        padding: 18px 10px;
+    }
+
+    .identidade {
+        margin-bottom: 15px;
+    }
+
+    .identidade h1 {
+        font-size: 15px;
+        letter-spacing: 2px;
+    }
+
+    .livro-aberto {
+        display: block;
+        width: min(560px, 100%);
+    }
+
+    .pagina {
+        height: calc(100vh - 190px);
+        min-height: 470px;
+        max-height: 850px;
+        border-radius: 4px;
+        padding: 20px 22px 43px;
+    }
+
+    .pagina-esquerda {
+        display: none;
+    }
+
+    .pagina-direita {
+        display: block;
+        box-shadow: 0 8px 25px rgba(0,0,0,.4);
+    }
+
+    .conteudo-pagina {
+        column-count: 1;
+        column-gap: 0;
+        font-size: 13px;
+        line-height: 1.55;
+    }
+
+    .cabecalho-pagina {
+        font-size: 8px;
+        letter-spacing: .6px;
+    }
+
+    .rodape-pagina {
+        left: 22px;
+        right: 22px;
+    }
+
+    .lombada {
+        display: none;
+    }
+
+    .controles {
+        gap: 9px;
+        margin-top: 15px;
+    }
+
+    .controles button {
+        padding: 10px 13px;
+        font-size: 10px;
+    }
+
+    .indicador {
+        min-width: 75px;
+        font-size: 10px;
+    }
+}
+
+@media (max-width: 380px) {
+    .pagina {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+    .conteudo-pagina {
+        font-size: 12px;
+    }
+
+    .controles button {
+        padding: 9px 10px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="livro">
+
+    <header class="identidade">
+        <h1>ATOS 29 • A HISTÓRIA CONTINUA</h1>
+        <p>MINISTÉRIO ATALAIA</p>
+    </header>
+
+    <main class="livro-aberto" id="livroAberto">
+
+        <section class="pagina pagina-esquerda" id="paginaEsquerda">
+            <div class="cabecalho-pagina">
+                <span>ATOS 29 • A HISTÓRIA CONTINUA</span>
+                <span>CAPÍTULO 24</span>
+            </div>
+            <div class="conteudo-pagina" id="conteudoEsquerda"></div>
+            <div class="rodape-pagina">
+                <span>MINISTÉRIO ATALAIA</span>
+                <span id="numeroEsquerda">1</span>
+            </div>
+        </section>
+
+        <section class="pagina pagina-direita" id="paginaDireita">
+            <div class="cabecalho-pagina">
+                <span>ATOS 29 • A HISTÓRIA CONTINUA</span>
+                <span>CAPÍTULO 24</span>
+            </div>
+            <div class="conteudo-pagina" id="conteudoDireita"></div>
+            <div class="rodape-pagina">
+                <span>MINISTÉRIO ATALAIA</span>
+                <span id="numeroDireita">2</span>
+            </div>
+        </section>
+
+        <div class="lombada"></div>
+    </main>
+
+    <nav class="controles" aria-label="Navegação do flipbook">
+        <button id="anterior" type="button">ANTERIOR</button>
+        <span class="indicador" id="indicador">PÁGINAS 1–2</span>
+        <button id="proxima" type="button">PRÓXIMA</button>
+    </nav>
+
+    <footer class="credito">
+        MINISTÉRIO ATALAIA
+    </footer>
+
+</div>
+
+<!-- CONTEÚDO INTEGRAL DO CAPÍTULO -->
+
+<div id="fonte" hidden>
+
+    <h1 class="titulo-capitulo">CAPÍTULO 24<br>QUANDO DEUS PASSA PELAS COPAS DAS ÁRVORES</h1>
+    <h3 class="subtitulo-inicial">Há experiências com Deus que o tempo não consegue apagar</h3>
+
+    <p><sup class="versiculo">1</sup>Há experiências com Deus que pareciam ficar guardadas em algum lugar profundo da alma. O tempo passava, os lugares mudavam, a vida seguia, mas determinadas lembranças permaneciam silenciosamente dentro de nós. E, às vezes, muitos anos depois, Deus permitia que algo acontecesse novamente, e aquela memória era despertada.</p>
+
+    <p><sup class="versiculo">2</sup>Foi exatamente isso que aconteceu comigo.</p>
+
+    <p><sup class="versiculo">3</sup>Quando eu era novo convertido, costumávamos ir para um sítio de retiro na estrada de Novo Airão. Era um lugar simples, cercado pela natureza, com árvores muito altas. Naquela época, eu ainda estava descobrindo muitas coisas sobre a vida com Deus. Minha fé estava começando a criar raízes.</p>
+
+    <p><sup class="versiculo">4</sup>Eu me lembro de olhar para cima, para aquelas árvores enormes, e sentir algo que não conseguia explicar completamente.</p>
+
+    <p><sup class="versiculo">5</sup>Eu sentia a presença de Deus.</p>
+
+    <p><sup class="versiculo">6</sup>Não era simplesmente a beleza da natureza. Havia, para mim, uma percepção profunda de que Deus estava perto. Eu olhava para as copas das árvores, e meu coração era tomado por uma reverência, uma paz e uma consciência muito forte da presença do Espírito Santo.</p>
+
+    <p><sup class="versiculo">7</sup>Eu era novo convertido.</p>
+
+    <p><sup class="versiculo">8</sup>Talvez eu nem soubesse explicar teologicamente aquilo que estava experimentando. Mas eu sabia reconhecer quando meu coração era tocado pela presença de Deus.</p>
+
+    <blockquote>
+        <p>“Chegai-vos a Deus, e ele se chegará a vós.”</p>
+        <p class="referencia">Tiago 4:8</p>
+    </blockquote>
+
+    <p><sup class="versiculo">9</sup>A vida com Deus começava a me ensinar algo que não dependia apenas daquilo que eu conseguia explicar. Existia uma realidade de comunhão que precisava ser vivida.</p>
+
+    <p><sup class="versiculo">10</sup>A fé não era apenas conhecimento.</p>
+    <p><sup class="versiculo">11</sup>Era relacionamento.</p>
+    <p><sup class="versiculo">12</sup>Era busca.</p>
+    <p><sup class="versiculo">13</sup>Era reverência.</p>
+    <p><sup class="versiculo">14</sup>Era aprender a perceber Deus no caminho da vida.</p>
+
+    <h2>OS ANOS PASSARAM</h2>
+
+    <p><sup class="versiculo">15</sup>Os anos passaram.</p>
+    <p><sup class="versiculo">16</sup>A caminhada continuou.</p>
+
+    <p><sup class="versiculo">17</sup>Vieram experiências, responsabilidades, lutas, alegrias, ministério, aprendizados e também momentos difíceis. Aquele jovem convertido já não era mais o mesmo. Muitas coisas mudaram.</p>
+
+    <p><sup class="versiculo">18</sup>Mas algumas memórias Deus não permitia que desaparecessem.</p>
+
+    <blockquote>
+        <p>“Jesus Cristo é o mesmo, ontem, e hoje, e eternamente.”</p>
+        <p class="referencia">Hebreus 13:8</p>
+    </blockquote>
+
+    <p><sup class="versiculo">19</sup>Eu havia mudado.</p>
+    <p><sup class="versiculo">20</sup>O tempo havia mudado.</p>
+    <p><sup class="versiculo">21</sup>As circunstâncias haviam mudado.</p>
+    <p><sup class="versiculo">22</sup>Mas Deus não havia mudado.</p>
+
+    <p><sup class="versiculo">23</sup>E talvez essa seja uma das verdades mais profundas da caminhada com Deus: aquilo que muda ao nosso redor não altera a identidade daquele que permanece eternamente o mesmo.</p>
+
+    <h2>E AS ÁRVORES ESTAVAM NOVAMENTE DIANTE DE MIM</h2>
+
+    <p><sup class="versiculo">24</sup>Recentemente, por volta das seis horas da tarde, aproximadamente dezoito horas e quinze minutos, na transição entre o dia e a noite, eu estava em um lugar aqui em Manaus.</p>
+
+    <p><sup class="versiculo">25</sup>Olhei para cima.</p>
+    <p><sup class="versiculo">26</sup>Novamente havia árvores.</p>
+    <p><sup class="versiculo">27</sup>E, naquele instante, aconteceu algo que me surpreendeu.</p>
+    <p><sup class="versiculo">28</sup>Aquela sensação voltou.</p>
+
+    <p><sup class="versiculo">29</sup>Era como se uma lembrança espiritual tivesse sido despertada dentro de mim. Por alguns momentos, parecia que eu estava novamente naquele sítio na estrada de Novo Airão, olhando para as árvores quando ainda era um novo convertido.</p>
+
+    <p><sup class="versiculo">30</sup>Senti fortemente a presença de Deus.</p>
+    <p><sup class="versiculo">31</sup>Muito forte.</p>
+
+    <p><sup class="versiculo">32</sup>E imediatamente me lembrei de uma passagem que ganhou um significado especial naquele momento.</p>
+
+    <h2>O SOM SOBRE AS ÁRVORES</h2>
+
+    <p><sup class="versiculo">33</sup>Davi estava diante de uma batalha contra os filisteus. Ele havia consultado o Senhor e recebido uma orientação.</p>
+
+    <blockquote>
+        <p>“E há de ser que, ouvindo tu um ruído de marcha pelas copas das amoreiras, então, te apressarás; porque o Senhor saiu diante de ti...”</p>
+        <p class="referencia">2 Samuel 5:24</p>
+    </blockquote>
+
+    <p><sup class="versiculo">34</sup>Essa passagem me chamou profundamente a atenção.</p>
+    <p><sup class="versiculo">35</sup>Davi deveria prestar atenção ao que aconteceria <strong>sobre as árvores</strong>.</p>
+    <p><sup class="versiculo">36</sup>Haveria um ruído.</p>
+    <p><sup class="versiculo">37</sup>E aquele ruído seria um sinal de que o Senhor havia saído diante dele.</p>
+
+    <p><sup class="versiculo">38</sup>Davi não deveria simplesmente agir segundo sua própria força ou experiência. Ele precisava discernir o sinal de Deus e obedecer à direção recebida.</p>
+
+    <p><sup class="versiculo">39</sup>A narrativa mostrava um princípio importante: antes de agir, Davi consultava o Senhor.</p>
+
+    <blockquote>
+        <p>“E consultou Davi ao Senhor...”</p>
+        <p class="referencia">2 Samuel 5:19</p>
+    </blockquote>
+
+    <p><sup class="versiculo">40</sup>Isso fazia diferença.</p>
+    <p><sup class="versiculo">41</sup>Davi não queria apenas vencer uma batalha. Ele precisava saber como deveria caminhar.</p>
+    <p><sup class="versiculo">42</sup>Existe algo poderoso nessa narrativa.</p>
+    <p><sup class="versiculo">43</sup>Deus estava ensinando Davi a reconhecer quando Ele estava indo à frente.</p>
+    <p><sup class="versiculo">44</sup>O Senhor não disse apenas:</p>
+
+    <p class="frase-destaque">“Vá.”</p>
+
+    <p><sup class="versiculo">45</sup>Ele disse, em outras palavras:</p>
+
+    <p class="frase-destaque">“Preste atenção. Você saberá quando Eu estiver indo adiante de você.”</p>
+
+    <p><sup class="versiculo">46</sup>Isso me fez pensar profundamente sobre aquela experiência que tive tantos anos atrás e sobre o que aconteceu naquele entardecer em Manaus.</p>
+
+    <p><sup class="versiculo">47</sup>Não queria transformar uma experiência pessoal em uma doutrina.</p>
+
+    <p><sup class="versiculo">48</sup>Eu não poderia afirmar que cada vez que olhamos para uma árvore estamos diante de uma manifestação sobrenatural. A Bíblia não nos ensinava isso.</p>
+
+    <p><sup class="versiculo">49</sup>Também não poderia afirmar que Deus estava literalmente caminhando sobre as árvores naquele momento.</p>
+
+    <p><sup class="versiculo">50</sup>Mas eu podia reconhecer algo que aconteceu dentro de mim.</p>
+    <p><sup class="versiculo">51</sup>Aquelas árvores despertaram uma memória.</p>
+    <p><sup class="versiculo">52</sup>E aquela memória me levou novamente para Deus.</p>
+
+    <h2>A VIRAÇÃO DO DIA</h2>
+
+    <p><sup class="versiculo">53</sup>Existia ainda outro detalhe que me chamou a atenção.</p>
+    <p><sup class="versiculo">54</sup>A experiência aconteceu no final do dia.</p>
+
+    <p>Na Bíblia, encontramos uma expressão muito significativa no relato do jardim do Éden:</p>
+
+    <blockquote>
+        <p>“E ouviram a voz do Senhor Deus, que passeava no jardim pela viração do dia...”</p>
+        <p class="referencia">Gênesis 3:8</p>
+    </blockquote>
+
+    <p><sup class="versiculo">55</sup>A viração do dia era aquele momento de transição.</p>
+    <p><sup class="versiculo">56</sup>O calor do dia diminuía.</p>
+    <p><sup class="versiculo">57</sup>A luz começava a desaparecer.</p>
+    <p><sup class="versiculo">58</sup>O ambiente mudava.</p>
+    <p><sup class="versiculo">59</sup>E, naquele cenário, o homem percebia a presença de Deus.</p>
+    <p><sup class="versiculo">60</sup>Talvez por isso aquele horário tivesse tocado algo tão profundo em mim.</p>
+    <p><sup class="versiculo">61</sup>O dia estava terminando.</p>
+    <p><sup class="versiculo">62</sup>Eu olhei para cima.</p>
+    <p><sup class="versiculo">63</sup>As árvores estavam ali.</p>
+    <p><sup class="versiculo">64</sup>E, de repente, meu coração se lembrou de Deus.</p>
+
+    <p><sup class="versiculo">65</sup>A Escritura mostrava várias vezes como momentos comuns podiam se tornar ocasiões de encontro, reflexão e revelação daquilo que Deus estava ensinando.</p>
+
+    <p><sup class="versiculo">66</sup>Uma paisagem.</p>
+    <p><sup class="versiculo">67</sup>Um caminho.</p>
+    <p><sup class="versiculo">68</sup>Uma hora do dia.</p>
+    <p><sup class="versiculo">69</sup>Uma lembrança.</p>
+    <p><sup class="versiculo">70</sup>Uma palavra.</p>
+
+    <p><sup class="versiculo">71</sup>Tudo isso podia servir como ocasião para o coração parar e voltar-se para Deus.</p>
+    <p><sup class="versiculo">72</sup>Mas era necessário discernimento.</p>
+    <p><sup class="versiculo">73</sup>A experiência não deveria substituir a Palavra.</p>
+    <p><sup class="versiculo">74</sup>A emoção não deveria ocupar o lugar de Cristo.</p>
+    <p><sup class="versiculo">75</sup>A lembrança não deveria se transformar em doutrina.</p>
+    <p><sup class="versiculo">76</sup>O que importava era aquilo para o qual aquela lembrança conduzia o coração.</p>
+    <p><sup class="versiculo">77</sup>E, naquele momento, ela me conduziu novamente para Deus.</p>
+
+    <h2>O DEUS QUE NÃO MUDOU</h2>
+
+    <p><sup class="versiculo">78</sup>Talvez a coisa mais impressionante naquela experiência não tivesse sido a árvore.</p>
+    <p><sup class="versiculo">79</sup>Tivesse sido perceber que <strong>Deus não mudou</strong>.</p>
+    <p><sup class="versiculo">80</sup>Eu mudei.</p>
+    <p><sup class="versiculo">81</sup>O tempo mudou.</p>
+    <p><sup class="versiculo">82</sup>Os lugares mudaram.</p>
+    <p><sup class="versiculo">83</sup>As circunstâncias mudaram.</p>
+    <p><sup class="versiculo">84</sup>Mas aquele Deus que eu conheci quando era novo convertido continuava sendo Deus.</p>
+    <p><sup class="versiculo">85</sup>A presença que eu buscava naquela época continuava sendo a presença de que minha alma precisava.</p>
+
+    <blockquote>
+        <p>“Porque eu, o Senhor, não mudo...”</p>
+        <p class="referencia">Malaquias 3:6</p>
+    </blockquote>
+
+    <p><sup class="versiculo">86</sup>Essa verdade era maior do que a experiência.</p>
+    <p><sup class="versiculo">87</sup>Deus não dependia das árvores.</p>
+    <p><sup class="versiculo">88</sup>Deus não dependia daquele lugar.</p>
+    <p><sup class="versiculo">89</sup>Deus não dependia daquele horário.</p>
+    <p><sup class="versiculo">90</sup>Deus continuava sendo Deus em qualquer lugar.</p>
+    <p><sup class="versiculo">91</sup>Talvez eu tivesse crescido em conhecimento.</p>
+    <p><sup class="versiculo">92</sup>Talvez tivesse aprendido muitas coisas.</p>
+    <p><sup class="versiculo">93</sup>Talvez tivesse adquirido experiências que aquele jovem convertido não possuía.</p>
+    <p><sup class="versiculo">94</sup>Mas existia algo que nunca deveria ser perdido:</p>
+
+    <p class="frase-destaque">a fome pela presença de Deus.</p>
+
+    <blockquote>
+        <p>“Bem-aventurados os que têm fome e sede de justiça, porque eles serão fartos.”</p>
+        <p class="referencia">Mateus 5:6</p>
+    </blockquote>
+
+    <p><sup class="versiculo">95</sup>A caminhada cristã não deveria produzir uma acomodação espiritual.</p>
+    <p><sup class="versiculo">96</sup>Quanto mais conhecêssemos a Deus, mais deveríamos desejar conhecê-lo.</p>
+
+    <h2>O PERIGO DE PERDER A SIMPLICIDADE</h2>
+
+    <p><sup class="versiculo">97</sup>Havia um perigo na caminhada cristã.</p>
+    <p><sup class="versiculo">98</sup>Podíamos aprender tanto sobre Deus que deixávamos de buscá-lo.</p>
+    <p><sup class="versiculo">99</sup>Podíamos falar tanto sobre a presença de Deus que nos esquecíamos de entrar nela.</p>
+    <p><sup class="versiculo">100</sup>Podíamos trabalhar tanto para Deus que esquecíamos de estar com Deus.</p>
+    <p><sup class="versiculo">101</sup>Podíamos conhecer a Bíblia e perder a sensibilidade espiritual.</p>
+    <p><sup class="versiculo">102</sup>Podíamos conhecer a linguagem do ministério e perder a simplicidade da devoção.</p>
+    <p><sup class="versiculo">103</sup>Marta estava ocupada servindo, enquanto Maria havia escolhido estar aos pés de Jesus.</p>
+
+    <blockquote>
+        <p>“Maria escolheu a boa parte, a qual não lhe será tirada.”</p>
+        <p class="referencia">Lucas 10:42</p>
+    </blockquote>
+
+    <p><sup class="versiculo">104</sup>O problema não estava simplesmente em servir.</p>
+    <p><sup class="versiculo">105</sup>Servir era importante.</p>
+    <p><sup class="versiculo">106</sup>O problema era permitir que o serviço ocupasse o lugar da comunhão.</p>
+    <p><sup class="versiculo">107</sup>O ministério nunca deveria substituir a presença.</p>
+    <p><sup class="versiculo">108</sup>O conhecimento nunca deveria substituir a intimidade.</p>
+    <p><sup class="versiculo">109</sup>A atividade nunca deveria substituir a adoração.</p>
+    <p><sup class="versiculo">110</sup>Por isso, talvez aquela lembrança tivesse sido mais do que uma lembrança.</p>
+    <p><sup class="versiculo">111</sup>Talvez tivesse sido um convite.</p>
+    <p><sup class="versiculo">112</sup>Um convite para voltar ao lugar da simplicidade.</p>
+    <p><sup class="versiculo">113</sup>Voltar àquele coração que simplesmente olhava para cima e dizia:</p>
+
+    <p class="frase-destaque">“Deus está aqui.”</p>
+
+    <h2>APRENDER A PERCEBER</h2>
+
+    <p><sup class="versiculo">114</sup>Davi precisava ouvir.</p>
+    <p><sup class="versiculo">115</sup>Nós também precisamos aprender a perceber.</p>
+    <p><sup class="versiculo">116</sup>Mas perceber não significava acreditar em qualquer sensação.</p>
+
+    <p>A própria Escritura nos orientava:</p>
+
+    <blockquote>
+        <p>“Amados, não creiais a todo o espírito, mas provai se os espíritos são de Deus...”</p>
+        <p class="referencia">1 João 4:1</p>
+    </blockquote>
+
+    <p><sup class="versiculo">117</sup>Nem toda sensação era uma mensagem de Deus.</p>
+    <p><sup class="versiculo">118</sup>Nem toda coincidência era uma revelação.</p>
+    <p><sup class="versiculo">119</sup>Nem toda experiência espiritual deveria ser transformada em uma interpretação definitiva.</p>
+    <p><sup class="versiculo">120</sup>Por isso, precisávamos de discernimento.</p>
+    <p><sup class="versiculo">121</sup>A experiência deveria ser examinada à luz das Escrituras.</p>
+    <p><sup class="versiculo">122</sup>A emoção não poderia substituir a Palavra.</p>
+    <p><sup class="versiculo">123</sup>A experiência não poderia ocupar o lugar de Cristo.</p>
+    <p><sup class="versiculo">124</sup>Mas também não precisávamos desprezar aquilo que Deus usava para nos despertar.</p>
+
+    <p><sup class="versiculo">125</sup>Se uma lembrança nos conduzisse à oração, à santidade, à Palavra, ao arrependimento, à gratidão e a uma busca mais profunda por Cristo, poderíamos recebê-la com humildade e perguntar:</p>
+
+    <p class="frase-destaque">“Senhor, o que Tu queres me ensinar?”</p>
+
+    <p><sup class="versiculo">126</sup>Essa era uma pergunta muito mais segura do que tentar explicar imediatamente tudo o que sentíamos.</p>
+
+    <h2>QUANDO DEUS VAI ADIANTE</h2>
+
+    <p><sup class="versiculo">127</sup>A palavra que mais permanecia em minha mente era esta:</p>
+
+    <p class="frase-destaque">“Porque o Senhor saiu diante de ti.”</p>
+
+    <p><sup class="versiculo">128</sup>Essa era a mensagem para Davi.</p>
+    <p><sup class="versiculo">129</sup>O Senhor iria adiante dele.</p>
+    <p><sup class="versiculo">130</sup>Davi não precisava entrar naquela batalha sozinho.</p>
+
+    <blockquote>
+        <p>“O Senhor pelejará por vós, e vos calareis.”</p>
+        <p class="referencia">Êxodo 14:14</p>
+    </blockquote>
+
+    <p><sup class="versiculo">131</sup>Isso não significava passividade diante de todas as situações. Significava dependência.</p>
+    <p><sup class="versiculo">132</sup>Davi deveria agir, mas deveria agir debaixo da direção de Deus.</p>
+    <p><sup class="versiculo">133</sup>Essa também era uma necessidade da nossa caminhada.</p>
+    <p><sup class="versiculo">134</sup>Precisávamos saber que Deus ia adiante de nós.</p>
+    <p><sup class="versiculo">135</sup>Antes da batalha.</p>
+    <p><sup class="versiculo">136</sup>Antes da decisão.</p>
+    <p><sup class="versiculo">137</sup>Antes do caminho desconhecido.</p>
+    <p><sup class="versiculo">138</sup>Antes da porta que ainda não havia aberto.</p>
+    <p><sup class="versiculo">139</sup>Antes daquilo que não conseguíamos enxergar.</p>
+    <p><sup class="versiculo">140</sup>Deus continuava sendo Deus.</p>
+    <p><sup class="versiculo">141</sup>Talvez o grande milagre não fosse ouvir um som sobre as árvores.</p>
+    <p><sup class="versiculo">142</sup>Talvez fosse aprender a reconhecer quando Deus estava nos conduzindo.</p>
+    <p><sup class="versiculo">143</sup>Havia momentos em que precisávamos avançar.</p>
+    <p><sup class="versiculo">144</sup>Havia momentos em que precisávamos esperar.</p>
+    <p><sup class="versiculo">145</sup>Havia momentos em que precisávamos lutar.</p>
+    <p><sup class="versiculo">146</sup>Havia momentos em que precisávamos permanecer em silêncio.</p>
+    <p><sup class="versiculo">147</sup>E havia momentos em que precisávamos simplesmente olhar para cima e lembrar:</p>
+
+    <p class="frase-destaque">Deus está presente.</p>
+
+    <h2>NÃO PERCA O PRIMEIRO AMOR</h2>
+
+    <p><sup class="versiculo">148</sup>Quando aquela sensação voltou, uma coisa ficou muito clara dentro de mim:</p>
+    <p><sup class="versiculo">149</sup>Eu não queria perder aquilo que havia no coração daquele novo convertido.</p>
+    <p><sup class="versiculo">150</sup>Eu não queria perder a capacidade de me maravilhar com Deus.</p>
+    <p><sup class="versiculo">151</sup>Não queria perder a fome.</p>
+    <p><sup class="versiculo">152</sup>Não queria perder a reverência.</p>
+    <p><sup class="versiculo">153</sup>Não queria perder a sensibilidade.</p>
+    <p><sup class="versiculo">154</sup>Não queria perder o desejo de estar na presença do Espírito Santo.</p>
+
+    <p>Jesus falou à igreja de Éfeso:</p>
+
+    <blockquote>
+        <p>“Tenho, porém, contra ti que deixaste a tua primeira caridade.”</p>
+        <p class="referencia">Apocalipse 2:4</p>
+    </blockquote>
+
+    <p><sup class="versiculo">155</sup>O chamado não era para abandonar tudo o que havia sido aprendido, mas para retornar àquilo que havia sido perdido.</p>
+    <p><sup class="versiculo">156</sup>Podíamos envelhecer na caminhada cristã sem necessariamente amadurecer espiritualmente.</p>
+    <p><sup class="versiculo">157</sup>Podíamos acumular conhecimento e perder a paixão.</p>
+    <p><sup class="versiculo">158</sup>Podíamos acumular títulos e perder a humildade.</p>
+    <p><sup class="versiculo">159</sup>Podíamos acumular experiências e perder a dependência.</p>
+    <p><sup class="versiculo">160</sup>Por isso, precisávamos constantemente voltar ao primeiro amor.</p>
+    <p><sup class="versiculo">161</sup>Não significava voltar à imaturidade.</p>
+    <p><sup class="versiculo">162</sup>Significava recuperar a simplicidade.</p>
+    <p><sup class="versiculo">163</sup>A maturidade espiritual não deveria nos tornar menos apaixonados por Deus.</p>
+    <p><sup class="versiculo">164</sup>Deveria nos tornar ainda mais conscientes de quem Ele é.</p>
+
+    <h2>OLHANDO NOVAMENTE PARA CIMA</h2>
+
+    <p><sup class="versiculo">165</sup>Naquele entardecer em Manaus, eu olhei para as árvores.</p>
+    <p><sup class="versiculo">166</sup>E, por alguns instantes, o passado e o presente se encontraram.</p>
+
+    <p><sup class="versiculo">167</sup>O novo convertido que um dia olhava para as árvores no caminho de Novo Airão parecia conversar com o homem que agora olhava novamente para as árvores.</p>
+
+    <p><sup class="versiculo">168</sup>E a pergunta que permanecia no meu coração era:</p>
+
+    <p class="frase-destaque">“Senhor, o que estás me lembrando?”</p>
+
+    <p><sup class="versiculo">169</sup>Talvez fosse simplesmente isto:</p>
+
+    <p class="frase-destaque">“Eu continuo aqui.”</p>
+
+    <p><sup class="versiculo">170</sup>O Deus que estava comigo quando eu comecei continuava comigo agora.</p>
+    <p><sup class="versiculo">171</sup>O Deus que me encontrou na simplicidade continuava me encontrando.</p>
+    <p><sup class="versiculo">172</sup>O Deus que me ensinou a buscá-lo continuava chamando.</p>
+    <p><sup class="versiculo">173</sup>E o Deus que disse a Davi:</p>
+
+    <p class="frase-destaque">“O Senhor saiu diante de ti”</p>
+
+    <p><sup class="versiculo">174</sup>continuava sendo o Deus que ia à frente daqueles que confiavam nele.</p>
+
+    <blockquote>
+        <p>“Não te deixarei, nem te desampararei.”</p>
+        <p class="referencia">Hebreus 13:5</p>
+    </blockquote>
+
+    <p><sup class="versiculo">175</sup>Essa promessa não dependia de uma árvore.</p>
+    <p><sup class="versiculo">176</sup>Não dependia de um sítio.</p>
+    <p><sup class="versiculo">177</sup>Não dependia de um horário.</p>
+    <p><sup class="versiculo">178</sup>Dependia do próprio Deus.</p>
+    <p><sup class="versiculo">179</sup>Por isso, quando eu olhasse novamente para as copas das árvores, talvez eu não estivesse procurando um sinal.</p>
+    <p><sup class="versiculo">180</sup>Talvez eu simplesmente me lembrasse de Deus.</p>
+    <p><sup class="versiculo">181</sup>E, se algum dia eu ouvisse novamente o som da sua direção, queria ter o coração atento.</p>
+    <p><sup class="versiculo">182</sup>Queria discernir.</p>
+    <p><sup class="versiculo">183</sup>Queria obedecer.</p>
+    <p><sup class="versiculo">184</sup>Queria seguir.</p>
+
+    <p><sup class="versiculo">185</sup>Porque mais importante do que saber <strong>onde Deus está passando</strong> era estar disposto a <strong>seguir para onde Deus estava indo</strong>.</p>
+
+    <p><sup class="versiculo">186</sup>E talvez essa fosse a grande lição das árvores:</p>
+
+    <p class="frase-destaque">Não olhe apenas para cima.<br>Aprenda a reconhecer quem está chamando você para caminhar.</p>
+
+    <h2>A PRESENÇA QUE PERMANECE</h2>
+
+    <p><sup class="versiculo">187</sup>A experiência havia passado.</p>
+    <p><sup class="versiculo">188</sup>O entardecer havia terminado.</p>
+    <p><sup class="versiculo">189</sup>As árvores continuaram no mesmo lugar.</p>
+    <p><sup class="versiculo">190</sup>Mas algo havia permanecido dentro de mim.</p>
+    <p><sup class="versiculo">191</sup>Uma lembrança.</p>
+    <p><sup class="versiculo">192</sup>Uma reverência.</p>
+    <p><sup class="versiculo">193</sup>Uma fome.</p>
+    <p><sup class="versiculo">194</sup>Uma pergunta.</p>
+
+    <p><sup class="versiculo">195</sup>E, acima de tudo, a consciência de que a minha caminhada com Deus não poderia depender apenas das experiências que eu havia vivido.</p>
+
+    <p><sup class="versiculo">196</sup>Eu precisava continuar buscando o próprio Deus.</p>
+    <p><sup class="versiculo">197</sup>Porque experiências passam.</p>
+    <p><sup class="versiculo">198</sup>Lugares mudam.</p>
+    <p><sup class="versiculo">199</sup>Sensações terminam.</p>
+    <p><sup class="versiculo">200</sup>Mas a Palavra permanece.</p>
+
+    <blockquote>
+        <p>“Secou-se a erva, e caiu a flor; mas a palavra de nosso Deus permanece eternamente.”</p>
+        <p class="referencia">Isaías 40:8</p>
+    </blockquote>
+
+    <p><sup class="versiculo">201</sup>Talvez Deus tivesse usado aquelas árvores para despertar uma lembrança.</p>
+    <p><sup class="versiculo">202</sup>Mas a lembrança me levou à Palavra.</p>
+    <p><sup class="versiculo">203</sup>E a Palavra me levou novamente para Ele.</p>
+    <p><sup class="versiculo">204</sup>Esse era o ponto.</p>
+    <p><sup class="versiculo">205</sup>Não era a árvore.</p>
+    <p><sup class="versiculo">206</sup>Era Deus.</p>
+    <p><sup class="versiculo">207</sup>Não era o lugar.</p>
+    <p><sup class="versiculo">208</sup>Era Deus.</p>
+    <p><sup class="versiculo">209</sup>Não era o horário.</p>
+    <p><sup class="versiculo">210</sup>Era Deus.</p>
+    <p><sup class="versiculo">211</sup>Não era a sensação.</p>
+    <p><sup class="versiculo">212</sup>Era Deus.</p>
+    <p><sup class="versiculo">213</sup>E, no fim, tudo precisava apontar para Ele.</p>
+
+    <h2>ORAÇÃO</h2>
+
+    <p>Senhor Deus,</p>
+
+    <p>Obrigado porque o tempo passa, mas Tu permaneces o mesmo.</p>
+
+    <p>Obrigado pelas lembranças que nos fazem voltar ao lugar onde nossa fé começou a criar raízes.</p>
+
+    <p>Guarda em nós a simplicidade, a fome e o primeiro amor.</p>
+
+    <p>Ensina-nos a discernir a Tua voz no meio de tantas vozes.</p>
+
+    <p>Não permitas que o conhecimento substitua a comunhão, nem que o ministério substitua a Tua presença.</p>
+
+    <p>Quando for tempo de avançar, mostra-nos.</p>
+
+    <p>Quando for tempo de esperar, ensina-nos.</p>
+
+    <p>Quando Tu fores adiante de nós, dá-nos sensibilidade para perceber e coragem para seguir.</p>
+
+    <p>E, acima de tudo, Senhor, não permitas que nos afastemos da Tua presença.</p>
+
+    <p>Que nunca percamos a capacidade de olhar para cima e lembrar que Tu és Deus.</p>
+
+    <p>Em nome de Jesus.</p>
+
+    <p class="frase-destaque">Amém.</p>
+
+    <h2>PARA GUARDAR NO CORAÇÃO</h2>
+
+    <p class="frase-destaque">Deus não mudou.</p>
+    <p class="frase-destaque">A Palavra permanece.</p>
+    <p class="frase-destaque">A experiência não substitui Cristo.</p>
+    <p class="frase-destaque">A emoção não substitui a Palavra.</p>
+    <p class="frase-destaque">O ministério não substitui a presença.</p>
+    <p class="frase-destaque">A maturidade não deve apagar a simplicidade.</p>
+    <p class="frase-destaque">Não procure apenas sinais. Aprenda a discernir a direção de Deus.</p>
+    <p class="frase-destaque">E, quando Deus for adiante, esteja disposto a seguir.</p>
+
+    <p class="assinatura">MINISTÉRIO ATALAIA</p>
+    <p class="assinatura">Diego Nascimento — Pastor Evangelista</p>
+    <p class="assinatura">ATOS 29 — A História Continua</p>
+    <p class="assinatura">Proclamando a Verdade. Formando Discípulos.</p>
+
+</div>
+
+<script>
+(() => {
+    const fonte = document.getElementById("fonte");
+    const esquerda = document.getElementById("conteudoEsquerda");
+    const direita = document.getElementById("conteudoDireita");
+    const paginaEsquerda = document.getElementById("paginaEsquerda");
+    const paginaDireita = document.getElementById("paginaDireita");
+
+    const numeroEsquerda = document.getElementById("numeroEsquerda");
+    const numeroDireita = document.getElementById("numeroDireita");
+
+    const anterior = document.getElementById("anterior");
+    const proxima = document.getElementById("proxima");
+    const indicador = document.getElementById("indicador");
+
+    let paginas = [];
+    let indice = 0;
+    let temporizador = null;
+
+    function estaNoCelular() {
+        return window.matchMedia("(max-width: 760px)").matches;
+    }
+
+    function criarPaginaTemporaria() {
+        const pagina = document.createElement("div");
+        pagina.className = "conteudo-pagina";
+        pagina.style.position = "absolute";
+        pagina.style.visibility = "hidden";
+        pagina.style.left = "-10000px";
+        pagina.style.top = "0";
+        pagina.style.width = estaNoCelular() ? "500px" : "550px";
+        pagina.style.height = estaNoCelular() ? "650px" : "650px";
+        pagina.style.overflow = "hidden";
+        pagina.style.columnCount = estaNoCelular() ? "1" : "2";
+        pagina.style.columnFill = "auto";
+        document.body.appendChild(pagina);
+        return pagina;
+    }
+
+    function cabeNaPagina(elemento, medidor) {
+        medidor.appendChild(elemento.cloneNode(true));
+
+        const larguraInterna = medidor.clientWidth;
+        const larguraTotal = medidor.scrollWidth;
+
+        const alturaInterna = medidor.clientHeight;
+        const alturaTotal = medidor.scrollHeight;
+
+        const cabe =
+            larguraTotal <= larguraInterna + 3 &&
+            alturaTotal <= alturaInterna + 3;
+
+        medidor.removeChild(medidor.lastChild);
+        return cabe;
+    }
+
+    function dividirConteudo() {
+        const medidor = criarPaginaTemporaria();
+        const elementos = Array.from(fonte.children);
+
+        const resultado = [];
+        let paginaAtual = [];
+
+        elementos.forEach(elemento => {
+            if (!paginaAtual.length) {
+                paginaAtual.push(elemento.cloneNode(true));
+                return;
+            }
+
+            const teste = document.createElement("div");
+            teste.className = "conteudo-pagina";
+            teste.style.position = "absolute";
+            teste.style.visibility = "hidden";
+            teste.style.left = "-10000px";
+            teste.style.top = "0";
+            teste.style.width = medidor.style.width;
+            teste.style.height = medidor.style.height;
+            teste.style.overflow = "hidden";
+            teste.style.columnCount = estaNoCelular() ? "1" : "2";
+            teste.style.columnFill = "auto";
+            document.body.appendChild(teste);
+
+            paginaAtual.forEach(item => teste.appendChild(item.cloneNode(true)));
+            teste.appendChild(elemento.cloneNode(true));
+
+            const cabe =
+                teste.scrollWidth <= teste.clientWidth + 3 &&
+                teste.scrollHeight <= teste.clientHeight + 3;
+
+            document.body.removeChild(teste);
+
+            if (cabe) {
+                paginaAtual.push(elemento.cloneNode(true));
+            } else {
+                resultado.push(paginaAtual);
+                paginaAtual = [elemento.cloneNode(true)];
+            }
+        });
+
+        if (paginaAtual.length) {
+            resultado.push(paginaAtual);
+        }
+
+        document.body.removeChild(medidor);
+
+        return resultado;
+    }
+
+    function construirPaginas() {
+        const largura = estaNoCelular() ? 500 : 550;
+        const altura = estaNoCelular() ? 650 : 650;
+
+        const medidor = criarPaginaTemporaria();
+        medidor.style.width = largura + "px";
+        medidor.style.height = altura + "px";
+
+        const elementos = Array.from(fonte.children);
+        const resultado = [];
+        let paginaAtual = [];
+
+        function medir(lista) {
+            medidor.innerHTML = "";
+            lista.forEach(item => medidor.appendChild(item.cloneNode(true)));
+
+            return (
+                medidor.scrollWidth <= medidor.clientWidth + 3 &&
+                medidor.scrollHeight <= medidor.clientHeight + 3
+            );
+        }
+
+        elementos.forEach(elemento => {
+            const tentativa = [...paginaAtual, elemento];
+
+            if (paginaAtual.length === 0 || medir(tentativa)) {
+                paginaAtual.push(elemento);
+            } else {
+                resultado.push(paginaAtual.map(item => item.cloneNode(true)));
+                paginaAtual = [elemento];
+            }
+        });
+
+        if (paginaAtual.length) {
+            resultado.push(paginaAtual.map(item => item.cloneNode(true)));
+        }
+
+        document.body.removeChild(medidor);
+
+        return resultado;
+    }
+
+    function montar() {
+        paginas = construirPaginas();
+
+        if (!paginas.length) {
+            paginas = [[]];
+        }
+
+        indice = Math.min(indice, paginas.length - 1);
+        mostrar();
+    }
+
+    function preencher(elemento, conteudo) {
+        elemento.innerHTML = "";
+        conteudo.forEach(item => {
+            elemento.appendChild(item.cloneNode(true));
+        });
+    }
+
+    function mostrar() {
+        const celular = estaNoCelular();
+
+        if (celular) {
+            preencher(direita, paginas[indice] || []);
+            esquerda.innerHTML = "";
+
+            paginaEsquerda.style.display = "none";
+            paginaDireita.style.display = "block";
+
+            numeroDireita.textContent = indice + 1;
+            indicador.textContent = "PÁGINA " + (indice + 1) + " / " + paginas.length;
+        } else {
+            paginaEsquerda.style.display = "block";
+            paginaDireita.style.display = "block";
+
+            preencher(esquerda, paginas[indice] || []);
+            preencher(direita, paginas[indice + 1] || []);
+
+            numeroEsquerda.textContent = indice + 1;
+            numeroDireita.textContent = Math.min(indice + 2, paginas.length);
+
+            indicador.textContent =
+                "PÁGINAS " + (indice + 1) + "–" +
+                Math.min(indice + 2, paginas.length) +
+                " / " + paginas.length;
+        }
+
+        anterior.disabled = indice <= 0;
+        proxima.disabled = celular
+            ? indice >= paginas.length - 1
+            : indice + 2 >= paginas.length;
+
+        paginaDireita.classList.remove("animar");
+        paginaEsquerda.classList.remove("animar");
+
+        void paginaDireita.offsetWidth;
+
+        paginaDireita.classList.add("animar");
+        if (!celular) {
+            paginaEsquerda.classList.add("animar");
+        }
+    }
+
+    function avancar() {
+        const passo = estaNoCelular() ? 1 : 2;
+        if (indice + passo < paginas.length) {
+            indice += passo;
+            mostrar();
+        }
+    }
+
+    function voltar() {
+        const passo = estaNoCelular() ? 1 : 2;
+        indice = Math.max(0, indice - passo);
+        mostrar();
+    }
+
+    anterior.addEventListener("click", voltar);
+    proxima.addEventListener("click", avancar);
+
+    document.addEventListener("keydown", evento => {
+        if (evento.key === "ArrowRight") avancar();
+        if (evento.key === "ArrowLeft") voltar();
+    });
+
+    let larguraAnterior = window.innerWidth;
+
+    window.addEventListener("resize", () => {
+        clearTimeout(temporizador);
+
+        temporizador = setTimeout(() => {
+            const novaLargura = window.innerWidth;
+
+            if (
+                (larguraAnterior <= 760 && novaLargura > 760) ||
+                (larguraAnterior > 760 && novaLargura <= 760)
+            ) {
+                const paginaAtual = indice;
+                montar();
+                indice = estaNoCelular()
+                    ? Math.floor(paginaAtual / 2) * 2
+                    : Math.floor(paginaAtual / 2) * 2;
+                indice = Math.min(indice, estaNoCelular()
+                    ? paginas.length - 1
+                    : Math.max(0, paginas.length - 2));
+                mostrar();
+            } else {
+                montar();
+            }
+
+            larguraAnterior = novaLargura;
+        }, 250);
+    });
+
+    montar();
+})();
+</script>
+
+</body>
+</html>

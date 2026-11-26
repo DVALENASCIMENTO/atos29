@@ -1,0 +1,1363 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#17140f">
+
+<title>ATOS 29 — Capítulo 6 | A Batalha Espiritual</title>
+
+<style>
+/* =========================================
+   ATOS 29 — PADRÃO EDITORIAL
+   BÍBLIA IMPRESSA TRADICIONAL
+========================================= */
+
+:root {
+    --paper: #f3ecd9;
+    --ink: #29251d;
+    --dark: #17140f;
+    --gold: #a18a58;
+    --page-height: min(78vh, 780px);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    background: radial-gradient(
+        ellipse at center,
+        #393328 0%,
+        #211e18 55%,
+        #100e0b 100%
+    );
+    color: var(--ink);
+    font-family: Georgia, "Times New Roman", serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* CABEÇALHO */
+
+.top-brand {
+    width: 100%;
+    padding: 23px 12px 17px;
+    text-align: center;
+    color: #e7dcc1;
+}
+
+.top-brand h1 {
+    font-size: 19px;
+    letter-spacing: 3px;
+    font-weight: normal;
+    margin: 0;
+}
+
+.top-brand p {
+    margin: 8px 0 0;
+    font-family: Arial, sans-serif;
+    font-size: 9px;
+    letter-spacing: 3px;
+    color: #b9a77d;
+}
+
+/* LIVRO */
+
+.book-container {
+    width: min(1160px, 96vw);
+    margin: 8px auto 15px;
+    position: relative;
+}
+
+.book {
+    width: 100%;
+    height: var(--page-height);
+    min-height: 570px;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    position: relative;
+    perspective: 1800px;
+    background: #332a1e;
+    box-shadow:
+        0 20px 55px rgba(0,0,0,.65),
+        0 0 0 5px rgba(105,84,51,.22);
+}
+
+/* PÁGINAS */
+
+.page {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+
+    background-color: var(--paper);
+
+    background-image:
+        radial-gradient(
+            ellipse at 15% 20%,
+            rgba(255,255,255,.24),
+            transparent 55%
+        ),
+        radial-gradient(
+            ellipse at 85% 75%,
+            rgba(153,123,67,.08),
+            transparent 60%
+        ),
+        repeating-linear-gradient(
+            0deg,
+            rgba(110,87,49,.018) 0px,
+            rgba(110,87,49,.018) 1px,
+            transparent 1px,
+            transparent 4px
+        );
+
+    box-shadow:
+        inset 0 0 25px rgba(91,69,36,.13),
+        inset 0 0 4px rgba(91,69,36,.15);
+}
+
+.page:first-child {
+    border-right: 1px solid rgba(76,59,35,.15);
+    box-shadow:
+        inset -13px 0 19px -15px rgba(0,0,0,.45),
+        inset 0 0 22px rgba(91,69,36,.13);
+}
+
+.page:last-child {
+    border-left: 1px solid rgba(76,59,35,.12);
+    box-shadow:
+        inset 13px 0 19px -15px rgba(0,0,0,.4),
+        inset 0 0 22px rgba(91,69,36,.13);
+}
+
+/* PÁGINAS USADAS NO CÁLCULO AUTOMÁTICO */
+
+.page.measuring {
+    position: absolute;
+    left: -20000px;
+    top: 0;
+    width: 50%;
+    visibility: hidden;
+    display: block !important;
+}
+
+@media (max-width: 700px) {
+    .page.measuring {
+        width: 100%;
+    }
+}
+
+/* LOMBADA */
+
+.book::after {
+    content: "";
+    position: absolute;
+    z-index: 10;
+    left: 50%;
+    top: 0;
+    height: 100%;
+    width: 13px;
+    transform: translateX(-50%);
+    pointer-events: none;
+
+    background: linear-gradient(
+        90deg,
+        rgba(0,0,0,.16),
+        rgba(0,0,0,.025) 35%,
+        rgba(255,255,255,.13) 50%,
+        rgba(0,0,0,.025) 70%,
+        rgba(0,0,0,.17)
+    );
+}
+
+/* CABEÇALHO INTERNO */
+
+.page-header {
+    position: absolute;
+    left: 9%;
+    right: 9%;
+    top: 22px;
+    height: 25px;
+    border-bottom: 1px solid rgba(100,83,51,.45);
+
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+
+    font-size: 8px;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    color: #625840;
+}
+
+.chapter-name {
+    font-style: italic;
+    letter-spacing: .5px;
+}
+
+/* CONTEÚDO */
+
+.page-content {
+    position: absolute;
+    top: 62px;
+    bottom: 48px;
+    left: 8%;
+    right: 8%;
+
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 19px;
+    overflow: hidden;
+}
+
+.text-column {
+    min-width: 0;
+    height: 100%;
+    overflow: hidden;
+
+    text-align: justify;
+    text-justify: inter-word;
+
+    font-size: 11.6px;
+    line-height: 1.48;
+    hyphens: auto;
+    overflow-wrap: break-word;
+}
+
+/* ABERTURA DO CAPÍTULO */
+
+.chapter-opening {
+    text-align: center;
+    margin: 3px 0 16px;
+    padding-bottom: 11px;
+    border-bottom: 1px solid rgba(116,94,56,.45);
+}
+
+.book-name {
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: 3px;
+    margin-bottom: 7px;
+}
+
+.chapter-title {
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 1.4;
+    letter-spacing: .8px;
+    margin: 5px 0;
+    text-transform: uppercase;
+}
+
+.author {
+    font-size: 9px;
+    font-style: italic;
+    color: #625840;
+    margin-top: 7px;
+}
+
+/* TÍTULOS */
+
+.section-title {
+    font-size: 10.7px;
+    line-height: 1.35;
+    font-weight: bold;
+    text-align: left;
+    text-transform: uppercase;
+    letter-spacing: .45px;
+    margin: 12px 0 7px;
+    color: #29251d;
+}
+
+/* PARÁGRAFOS */
+
+.paragraph {
+    margin: 0 0 5px;
+    text-indent: 0;
+}
+
+.verse-number {
+    display: inline-block;
+    font-size: 8px;
+    font-weight: bold;
+    vertical-align: super;
+    line-height: 0;
+    margin-right: 3px;
+    color: #716342;
+}
+
+/* CITAÇÕES BÍBLICAS */
+
+.bible-quote {
+    margin: 7px 5px 4px 12px;
+    padding-left: 8px;
+    border-left: 1px solid #a9956a;
+
+    font-size: 10.8px;
+    line-height: 1.5;
+    font-style: italic;
+    text-align: left;
+}
+
+.bible-reference {
+    font-size: 9px;
+    font-style: italic;
+    text-align: right;
+    color: #625840;
+    margin: 3px 5px 9px 0;
+}
+
+/* RODAPÉ DA PÁGINA */
+
+.page-footer {
+    position: absolute;
+    bottom: 19px;
+    left: 9%;
+    right: 9%;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    border-top: 1px solid rgba(100,83,51,.4);
+    padding-top: 7px;
+
+    color: #71664e;
+    font-size: 8px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.page-number {
+    font-size: 9px;
+    font-weight: bold;
+}
+
+/* ENCERRAMENTO */
+
+.final-declaration {
+    text-align: center;
+    font-size: 11px;
+    font-weight: bold;
+    font-style: italic;
+    line-height: 1.5;
+    letter-spacing: 1px;
+    margin: 15px 4px 5px;
+}
+
+/* NAVEGAÇÃO */
+
+.navigation {
+    width: min(1160px, 96vw);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    margin: 17px auto 8px;
+}
+
+.navigation button {
+    border: 1px solid #8d7952;
+    background: #29241b;
+    color: #e8ddc3;
+
+    padding: 12px 25px;
+    font-family: Arial, sans-serif;
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    cursor: pointer;
+    transition: .2s;
+}
+
+.navigation button:hover:not(:disabled) {
+    background: #665437;
+    border-color: #c1a36b;
+}
+
+.navigation button:disabled {
+    opacity: .35;
+    cursor: not-allowed;
+}
+
+.navigation button:focus-visible {
+    outline: 2px solid #d4bd87;
+    outline-offset: 3px;
+}
+
+.page-indicator {
+    color: #d9cba9;
+    font-family: Arial, sans-serif;
+    font-size: 11px;
+    letter-spacing: 1px;
+    min-width: 110px;
+    text-align: center;
+}
+
+/* RODAPÉ INSTITUCIONAL */
+
+.institution {
+    color: #b9a77d;
+    text-align: center;
+    font-family: Arial, sans-serif;
+    font-size: 9px;
+    letter-spacing: 3px;
+    margin: 12px 0 23px;
+}
+
+/* ANIMAÇÃO */
+
+.page.entering {
+    animation: pageEnter .32s ease-out;
+}
+
+@keyframes pageEnter {
+    from {
+        opacity: .45;
+        transform: perspective(1000px) rotateY(-2deg);
+    }
+
+    to {
+        opacity: 1;
+        transform: perspective(1000px) rotateY(0);
+    }
+}
+
+/* CELULARES E TABLETS */
+
+@media (max-width: 700px) {
+
+    :root {
+        --page-height: 76vh;
+    }
+
+    .top-brand {
+        padding-top: 19px;
+    }
+
+    .top-brand h1 {
+        font-size: 15px;
+        letter-spacing: 2px;
+    }
+
+    .book-container {
+        width: 94vw;
+    }
+
+    .book {
+        display: block;
+        min-height: 510px;
+        height: var(--page-height);
+    }
+
+    .book::after {
+        display: none;
+    }
+
+    .page {
+        width: 100%;
+        height: 100%;
+        border: none !important;
+        box-shadow:
+            inset 0 0 25px rgba(91,69,36,.14),
+            0 4px 15px rgba(0,0,0,.2);
+    }
+
+    .page-header {
+        left: 7%;
+        right: 7%;
+        top: 19px;
+        font-size: 7px;
+    }
+
+    .page-content {
+        left: 7%;
+        right: 7%;
+        top: 53px;
+        bottom: 43px;
+        grid-template-columns: 1fr;
+    }
+
+    .text-column {
+        font-size: clamp(10px, 2.8vw, 12px);
+        line-height: 1.52;
+    }
+
+    .chapter-opening .chapter-title {
+        font-size: 13px;
+    }
+
+    .section-title {
+        font-size: 10.5px;
+    }
+
+    .navigation {
+        gap: 8px;
+    }
+
+    .navigation button {
+        padding: 12px 13px;
+        font-size: 9px;
+    }
+
+    .page-indicator {
+        min-width: 75px;
+        font-size: 9px;
+    }
+
+    .page-footer {
+        left: 7%;
+        right: 7%;
+        bottom: 15px;
+        font-size: 7px;
+    }
+}
+
+/* ACESSIBILIDADE */
+
+@media (prefers-reduced-motion: reduce) {
+    .page.entering {
+        animation: none;
+    }
+}
+
+/* IMPRESSÃO */
+
+@media print {
+
+    body {
+        background: white;
+    }
+
+    .top-brand,
+    .navigation,
+    .institution {
+        display: none;
+    }
+
+    .book-container,
+    .book {
+        width: 100%;
+        height: auto;
+        display: block;
+        box-shadow: none;
+    }
+
+    .book::after {
+        display: none;
+    }
+
+    .page,
+    .page.is-hidden {
+        display: block !important;
+        position: relative;
+        width: 100%;
+        height: 270mm;
+        page-break-after: always;
+        break-after: page;
+        box-shadow: none;
+    }
+
+    .page.measuring {
+        display: none !important;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header class="top-brand">
+    <h1>ATOS 29 • A HISTÓRIA CONTINUA</h1>
+    <p>MINISTÉRIO ATALAIA</p>
+</header>
+
+<main class="book-container">
+    <div class="book" id="book"
+         aria-label="ATOS 29 — Capítulo 6">
+    </div>
+</main>
+
+<nav class="navigation" aria-label="Navegação do livro">
+
+    <button id="previous" type="button" disabled>
+        ← ANTERIOR
+    </button>
+
+    <div class="page-indicator" id="pageIndicator">
+        PÁGINA 1
+    </div>
+
+    <button id="next" type="button">
+        PRÓXIMA →
+    </button>
+
+</nav>
+
+<footer class="institution">
+    MINISTÉRIO ATALAIA
+</footer>
+
+<script>
+
+/* =========================================
+   ATOS 29
+   CAPÍTULO 6 — A BATALHA ESPIRITUAL
+
+   CONTEÚDO ORIGINAL
+   NUMERAÇÃO PRESERVADA
+========================================= */
+
+const content = [
+
+    {type:"opening"},
+
+    {type:"heading", text:"UMA BATALHA NO QUARTO"},
+
+    {type:"p", n:1, text:"Lembro-me de estar deitado na cama."},
+    {type:"p", n:2, text:"De repente, percebi que não conseguia mais me mexer e nem falar."},
+    {type:"p", n:3, text:"Naquele momento, lembrei que algo semelhante já havia acontecido várias vezes durante toda a minha infância e adolescência."},
+    {type:"p", n:4, text:"Mas, daquela vez, algo diferente aconteceu."},
+    {type:"p", n:5, text:"A porta do quarto se abriu."},
+    {type:"p", n:6, text:"E, por ela, entrou aquela sombra negra, sem forma definida."},
+    {type:"p", n:7, text:"Ela rodeou a cama e, então, subiu sobre mim."},
+    {type:"p", n:8, text:"Veio até o meu rosto."},
+    {type:"p", n:9, text:"Sem me tocar, começou a falar com uma voz feia, em palavras que eu não conseguia entender."},
+    {type:"p", n:10, text:"Naquele momento, dentro do meu discernimento, compreendi aquela presença como uma tentativa de me confrontar e me amedrontar."},
+    {type:"p", n:11, text:"Mas não deu certo."},
+    {type:"p", n:12, text:"Eu não tive medo."},
+
+    {type:"heading", text:"O NOME DE JESUS"},
+
+    {type:"p", n:13, text:"Eu não conseguia falar."},
+    {type:"p", n:14, text:"Meu corpo estava imóvel."},
+    {type:"p", n:15, text:"Mas minha mente estava consciente."},
+    {type:"p", n:16, text:"Então comecei a repreender aquela presença dentro da minha mente, repetindo:"},
+    {type:"p", n:17, text:"“O Sangue de Jesus tem poder.”"},
+    {type:"p", n:18, text:"Repeti várias vezes."},
+    {type:"p", n:19, text:"Continuei pensando:"},
+    {type:"p", n:20, text:"“O Sangue de Jesus tem poder.”"},
+    {type:"p", n:21, text:"Até que aquela sombra saiu de cima de mim."},
+    {type:"p", n:22, text:"Depois, saiu pela mesma porta por onde havia entrado."},
+    {type:"p", n:23, text:"E, naquele instante, pude novamente me mexer e falar."},
+    {type:"p", n:24, text:"Aquela experiência ficou marcada em minha memória."},
+
+    {type:"heading", text:"QUANDO O CORPO NÃO RESPONDE, MAS A FÉ PERMANECE"},
+
+    {type:"p", n:25, text:"Existe algo naquela experiência que nunca esqueci:"},
+    {type:"p", n:26, text:"eu não conseguia falar, mas podia pensar."},
+    {type:"p", n:27, text:"Meu corpo estava imóvel, mas minha fé não estava imóvel."},
+    {type:"p", n:28, text:"Minha voz não podia sair pela boca, mas meu coração podia clamar ao Senhor."},
+    {type:"p", n:29, text:"Foi naquele momento que compreendi, de maneira muito pessoal, que a confiança em Deus não depende apenas daquilo que conseguimos fazer fisicamente."},
+    {type:"p", n:30, text:"Há momentos em que nossas forças parecem desaparecer."},
+    {type:"p", n:31, text:"Há momentos em que não encontramos palavras."},
+    {type:"p", n:32, text:"Há momentos em que tudo o que podemos fazer é permanecer firmes na fé."},
+    {type:"p", n:33, text:"A Palavra de Deus nos ensina:"},
+
+    {type:"quote", n:34, text:"“Sujeitai-vos, pois, a Deus; resisti ao diabo, e ele fugirá de vós.” (Tiago 4:7)"},
+
+    {type:"heading", text:"A ARMADURA DE DEUS"},
+
+    {type:"p", n:35, text:"A Bíblia também nos ensina que existe uma realidade de batalha espiritual."},
+    {type:"p", n:36, text:"Paulo escreve aos efésios:"},
+
+    {type:"quote", n:37, text:"“Porque não temos que lutar contra carne e sangue, mas, sim, contra os principados, contra as potestades, contra os príncipes das trevas deste século, contra as hostes espirituais da maldade, nos lugares celestiais.” (Efésios 6:12)"},
+
+    {type:"p", n:38, text:"Por isso, imediatamente depois de falar sobre essa batalha, Paulo apresenta a armadura de Deus."},
+    {type:"p", n:39, text:"Ele fala sobre o cinturão da verdade; a couraça da justiça; os pés preparados com o Evangelho da paz; o escudo da fé; o capacete da salvação; e a espada do Espírito, que é a Palavra de Deus. (Efésios 6:13–17)"},
+    {type:"p", n:40, text:"A orientação não é viver com medo."},
+    {type:"p", n:41, text:"É permanecer firme em Deus."},
+
+    {type:"heading", text:"“RESISTI”"},
+
+    {type:"p", n:42, text:"A Bíblia não apresenta o cristão como alguém que deve viver aterrorizado diante das forças espirituais."},
+    {type:"p", n:43, text:"Pelo contrário."},
+    {type:"p", n:44, text:"A orientação é permanecer firme."},
+
+    {type:"quote", n:45, text:"“Sede sóbrios; vigiai; porque o diabo, vosso adversário, anda em derredor, bramando como leão, buscando a quem possa tragar.” (1 Pedro 5:8)"},
+
+    {type:"p", n:46, text:"E logo depois Pedro declara:"},
+
+    {type:"quote", n:47, text:"“Ao qual resisti firmes na fé.” (1 Pedro 5:9)"},
+
+    {type:"p", n:48, text:"A batalha espiritual exige vigilância, mas também exige fé."},
+    {type:"p", n:49, text:"Não somos chamados para viver olhando para as trevas."},
+    {type:"p", n:50, text:"Somos chamados para permanecer olhando para Cristo."},
+
+    {type:"heading", text:"O SANGUE DE JESUS"},
+
+    {type:"p", n:51, text:"Quando, naquela experiência, comecei a repetir em minha mente:"},
+    {type:"p", n:52, text:"“O Sangue de Jesus tem poder”,"},
+    {type:"p", n:53, text:"eu estava expressando a confiança que havia colocado em Cristo."},
+    {type:"p", n:54, text:"A Bíblia apresenta o sangue de Jesus como fundamento da nossa redenção. (Efésios 1:7)"},
+
+    {type:"quote", n:55, text:"“Em quem temos a redenção pelo seu sangue, a remissão das ofensas, segundo as riquezas da sua graça.”"},
+
+    {type:"p", n:56, text:"O Apocalipse também fala daqueles que venceram:"},
+
+    {type:"quote", n:57, text:"“E eles o venceram pelo sangue do Cordeiro e pela palavra do seu testemunho.” (Apocalipse 12:11)"},
+
+    {type:"p", n:58, text:"A vitória pertence a Cristo."},
+    {type:"p", n:59, text:"O centro da batalha não é a força humana."},
+    {type:"p", n:60, text:"É aquilo que Deus realizou por meio de Jesus Cristo."},
+
+    {type:"heading", text:"NÃO É SOBRE TER MEDO"},
+
+    {type:"p", n:61, text:"Depois daquela experiência, uma coisa ficou muito forte dentro de mim:"},
+    {type:"p", n:62, text:"o medo não poderia governar minha fé."},
+    {type:"p", n:63, text:"A Palavra diz:"},
+
+    {type:"quote", n:64, text:"“Porque Deus não nos deu o espírito de temor, mas de fortaleza, e de amor, e de moderação.” (2 Timóteo 1:7)"},
+
+    {type:"p", n:65, text:"Isso não significa que o cristão nunca sentirá medo."},
+    {type:"p", n:66, text:"Significa que o medo não precisa determinar sua postura diante das circunstâncias."},
+    {type:"p", n:67, text:"A fé nos ensina a confiar em Deus mesmo quando não conseguimos compreender tudo aquilo que está acontecendo."},
+
+    {type:"heading", text:"CRISTO É MAIOR"},
+
+    {type:"p", n:68, text:"A experiência foi marcante, mas ela não é o fundamento da minha fé."},
+    {type:"p", n:69, text:"O fundamento continua sendo Jesus Cristo e a Sua Palavra."},
+    {type:"p", n:70, text:"Não quero viver procurando manifestações espirituais."},
+    {type:"p", n:71, text:"Quero viver buscando a Deus."},
+    {type:"p", n:72, text:"Não quero viver concentrado nas trevas."},
+    {type:"p", n:73, text:"Quero permanecer na luz."},
+    {type:"p", n:74, text:"Não quero que experiências sejam maiores do que as Escrituras."},
+    {type:"p", n:75, text:"Quero que toda experiência seja examinada à luz da Palavra de Deus."},
+    {type:"p", n:76, text:"“Maior é o que está em vós do que o que está no mundo.” (1 João 4:4)"},
+    {type:"p", n:77, text:"Essa é a segurança do cristão."},
+
+    {type:"heading", text:"UMA EXPERIÊNCIA, UMA LIÇÃO"},
+
+    {type:"p", n:78, text:"Eu não sei explicar todos os detalhes daquela experiência."},
+    {type:"p", n:79, text:"Não sei explicar exatamente o que era aquela sombra."},
+    {type:"p", n:80, text:"Não sei explicar por que meu corpo ficou imóvel."},
+    {type:"p", n:81, text:"Não quero acrescentar à história aquilo que não vivi."},
+    {type:"p", n:82, text:"Posso apenas testemunhar aquilo que aconteceu comigo."},
+    {type:"p", n:83, text:"Eu estava deitado."},
+    {type:"p", n:84, text:"Não conseguia me mexer."},
+    {type:"p", n:85, text:"Não conseguia falar."},
+    {type:"p", n:86, text:"Vi aquela sombra."},
+    {type:"p", n:87, text:"Ouvi aquela voz que não compreendia."},
+    {type:"p", n:88, text:"E, dentro de mim, comecei a repetir:"},
+    {type:"p", n:89, text:"“O Sangue de Jesus tem poder.”"},
+    {type:"p", n:90, text:"Até que aquela presença saiu."},
+    {type:"p", n:91, text:"Então pude novamente me mover e falar."},
+    {type:"p", n:92, text:"Essa experiência me ensinou uma coisa que permanece comigo:"},
+    {type:"p", n:93, text:"quando não conseguimos fazer nada, ainda podemos confiar em Deus."},
+
+    {type:"heading", text:"PERMANECER FIRMES"},
+
+    {type:"p", n:94, text:"A batalha espiritual não deve produzir em nós uma vida de medo."},
+    {type:"p", n:95, text:"Deve produzir vigilância, oração, dependência de Deus e firmeza na fé."},
+    {type:"p", n:96, text:"Paulo escreveu:"},
+
+    {type:"quote", n:97, text:"“Portanto, tomai toda a armadura de Deus, para que possais resistir no dia mau e, havendo feito tudo, ficar firmes.” (Efésios 6:13)"},
+
+    {type:"p", n:98, text:"Ficar firmes."},
+    {type:"p", n:99, text:"Essa é a palavra."},
+    {type:"p", n:100, text:"Quando não puder falar, permaneça firme."},
+    {type:"p", n:101, text:"Quando não compreender, permaneça firme."},
+    {type:"p", n:102, text:"Quando estiver cercado pelo medo, permaneça firme."},
+    {type:"p", n:103, text:"Quando a batalha parecer maior do que suas forças, permaneça firme."},
+    {type:"p", n:104, text:"Porque a nossa confiança não está na nossa própria força."},
+    {type:"p", n:105, text:"Está no Senhor."},
+
+    {type:"quote", n:106, text:"“No demais, irmãos meus, fortalecei-vos no Senhor e na força do seu poder.” (Efésios 6:10)"},
+
+    {type:"heading", text:"JESUS CONTINUA SENDO A NOSSA VITÓRIA"},
+
+    {type:"p", n:107, text:"Aquela noite passou."},
+    {type:"p", n:108, text:"A presença saiu."},
+    {type:"p", n:109, text:"Meu corpo voltou a responder."},
+    {type:"p", n:110, text:"Mas a lição permaneceu."},
+    {type:"p", n:111, text:"A batalha pode ser invisível."},
+    {type:"p", n:112, text:"As circunstâncias podem ser assustadoras."},
+    {type:"p", n:113, text:"Nem sempre entenderemos o que está acontecendo."},
+    {type:"p", n:114, text:"Mas existe uma verdade que permanece:"},
+    {type:"p", n:115, text:"Jesus Cristo é Senhor."},
+    {type:"p", n:116, text:"E é nEle que colocamos nossa confiança."},
+    {type:"p", n:117, text:"Não nas experiências."},
+    {type:"p", n:118, text:"Não nas emoções."},
+    {type:"p", n:119, text:"Não em nossa própria força."},
+    {type:"p", n:120, text:"Em Cristo."},
+
+    {type:"ending", text:"ATOS 29 CONTINUA."}
+
+];
+
+/* =========================================
+   CONSTRUÇÃO DOS ELEMENTOS
+========================================= */
+
+function createElement(tag, className, text = "") {
+
+    const element = document.createElement(tag);
+
+    if (className) {
+        element.className = className;
+    }
+
+    if (text !== "") {
+        element.textContent = text;
+    }
+
+    return element;
+}
+
+/* =========================================
+   TRANSFORMA O TEXTO EM BLOCOS
+========================================= */
+
+function buildUnits() {
+
+    const units = [];
+
+    for (const item of content) {
+
+        if (item.type === "opening") {
+
+            const opening = createElement(
+                "div",
+                "chapter-opening"
+            );
+
+            opening.appendChild(
+                createElement(
+                    "div",
+                    "book-name",
+                    "ATOS 29"
+                )
+            );
+
+            opening.appendChild(
+                createElement(
+                    "div",
+                    "chapter-title",
+                    "CAPÍTULO 6 — A BATALHA ESPIRITUAL"
+                )
+            );
+
+            opening.appendChild(
+                createElement(
+                    "div",
+                    "author",
+                    "Ministério Atalaia • Diego Nascimento — Pastor Evangelista"
+                )
+            );
+
+            units.push(opening);
+
+            continue;
+        }
+
+        if (item.type === "heading") {
+
+            const wrapper = createElement(
+                "div",
+                "heading-unit"
+            );
+
+            wrapper.appendChild(
+                createElement(
+                    "h2",
+                    "section-title",
+                    item.text
+                )
+            );
+
+            units.push(wrapper);
+
+            continue;
+        }
+
+        if (item.type === "p") {
+
+            const paragraph = createElement(
+                "p",
+                "paragraph"
+            );
+
+            paragraph.appendChild(
+                createElement(
+                    "sup",
+                    "verse-number",
+                    String(item.n)
+                )
+            );
+
+            paragraph.appendChild(
+                document.createTextNode(item.text)
+            );
+
+            units.push(paragraph);
+
+            continue;
+        }
+
+        if (item.type === "quote") {
+
+            const quote = createElement(
+                "blockquote",
+                "bible-quote"
+            );
+
+            quote.appendChild(
+                createElement(
+                    "sup",
+                    "verse-number",
+                    String(item.n)
+                )
+            );
+
+            quote.appendChild(
+                document.createTextNode(item.text)
+            );
+
+            units.push(quote);
+
+            continue;
+        }
+
+        if (item.type === "ending") {
+
+            const ending = createElement(
+                "div",
+                "final-declaration",
+                item.text
+            );
+
+            units.push(ending);
+
+        }
+
+    }
+
+    return units;
+}
+
+/* =========================================
+   CRIAÇÃO DA PÁGINA
+========================================= */
+
+function createPage(number) {
+
+    const page = createElement(
+        "section",
+        "page measuring"
+    );
+
+    page.setAttribute(
+        "aria-label",
+        "Página " + number
+    );
+
+    const header = createElement(
+        "header",
+        "page-header"
+    );
+
+    header.appendChild(
+        createElement(
+            "span",
+            "",
+            "ATOS 29 • A HISTÓRIA CONTINUA"
+        )
+    );
+
+    header.appendChild(
+        createElement(
+            "span",
+            "chapter-name",
+            "CAPÍTULO 6"
+        )
+    );
+
+    const contentArea = createElement(
+        "div",
+        "page-content"
+    );
+
+    const firstColumn = createElement(
+        "div",
+        "text-column"
+    );
+
+    const secondColumn = createElement(
+        "div",
+        "text-column"
+    );
+
+    contentArea.appendChild(firstColumn);
+    contentArea.appendChild(secondColumn);
+
+    const footer = createElement(
+        "footer",
+        "page-footer"
+    );
+
+    footer.appendChild(
+        createElement(
+            "span",
+            "",
+            "MINISTÉRIO ATALAIA"
+        )
+    );
+
+    footer.appendChild(
+        createElement(
+            "span",
+            "page-number",
+            "PÁGINA " + number
+        )
+    );
+
+    page.appendChild(header);
+    page.appendChild(contentArea);
+    page.appendChild(footer);
+
+    return {
+        page: page,
+        columns: [firstColumn, secondColumn]
+    };
+}
+
+/* =========================================
+   PAGINAÇÃO AUTOMÁTICA
+
+   COMPUTADOR:
+   2 PÁGINAS / 4 COLUNAS
+
+   CELULAR:
+   1 PÁGINA / 1 COLUNA
+========================================= */
+
+const book = document.getElementById("book");
+
+let pages = [];
+let currentPage = 0;
+
+function paginate() {
+
+    book.innerHTML = "";
+
+    const units = buildUnits();
+
+    pages = [];
+
+    let total = 1;
+
+    let current = createPage(total);
+
+    book.appendChild(current.page);
+
+    let columnIndex = 0;
+
+    for (const unit of units) {
+
+        let target = current.columns[columnIndex];
+
+        target.appendChild(unit);
+
+        /*
+          Verifica se o conteúdo ultrapassou
+          o espaço disponível na coluna.
+        */
+
+        if (
+            target.scrollHeight >
+            target.clientHeight + 1
+        ) {
+
+            target.removeChild(unit);
+
+            /*
+              Tenta a segunda coluna.
+            */
+
+            if (columnIndex === 0) {
+
+                columnIndex = 1;
+
+                target = current.columns[1];
+
+                target.appendChild(unit);
+
+                /*
+                  Se não couber na segunda coluna,
+                  abre uma nova página.
+                */
+
+                if (
+                    target.scrollHeight >
+                    target.clientHeight + 1
+                ) {
+
+                    target.removeChild(unit);
+
+                    total++;
+
+                    current = createPage(total);
+
+                    book.appendChild(current.page);
+
+                    columnIndex = 0;
+
+                    current.columns[0].appendChild(unit);
+                }
+
+            } else {
+
+                /*
+                  A segunda coluna está cheia.
+                */
+
+                total++;
+
+                current = createPage(total);
+
+                book.appendChild(current.page);
+
+                columnIndex = 0;
+
+                current.columns[0].appendChild(unit);
+
+            }
+
+        }
+
+    }
+
+    /*
+      Finaliza as páginas calculadas.
+    */
+
+    pages = Array.from(
+        book.querySelectorAll(".page")
+    );
+
+    pages.forEach((page, index) => {
+
+        page.classList.remove("measuring");
+
+        page.querySelector(
+            ".page-number"
+        ).textContent = "PÁGINA " + (index + 1);
+
+        page.style.display = "none";
+
+    });
+
+    currentPage = 0;
+
+    displayPages(false);
+}
+
+/* =========================================
+   RESPONSIVIDADE
+========================================= */
+
+function isMobile() {
+
+    return window.matchMedia(
+        "(max-width: 700px)"
+    ).matches;
+
+}
+
+/* =========================================
+   EXIBIÇÃO DAS PÁGINAS
+========================================= */
+
+function displayPages(animate = true) {
+
+    const visibleCount = isMobile() ? 1 : 2;
+
+    pages.forEach((page, index) => {
+
+        const visible =
+            index >= currentPage &&
+            index < currentPage + visibleCount;
+
+        page.style.display = visible ? "block" : "none";
+
+        page.classList.remove("entering");
+
+        if (visible && animate) {
+
+            void page.offsetWidth;
+
+            page.classList.add("entering");
+
+        }
+
+    });
+
+    updateNavigation();
+}
+
+/* =========================================
+   INDICADOR E BOTÕES
+========================================= */
+
+const previousButton =
+    document.getElementById("previous");
+
+const nextButton =
+    document.getElementById("next");
+
+const indicator =
+    document.getElementById("pageIndicator");
+
+function updateNavigation() {
+
+    const visibleCount = isMobile() ? 1 : 2;
+
+    const total = pages.length;
+
+    const first = currentPage + 1;
+
+    const last = Math.min(
+        currentPage + visibleCount,
+        total
+    );
+
+    previousButton.disabled = currentPage === 0;
+
+    nextButton.disabled =
+        currentPage + visibleCount >= total;
+
+    if (first === last) {
+
+        indicator.textContent =
+            "PÁGINA " + first + " / " + total;
+
+    } else {
+
+        indicator.textContent =
+            "PÁGINAS " + first + "–" + last +
+            " / " + total;
+
+    }
+
+}
+
+/* =========================================
+   AVANÇAR E VOLTAR
+========================================= */
+
+function nextPage() {
+
+    const step = isMobile() ? 1 : 2;
+
+    if (currentPage + step < pages.length) {
+
+        currentPage += step;
+
+        displayPages(true);
+
+    }
+
+}
+
+function previousPage() {
+
+    const step = isMobile() ? 1 : 2;
+
+    currentPage = Math.max(
+        0,
+        currentPage - step
+    );
+
+    displayPages(true);
+
+}
+
+previousButton.addEventListener(
+    "click",
+    previousPage
+);
+
+nextButton.addEventListener(
+    "click",
+    nextPage
+);
+
+/* =========================================
+   SETAS DO TECLADO
+========================================= */
+
+document.addEventListener(
+    "keydown",
+    function(event) {
+
+        if (
+            event.key === "ArrowRight" ||
+            event.key === "ArrowDown"
+        ) {
+
+            nextPage();
+
+        }
+
+        if (
+            event.key === "ArrowLeft" ||
+            event.key === "ArrowUp"
+        ) {
+
+            previousPage();
+
+        }
+
+    }
+);
+
+/* =========================================
+   REDIMENSIONAMENTO DA TELA
+========================================= */
+
+let resizeTimer;
+
+window.addEventListener(
+    "resize",
+    function() {
+
+        clearTimeout(resizeTimer);
+
+        resizeTimer = setTimeout(
+            function() {
+
+                paginate();
+
+            },
+            250
+        );
+
+    }
+);
+
+/* =========================================
+   INICIALIZAÇÃO
+========================================= */
+
+window.addEventListener(
+    "load",
+    function() {
+
+        requestAnimationFrame(function() {
+
+            paginate();
+
+        });
+
+    }
+);
+
+</script>
+
+</body>
+</html>

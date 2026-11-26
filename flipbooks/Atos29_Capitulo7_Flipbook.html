@@ -1,0 +1,756 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#17130f">
+<title>ATOS 29 — Capítulo 7 | O Batismo com o Espírito Santo</title>
+
+<style>
+:root{
+  --fundo:#17130f;
+  --papel:#f4edda;
+  --tinta:#292319;
+  --largura:590px;
+  --altura:780px;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  min-height:100vh;
+  padding:25px 12px 35px;
+  color:#eee5d4;
+  background:radial-gradient(ellipse at center,#393027 0%,#211b15 58%,#100e0b 100%);
+  font-family:Georgia,"Times New Roman",serif;
+}
+.topo{text-align:center;margin-bottom:22px}
+.topo h1{
+  margin:0;
+  color:#e5d5b5;
+  font-size:17px;
+  font-weight:normal;
+  letter-spacing:3px;
+}
+.topo p{
+  margin:7px 0 0;
+  color:#bca77f;
+  font-size:11px;
+  letter-spacing:2px;
+}
+.livro{
+  width:min(100%,calc(var(--largura)*2));
+  margin:auto;
+  perspective:1800px;
+}
+.abertura{
+  display:flex;
+  justify-content:center;
+  align-items:stretch;
+  position:relative;
+  min-height:var(--altura);
+  filter:drop-shadow(0 18px 24px rgba(0,0,0,.48));
+}
+.abertura::after{
+  content:"";
+  position:absolute;
+  z-index:5;
+  pointer-events:none;
+  top:0;bottom:0;left:50%;
+  width:25px;
+  transform:translateX(-50%);
+  background:linear-gradient(to right,
+    rgba(45,31,17,.18),
+    rgba(65,45,25,.04) 35%,
+    rgba(45,31,17,.18) 50%,
+    rgba(255,255,255,.13) 75%,
+    rgba(45,31,17,.10));
+}
+.pagina{
+  position:relative;
+  width:50%;
+  height:var(--altura);
+  min-width:0;
+  overflow:hidden;
+  color:var(--tinta);
+  background-color:var(--papel);
+  background-image:
+    radial-gradient(ellipse at 20% 15%,rgba(255,255,255,.35),transparent 50%),
+    radial-gradient(ellipse at 80% 90%,rgba(135,103,55,.09),transparent 55%),
+    repeating-linear-gradient(0deg,rgba(105,83,48,.018) 0,rgba(105,83,48,.018) 1px,transparent 1px,transparent 4px);
+  box-shadow:inset 0 0 22px rgba(100,75,38,.13);
+}
+.pagina.esquerda{border-radius:5px 0 0 5px}
+.pagina.direita{border-radius:0 5px 5px 0}
+.interior{
+  height:100%;
+  padding:30px 35px 25px;
+  display:flex;
+  flex-direction:column;
+  overflow:hidden;
+}
+.cabecalho{
+  flex:0 0 auto;
+  display:flex;
+  justify-content:space-between;
+  gap:8px;
+  padding-bottom:9px;
+  margin-bottom:14px;
+  border-bottom:1px solid rgba(74,57,34,.35);
+  color:#65543a;
+  font-size:9px;
+  letter-spacing:1px;
+  text-transform:uppercase;
+}
+.miolo{
+  flex:1 1 auto;
+  min-height:0;
+  overflow:hidden;
+  column-count:2;
+  column-gap:25px;
+  column-rule:1px solid rgba(95,75,48,.18);
+  column-fill:auto;
+  font-size:12px;
+  line-height:1.48;
+  text-align:justify;
+  hyphens:auto;
+}
+.unidade{
+  break-inside:avoid;
+  page-break-inside:avoid;
+  margin:0 0 7px;
+}
+.abertura-capitulo{
+  text-align:center;
+  margin:0 0 13px;
+  padding:8px 0 11px;
+  border-bottom:1px solid rgba(74,57,34,.35);
+  break-inside:avoid;
+}
+.identificacao{
+  display:block;
+  margin-bottom:9px;
+  color:#766345;
+  font-size:10px;
+  letter-spacing:2px;
+}
+.abertura-capitulo h2{
+  margin:0;
+  color:#302719;
+  font-size:19px;
+  line-height:1.25;
+  text-transform:uppercase;
+}
+.autor{
+  display:block;
+  margin-top:9px;
+  color:#65543a;
+  font-size:9px;
+  font-style:italic;
+}
+.subtitulo{
+  margin:12px 0 7px;
+  padding-top:4px;
+  color:#493a25;
+  font-size:11px;
+  line-height:1.3;
+  font-weight:bold;
+  letter-spacing:.45px;
+  text-align:left;
+  text-transform:uppercase;
+  break-after:avoid;
+}
+.paragrafo{
+  margin:0 0 6px;
+  color:#292319;
+  text-indent:0;
+}
+.numero{
+  display:inline-block;
+  margin-right:3px;
+  color:#846b43;
+  font-size:8px;
+  font-weight:bold;
+  vertical-align:super;
+  line-height:0;
+}
+.destaque{font-weight:bold}
+.citacao{
+  margin:6px 7px 3px 11px;
+  padding-left:9px;
+  border-left:2px solid rgba(143,115,69,.55);
+  color:#403522;
+  font-style:italic;
+  text-align:left;
+}
+.referencia{
+  margin:0 7px 8px 20px;
+  color:#78613c;
+  font-size:9px;
+  font-weight:bold;
+  text-align:left;
+}
+.rodape{
+  flex:0 0 auto;
+  display:flex;
+  justify-content:space-between;
+  padding-top:8px;
+  margin-top:9px;
+  border-top:1px solid rgba(74,57,34,.35);
+  color:#746143;
+  font-size:9px;
+  letter-spacing:1px;
+}
+.numero-pagina{font-size:11px;font-weight:bold}
+.controles{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:18px;
+  margin:24px auto 0;
+}
+.controles button{
+  min-width:125px;
+  padding:12px 18px;
+  border:1px solid #9c8359;
+  border-radius:3px;
+  background:#2b241b;
+  color:#f0e5d0;
+  font-family:Georgia,serif;
+  font-size:11px;
+  letter-spacing:1px;
+  cursor:pointer;
+  transition:.2s;
+}
+.controles button:hover:not(:disabled){
+  background:#51412d;
+  transform:translateY(-2px);
+}
+.controles button:disabled{opacity:.35;cursor:not-allowed}
+.indicador{
+  min-width:120px;
+  color:#d7c6a5;
+  font-size:12px;
+  text-align:center;
+}
+.instrucao{
+  margin-top:14px;
+  color:#a99a7e;
+  font-size:10px;
+  letter-spacing:.5px;
+  text-align:center;
+}
+.animar{animation:virar .3s ease}
+@keyframes virar{
+  from{opacity:.55;transform:rotateY(-3deg)}
+  to{opacity:1;transform:rotateY(0)}
+}
+.medicao{
+  position:fixed!important;
+  left:-20000px!important;
+  top:0!important;
+  visibility:hidden!important;
+  pointer-events:none!important;
+}
+@media(max-width:850px){
+  :root{--altura: min(78vh,780px)}
+  body{padding:18px 10px 28px}
+  .livro{width:min(100%,590px)}
+  .pagina{width:100%;border-radius:5px}
+  .pagina.direita{display:none}
+  .abertura::after{display:none}
+  .interior{padding:25px 26px 22px}
+  .miolo{column-count:1;font-size:13px;line-height:1.52}
+  .abertura-capitulo h2{font-size:21px}
+  .medicao{width:min(calc(100vw - 20px),590px)!important}
+}
+@media(max-width:420px){
+  :root{--altura:78vh}
+  .interior{padding:20px 19px 19px}
+  .cabecalho{font-size:8px;letter-spacing:.5px}
+  .miolo{font-size:12px;line-height:1.5}
+  .controles{gap:8px}
+  .controles button{min-width:0;padding:11px 12px;font-size:10px}
+  .indicador{min-width:80px;font-size:11px}
+}
+@media print{
+  body{background:white;padding:0}
+  .topo,.controles,.instrucao{display:none}
+  .livro,.abertura{width:100%;filter:none}
+  .pagina{box-shadow:none;print-color-adjust:exact;-webkit-print-color-adjust:exact}
+}
+</style>
+</head>
+
+<body>
+
+<header class="topo">
+  <h1>ATOS 29 • A HISTÓRIA CONTINUA</h1>
+  <p>MINISTÉRIO ATALAIA</p>
+</header>
+
+<main class="livro">
+  <div class="abertura" id="abertura" aria-live="polite"></div>
+
+  <nav class="controles" aria-label="Navegação do livro">
+    <button id="anterior" type="button" disabled>‹ ANTERIOR</button>
+    <span class="indicador" id="indicador">Preparando páginas...</span>
+    <button id="proxima" type="button">PRÓXIMA ›</button>
+  </nav>
+
+  <p class="instrucao">
+    Utilize os botões ou as setas ← e → do teclado para navegar
+  </p>
+</main>
+
+<script>
+"use strict";
+
+/*
+  Cada parágrafo possui sua numeração original.
+  Os subtítulos não recebem numeração.
+  Citações e referências são mantidas separadas dos parágrafos.
+*/
+
+const conteudo = [
+  {tipo:"titulo"},
+
+  {tipo:"sub",texto:"UM TEMPO DE PREPARAÇÃO"},
+  {tipo:"p",n:"¹",texto:"No início, eu estava vivendo uma época de preparação."},
+  {tipo:"p",n:"²",texto:"Eu já estudava a Bíblia."},
+  {tipo:"p",n:"³",texto:"Passava horas em oração."},
+  {tipo:"p",n:"⁴",texto:"Já havia sido batizado nas águas."},
+  {tipo:"p",n:"⁵",texto:"E agora havia dentro de mim um desejo profundo:"},
+  {tipo:"p",n:"⁶",texto:"eu estava buscando o Batismo com o Espírito Santo.",destaque:true},
+  {tipo:"p",n:"⁷",texto:"Eu não queria apenas conhecer a respeito de Deus."},
+  {tipo:"p",n:"⁸",texto:"Eu queria experimentar mais profundamente a Sua presença e viver aquilo que a Palavra de Deus apresenta sobre o poder do Espírito Santo."},
+  {tipo:"p",n:"⁹",texto:"Jesus havia prometido aos Seus discípulos:"},
+  {tipo:"q",texto:"“Mas recebereis a virtude do Espírito Santo, que há de vir sobre vós; e ser-me-eis testemunhas.”"},
+  {tipo:"ref",texto:"Atos 1:8"},
+  {tipo:"p",n:"¹⁰",texto:"A promessa do Espírito Santo estava diante de mim."},
+  {tipo:"p",n:"¹¹",texto:"E eu estava buscando."},
+
+  {tipo:"sub",texto:"A VIGÍLIA"},
+  {tipo:"p",n:"¹²",texto:"Um dia, fomos participar de uma vigília durante a madrugada, no Bairro Rio Piorini."},
+  {tipo:"p",n:"¹³",texto:"O local era um areial, em meio à mata, na avenida principal."},
+  {tipo:"p",n:"¹⁴",texto:"Era um ambiente simples."},
+  {tipo:"p",n:"¹⁵",texto:"Estávamos ali para orar."},
+  {tipo:"p",n:"¹⁶",texto:"A madrugada avançava, e continuávamos buscando a Deus."},
+  {tipo:"p",n:"¹⁷",texto:"Naquele período, meu coração estava voltado para uma coisa:"},
+  {tipo:"p",n:"¹⁸",texto:"o Batismo com o Espírito Santo.",destaque:true},
+  {tipo:"p",n:"¹⁹",texto:"Então aconteceu algo que jamais esqueci."},
+  {tipo:"p",n:"²⁰",texto:"Uma profetiza me disse que, às 03:00 em ponto, uma bola de fogo seria enviada dos céus sobre mim e eu seria batizado com o Espírito Santo e com fogo."},
+  {tipo:"p",n:"²¹",texto:"Depois daquela palavra, fiquei olhando para o meu relógio."},
+  {tipo:"p",n:"²²",texto:"Eu estava esperando a hora chegar."},
+  {tipo:"p",n:"²³",texto:"03:00.",destaque:true},
+
+  {tipo:"sub",texto:"ÀS 03:00"},
+  {tipo:"p",n:"²⁴",texto:"Então chegou o momento."},
+  {tipo:"p",n:"²⁵",texto:"03:00 em ponto.",destaque:true},
+  {tipo:"p",n:"²⁶",texto:"E, naquele instante, aconteceu aquilo que jamais esquecerei."},
+  {tipo:"p",n:"²⁷",texto:"Veio sobre mim aquela bola de fogo.",destaque:true},
+  {tipo:"p",n:"²⁸",texto:"E eu comecei a sentir como se estivesse pegando fogo do Espírito Santo."},
+  {tipo:"p",n:"²⁹",texto:"Então comecei a falar em línguas estranhas.",destaque:true},
+  {tipo:"p",n:"³⁰",texto:"Naquele momento, para mim, algo havia mudado."},
+  {tipo:"p",n:"³¹",texto:"Eu compreendi aquela experiência como o cumprimento daquilo que eu estava buscando:"},
+  {tipo:"p",n:"³²",texto:"o Batismo com o Espírito Santo.",destaque:true},
+
+  {tipo:"sub",texto:"“ELE VOS BATIZARÁ COM O ESPÍRITO SANTO E COM FOGO”"},
+  {tipo:"p",n:"³³",texto:"Quando penso naquela experiência, lembro-me das palavras de João Batista:"},
+  {tipo:"q",texto:"“Ele vos batizará com o Espírito Santo e com fogo.”"},
+  {tipo:"ref",texto:"Mateus 3:11"},
+  {tipo:"p",n:"³⁴",texto:"A mesma promessa aparece em:"},
+  {tipo:"ref",texto:"Lucas 3:16"},
+  {tipo:"p",n:"³⁵",texto:"O fogo aparece nas Escrituras como uma imagem associada à presença, à ação e à manifestação de Deus em diferentes contextos."},
+  {tipo:"p",n:"³⁶",texto:"No Pentecostes, por exemplo, Lucas registra:"},
+  {tipo:"q",texto:"“E foram vistas por eles línguas repartidas, como que de fogo, as quais pousaram sobre cada um deles.”"},
+  {tipo:"ref",texto:"Atos 2:3"},
+  {tipo:"p",n:"³⁷",texto:"E imediatamente depois:"},
+  {tipo:"q",texto:"“E todos foram cheios do Espírito Santo, e começaram a falar noutras línguas, conforme o Espírito Santo lhes concedia que falassem.”"},
+  {tipo:"ref",texto:"Atos 2:4"},
+  {tipo:"p",n:"³⁸",texto:"Ao lembrar daquilo que aconteceu comigo, essas passagens ganharam um significado ainda mais profundo."},
+
+  {tipo:"sub",texto:"O FALAR EM LÍNGUAS"},
+  {tipo:"p",n:"³⁹",texto:"Naquela experiência, comecei a falar em línguas estranhas."},
+  {tipo:"p",n:"⁴⁰",texto:"A primeira grande referência bíblica está no dia de Pentecostes."},
+  {tipo:"p",n:"⁴¹",texto:"Os discípulos estavam reunidos quando o Espírito Santo veio sobre eles e começaram a falar em outras línguas."},
+  {tipo:"ref",texto:"Atos 2:1–4"},
+  {tipo:"p",n:"⁴²",texto:"Também encontramos outros relatos no livro de Atos:"},
+  {tipo:"ref",texto:"Atos 10:44–46"},
+  {tipo:"ref",texto:"Atos 19:6"},
+  {tipo:"p",n:"⁴³",texto:"Esses textos mostram diferentes momentos em que pessoas receberam o Espírito Santo e houve manifestações espirituais, incluindo o falar em línguas."},
+  {tipo:"p",n:"⁴⁴",texto:"Para mim, aquilo não foi apenas uma informação bíblica."},
+  {tipo:"p",n:"⁴⁵",texto:"Eu havia vivido uma experiência que passou a fazer parte do meu próprio testemunho."},
+
+  {tipo:"sub",texto:"REVESTIDO DE PODER"},
+  {tipo:"p",n:"⁴⁶",texto:"A partir daquele momento, eu compreendi que havia recebido um revestimento de poder.",destaque:true},
+  {tipo:"p",n:"⁴⁷",texto:"Jesus havia dito:"},
+  {tipo:"q",texto:"“Mas recebereis a virtude do Espírito Santo, que há de vir sobre vós; e ser-me-eis testemunhas.”"},
+  {tipo:"ref",texto:"Atos 1:8"},
+  {tipo:"p",n:"⁴⁸",texto:"O propósito do poder do Espírito Santo não é simplesmente proporcionar uma experiência extraordinária."},
+  {tipo:"p",n:"⁴⁹",texto:"Existe uma missão."},
+  {tipo:"p",n:"⁵⁰",texto:"Ser testemunha de Cristo.",destaque:true},
+  {tipo:"p",n:"⁵¹",texto:"O Espírito Santo não veio para que a Igreja apenas tivesse experiências."},
+  {tipo:"p",n:"⁵²",texto:"Ele veio para capacitar a Igreja para cumprir sua missão."},
+
+  {tipo:"sub",texto:"UMA EXPERIÊNCIA QUE MUDOU MINHA VIDA"},
+  {tipo:"p",n:"⁵³",texto:"Foram dois dias e três noites vivendo aquela experiência de fogo e falando em línguas estranhas.",destaque:true},
+  {tipo:"p",n:"⁵⁴",texto:"Minha vida mudou completamente a partir daquele dia."},
+  {tipo:"p",n:"⁵⁵",texto:"Aquilo marcou profundamente minha caminhada espiritual."},
+  {tipo:"p",n:"⁵⁶",texto:"Eu já havia estudado a Bíblia."},
+  {tipo:"p",n:"⁵⁷",texto:"Já orava."},
+  {tipo:"p",n:"⁵⁸",texto:"Já havia sido batizado nas águas."},
+  {tipo:"p",n:"⁵⁹",texto:"Mas aquela experiência se tornou um marco em minha caminhada."},
+  {tipo:"p",n:"⁶⁰",texto:"Eu passei a compreender de maneira ainda mais profunda a importância da presença e do poder do Espírito Santo."},
+
+  {tipo:"sub",texto:"O ESPÍRITO SANTO E A MISSÃO"},
+  {tipo:"p",n:"⁶¹",texto:"Jesus não prometeu o Espírito Santo apenas para produzir uma experiência pessoal."},
+  {tipo:"p",n:"⁶²",texto:"Ele relacionou diretamente o recebimento do poder à missão:"},
+  {tipo:"q",texto:"“E ser-me-eis testemunhas tanto em Jerusalém como em toda a Judeia e Samaria, e até aos confins da terra.”"},
+  {tipo:"ref",texto:"Atos 1:8"},
+  {tipo:"p",n:"⁶³",texto:"Isso significa que aquilo que Deus faz em nós também deve alcançar outras pessoas."},
+  {tipo:"p",n:"⁶⁴",texto:"O fogo recebido não deve permanecer apenas dentro de nós."},
+  {tipo:"p",n:"⁶⁵",texto:"O poder recebido deve nos conduzir ao testemunho."},
+  {tipo:"p",n:"⁶⁶",texto:"A experiência deve produzir serviço."},
+  {tipo:"p",n:"⁶⁷",texto:"O encontro deve produzir missão."},
+  {tipo:"p",n:"⁶⁸",texto:"O revestimento deve produzir testemunho."},
+
+  {tipo:"sub",texto:"“NÃO POR FORÇA, NEM POR VIOLÊNCIA”"},
+  {tipo:"p",n:"⁶⁹",texto:"O profeta Zacarias declarou:"},
+  {tipo:"q",texto:"“Não por força nem por violência, mas pelo meu Espírito, diz o SENHOR dos Exércitos.”"},
+  {tipo:"ref",texto:"Zacarias 4:6"},
+  {tipo:"p",n:"⁷⁰",texto:"Essa palavra me lembra que a obra de Deus não depende simplesmente da capacidade humana."},
+  {tipo:"p",n:"⁷¹",texto:"Não é apenas conhecimento."},
+  {tipo:"p",n:"⁷²",texto:"Não é apenas talento."},
+  {tipo:"p",n:"⁷³",texto:"Não é apenas técnica."},
+  {tipo:"p",n:"⁷⁴",texto:"Precisamos do Espírito Santo."},
+  {tipo:"p",n:"⁷⁵",texto:"É Ele quem capacita."},
+  {tipo:"p",n:"⁷⁶",texto:"É Ele quem fortalece."},
+  {tipo:"p",n:"⁷⁷",texto:"É Ele quem conduz."},
+
+  {tipo:"sub",texto:"O FOGO QUE CONTINUA"},
+  {tipo:"p",n:"⁷⁸",texto:"A experiência daquela madrugada ficou marcada em minha memória."},
+  {tipo:"p",n:"⁷⁹",texto:"Mas existe algo ainda mais importante do que lembrar do fogo que senti naquele momento:"},
+  {tipo:"p",n:"⁸⁰",texto:"precisamos continuar cheios do Espírito Santo.",destaque:true},
+  {tipo:"p",n:"⁸¹",texto:"Paulo escreveu:"},
+  {tipo:"q",texto:"“E não vos embriagueis com vinho, em que há contenda, mas enchei-vos do Espírito.”"},
+  {tipo:"ref",texto:"Efésios 5:18"},
+  {tipo:"p",n:"⁸²",texto:"O verbo aponta para uma vida contínua de dependência."},
+  {tipo:"p",n:"⁸³",texto:"Não basta lembrar de uma experiência passada."},
+  {tipo:"p",n:"⁸⁴",texto:"Precisamos continuar buscando a presença de Deus."},
+  {tipo:"p",n:"⁸⁵",texto:"Continuar orando."},
+  {tipo:"p",n:"⁸⁶",texto:"Continuar estudando a Palavra."},
+  {tipo:"p",n:"⁸⁷",texto:"Continuar testemunhando."},
+  {tipo:"p",n:"⁸⁸",texto:"Continuar servindo."},
+  {tipo:"p",n:"⁸⁹",texto:"Continuar cheios do Espírito."},
+
+  {tipo:"sub",texto:"UMA EXPERIÊNCIA, UMA RESPONSABILIDADE"},
+  {tipo:"p",n:"⁹⁰",texto:"Hoje, quando olho para trás, não quero transformar aquela experiência em um motivo de exaltação pessoal."},
+  {tipo:"p",n:"⁹¹",texto:"Se Deus realmente me permitiu viver aquilo, então a glória pertence a Ele."},
+  {tipo:"p",n:"⁹²",texto:"A experiência não é maior do que a Palavra."},
+  {tipo:"p",n:"⁹³",texto:"O testemunho não é maior do que Cristo."},
+  {tipo:"p",n:"⁹⁴",texto:"O dom não é maior do que o Doador."},
+  {tipo:"p",n:"⁹⁵",texto:"E o fogo não é maior do que Aquele que acende o fogo."},
+  {tipo:"p",n:"⁹⁶",texto:"Jesus continua sendo o centro.",destaque:true},
+
+  {tipo:"sub",texto:"O ESPÍRITO SANTO NOS CAPACITA"},
+  {tipo:"p",n:"⁹⁷",texto:"A Palavra de Deus declara:"},
+  {tipo:"q",texto:"“Porque Deus não nos deu o espírito de temor, mas de fortaleza, e de amor, e de moderação.”"},
+  {tipo:"ref",texto:"2 Timóteo 1:7"},
+  {tipo:"p",n:"⁹⁸",texto:"O Espírito Santo nos conduz a uma vida de poder, amor, equilíbrio e testemunho."},
+  {tipo:"p",n:"⁹⁹",texto:"Por isso, aquela madrugada não deve ser apenas uma lembrança."},
+  {tipo:"p",n:"¹⁰⁰",texto:"Deve ser também um chamado."},
+  {tipo:"p",n:"¹⁰¹",texto:"Um chamado para continuar buscando."},
+  {tipo:"p",n:"¹⁰²",texto:"Um chamado para continuar servindo."},
+  {tipo:"p",n:"¹⁰³",texto:"Um chamado para continuar anunciando Jesus."},
+
+  {tipo:"sub",texto:"ATÉ AQUI, DEUS ME CONDUZIU"},
+  {tipo:"p",n:"¹⁰⁴",texto:"Eu estava buscando."},
+  {tipo:"p",n:"¹⁰⁵",texto:"Eu estava orando."},
+  {tipo:"p",n:"¹⁰⁶",texto:"Eu estava esperando."},
+  {tipo:"p",n:"¹⁰⁷",texto:"E, naquela madrugada, às 03:00 em ponto, vivi uma experiência que jamais esqueci."},
+  {tipo:"p",n:"¹⁰⁸",texto:"Vi aquilo que, para mim, foi uma bola de fogo vindo sobre mim."},
+  {tipo:"p",n:"¹⁰⁹",texto:"Comecei a falar em línguas estranhas."},
+  {tipo:"p",n:"¹¹⁰",texto:"E compreendi aquele momento como o meu Batismo com o Espírito Santo."},
+  {tipo:"p",n:"¹¹¹",texto:"Foram dois dias e três noites vivendo aquela experiência de fogo e falando em línguas."},
+  {tipo:"p",n:"¹¹²",texto:"E minha vida mudou completamente."},
+  {tipo:"p",n:"¹¹³",texto:"Mas hoje compreendo algo ainda maior:"},
+  {tipo:"p",n:"¹¹⁴",texto:"Deus não nos enche apenas para que tenhamos uma experiência.",destaque:true},
+  {tipo:"p",n:"¹¹⁵",texto:"Ele nos enche para que sejamos testemunhas.",destaque:true},
+  {tipo:"p",n:"¹¹⁶",texto:"O Espírito Santo não nos conduz para dentro de nós mesmos."},
+  {tipo:"p",n:"¹¹⁷",texto:"Ele nos conduz para Cristo."},
+  {tipo:"p",n:"¹¹⁸",texto:"E Cristo nos envia ao mundo."},
+  {tipo:"q",texto:"“Mas recebereis a virtude do Espírito Santo, que há de vir sobre vós; e ser-me-eis testemunhas.”"},
+  {tipo:"ref",texto:"Atos 1:8"},
+  {tipo:"p",n:"¹¹⁹",texto:"O fogo veio.",destaque:true},
+  {tipo:"p",n:"¹²⁰",texto:"O Espírito Santo me marcou.",destaque:true},
+  {tipo:"p",n:"¹²¹",texto:"E a missão continuou.",destaque:true},
+
+  {tipo:"assinatura"}
+];
+
+function criarUnidade(item){
+  const el=document.createElement("div");
+  el.className="unidade";
+
+  if(item.tipo==="titulo"){
+    el.classList.add("abertura-capitulo");
+    const identificacao=document.createElement("span");
+    identificacao.className="identificacao";
+    identificacao.textContent="ATOS 29 • CAPÍTULO 7";
+
+    const titulo=document.createElement("h2");
+    titulo.textContent="O BATISMO COM O ESPÍRITO SANTO";
+
+    const autor=document.createElement("span");
+    autor.className="autor";
+    autor.textContent="Ministério Atalaia • Diego Nascimento — Pastor Evangelista";
+
+    el.append(identificacao,titulo,autor);
+  }
+
+  if(item.tipo==="sub"){
+    el.classList.add("subtitulo");
+    el.textContent=item.texto;
+  }
+
+  if(item.tipo==="p"){
+    el.classList.add("paragrafo");
+
+    const numero=document.createElement("sup");
+    numero.className="numero";
+    numero.textContent=item.n;
+
+    const texto=document.createElement("span");
+    texto.textContent=item.texto;
+
+    if(item.destaque) texto.className="destaque";
+
+    el.append(numero,texto);
+  }
+
+  if(item.tipo==="q"){
+    el.classList.add("citacao");
+    el.textContent=item.texto;
+  }
+
+  if(item.tipo==="ref"){
+    el.classList.add("referencia");
+    el.textContent="📖 "+item.texto;
+  }
+
+  if(item.tipo==="assinatura"){
+    el.style.textAlign="center";
+    el.style.marginTop="15px";
+    el.style.fontWeight="bold";
+    el.style.letterSpacing="1px";
+    el.textContent="MINISTÉRIO ATALAIA • ATOS 29 — A HISTÓRIA CONTINUA";
+  }
+
+  return el;
+}
+
+function criarPagina(numero){
+  const pagina=document.createElement("section");
+  pagina.className="pagina";
+
+  const interior=document.createElement("div");
+  interior.className="interior";
+
+  const cabecalho=document.createElement("div");
+  cabecalho.className="cabecalho";
+
+  const marca=document.createElement("span");
+  marca.textContent="ATOS 29 • A HISTÓRIA CONTINUA";
+
+  const capitulo=document.createElement("span");
+  capitulo.textContent="CAPÍTULO 7";
+
+  cabecalho.append(marca,capitulo);
+
+  const miolo=document.createElement("div");
+  miolo.className="miolo";
+
+  const rodape=document.createElement("div");
+  rodape.className="rodape";
+
+  const ministerio=document.createElement("span");
+  ministerio.textContent="MINISTÉRIO ATALAIA";
+
+  const numeroPagina=document.createElement("span");
+  numeroPagina.className="numero-pagina";
+  numeroPagina.textContent=numero;
+
+  rodape.append(ministerio,numeroPagina);
+  interior.append(cabecalho,miolo,rodape);
+  pagina.appendChild(interior);
+
+  return {pagina,miolo};
+}
+
+const abertura=document.getElementById("abertura");
+const indicador=document.getElementById("indicador");
+const anterior=document.getElementById("anterior");
+const proxima=document.getElementById("proxima");
+
+let paginas=[];
+let paginaAtual=0;
+let larguraAnterior=0;
+let temporizador=null;
+
+function celular(){
+  return window.matchMedia("(max-width:850px)").matches;
+}
+
+function excedeu(miolo){
+  return miolo.scrollHeight>miolo.clientHeight+2 ||
+         miolo.scrollWidth>miolo.clientWidth+2;
+}
+
+function paginar(){
+  const posicaoAnterior=paginaAtual;
+  const medidor=criarPagina("");
+  medidor.pagina.classList.add("medicao");
+  document.body.appendChild(medidor.pagina);
+
+  const novasPaginas=[];
+  let atual=medidor;
+
+  for(const item of conteudo){
+    const elemento=criarUnidade(item);
+    atual.miolo.appendChild(elemento);
+
+    if(excedeu(atual.miolo) && atual.miolo.children.length>1){
+      atual.miolo.removeChild(elemento);
+      novasPaginas.push(atual);
+
+      const nova=criarPagina("");
+      nova.pagina.classList.add("medicao");
+      document.body.appendChild(nova.pagina);
+      atual=nova;
+      atual.miolo.appendChild(elemento);
+    }
+  }
+
+  novasPaginas.push(atual);
+  medidor.pagina.remove();
+
+  novasPaginas.forEach((p,i)=>{
+    let tentativas=0;
+
+    while(excedeu(p.miolo) && tentativas<8){
+      const tamanho=parseFloat(getComputedStyle(p.miolo).fontSize);
+      p.miolo.style.fontSize=(tamanho*.94)+"px";
+      tentativas++;
+    }
+
+    p.pagina.querySelector(".numero-pagina").textContent=i+1;
+    p.pagina.classList.remove("medicao");
+  });
+
+  paginas=novasPaginas;
+  paginaAtual=Math.min(posicaoAnterior,paginas.length-1);
+
+  if(!celular()){
+    paginaAtual=Math.floor(paginaAtual/2)*2;
+  }
+
+  mostrarAbertura(false);
+}
+
+function mostrarAbertura(animar=true){
+  abertura.replaceChildren();
+
+  if(!paginas.length) return;
+
+  const esquerda=paginas[paginaAtual];
+  const paginaEsquerda=esquerda.pagina.cloneNode(true);
+  paginaEsquerda.classList.add("esquerda");
+
+  if(animar) paginaEsquerda.classList.add("animar");
+
+  abertura.appendChild(paginaEsquerda);
+
+  if(!celular()){
+    const direita=paginas[paginaAtual+1];
+
+    if(direita){
+      const paginaDireita=direita.pagina.cloneNode(true);
+      paginaDireita.classList.add("direita");
+
+      if(animar) paginaDireita.classList.add("animar");
+
+      abertura.appendChild(paginaDireita);
+    }else{
+      const paginaVazia=document.createElement("section");
+      paginaVazia.className="pagina direita";
+      paginaVazia.setAttribute("aria-hidden","true");
+      abertura.appendChild(paginaVazia);
+    }
+  }
+
+  atualizarControles();
+}
+
+function atualizarControles(){
+  const total=paginas.length;
+  const quantidade=celular()?1:2;
+  const fim=Math.min(paginaAtual+quantidade,total);
+
+  indicador.textContent=celular()
+    ? `Página ${paginaAtual+1} de ${total}`
+    : `Páginas ${paginaAtual+1}–${fim} de ${total}`;
+
+  anterior.disabled=paginaAtual<=0;
+  proxima.disabled=paginaAtual+quantidade>=total;
+}
+
+function avancar(){
+  const passo=celular()?1:2;
+
+  if(paginaAtual+passo<paginas.length){
+    paginaAtual+=passo;
+    mostrarAbertura();
+  }
+}
+
+function voltar(){
+  const passo=celular()?1:2;
+  paginaAtual=Math.max(0,paginaAtual-passo);
+  mostrarAbertura();
+}
+
+anterior.addEventListener("click",voltar);
+proxima.addEventListener("click",avancar);
+
+document.addEventListener("keydown",evento=>{
+  if(evento.altKey||evento.ctrlKey||evento.metaKey) return;
+
+  if(evento.key==="ArrowRight"){
+    evento.preventDefault();
+    avancar();
+  }
+
+  if(evento.key==="ArrowLeft"){
+    evento.preventDefault();
+    voltar();
+  }
+});
+
+function iniciar(){
+  if(window.innerWidth!==larguraAnterior){
+    larguraAnterior=window.innerWidth;
+    paginar();
+  }
+}
+
+window.addEventListener("load",iniciar);
+
+window.addEventListener("resize",()=>{
+  clearTimeout(temporizador);
+  temporizador=setTimeout(iniciar,250);
+});
+</script>
+
+</body>
+</html>

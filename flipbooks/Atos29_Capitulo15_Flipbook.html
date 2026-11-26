@@ -1,0 +1,1113 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#17130f">
+<title>ATOS 29 — Capítulo 15 | A Segunda Oferta de Instrumentos Musicais</title>
+
+<style>
+:root {
+    --papel: #f5edda;
+    --papel-escuro: #e9dec5;
+    --tinta: #302719;
+    --dourado: #a58a55;
+    --fundo: #17130f;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    background:
+        radial-gradient(ellipse at center, #393027 0%, #211b15 55%, #100e0b 100%);
+    color: #eee5d4;
+    font-family: Georgia, "Times New Roman", serif;
+}
+
+button {
+    font-family: inherit;
+}
+
+/* CABEÇALHO EXTERNO */
+
+.topo {
+    text-align: center;
+    padding: 24px 12px 12px;
+}
+
+.topo h1 {
+    margin: 0;
+    font-size: 17px;
+    letter-spacing: 3px;
+    font-weight: normal;
+    color: #e8d7b4;
+}
+
+.topo p {
+    margin: 8px 0 0;
+    font-size: 12px;
+    letter-spacing: 2px;
+    color: #b7a88e;
+}
+
+/* ÁREA DO LIVRO */
+
+.area-livro {
+    width: min(1500px, 96%);
+    margin: 18px auto 20px;
+    perspective: 1800px;
+}
+
+.livro {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    gap: 0;
+    min-height: 690px;
+    position: relative;
+    filter: drop-shadow(0 18px 22px rgba(0,0,0,.45));
+}
+
+.livro::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 24px;
+    transform: translateX(-50%);
+    pointer-events: none;
+    background: linear-gradient(
+        to right,
+        rgba(53,37,20,.10),
+        rgba(40,27,15,.38),
+        rgba(255,255,255,.10),
+        rgba(40,27,15,.25)
+    );
+    z-index: 5;
+}
+
+/* PÁGINAS */
+
+.pagina {
+    position: relative;
+    width: 50%;
+    min-width: 0;
+    height: 690px;
+    padding: 37px 38px 48px;
+    color: var(--tinta);
+    overflow: hidden;
+    background:
+        radial-gradient(ellipse at 20% 15%, rgba(255,255,255,.38), transparent 55%),
+        repeating-linear-gradient(
+            0deg,
+            rgba(120,91,48,.018) 0,
+            rgba(120,91,48,.018) 1px,
+            transparent 1px,
+            transparent 4px
+        ),
+        linear-gradient(135deg, #f8f0df, var(--papel) 55%, #eee3cc);
+    box-shadow:
+        inset 0 0 25px rgba(110,81,38,.09),
+        inset 0 0 3px rgba(70,45,20,.16);
+}
+
+.pagina-esquerda {
+    border-radius: 5px 0 0 5px;
+    border-right: 1px solid rgba(90,65,35,.18);
+}
+
+.pagina-direita {
+    border-radius: 0 5px 5px 0;
+    border-left: 1px solid rgba(90,65,35,.12);
+}
+
+.pagina::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(
+        to right,
+        rgba(70,45,20,.08),
+        transparent 12%,
+        transparent 88%,
+        rgba(70,45,20,.06)
+    );
+}
+
+.cabecalho-pagina {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(83,64,39,.45);
+    padding-bottom: 8px;
+    margin-bottom: 17px;
+    font-size: 9px;
+    letter-spacing: 1.1px;
+    text-transform: uppercase;
+    color: #69583c;
+    font-weight: bold;
+}
+
+.conteudo-colunas {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    height: calc(100% - 82px);
+    position: relative;
+}
+
+.coluna {
+    min-width: 0;
+    height: 100%;
+    overflow: hidden;
+    text-align: justify;
+    font-size: 12.2px;
+    line-height: 1.48;
+    hyphens: auto;
+    overflow-wrap: break-word;
+}
+
+.coluna p {
+    margin: 0 0 7px;
+    text-indent: 0;
+}
+
+.numero {
+    font-size: .72em;
+    vertical-align: super;
+    line-height: 0;
+    margin-right: 2px;
+    font-weight: bold;
+    color: #715c39;
+}
+
+.coluna h2 {
+    font-size: 12px;
+    line-height: 1.35;
+    text-align: left;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: .35px;
+    margin: 13px 0 7px;
+    color: #392d1d;
+    break-after: avoid;
+}
+
+.coluna h3 {
+    font-size: 13px;
+    line-height: 1.4;
+    text-align: center;
+    text-transform: uppercase;
+    margin: 0 0 14px;
+    letter-spacing: .5px;
+}
+
+.coluna .titulo-principal {
+    text-align: center;
+    font-size: 16px;
+    line-height: 1.35;
+    margin: 10px 0 14px;
+    letter-spacing: .6px;
+}
+
+.coluna .subtitulo-principal {
+    text-align: center;
+    font-size: 10px;
+    letter-spacing: 1px;
+    font-weight: bold;
+    margin: 0 0 17px;
+}
+
+.coluna blockquote {
+    margin: 9px 9px 12px;
+    padding: 0 0 0 11px;
+    border-left: 1px solid #a28a60;
+    font-style: italic;
+    font-size: 11.5px;
+    line-height: 1.5;
+    text-align: left;
+    color: #473a29;
+}
+
+.coluna .referencia {
+    display: block;
+    margin-top: 4px;
+    text-align: right;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 10px;
+}
+
+.coluna .destaque {
+    font-weight: bold;
+    text-align: center;
+    margin: 10px 3px;
+}
+
+.coluna .frase-final {
+    text-align: center;
+    font-weight: bold;
+    font-size: 13px;
+    margin-top: 12px;
+    letter-spacing: .4px;
+}
+
+.rodape-pagina {
+    position: absolute;
+    bottom: 17px;
+    left: 38px;
+    right: 38px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid rgba(83,64,39,.35);
+    padding-top: 7px;
+    font-size: 9px;
+    letter-spacing: 1px;
+    color: #786747;
+    text-transform: uppercase;
+}
+
+/* ANIMAÇÃO */
+
+.pagina.animar {
+    animation: virar .38s ease;
+}
+
+@keyframes virar {
+    0% {
+        opacity: .65;
+        transform: rotateY(-2deg);
+    }
+    100% {
+        opacity: 1;
+        transform: rotateY(0);
+    }
+}
+
+/* CONTROLES */
+
+.controles {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 18px;
+    flex-wrap: wrap;
+    padding: 15px 10px 25px;
+}
+
+.controles button {
+    border: 1px solid #8d7853;
+    background: linear-gradient(#4a3b29, #2c241a);
+    color: #f0e4ca;
+    padding: 11px 24px;
+    cursor: pointer;
+    letter-spacing: 1px;
+    font-size: 11px;
+    transition: .2s;
+}
+
+.controles button:hover:not(:disabled) {
+    background: #695437;
+    border-color: #d0b47c;
+}
+
+.controles button:disabled {
+    opacity: .35;
+    cursor: not-allowed;
+}
+
+.indicador {
+    min-width: 130px;
+    text-align: center;
+    font-size: 12px;
+    letter-spacing: 1px;
+    color: #dfcfad;
+}
+
+.institucional {
+    text-align: center;
+    padding: 0 10px 25px;
+    color: #a99a7d;
+    font-size: 10px;
+    letter-spacing: 3px;
+}
+
+/* PÁGINA OCULTA PARA MEDIÇÃO */
+
+#medidor {
+    position: fixed;
+    left: -10000px;
+    top: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+/* RESPONSIVIDADE */
+
+@media (max-width: 760px) {
+    .area-livro {
+        width: 96%;
+        margin-top: 10px;
+    }
+
+    .livro {
+        min-height: 650px;
+    }
+
+    .livro::after {
+        display: none;
+    }
+
+    .pagina {
+        width: 100%;
+        height: 650px;
+        padding: 25px 22px 43px;
+        border-radius: 4px;
+    }
+
+    .pagina-esquerda {
+        display: none;
+    }
+
+    .pagina-direita {
+        border: none;
+    }
+
+    .conteudo-colunas {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+
+    .coluna {
+        font-size: 13px;
+        line-height: 1.52;
+    }
+
+    .coluna blockquote {
+        font-size: 12.3px;
+    }
+
+    .rodape-pagina {
+        left: 22px;
+        right: 22px;
+    }
+
+    .topo h1 {
+        font-size: 14px;
+        letter-spacing: 2px;
+    }
+
+    .controles {
+        gap: 9px;
+    }
+
+    .controles button {
+        padding: 11px 15px;
+        font-size: 10px;
+    }
+}
+
+@media (max-width: 390px) {
+    .pagina {
+        height: 620px;
+        padding: 20px 17px 42px;
+    }
+
+    .coluna {
+        font-size: 12.2px;
+    }
+
+    .cabecalho-pagina {
+        font-size: 8px;
+    }
+
+    .rodape-pagina {
+        left: 17px;
+        right: 17px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header class="topo">
+    <h1>ATOS 29 • A HISTÓRIA CONTINUA</h1>
+    <p>CAPÍTULO 15 — A SEGUNDA OFERTA DE INSTRUMENTOS MUSICAIS</p>
+</header>
+
+<main class="area-livro">
+    <div class="livro" id="livro">
+        <section class="pagina pagina-esquerda" id="paginaEsquerda"></section>
+        <section class="pagina pagina-direita" id="paginaDireita"></section>
+    </div>
+</main>
+
+<nav class="controles" aria-label="Navegação do flipbook">
+    <button id="anterior" type="button">‹ ANTERIOR</button>
+    <span class="indicador" id="indicador">Página 1</span>
+    <button id="proxima" type="button">PRÓXIMA ›</button>
+</nav>
+
+<footer class="institucional">
+    MINISTÉRIO ATALAIA
+</footer>
+
+<div id="medidor" aria-hidden="true"></div>
+
+<script>
+"use strict";
+
+/* =====================================================
+   CONTEÚDO ORIGINAL — CAPÍTULO 15
+   Os números sobrescritos foram preservados.
+===================================================== */
+
+const blocos = [
+
+{tipo:"titulo", texto:"ATOS 29"},
+{tipo:"titulo", texto:"CAPÍTULO 15 — A SEGUNDA OFERTA DE INSTRUMENTOS MUSICAIS"},
+{tipo:"subtitulo", texto:"QUANDO A CONFIANÇA É COLOCADA À PROVA NOVAMENTE"},
+
+{tipo:"p", n:"1", texto:"Depois de ter vivido a primeira experiência com a oferta dos meus instrumentos musicais, Deus me permitiu passar por outra situação que também marcou profundamente a minha caminhada."},
+{tipo:"p", n:"2", texto:"Dessa vez, eu estava passando por um período de <strong>desemprego</strong>."},
+{tipo:"p", n:"3", texto:"Era mais um momento em que eu precisava confiar no Senhor e reconhecer que a minha segurança não estava naquilo que eu possuía, mas no Deus que sempre havia cuidado de mim."},
+{tipo:"p", n:"4", texto:"A primeira experiência já havia deixado uma marca profunda no meu coração."},
+{tipo:"p", n:"5", texto:"Eu havia aprendido que Deus é fiel."},
+{tipo:"p", n:"6", texto:"Agora, diante de uma nova circunstância, eu precisava continuar confiando."},
+
+{tipo:"h", texto:"NOVAMENTE, OS INSTRUMENTOS"},
+
+{tipo:"p", n:"7", texto:"Mais uma vez, senti o desejo de colocar diante do Senhor aquilo que eu possuía."},
+{tipo:"p", n:"8", texto:"E novamente estavam envolvidos os meus instrumentos musicais."},
+{tipo:"p", n:"9", texto:"Não era a primeira vez."},
+{tipo:"p", n:"10", texto:"Eu já havia experimentado algo semelhante anteriormente, quando entreguei instrumentos que eram importantes para mim e, posteriormente, contemplei a provisão de Deus em nossa vida."},
+{tipo:"p", n:"11", texto:"Agora, diante de uma nova situação, eu novamente precisava demonstrar onde estava a minha confiança."},
+{tipo:"p", n:"12", texto:"Eu não queria confiar nas coisas materiais."},
+{tipo:"p", n:"13", texto:"Eu queria confiar em Deus."},
+{tipo:"p", n:"14", texto:"Aquela experiência me ensinou novamente que aquilo que temos em nossas mãos não pode ocupar o lugar dAquele que nos sustenta."},
+{tipo:"quote", texto:"“Porque, onde está o teu tesouro, aí estará também o teu coração.”", ref:"Mateus 6:21"},
+
+{tipo:"h", texto:"A FÉ ALÉM DAS CIRCUNSTÂNCIAS"},
+
+{tipo:"p", n:"15", texto:"O desemprego poderia trazer insegurança."},
+{tipo:"p", n:"16", texto:"A falta de recursos poderia produzir preocupação."},
+{tipo:"p", n:"17", texto:"Mas aquela experiência me levou a colocar novamente minha confiança no Senhor."},
+{tipo:"p", n:"18", texto:"Eu estava aprendendo que fé não significa confiar somente quando tudo está bem."},
+{tipo:"p", n:"19", texto:"Fé também significa permanecer confiando quando não conseguimos enxergar claramente o que acontecerá depois."},
+{tipo:"quote", texto:"“Confia no SENHOR de todo o teu coração e não te estribes no teu próprio entendimento.”", ref:"Provérbios 3:5"},
+{tipo:"p", n:"20", texto:"Foi esse princípio que procurei viver."},
+{tipo:"p", n:"21", texto:"Eu não sabia como todas as coisas aconteceriam."},
+{tipo:"p", n:"22", texto:"Não tinha controle sobre todas as circunstâncias."},
+{tipo:"p", n:"23", texto:"Mas podia continuar confiando naquele que conhecia o caminho."},
+
+{tipo:"h", texto:"O INSTRUMENTO NÃO ERA O MEU SUSTENTO"},
+
+{tipo:"p", n:"24", texto:"Os instrumentos musicais faziam parte da minha história."},
+{tipo:"p", n:"25", texto:"Eu era músico."},
+{tipo:"p", n:"26", texto:"A música fazia parte da minha profissão e também do meu ministério."},
+{tipo:"p", n:"27", texto:"Mas aquela experiência me ensinava novamente uma verdade:"},
+{tipo:"destaque", texto:"o instrumento podia estar em minhas mãos, mas o meu sustento estava nas mãos de Deus."},
+{tipo:"p", n:"28", texto:"Essa diferença é fundamental."},
+{tipo:"p", n:"29", texto:"Não era o instrumento que me sustentava."},
+{tipo:"p", n:"30", texto:"Não era o trabalho que determinava quem Deus era."},
+{tipo:"p", n:"31", texto:"Não eram os recursos que definiam a fidelidade do Senhor."},
+{tipo:"p", n:"32", texto:"Minha confiança precisava permanecer nEle."},
+
+{tipo:"h", texto:"A SURPRESA DE DEUS"},
+
+{tipo:"p", n:"33", texto:"Depois daquela experiência, aconteceu algo que marcou profundamente o meu coração."},
+{tipo:"p", n:"34", texto:"Mais tarde, para minha surpresa, o Senhor me presenteou com um <strong>estúdio de gravação</strong>."},
+{tipo:"p", n:"35", texto:"Aquilo se tornou, para mim, mais uma demonstração da fidelidade e do cuidado de Deus."},
+{tipo:"p", n:"36", texto:"Eu havia colocado novamente os instrumentos diante do Senhor."},
+{tipo:"p", n:"37", texto:"E, posteriormente, recebi algo que estava diretamente relacionado à música:"},
+{tipo:"destaque", texto:"um estúdio de gravação."},
+{tipo:"p", n:"38", texto:"Não vejo essa história simplesmente como uma questão de receber algo material."},
+{tipo:"p", n:"39", texto:"Para mim, o maior ensinamento estava no processo."},
+{tipo:"p", n:"40", texto:"Deus estava me ensinando a confiar."},
+
+{tipo:"h", texto:"DEUS CONTINUA SENDO FIEL"},
+
+{tipo:"p", n:"41", texto:"A experiência confirmou novamente em meu coração aquilo que eu já havia aprendido anteriormente:"},
+{tipo:"destaque", texto:"Deus cuida."},
+{tipo:"texto", texto:"O apóstolo Paulo escreveu:"},
+{tipo:"quote", texto:"“E o meu Deus, segundo a sua riqueza em glória, há de suprir, em Cristo Jesus, cada uma de vossas necessidades.”", ref:"Filipenses 4:19"},
+{tipo:"p", n:"42", texto:"Essa Palavra ganhou um significado especial na minha caminhada."},
+{tipo:"p", n:"43", texto:"Passei por momentos diferentes."},
+{tipo:"p", n:"44", texto:"Tive recursos."},
+{tipo:"p", n:"45", texto:"Tive necessidades."},
+{tipo:"p", n:"46", texto:"Tive trabalho."},
+{tipo:"p", n:"47", texto:"Passei por desemprego."},
+{tipo:"p", n:"48", texto:"Entreguei coisas que eram importantes para mim."},
+{tipo:"p", n:"49", texto:"E, em todas essas circunstâncias, fui aprendendo a depender mais de Deus."},
+
+{tipo:"h", texto:"A VERDADEIRA RIQUEZA"},
+
+{tipo:"p", n:"50", texto:"Essa experiência também me ensinou que a maior riqueza não está naquilo que conseguimos acumular."},
+{tipo:"p", n:"51", texto:"Podemos possuir instrumentos, equipamentos, dinheiro, trabalho e oportunidades."},
+{tipo:"p", n:"52", texto:"Mas tudo isso pode mudar."},
+{tipo:"p", n:"53", texto:"A nossa confiança precisa estar em Deus."},
+{tipo:"texto", texto:"Davi declarou:"},
+{tipo:"quote", texto:"“Tudo vem de ti, e das tuas mãos to damos.”", ref:"1 Crônicas 29:14"},
+{tipo:"p", n:"54", texto:"Essa verdade coloca todas as coisas no lugar certo."},
+{tipo:"p", n:"55", texto:"Aquilo que possuímos vem de Deus."},
+{tipo:"p", n:"56", texto:"Aquilo que somos pertence a Deus."},
+{tipo:"p", n:"57", texto:"E aquilo que fazemos deve ser colocado a serviço de Deus."},
+
+{tipo:"h", texto:"QUANDO DEUS TRANSFORMA A EXPERIÊNCIA EM TESTEMUNHO"},
+
+{tipo:"p", n:"58", texto:"O que aconteceu naquela ocasião tornou-se parte do meu testemunho."},
+{tipo:"p", n:"59", texto:"A segunda oferta não foi apenas sobre os instrumentos que entreguei."},
+{tipo:"p", n:"60", texto:"Foi sobre aquilo que Deus estava ensinando ao meu coração."},
+{tipo:"p", n:"61", texto:"Eu precisava aprender novamente a depender do Senhor."},
+{tipo:"p", n:"62", texto:"Precisava confiar mesmo diante de um período de desemprego."},
+{tipo:"p", n:"63", texto:"Precisava reconhecer que a minha vida não estava sustentada simplesmente por uma profissão, por instrumentos ou por recursos financeiros."},
+{tipo:"p", n:"64", texto:"Minha vida estava nas mãos de Deus."},
+{tipo:"p", n:"65", texto:"E, posteriormente, quando recebi o estúdio de gravação, aquela experiência ganhou ainda mais significado para mim."},
+
+{tipo:"h", texto:"NÃO É SOBRE INSTRUMENTOS"},
+
+{tipo:"p", n:"66", texto:"Hoje, quando lembro dessa história, percebo que ela nunca foi apenas sobre instrumentos musicais."},
+{tipo:"destaque", texto:"Era sobre fé."},
+{tipo:"destaque", texto:"Era sobre confiança."},
+{tipo:"destaque", texto:"Era sobre entrega."},
+{tipo:"p", n:"67", texto:"Era sobre aprender a reconhecer Deus como Senhor de todas as coisas."},
+{tipo:"p", n:"68", texto:"O instrumento era aquilo que estava nas minhas mãos."},
+{tipo:"p", n:"69", texto:"Mas a verdadeira questão era:"},
+{tipo:"destaque", texto:"Quem estava ocupando o meu coração?"},
+{tipo:"texto", texto:"Jesus ensinou que onde está o nosso tesouro, ali também estará o nosso coração."},
+{tipo:"p", n:"70", texto:"Por isso, mais importante do que aquilo que possuímos é aquilo que ocupa o lugar central dentro de nós."},
+
+{tipo:"h", texto:"UMA NOVA LIÇÃO"},
+
+{tipo:"p", n:"71", texto:"A primeira oferta havia me ensinado sobre entrega."},
+{tipo:"p", n:"72", texto:"A segunda experiência me ensinou novamente sobre confiança."},
+{tipo:"p", n:"73", texto:"Eu já havia visto Deus cuidar de mim antes."},
+{tipo:"p", n:"74", texto:"Agora, em outro momento da minha caminhada, precisava continuar confiando."},
+{tipo:"p", n:"75", texto:"Foi uma oportunidade de lembrar que a nossa fé não pode depender apenas das experiências passadas."},
+{tipo:"p", n:"76", texto:"Precisamos continuar caminhando com Deus no presente."},
+{tipo:"p", n:"77", texto:"Cada nova circunstância pode se tornar uma oportunidade para aprofundarmos nossa dependência do Senhor."},
+
+{tipo:"h", texto:"QUANDO NÃO SABEMOS O QUE VEM DEPOIS"},
+
+{tipo:"p", n:"78", texto:"Existem momentos em que não sabemos o que acontecerá amanhã."},
+{tipo:"p", n:"79", texto:"Não sabemos quando uma porta será aberta."},
+{tipo:"p", n:"80", texto:"Não sabemos de onde virá a provisão."},
+{tipo:"p", n:"81", texto:"Não sabemos como determinadas situações serão resolvidas."},
+{tipo:"p", n:"82", texto:"Mas podemos saber em quem confiamos."},
+{tipo:"p", n:"83", texto:"Essa foi uma das lições que ficaram daquela experiência."},
+{tipo:"p", n:"84", texto:"Eu não precisava conhecer todos os detalhes do futuro para continuar caminhando."},
+{tipo:"p", n:"85", texto:"Precisava continuar confiando em Deus."},
+{tipo:"quote", texto:"“Entrega o teu caminho ao SENHOR, confia nele, e o mais ele fará.”", ref:"Salmo 37:5"},
+
+{tipo:"h", texto:"O DEUS QUE SUPRE"},
+
+{tipo:"p", n:"86", texto:"Quando olho para aquela fase da minha vida, percebo que Deus estava me ensinando a não colocar minha segurança exclusivamente naquilo que poderia desaparecer."},
+{tipo:"p", n:"87", texto:"O trabalho poderia desaparecer."},
+{tipo:"p", n:"88", texto:"Os recursos poderiam diminuir."},
+{tipo:"p", n:"89", texto:"Os instrumentos poderiam ser entregues."},
+{tipo:"p", n:"90", texto:"As circunstâncias poderiam mudar."},
+{tipo:"p", n:"91", texto:"Mas o Senhor continuaria sendo o mesmo."},
+{tipo:"p", n:"92", texto:"Essa confiança é maior do que qualquer recurso material."},
+{tipo:"p", n:"93", texto:"Porque recursos podem acabar."},
+{tipo:"p", n:"94", texto:"Portas podem fechar."},
+{tipo:"p", n:"95", texto:"Circunstâncias podem mudar."},
+{tipo:"p", n:"96", texto:"Mas Deus permanece fiel."},
+
+{tipo:"h", texto:"ATOS 29"},
+
+{tipo:"p", n:"97", texto:"A segunda oferta de instrumentos musicais ficou marcada na minha história como uma experiência de confiança."},
+{tipo:"p", n:"98", texto:"Eu estava vivendo um período de desemprego."},
+{tipo:"p", n:"99", texto:"Mais uma vez, coloquei meus instrumentos diante do Senhor."},
+{tipo:"p", n:"100", texto:"E, posteriormente, recebi um estúdio de gravação."},
+{tipo:"p", n:"101", texto:"Mas, olhando para essa história hoje, compreendo que o maior presente não foi o estúdio."},
+{tipo:"p", n:"102", texto:"O maior presente foi aquilo que Deus estava formando dentro de mim."},
+{tipo:"destaque", texto:"Dependência."},
+{tipo:"destaque", texto:"Confiança."},
+{tipo:"destaque", texto:"Entrega."},
+{tipo:"destaque", texto:"Gratidão."},
+{tipo:"p", n:"103", texto:"Aprendi que aquilo que está em nossas mãos nunca deve se tornar maior do que Aquele que colocou essas coisas em nossas mãos."},
+{tipo:"p", n:"104", texto:"Tudo pertence ao Senhor."},
+{tipo:"p", n:"105", texto:"Tudo vem dEle."},
+{tipo:"p", n:"106", texto:"E tudo deve ser usado para a Sua glória."},
+{tipo:"quote", texto:"“Do SENHOR é a terra e a sua plenitude, o mundo e os que nele habitam.”", ref:"Salmo 24:1"},
+{tipo:"p", n:"107", texto:"Por isso, quando olho para aquela segunda oferta, não vejo simplesmente instrumentos que foram entregues."},
+{tipo:"p", n:"108", texto:"Vejo uma etapa da minha caminhada com Deus."},
+{tipo:"p", n:"109", texto:"Vejo um período em que precisei confiar."},
+{tipo:"p", n:"110", texto:"Vejo uma experiência que me ensinou novamente que o Senhor continua cuidando dos Seus."},
+{tipo:"p", n:"111", texto:"E vejo a fidelidade de Deus se manifestando de uma maneira que marcou a minha história."},
+{tipo:"p", n:"112", texto:"Minha segurança não está naquilo que possuo."},
+{tipo:"p", n:"113", texto:"Minha segurança não está naquilo que consigo produzir."},
+{tipo:"p", n:"114", texto:"Minha segurança não está nas circunstâncias."},
+{tipo:"destaque", texto:"Minha segurança está em Deus."},
+{tipo:"p", n:"115", texto:"E, enquanto Ele continuar conduzindo a minha caminhada, continuarei aprendendo a entregar, confiar e servir."},
+{tipo:"final", texto:"ATOS 29 continua."}
+
+];
+
+/* =====================================================
+   SISTEMA DE PAGINAÇÃO
+===================================================== */
+
+const esquerda = document.getElementById("paginaEsquerda");
+const direita = document.getElementById("paginaDireita");
+const medidor = document.getElementById("medidor");
+
+const botaoAnterior = document.getElementById("anterior");
+const botaoProxima = document.getElementById("proxima");
+const indicador = document.getElementById("indicador");
+
+let paginas = [];
+let indice = 0;
+let colunasPorPagina = 2;
+let larguraPagina = 0;
+let alturaPagina = 0;
+
+function ehCelular() {
+    return window.matchMedia("(max-width: 760px)").matches;
+}
+
+function criarElemento(bloco) {
+    let elemento;
+
+    if (bloco.tipo === "h") {
+        elemento = document.createElement("h2");
+        elemento.textContent = bloco.texto;
+    }
+
+    else if (bloco.tipo === "titulo") {
+        elemento = document.createElement("h3");
+        elemento.className = "titulo-principal";
+        elemento.textContent = bloco.texto;
+    }
+
+    else if (bloco.tipo === "subtitulo") {
+        elemento = document.createElement("h3");
+        elemento.className = "subtitulo-principal";
+        elemento.textContent = bloco.texto;
+    }
+
+    else if (bloco.tipo === "quote") {
+        elemento = document.createElement("blockquote");
+        elemento.innerHTML =
+            bloco.texto +
+            '<span class="referencia">' +
+            bloco.ref +
+            '</span>';
+    }
+
+    else if (bloco.tipo === "destaque") {
+        elemento = document.createElement("p");
+        elemento.className = "destaque";
+        elemento.innerHTML = bloco.texto;
+    }
+
+    else if (bloco.tipo === "texto") {
+        elemento = document.createElement("p");
+        elemento.innerHTML = bloco.texto;
+    }
+
+    else if (bloco.tipo === "final") {
+        elemento = document.createElement("p");
+        elemento.className = "frase-final";
+        elemento.textContent = bloco.texto;
+    }
+
+    else {
+        elemento = document.createElement("p");
+        elemento.innerHTML =
+            '<sup class="numero">' + bloco.n + '</sup>' +
+            bloco.texto;
+    }
+
+    elemento.dataset.tipo = bloco.tipo;
+
+    return elemento;
+}
+
+function criarEstruturaMedicao() {
+    const pagina = document.createElement("div");
+    pagina.className = "pagina";
+    pagina.style.width = larguraPagina + "px";
+    pagina.style.height = alturaPagina + "px";
+    pagina.style.position = "relative";
+    pagina.style.padding = ehCelular()
+        ? "25px 22px 43px"
+        : "37px 38px 48px";
+
+    const cabecalho = document.createElement("div");
+    cabecalho.className = "cabecalho-pagina";
+    cabecalho.innerHTML =
+        "<span>ATOS 29 • A HISTÓRIA CONTINUA</span>" +
+        "<span>CAPÍTULO 15</span>";
+
+    const conteudo = document.createElement("div");
+    conteudo.className = "conteudo-colunas";
+    conteudo.style.gridTemplateColumns =
+        colunasPorPagina === 1 ? "1fr" : "1fr 1fr";
+
+    const colunas = [];
+
+    for (let i = 0; i < colunasPorPagina; i++) {
+        const coluna = document.createElement("div");
+        coluna.className = "coluna";
+        conteudo.appendChild(coluna);
+        colunas.push(coluna);
+    }
+
+    pagina.appendChild(cabecalho);
+    pagina.appendChild(conteudo);
+
+    medidor.innerHTML = "";
+    medidor.appendChild(pagina);
+
+    return {pagina, colunas};
+}
+
+function alturaDisponivel(coluna) {
+    return coluna.clientHeight;
+}
+
+function colunaEstourou(coluna) {
+    return coluna.scrollHeight > coluna.clientHeight + 1;
+}
+
+function criarPaginas() {
+    colunasPorPagina = ehCelular() ? 1 : 2;
+
+    const referencia = document.createElement("div");
+    referencia.className = "pagina";
+    referencia.style.width = ehCelular()
+        ? Math.min(window.innerWidth * .96, 760) + "px"
+        : Math.min(window.innerWidth * .48, 750) + "px";
+
+    referencia.style.height = ehCelular() ? "650px" : "690px";
+    referencia.style.position = "fixed";
+    referencia.style.left = "-10000px";
+    referencia.style.visibility = "hidden";
+    referencia.style.padding = ehCelular()
+        ? "25px 22px 43px"
+        : "37px 38px 48px";
+
+    document.body.appendChild(referencia);
+
+    larguraPagina = referencia.offsetWidth;
+    alturaPagina = referencia.offsetHeight;
+
+    referencia.remove();
+
+    const estrutura = criarEstruturaMedicao();
+    const colunas = estrutura.colunas;
+
+    let paginaAtual = [];
+    let colunaAtual = 0;
+    let conteudoAtual = colunas[0];
+
+    function salvarColuna() {
+        if (!paginaAtual[colunaAtual]) {
+            paginaAtual[colunaAtual] = [];
+        }
+
+        paginaAtual[colunaAtual] = Array.from(
+            conteudoAtual.children
+        ).map(el => el.cloneNode(true));
+    }
+
+    function novaColuna() {
+        salvarColuna();
+
+        colunaAtual++;
+
+        if (colunaAtual >= colunasPorPagina) {
+            salvarPagina();
+            colunaAtual = 0;
+            paginaAtual = [];
+        }
+
+        const novaEstrutura = criarEstruturaMedicao();
+        estrutura.colunas = novaEstrutura.colunas;
+
+        conteudoAtual = estrutura.colunas[colunaAtual];
+
+        return conteudoAtual;
+    }
+
+    function salvarPagina() {
+        salvarColuna();
+
+        paginas.push(
+            paginaAtual.map(coluna => coluna || [])
+        );
+    }
+
+    function adicionar(bloco) {
+        const elemento = criarElemento(bloco);
+
+        conteudoAtual.appendChild(elemento);
+
+        if (colunaEstourou(conteudoAtual)) {
+            conteudoAtual.removeChild(elemento);
+
+            if (conteudoAtual.children.length === 0) {
+                conteudoAtual.appendChild(elemento);
+                salvarColuna();
+                return;
+            }
+
+            novaColuna();
+            conteudoAtual.appendChild(elemento);
+
+            if (colunaEstourou(conteudoAtual)) {
+                /* Mantém o bloco inteiro, sem cortar o texto. */
+                elemento.style.fontSize = "11px";
+            }
+        }
+    }
+
+    blocos.forEach((bloco, index) => {
+        /*
+          Quando um título de seção é encontrado,
+          tenta mantê-lo junto do próximo bloco.
+        */
+        if (bloco.tipo === "h" && index < blocos.length - 1) {
+            const elementoTitulo = criarElemento(bloco);
+            const proximo = criarElemento(blocos[index + 1]);
+
+            conteudoAtual.appendChild(elementoTitulo);
+            conteudoAtual.appendChild(proximo);
+
+            if (colunaEstourou(conteudoAtual)) {
+                conteudoAtual.removeChild(elementoTitulo);
+                conteudoAtual.removeChild(proximo);
+
+                if (conteudoAtual.children.length > 0) {
+                    novaColuna();
+                }
+
+                conteudoAtual.appendChild(elementoTitulo);
+                conteudoAtual.appendChild(proximo);
+            }
+
+            if (colunaEstourou(conteudoAtual)) {
+                conteudoAtual.removeChild(proximo);
+                conteudoAtual.appendChild(elementoTitulo);
+                adicionar(blocos[index + 1]);
+            }
+
+            salvarColuna();
+            blocos[index + 1]._processado = true;
+        }
+        else if (!bloco._processado) {
+            adicionar(bloco);
+        }
+    });
+
+    salvarPagina();
+
+    if (paginas.length === 0) {
+        paginas.push([[]]);
+    }
+
+    /* Remove páginas finais sem conteúdo. */
+    while (
+        paginas.length > 1 &&
+        paginas[paginas.length - 1].every(col => col.length === 0)
+    ) {
+        paginas.pop();
+    }
+
+    medidor.innerHTML = "";
+}
+
+/* =====================================================
+   MONTAGEM DAS PÁGINAS
+===================================================== */
+
+function montarPagina(elemento, dados, numero) {
+    elemento.innerHTML = "";
+
+    const cabecalho = document.createElement("div");
+    cabecalho.className = "cabecalho-pagina";
+
+    cabecalho.innerHTML =
+        "<span>ATOS 29 • A HISTÓRIA CONTINUA</span>" +
+        "<span>CAPÍTULO 15</span>";
+
+    const conteudo = document.createElement("div");
+    conteudo.className = "conteudo-colunas";
+
+    conteudo.style.gridTemplateColumns =
+        colunasPorPagina === 1 ? "1fr" : "1fr 1fr";
+
+    for (let i = 0; i < colunasPorPagina; i++) {
+        const coluna = document.createElement("div");
+        coluna.className = "coluna";
+
+        const itens = dados && dados[i] ? dados[i] : [];
+
+        itens.forEach(item => {
+            coluna.appendChild(item.cloneNode(true));
+        });
+
+        conteudo.appendChild(coluna);
+    }
+
+    const rodape = document.createElement("div");
+    rodape.className = "rodape-pagina";
+
+    rodape.innerHTML =
+        "<span>MINISTÉRIO ATALAIA</span>" +
+        "<span>" + numero + "</span>";
+
+    elemento.appendChild(cabecalho);
+    elemento.appendChild(conteudo);
+    elemento.appendChild(rodape);
+}
+
+function atualizarLivro() {
+    const total = paginas.length;
+
+    if (ehCelular()) {
+        esquerda.style.display = "none";
+        direita.style.display = "block";
+
+        montarPagina(
+            direita,
+            paginas[indice] || [],
+            indice + 1
+        );
+
+        direita.classList.remove("animar");
+        void direita.offsetWidth;
+        direita.classList.add("animar");
+
+        indicador.textContent =
+            "Página " + (indice + 1) + " de " + total;
+
+        botaoAnterior.disabled = indice === 0;
+        botaoProxima.disabled = indice >= total - 1;
+    }
+
+    else {
+        esquerda.style.display = "block";
+        direita.style.display = "block";
+
+        montarPagina(
+            esquerda,
+            paginas[indice] || [],
+            indice + 1
+        );
+
+        montarPagina(
+            direita,
+            paginas[indice + 1] || [],
+            indice + 2
+        );
+
+        esquerda.classList.remove("animar");
+        direita.classList.remove("animar");
+
+        void esquerda.offsetWidth;
+
+        esquerda.classList.add("animar");
+        direita.classList.add("animar");
+
+        indicador.textContent =
+            "Páginas " +
+            (indice + 1) +
+            "–" +
+            Math.min(indice + 2, total) +
+            " de " +
+            total;
+
+        botaoAnterior.disabled = indice === 0;
+        botaoProxima.disabled = indice + 2 >= total;
+    }
+}
+
+function avancar() {
+    const passo = ehCelular() ? 1 : 2;
+
+    if (indice + passo < paginas.length) {
+        indice += passo;
+        atualizarLivro();
+    }
+}
+
+function voltar() {
+    const passo = ehCelular() ? 1 : 2;
+
+    indice = Math.max(0, indice - passo);
+    atualizarLivro();
+}
+
+botaoAnterior.addEventListener("click", voltar);
+botaoProxima.addEventListener("click", avancar);
+
+document.addEventListener("keydown", event => {
+    if (event.key === "ArrowRight") {
+        avancar();
+    }
+
+    if (event.key === "ArrowLeft") {
+        voltar();
+    }
+});
+
+/* DESLIZAMENTO NO CELULAR */
+
+let inicioToqueX = 0;
+
+document.getElementById("livro").addEventListener("touchstart", event => {
+    inicioToqueX = event.changedTouches[0].screenX;
+}, {passive:true});
+
+document.getElementById("livro").addEventListener("touchend", event => {
+    const fimX = event.changedTouches[0].screenX;
+    const diferenca = fimX - inicioToqueX;
+
+    if (Math.abs(diferenca) > 50) {
+        if (diferenca < 0) {
+            avancar();
+        } else {
+            voltar();
+        }
+    }
+}, {passive:true});
+
+/* =====================================================
+   INICIALIZAÇÃO E AJUSTE DE TELA
+===================================================== */
+
+let temporizadorRedimensionamento;
+
+function inicializar() {
+    paginas = [];
+    indice = 0;
+
+    criarPaginas();
+    atualizarLivro();
+}
+
+window.addEventListener("resize", () => {
+    clearTimeout(temporizadorRedimensionamento);
+
+    temporizadorRedimensionamento = setTimeout(() => {
+        inicializar();
+    }, 250);
+});
+
+inicializar();
+
+</script>
+</body>
+</html>

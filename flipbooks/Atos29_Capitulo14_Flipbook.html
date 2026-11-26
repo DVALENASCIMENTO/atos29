@@ -1,0 +1,1279 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#17130f">
+
+<title>ATOS 29 — Capítulo 14 | A Primeira Oferta de Instrumentos Musicais</title>
+
+<style>
+:root {
+    --fundo: #17130f;
+    --papel: #f3ecd9;
+    --papel-escuro: #e9dfc8;
+    --tinta: #29251e;
+    --dourado: #a78b58;
+    --largura-pagina: 560px;
+    --altura-pagina: 790px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    background:
+        radial-gradient(ellipse at center, #393027 0%, #211b15 55%, #100e0b 100%);
+    color: #eee5d4;
+    font-family: Georgia, "Times New Roman", serif;
+}
+
+/* ÁREA PRINCIPAL */
+
+.aplicacao {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 22px 16px 18px;
+}
+
+.topo {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.topo h1 {
+    margin: 0;
+    font-family: Georgia, serif;
+    font-size: 19px;
+    letter-spacing: 3px;
+    font-weight: normal;
+    color: #e4d5b7;
+}
+
+.topo p {
+    margin: 7px 0 0;
+    color: #b9a98c;
+    font-size: 11px;
+    letter-spacing: 2px;
+}
+
+/* LIVRO */
+
+.livro-area {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    perspective: 1800px;
+}
+
+.livro {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    gap: 0;
+    width: max-content;
+    max-width: 100%;
+    transition: transform .35s ease;
+}
+
+/* PÁGINAS */
+
+.pagina {
+    position: relative;
+    width: var(--largura-pagina);
+    height: var(--altura-pagina);
+    max-width: calc(50vw - 30px);
+    background:
+        linear-gradient(
+            90deg,
+            rgba(100, 76, 43, .08),
+            transparent 9%,
+            transparent 91%,
+            rgba(100, 76, 43, .07)
+        ),
+        repeating-linear-gradient(
+            0deg,
+            rgba(120, 98, 65, .018) 0px,
+            rgba(120, 98, 65, .018) 1px,
+            transparent 1px,
+            transparent 4px
+        ),
+        var(--papel);
+    color: var(--tinta);
+    box-shadow:
+        0 8px 25px rgba(0,0,0,.42),
+        inset 0 0 25px rgba(117, 91, 52, .10);
+    overflow: hidden;
+    transform-origin: center;
+}
+
+.pagina.esquerda {
+    border-radius: 5px 0 0 5px;
+    box-shadow:
+        -7px 8px 22px rgba(0,0,0,.32),
+        inset -12px 0 20px rgba(85, 65, 39, .08);
+}
+
+.pagina.direita {
+    border-radius: 0 5px 5px 0;
+    box-shadow:
+        7px 8px 22px rgba(0,0,0,.32),
+        inset 12px 0 20px rgba(85, 65, 39, .08);
+}
+
+.pagina::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    border: 1px solid rgba(104, 78, 42, .18);
+}
+
+.lombada {
+    width: 13px;
+    flex: 0 0 13px;
+    background: linear-gradient(
+        90deg,
+        #b8a783,
+        #756347 28%,
+        #e5d8bd 50%,
+        #756347 75%,
+        #b8a783
+    );
+    box-shadow: 0 0 12px rgba(0,0,0,.4);
+    z-index: 2;
+}
+
+/* CABEÇALHO E RODAPÉ */
+
+.cabecalho-pagina {
+    height: 48px;
+    margin: 0 34px;
+    border-bottom: 1px solid rgba(80, 65, 42, .38);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    color: #514735;
+    font-size: 9px;
+    letter-spacing: 1.1px;
+    text-transform: uppercase;
+}
+
+.cabecalho-pagina span:last-child {
+    text-align: right;
+}
+
+.conteudo-pagina {
+    height: calc(100% - 88px);
+    padding: 18px 34px 12px;
+    overflow: hidden;
+}
+
+.colunas {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+    height: 100%;
+}
+
+.coluna {
+    min-width: 0;
+    overflow: hidden;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 12px;
+    line-height: 1.49;
+    text-align: justify;
+    hyphens: auto;
+    color: #29251e;
+}
+
+.coluna + .coluna {
+    border-left: 1px solid rgba(100, 80, 50, .16);
+    padding-left: 19px;
+}
+
+.rodape-pagina {
+    position: absolute;
+    left: 34px;
+    right: 34px;
+    bottom: 17px;
+    height: 22px;
+    border-top: 1px solid rgba(80, 65, 42, .32);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    color: #62553e;
+    font-size: 9px;
+    letter-spacing: 1px;
+}
+
+.numero-pagina {
+    font-size: 11px;
+    font-weight: bold;
+}
+
+/* TEXTO */
+
+.titulo-principal {
+    text-align: center;
+    font-size: 17px;
+    line-height: 1.35;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin: 8px 0 17px;
+    letter-spacing: .5px;
+}
+
+.identificacao {
+    text-align: center;
+    font-size: 10px;
+    letter-spacing: 1px;
+    margin: 0 0 22px;
+    color: #66583e;
+    font-weight: bold;
+}
+
+.subtitulo {
+    font-size: 11px;
+    font-weight: bold;
+    text-transform: uppercase;
+    line-height: 1.35;
+    margin: 16px 0 8px;
+    text-align: left;
+    letter-spacing: .35px;
+    break-after: avoid;
+}
+
+.paragrafo {
+    margin: 0 0 7px;
+    text-indent: 0;
+    orphans: 2;
+    widows: 2;
+}
+
+.paragrafo sup {
+    font-size: 8px;
+    line-height: 0;
+    vertical-align: super;
+    font-weight: bold;
+    margin-right: 2px;
+    color: #65553a;
+}
+
+.destaque {
+    font-weight: bold;
+    margin: 7px 0;
+    text-align: left;
+}
+
+.citacao {
+    margin: 10px 7px 12px 13px;
+    padding-left: 9px;
+    border-left: 1px solid #a18a60;
+    font-size: 11px;
+    line-height: 1.45;
+    font-style: italic;
+    text-align: left;
+}
+
+.citacao p {
+    margin: 0 0 5px;
+}
+
+.referencia {
+    display: block;
+    font-size: 10px;
+    font-style: normal;
+    font-weight: bold;
+    text-align: right;
+    color: #62553e;
+}
+
+.frase-final {
+    font-weight: bold;
+    text-align: center;
+    margin: 10px 0;
+}
+
+/* PRIMEIRA PÁGINA */
+
+.abertura {
+    text-align: center;
+    margin: 25px 0 24px;
+}
+
+.abertura .nome-livro {
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: #806d4d;
+    margin-bottom: 17px;
+}
+
+.abertura h2 {
+    font-size: 19px;
+    line-height: 1.4;
+    margin: 0 0 12px;
+    text-transform: uppercase;
+}
+
+.abertura .subtitulo-abertura {
+    font-size: 11px;
+    font-style: italic;
+    color: #65583f;
+    margin: 0;
+}
+
+/* NAVEGAÇÃO */
+
+.controles {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+    margin-top: 24px;
+    width: 100%;
+}
+
+.controles button {
+    border: 1px solid #8f7955;
+    color: #e9dcc2;
+    background: rgba(0,0,0,.2);
+    padding: 10px 21px;
+    font-family: Georgia, serif;
+    font-size: 11px;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: background .2s, color .2s;
+}
+
+.controles button:hover:not(:disabled) {
+    background: #a18a60;
+    color: #17130f;
+}
+
+.controles button:disabled {
+    opacity: .35;
+    cursor: not-allowed;
+}
+
+.indicador {
+    min-width: 100px;
+    text-align: center;
+    color: #d5c6a9;
+    font-size: 12px;
+    letter-spacing: 1px;
+}
+
+.instrucao {
+    margin-top: 13px;
+    color: #9d9079;
+    font-size: 10px;
+    text-align: center;
+}
+
+/* ANIMAÇÃO */
+
+.livro.animando {
+    animation: virar .35s ease;
+}
+
+@keyframes virar {
+    0% { opacity: .65; transform: rotateY(-3deg); }
+    100% { opacity: 1; transform: rotateY(0); }
+}
+
+/* ÁREA DE MEDIÇÃO */
+
+.medidor {
+    position: absolute;
+    left: -10000px;
+    top: 0;
+    visibility: hidden;
+    pointer-events: none;
+    width: 220px;
+}
+
+.medidor .coluna {
+    width: 100%;
+    height: auto;
+    overflow: visible;
+    border: 0;
+    padding: 0;
+}
+
+/* TABLET */
+
+@media (max-width: 1100px) {
+    :root {
+        --largura-pagina: 480px;
+        --altura-pagina: 740px;
+    }
+
+    .coluna {
+        font-size: 11px;
+    }
+
+    .conteudo-pagina {
+        padding-left: 26px;
+        padding-right: 26px;
+    }
+
+    .cabecalho-pagina,
+    .rodape-pagina {
+        margin-left: 26px;
+        margin-right: 26px;
+    }
+}
+
+/* CELULAR: UMA PÁGINA POR VEZ */
+
+@media (max-width: 700px) {
+    .aplicacao {
+        padding: 14px 8px;
+    }
+
+    .topo {
+        margin-bottom: 14px;
+    }
+
+    .topo h1 {
+        font-size: 15px;
+        letter-spacing: 2px;
+    }
+
+    .livro {
+        width: 100%;
+    }
+
+    .pagina {
+        width: min(94vw, 560px);
+        max-width: 94vw;
+        height: min(78vh, 790px);
+        min-height: 560px;
+        border-radius: 4px !important;
+    }
+
+    .pagina.esquerda {
+        display: none;
+    }
+
+    .lombada {
+        display: none;
+    }
+
+    .conteudo-pagina {
+        padding: 16px 25px 12px;
+    }
+
+    .colunas {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+
+    .coluna {
+        font-size: 12px;
+        line-height: 1.52;
+    }
+
+    .coluna + .coluna {
+        display: none;
+    }
+
+    .cabecalho-pagina {
+        margin-left: 25px;
+        margin-right: 25px;
+        font-size: 8px;
+    }
+
+    .rodape-pagina {
+        left: 25px;
+        right: 25px;
+    }
+
+    .controles {
+        gap: 9px;
+        margin-top: 16px;
+    }
+
+    .controles button {
+        padding: 10px 13px;
+        font-size: 10px;
+    }
+
+    .indicador {
+        min-width: 75px;
+        font-size: 10px;
+    }
+
+    .instrucao {
+        font-size: 9px;
+    }
+}
+
+@media (max-width: 380px) {
+    .pagina {
+        min-height: 520px;
+    }
+
+    .coluna {
+        font-size: 11px;
+    }
+
+    .titulo-principal {
+        font-size: 15px;
+    }
+}
+
+@media print {
+    body {
+        background: white;
+    }
+
+    .topo,
+    .controles,
+    .instrucao {
+        display: none;
+    }
+
+    .pagina {
+        box-shadow: none;
+        break-after: page;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="aplicacao">
+
+    <header class="topo">
+        <h1>ATOS 29 • A HISTÓRIA CONTINUA</h1>
+        <p>MINISTÉRIO ATALAIA</p>
+    </header>
+
+    <main class="livro-area">
+
+        <div class="livro" id="livro">
+
+            <section class="pagina esquerda" id="paginaEsquerda"></section>
+
+            <div class="lombada"></div>
+
+            <section class="pagina direita" id="paginaDireita"></section>
+
+        </div>
+
+    </main>
+
+    <nav class="controles" aria-label="Navegação do livro">
+
+        <button id="anterior" type="button">
+            &#8592; ANTERIOR
+        </button>
+
+        <span class="indicador" id="indicador">
+            Página 1
+        </span>
+
+        <button id="proxima" type="button">
+            PRÓXIMA &#8594;
+        </button>
+
+    </nav>
+
+    <p class="instrucao">
+        Utilize os botões ou as setas do teclado para virar as páginas.
+    </p>
+
+</div>
+
+<div class="medidor" id="medidor">
+    <div class="coluna" id="colunaMedicao"></div>
+</div>
+
+<script>
+/* =====================================================
+   ATOS 29 — CAPÍTULO 14
+   A PRIMEIRA OFERTA DE INSTRUMENTOS MUSICAIS
+
+   Paginação automática:
+   - Computador: duas colunas por página.
+   - Livro aberto: duas páginas simultâneas.
+   - Celular: uma página por vez, uma coluna.
+===================================================== */
+
+const blocos = [
+
+    { tipo: "abertura",
+      titulo: "CAPÍTULO 14 — A PRIMEIRA OFERTA DE INSTRUMENTOS MUSICAIS",
+      subtitulo: "Quando entregar significou confiar"
+    },
+
+    { tipo: "p", n: "1", texto: "Não consigo falar sobre o meu casamento sem lembrar da fidelidade do Senhor em cada detalhe." },
+    { tipo: "p", n: "2", texto: "Antes de me casar, vivi uma experiência que marcou profundamente a minha vida espiritual." },
+    { tipo: "p", n: "3", texto: "Naquela ocasião, entreguei ao Senhor alguns instrumentos musicais que eram os únicos que eu possuía." },
+    { tipo: "p", n: "4", texto: "Humanamente falando, aquela atitude parecia não fazer sentido." },
+    { tipo: "p", n: "5", texto: "Aqueles instrumentos faziam parte da minha profissão." },
+    { tipo: "p", n: "6", texto: "Faziam parte da minha história como músico." },
+    { tipo: "p", n: "7", texto: "E, justamente por isso, entregá-los significava abrir mão de algo que tinha valor para mim." },
+    { tipo: "p", n: "8", texto: "Mas havia algo maior dentro do meu coração:" },
+    { tipo: "destaque", texto: "eu desejava honrar a Deus acima de todas as coisas." },
+
+    { tipo: "h", texto: "UMA DECISÃO DE FÉ" },
+
+    { tipo: "p", n: "9", texto: "Aquela oferta não foi simplesmente sobre instrumentos musicais." },
+    { tipo: "p", n: "10", texto: "Para mim, foi uma expressão de confiança." },
+    { tipo: "p", n: "11", texto: "Eu estava colocando diante de Deus aquilo que possuía e demonstrando que minha segurança não poderia estar nas coisas materiais." },
+
+    { tipo: "q", texto: "“Porque, onde está o teu tesouro, aí estará também o teu coração.”", ref: "Mateus 6:21" },
+
+    { tipo: "p", n: "12", texto: "Aquele momento me ensinou que, muitas vezes, Deus trabalha primeiro dentro de nós antes de trabalhar nas circunstâncias ao nosso redor." },
+    { tipo: "p", n: "13", texto: "Entregar aquilo que possuímos pode revelar onde realmente está a nossa confiança." },
+
+    { tipo: "h", texto: "O DIA DO CASAMENTO" },
+
+    { tipo: "p", n: "14", texto: "Algum tempo depois, chegou o dia do nosso casamento." },
+    { tipo: "p", n: "15", texto: "E foi então que comecei a perceber de maneira muito especial o cuidado de Deus." },
+    { tipo: "p", n: "16", texto: "Para minha surpresa, o Senhor começou a suprir cada necessidade de uma maneira que jamais poderíamos imaginar." },
+    { tipo: "p", n: "17", texto: "Recebemos as vestes." },
+    { tipo: "p", n: "18", texto: "Recebemos o local da cerimônia." },
+    { tipo: "p", n: "19", texto: "Recebemos o buffet." },
+    { tipo: "p", n: "20", texto: "Recebemos presentes." },
+    { tipo: "p", n: "21", texto: "Recebemos a lua de mel." },
+    { tipo: "p", n: "22", texto: "E tantas outras provisões foram acontecendo." },
+    { tipo: "p", n: "23", texto: "Naquele dia, enquanto contemplava tudo aquilo que o Senhor havia feito, Ele trouxe ao meu coração a lembrança daquela oferta realizada meses antes." },
+    { tipo: "p", n: "24", texto: "Compreendi que Deus havia cuidado de cada detalhe." },
+
+    { tipo: "h", texto: "DEUS CUIDA" },
+
+    { tipo: "p", n: "25", texto: "Aquela experiência fortaleceu em mim uma convicção:" },
+    { tipo: "destaque", texto: "Deus cuida." },
+
+    { tipo: "q", texto: "“E o meu Deus, segundo a sua riqueza em glória, há de suprir, em Cristo Jesus, cada uma de vossas necessidades.”", ref: "Filipenses 4:19" },
+
+    { tipo: "p", n: "26", texto: "Não significa que devemos ofertar esperando receber algo em troca." },
+    { tipo: "p", n: "27", texto: "A oferta não deve ser uma negociação com Deus." },
+    { tipo: "p", n: "28", texto: "Naquela experiência, o que marcou meu coração foi perceber o cuidado do Senhor depois de eu ter colocado diante dele aquilo que possuía." },
+    { tipo: "p", n: "29", texto: "Eu entreguei." },
+    { tipo: "p", n: "30", texto: "E Deus cuidou." },
+
+    { tipo: "h", texto: "DEUS JAMAIS PERMANECE DEVEDOR" },
+
+    { tipo: "p", n: "31", texto: "Naquele dia compreendi algo que ficou profundamente marcado em mim:" },
+    { tipo: "destaque", texto: "Deus jamais permanece devedor de ninguém." },
+    { tipo: "p", n: "32", texto: "Tudo o que entregamos por amor ao Seu Reino retorna em forma de graça, provisão e cuidado, segundo a Sua perfeita vontade." },
+    { tipo: "p", n: "33", texto: "Não estou falando apenas de bens materiais." },
+    { tipo: "p", n: "34", texto: "Existem coisas que entregamos que não podem ser compradas." },
+    { tipo: "p", n: "35", texto: "Tempo." },
+    { tipo: "p", n: "36", texto: "Talentos." },
+    { tipo: "p", n: "37", texto: "Sonhos." },
+    { tipo: "p", n: "38", texto: "Planos." },
+    { tipo: "p", n: "39", texto: "Nossa própria vida." },
+    { tipo: "p", n: "40", texto: "Quando colocamos tudo isso nas mãos de Deus, aprendemos que Ele continua sendo o nosso provedor." },
+
+    { tipo: "h", texto: "PESSOAS USADAS POR DEUS" },
+
+    { tipo: "p", n: "41", texto: "Também sou profundamente grato aos Pastores Gleison e Liviane Bentes, do Ministério Internacional da Restauração." },
+    { tipo: "p", n: "42", texto: "Deus os usou como instrumentos para nos abençoar de maneira muito especial naquele momento tão importante da nossa vida." },
+    { tipo: "p", n: "43", texto: "Eles foram canais da provisão do Senhor e participaram da realização de um dos dias mais marcantes da nossa caminhada." },
+    { tipo: "p", n: "44", texto: "Ao olhar para aquela história, percebo que Deus também pode cuidar de nós através de pessoas que Ele coloca em nosso caminho." },
+
+    { tipo: "h", texto: "A SEGUNDA EXPERIÊNCIA" },
+
+    { tipo: "p", n: "45", texto: "Algum tempo depois, vivi outra experiência semelhante." },
+    { tipo: "p", n: "46", texto: "Passei por um período de desemprego e, mais uma vez, senti o desejo de colocar diante do Senhor aquilo que eu possuía." },
+    { tipo: "p", n: "47", texto: "Ofertando novamente meus instrumentos musicais, demonstrei que minha confiança não estava nas coisas materiais, mas no Deus que supre todas as necessidades dos Seus filhos." },
+    { tipo: "p", n: "48", texto: "Mais tarde, para minha surpresa, o Senhor me presenteou com um estúdio de gravação, mostrando mais uma vez Sua fidelidade e Seu cuidado.", negrito: "estúdio de gravação" },
+
+    { tipo: "h", texto: "O MÚSICO E O ALTAR" },
+
+    { tipo: "p", n: "49", texto: "Talvez por ser músico, essa experiência tenha um significado ainda mais profundo para mim." },
+    { tipo: "p", n: "50", texto: "Os instrumentos não eram apenas objetos." },
+    { tipo: "p", n: "51", texto: "Faziam parte da minha profissão." },
+    { tipo: "p", n: "52", texto: "Faziam parte da minha história." },
+    { tipo: "p", n: "53", texto: "Faziam parte daquilo que eu sabia fazer." },
+    { tipo: "p", n: "54", texto: "Mas aprendi que até aquilo que temos em nossas mãos precisa permanecer debaixo da vontade de Deus." },
+    { tipo: "p", n: "55", texto: "A pergunta não é apenas:" },
+    { tipo: "destaque", texto: "“O que Deus colocou em minhas mãos?”" },
+    { tipo: "p", n: "56", texto: "Mas também:" },
+    { tipo: "destaque", texto: "“O que estou disposto a colocar novamente nas mãos de Deus?”" },
+
+    { tipo: "q", texto: "“Tudo vem de ti, e das tuas mãos to damos.”", ref: "1 Crônicas 29:14" },
+
+    { tipo: "p", n: "57", texto: "Essa Palavra expressa muito do que aprendi." },
+    { tipo: "p", n: "58", texto: "Aquilo que temos não deve se tornar motivo de orgulho." },
+    { tipo: "p", n: "59", texto: "Reconhecemos que tudo vem de Deus." },
+
+    { tipo: "h", texto: "O VERDADEIRO PROPÓSITO DA OFERTA" },
+
+    { tipo: "p", n: "60", texto: "A oferta não deve nascer da ganância." },
+    { tipo: "p", n: "61", texto: "Não deve nascer da tentativa de comprar uma bênção." },
+    { tipo: "p", n: "62", texto: "Não deve ser uma troca comercial com Deus." },
+    { tipo: "p", n: "63", texto: "A verdadeira oferta nasce de um coração que reconhece que Deus é o Senhor de tudo." },
+
+    { tipo: "q", texto: "“Cada um contribua segundo tiver proposto no coração, não com tristeza ou por necessidade; porque Deus ama a quem dá com alegria.”", ref: "2 Coríntios 9:7" },
+
+    { tipo: "p", n: "64", texto: "Foi isso que aprendi naquela caminhada." },
+    { tipo: "p", n: "65", texto: "Eu não estava apenas entregando instrumentos." },
+    { tipo: "p", n: "66", texto: "Eu estava entregando algo importante para mim." },
+    { tipo: "p", n: "67", texto: "E, naquele processo, Deus estava trabalhando principalmente dentro de mim." },
+
+    { tipo: "h", texto: "QUANDO DEUS PROVA A NOSSA CONFIANÇA" },
+
+    { tipo: "p", n: "68", texto: "Às vezes, pensamos que nossa fé será provada apenas em grandes acontecimentos." },
+    { tipo: "p", n: "69", texto: "Mas algumas das maiores provas acontecem justamente nas coisas que temos em nossas mãos." },
+    { tipo: "p", n: "70", texto: "O instrumento." },
+    { tipo: "p", n: "71", texto: "O dinheiro." },
+    { tipo: "p", n: "72", texto: "O tempo." },
+    { tipo: "p", n: "73", texto: "O talento." },
+    { tipo: "p", n: "74", texto: "O sonho." },
+    { tipo: "p", n: "75", texto: "O projeto." },
+    { tipo: "p", n: "76", texto: "A oportunidade." },
+    { tipo: "p", n: "77", texto: "A pergunta permanece:" },
+    { tipo: "destaque", texto: "Quem ocupa o primeiro lugar?" },
+    { tipo: "p", n: "78", texto: "Naquela experiência, compreendi que Deus precisava continuar sendo o primeiro." },
+
+    { tipo: "h", texto: "ATOS 29" },
+
+    { tipo: "p", n: "79", texto: "Quando olho para trás, vejo que aquela primeira oferta de instrumentos musicais não foi apenas uma história sobre aquilo que entreguei." },
+    { tipo: "p", n: "80", texto: "Foi uma história sobre confiança." },
+    { tipo: "p", n: "81", texto: "Eu entreguei aquilo que possuía." },
+    { tipo: "p", n: "82", texto: "Depois, vi Deus cuidar de necessidades que eu não conseguiria suprir sozinho." },
+    { tipo: "p", n: "83", texto: "E, anos depois, quando vivi novamente uma situação semelhante, a experiência anterior já fazia parte da minha memória." },
+    { tipo: "p", n: "84", texto: "Eu havia aprendido:" },
+    { tipo: "destaque", texto: "Deus é fiel." },
+    { tipo: "p", n: "85", texto: "O instrumento pode ser entregue." },
+    { tipo: "p", n: "86", texto: "O trabalho pode mudar." },
+    { tipo: "p", n: "87", texto: "As circunstâncias podem mudar." },
+    { tipo: "p", n: "88", texto: "Os recursos podem mudar." },
+    { tipo: "p", n: "89", texto: "Mas o Deus que sustenta continua sendo o mesmo." },
+    { tipo: "p", n: "90", texto: "Por isso, quando penso naquela primeira oferta, não penso simplesmente nos instrumentos que deixei." },
+    { tipo: "p", n: "91", texto: "Penso naquilo que Deus estava formando dentro de mim:" },
+    { tipo: "destaque", texto: "um coração disposto a confiar, um coração disposto a entregar e um coração disposto a reconhecer que tudo pertence ao Senhor." },
+
+    { tipo: "q", texto: "“Do SENHOR é a terra e a sua plenitude, o mundo e os que nele habitam.”", ref: "Salmo 24:1" },
+
+    { tipo: "p", n: "92", texto: "E essa continua sendo a minha confissão:" },
+
+    { tipo: "frase", texto: "Tudo o que tenho vem do Senhor." },
+    { tipo: "frase", texto: "Tudo o que sou pertence ao Senhor." },
+    { tipo: "frase", texto: "E tudo aquilo que estiver em minhas mãos precisa permanecer disponível para a vontade de Deus." },
+
+    { tipo: "fim", texto: "ATOS 29 continua." }
+
+];
+
+
+/* =====================================================
+   CONSTRUÇÃO DOS BLOCOS HTML
+===================================================== */
+
+function criarHTML(bloco) {
+
+    if (bloco.tipo === "abertura") {
+        return `
+            <div class="abertura">
+                <div class="nome-livro">ATOS 29 • A HISTÓRIA CONTINUA</div>
+                <h2>${bloco.titulo}</h2>
+                <p class="subtitulo-abertura">${bloco.subtitulo}</p>
+            </div>
+            <p class="identificacao">
+                Ministério Atalaia • Diego Nascimento — Pastor Evangelista
+            </p>
+        `;
+    }
+
+    if (bloco.tipo === "h") {
+        return `<h3 class="subtitulo">${bloco.texto}</h3>`;
+    }
+
+    if (bloco.tipo === "p") {
+        let texto = bloco.texto;
+
+        if (bloco.negrito) {
+            texto = texto.replace(
+                bloco.negrito,
+                `<strong>${bloco.negrito}</strong>`
+            );
+        }
+
+        return `
+            <p class="paragrafo">
+                <sup>${bloco.n}</sup>${texto}
+            </p>
+        `;
+    }
+
+    if (bloco.tipo === "destaque") {
+        return `<p class="destaque">${bloco.texto}</p>`;
+    }
+
+    if (bloco.tipo === "q") {
+        return `
+            <blockquote class="citacao">
+                <p>${bloco.texto}</p>
+                <span class="referencia">${bloco.ref}</span>
+            </blockquote>
+        `;
+    }
+
+    if (bloco.tipo === "frase") {
+        return `<p class="frase-final">${bloco.texto}</p>`;
+    }
+
+    if (bloco.tipo === "fim") {
+        return `<p class="frase-final" style="margin-top:18px;letter-spacing:1px;">${bloco.texto}</p>`;
+    }
+
+    return "";
+}
+
+
+/* =====================================================
+   AGRUPAMENTO DE TÍTULO COM O BLOCO SEGUINTE
+
+   Evita deixar subtítulos isolados no final da coluna.
+===================================================== */
+
+function agruparBlocos(lista) {
+
+    const grupos = [];
+
+    for (let i = 0; i < lista.length; i++) {
+
+        const atual = lista[i];
+
+        if (atual.tipo === "h" && lista[i + 1]) {
+            grupos.push([atual, lista[i + 1]]);
+            i++;
+        } else {
+            grupos.push([atual]);
+        }
+    }
+
+    return grupos;
+}
+
+
+/* =====================================================
+   CONFIGURAÇÃO DA PAGINAÇÃO
+===================================================== */
+
+const livro = document.getElementById("livro");
+const paginaEsquerda = document.getElementById("paginaEsquerda");
+const paginaDireita = document.getElementById("paginaDireita");
+const colunaMedicao = document.getElementById("colunaMedicao");
+
+const botaoAnterior = document.getElementById("anterior");
+const botaoProxima = document.getElementById("proxima");
+const indicador = document.getElementById("indicador");
+
+let paginas = [];
+let paginaAtual = 0;
+let colunasPorPagina = 2;
+
+
+/* =====================================================
+   MEDIÇÃO DO ESPAÇO DISPONÍVEL
+===================================================== */
+
+function obterColunasPorPagina() {
+    return window.matchMedia("(max-width: 700px)").matches ? 1 : 2;
+}
+
+function obterAlturaDisponivel() {
+
+    const pagina = document.querySelector(".pagina");
+
+    if (!pagina) return 650;
+
+    const conteudo = pagina.querySelector(".conteudo-pagina");
+
+    if (conteudo) {
+        return conteudo.clientHeight;
+    }
+
+    return pagina.clientHeight - 88;
+}
+
+function obterLarguraColuna() {
+
+    const pagina = document.querySelector(".pagina");
+
+    if (!pagina) return 220;
+
+    const conteudo = pagina.querySelector(".conteudo-pagina");
+
+    if (!conteudo) return 220;
+
+    const largura = conteudo.clientWidth;
+
+    if (colunasPorPagina === 1) {
+        return largura;
+    }
+
+    return (largura - 25) / 2 - 19;
+}
+
+
+/* =====================================================
+   CRIAÇÃO DA ESTRUTURA DE CADA PÁGINA
+===================================================== */
+
+function criarEstruturaPagina(numero, lado) {
+
+    const elemento = document.createElement("div");
+
+    elemento.className = "pagina " + lado;
+
+    elemento.innerHTML = `
+        <div class="cabecalho-pagina">
+            <span>ATOS 29 • A HISTÓRIA CONTINUA</span>
+            <span>CAPÍTULO 14</span>
+        </div>
+
+        <div class="conteudo-pagina">
+            <div class="colunas"></div>
+        </div>
+
+        <div class="rodape-pagina">
+            <span>MINISTÉRIO ATALAIA</span>
+            <span class="numero-pagina">${numero}</span>
+        </div>
+    `;
+
+    return elemento;
+}
+
+
+/* =====================================================
+   PAGINAÇÃO AUTOMÁTICA
+
+   Cada coluna recebe blocos completos.
+   O algoritmo mede a altura real do conteúdo.
+===================================================== */
+
+function calcularPaginas() {
+
+    colunasPorPagina = obterColunasPorPagina();
+
+    const largura = obterLarguraColuna();
+
+    const altura = obterAlturaDisponivel();
+
+    colunaMedicao.style.width = Math.max(150, largura) + "px";
+
+    const grupos = agruparBlocos(blocos);
+
+    const colunas = [];
+
+    let colunaAtual = [];
+    let alturaAtual = 0;
+
+    for (const grupo of grupos) {
+
+        const htmlGrupo = grupo.map(criarHTML).join("");
+
+        colunaMedicao.innerHTML = colunaAtual
+            .map(criarHTML)
+            .join("") + htmlGrupo;
+
+        const alturaMedida = colunaMedicao.scrollHeight;
+
+        if (
+            alturaMedida > altura &&
+            colunaAtual.length > 0
+        ) {
+
+            colunas.push(colunaAtual);
+
+            colunaAtual = [...grupo];
+
+            colunaMedicao.innerHTML = colunaAtual
+                .map(criarHTML)
+                .join("");
+
+            alturaAtual = colunaMedicao.scrollHeight;
+
+        } else {
+
+            colunaAtual.push(...grupo);
+
+            alturaAtual = alturaMedida;
+        }
+    }
+
+    if (colunaAtual.length > 0) {
+        colunas.push(colunaAtual);
+    }
+
+    /* Agrupa as colunas em páginas */
+
+    paginas = [];
+
+    for (let i = 0; i < colunas.length; i += colunasPorPagina) {
+
+        const conjunto = [];
+
+        for (let j = 0; j < colunasPorPagina; j++) {
+            conjunto.push(colunas[i + j] || []);
+        }
+
+        paginas.push(conjunto);
+    }
+
+    if (paginas.length === 0) {
+        paginas = [[[]]];
+    }
+
+    paginaAtual = Math.min(
+        paginaAtual,
+        Math.max(0, paginas.length - 1)
+    );
+
+    renderizarPagina();
+}
+
+
+/* =====================================================
+   RENDERIZAÇÃO DAS PÁGINAS
+===================================================== */
+
+function preencherPagina(elemento, conteudo, numero, lado) {
+
+    elemento.innerHTML = `
+        <div class="cabecalho-pagina">
+            <span>ATOS 29 • A HISTÓRIA CONTINUA</span>
+            <span>CAPÍTULO 14</span>
+        </div>
+
+        <div class="conteudo-pagina">
+            <div class="colunas"></div>
+        </div>
+
+        <div class="rodape-pagina">
+            <span>MINISTÉRIO ATALAIA</span>
+            <span class="numero-pagina">${numero}</span>
+        </div>
+    `;
+
+    const area = elemento.querySelector(".colunas");
+
+    if (colunasPorPagina === 1) {
+
+        area.style.gridTemplateColumns = "1fr";
+
+        area.innerHTML = `
+            <div class="coluna">
+                ${(conteudo[0] || []).map(criarHTML).join("")}
+            </div>
+        `;
+
+    } else {
+
+        area.style.gridTemplateColumns = "1fr 1fr";
+
+        area.innerHTML = `
+            <div class="coluna">
+                ${(conteudo[0] || []).map(criarHTML).join("")}
+            </div>
+
+            <div class="coluna">
+                ${(conteudo[1] || []).map(criarHTML).join("")}
+            </div>
+        `;
+    }
+
+    elemento.className = "pagina " + lado;
+}
+
+function renderizarPagina() {
+
+    const total = paginas.length;
+
+    if (colunasPorPagina === 1) {
+
+        paginaEsquerda.style.display = "none";
+        paginaDireita.style.display = "block";
+
+        preencherPagina(
+            paginaDireita,
+            paginas[paginaAtual],
+            paginaAtual + 1,
+            "direita"
+        );
+
+        indicador.textContent =
+            `Página ${paginaAtual + 1} de ${total}`;
+
+    } else {
+
+        paginaEsquerda.style.display = "block";
+        paginaDireita.style.display = "block";
+
+        const esquerda = paginaAtual * 2;
+        const direita = esquerda + 1;
+
+        const conteudoEsquerda = paginas[esquerda] || [[], []];
+        const conteudoDireita = paginas[direita] || [[], []];
+
+        preencherPagina(
+            paginaEsquerda,
+            conteudoEsquerda,
+            esquerda + 1,
+            "esquerda"
+        );
+
+        preencherPagina(
+            paginaDireita,
+            conteudoDireita,
+            direita + 1,
+            "direita"
+        );
+
+        indicador.textContent =
+            `Páginas ${esquerda + 1}–${Math.min(direita + 1, total)} de ${total}`;
+    }
+
+    botaoAnterior.disabled = paginaAtual <= 0;
+    botaoProxima.disabled = paginaAtual >= total - 1;
+}
+
+
+/* =====================================================
+   NAVEGAÇÃO
+===================================================== */
+
+function animarVirada() {
+
+    livro.classList.remove("animando");
+
+    void livro.offsetWidth;
+
+    livro.classList.add("animando");
+}
+
+function proximaPagina() {
+
+    if (paginaAtual < paginas.length - 1) {
+
+        paginaAtual++;
+
+        renderizarPagina();
+
+        animarVirada();
+    }
+}
+
+function paginaAnterior() {
+
+    if (paginaAtual > 0) {
+
+        paginaAtual--;
+
+        renderizarPagina();
+
+        animarVirada();
+    }
+}
+
+botaoAnterior.addEventListener("click", paginaAnterior);
+botaoProxima.addEventListener("click", proximaPagina);
+
+
+/* =====================================================
+   TECLADO
+===================================================== */
+
+document.addEventListener("keydown", function(evento) {
+
+    if (
+        evento.target.tagName === "INPUT" ||
+        evento.target.tagName === "TEXTAREA"
+    ) {
+        return;
+    }
+
+    if (evento.key === "ArrowRight") {
+        proximaPagina();
+    }
+
+    if (evento.key === "ArrowLeft") {
+        paginaAnterior();
+    }
+});
+
+
+/* =====================================================
+   GESTOS DE DESLIZAMENTO NO CELULAR
+===================================================== */
+
+let inicioToqueX = 0;
+let fimToqueX = 0;
+
+livro.addEventListener("touchstart", function(evento) {
+
+    inicioToqueX = evento.changedTouches[0].screenX;
+
+}, { passive: true });
+
+livro.addEventListener("touchend", function(evento) {
+
+    fimToqueX = evento.changedTouches[0].screenX;
+
+    const diferenca = fimToqueX - inicioToqueX;
+
+    if (Math.abs(diferenca) < 50) return;
+
+    if (diferenca < 0) {
+        proximaPagina();
+    } else {
+        paginaAnterior();
+    }
+
+}, { passive: true });
+
+
+/* =====================================================
+   RECÁLCULO AO REDIMENSIONAR A TELA
+===================================================== */
+
+let temporizadorRedimensionamento;
+
+window.addEventListener("resize", function() {
+
+    clearTimeout(temporizadorRedimensionamento);
+
+    temporizadorRedimensionamento = setTimeout(function() {
+        calcularPaginas();
+    }, 250);
+
+});
+
+
+/* =====================================================
+   INICIALIZAÇÃO
+===================================================== */
+
+window.addEventListener("load", function() {
+
+    requestAnimationFrame(function() {
+        calcularPaginas();
+    });
+
+});
+
+</script>
+
+</body>
+</html>

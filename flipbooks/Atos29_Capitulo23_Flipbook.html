@@ -1,0 +1,1572 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#17130f">
+<title>ATOS 29 — Capítulo 23 | Quando o Coração Arde</title>
+
+<style>
+:root {
+    --fundo: #17130f;
+    --papel: #f2e8cd;
+    --papel-escuro: #e9ddbd;
+    --tinta: #302719;
+    --dourado: #b99a61;
+    --largura-pagina: 570px;
+    --altura-pagina: 780px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    min-height: 100%;
+    background: var(--fundo);
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    padding: 28px 18px;
+    color: #eee4d1;
+    background:
+        radial-gradient(ellipse at center, #393027 0%, #211b15 55%, #100e0b 100%);
+    font-family: Georgia, "Times New Roman", serif;
+}
+
+.cabecalho-livro {
+    text-align: center;
+    margin: 0 auto 22px;
+    color: #d7c49d;
+}
+
+.cabecalho-livro .marca {
+    font-size: 12px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+}
+
+.cabecalho-livro h1 {
+    margin: 0;
+    font-size: 21px;
+    font-weight: normal;
+    letter-spacing: 1.5px;
+}
+
+.cabecalho-livro p {
+    margin: 7px 0 0;
+    color: #a99a7d;
+    font-size: 12px;
+    letter-spacing: 1px;
+}
+
+.livro-area {
+    width: min(100%, calc(var(--largura-pagina) * 2 + 30px));
+    margin: auto;
+}
+
+.livro-aberto {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0;
+    perspective: 1800px;
+    filter: drop-shadow(0 18px 22px rgba(0,0,0,.5));
+}
+
+.pagina {
+    position: relative;
+    height: var(--altura-pagina);
+    min-width: 0;
+    overflow: hidden;
+    color: var(--tinta);
+    padding: 39px 32px 43px;
+    background:
+        radial-gradient(ellipse at 20% 15%, rgba(255,255,255,.30), transparent 45%),
+        radial-gradient(ellipse at 80% 85%, rgba(137,102,47,.07), transparent 50%),
+        repeating-linear-gradient(
+            0deg,
+            rgba(105,77,34,.018) 0px,
+            rgba(105,77,34,.018) 1px,
+            transparent 1px,
+            transparent 4px
+        ),
+        linear-gradient(90deg, #e6d9b9, #f5edda 12%, #f1e7ce 88%, #e5d7b6);
+    box-shadow:
+        inset 0 0 22px rgba(92,65,28,.12),
+        inset 0 0 3px rgba(75,51,21,.25);
+}
+
+.pagina.esquerda {
+    border-radius: 5px 0 0 5px;
+    border-right: 1px solid rgba(93,69,36,.28);
+    box-shadow:
+        inset -13px 0 18px -17px rgba(38,25,10,.8),
+        inset 0 0 22px rgba(92,65,28,.12);
+}
+
+.pagina.direita {
+    border-radius: 0 5px 5px 0;
+    border-left: 1px solid rgba(255,255,255,.45);
+    box-shadow:
+        inset 13px 0 18px -17px rgba(38,25,10,.8),
+        inset 0 0 22px rgba(92,65,28,.12);
+}
+
+.pagina::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: .18;
+    background-image:
+        radial-gradient(#72552d .45px, transparent .65px);
+    background-size: 5px 5px;
+}
+
+.pagina-cabecalho {
+    position: absolute;
+    z-index: 2;
+    top: 17px;
+    left: 32px;
+    right: 32px;
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+    padding-bottom: 7px;
+    border-bottom: 1px solid rgba(72,53,29,.45);
+    color: #655338;
+    font-size: 8px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.pagina-conteudo {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 22px;
+    height: 100%;
+    padding-top: 4px;
+    padding-bottom: 8px;
+}
+
+.coluna {
+    min-width: 0;
+    height: 100%;
+    overflow: hidden;
+    text-align: justify;
+    font-size: 10.5px;
+    line-height: 1.43;
+    hyphens: auto;
+    overflow-wrap: break-word;
+}
+
+.coluna + .coluna {
+    border-left: 1px solid rgba(94,72,42,.12);
+    padding-left: 11px;
+}
+
+.coluna p {
+    margin: 0 0 7px;
+    text-indent: 11px;
+}
+
+.coluna p.sem-numero {
+    text-indent: 0;
+    margin: 7px 0;
+}
+
+.numero-paragrafo {
+    display: inline-block;
+    vertical-align: super;
+    font-size: 7px;
+    line-height: 0;
+    font-weight: bold;
+    margin-right: 2px;
+    color: #72572e;
+}
+
+.coluna h1 {
+    font-size: 15px;
+    line-height: 1.25;
+    text-align: center;
+    text-transform: uppercase;
+    margin: 15px 0 7px;
+    letter-spacing: .5px;
+}
+
+.coluna h2 {
+    font-size: 11px;
+    line-height: 1.3;
+    text-align: left;
+    text-transform: uppercase;
+    margin: 13px 0 7px;
+    font-weight: bold;
+    letter-spacing: .3px;
+    break-after: avoid;
+}
+
+.coluna h3 {
+    font-size: 10px;
+    text-align: center;
+    font-weight: normal;
+    font-style: italic;
+    margin: 6px 0 12px;
+}
+
+.coluna blockquote {
+    margin: 8px 8px 10px 13px;
+    padding: 0 0 0 9px;
+    border-left: 1px solid #a48a5b;
+    font-style: italic;
+    text-align: left;
+    line-height: 1.4;
+}
+
+.coluna blockquote p {
+    text-indent: 0;
+    margin: 0 0 4px;
+}
+
+.coluna .referencia {
+    display: block;
+    margin-top: 4px;
+    text-align: right;
+    font-size: 9px;
+    font-style: normal;
+    font-weight: bold;
+}
+
+.coluna .destaque {
+    text-indent: 0;
+    font-weight: bold;
+    text-align: left;
+    margin: 8px 0;
+}
+
+.coluna .centralizado {
+    text-align: center;
+    text-indent: 0;
+    font-weight: bold;
+}
+
+.coluna .assinatura {
+    text-align: center;
+    text-indent: 0;
+    font-weight: bold;
+    margin-top: 12px;
+}
+
+.pagina-rodape {
+    position: absolute;
+    z-index: 2;
+    bottom: 16px;
+    left: 32px;
+    right: 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid rgba(72,53,29,.35);
+    padding-top: 6px;
+    color: #786448;
+    font-size: 8px;
+    letter-spacing: 1px;
+}
+
+.pagina-vazia {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(89,69,39,.3);
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.controles {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 18px;
+    margin: 22px auto 0;
+    color: #d9c9a9;
+    font-family: Arial, sans-serif;
+}
+
+.controles button {
+    border: 1px solid #796544;
+    background: linear-gradient(#403528, #241e17);
+    color: #ead9b7;
+    padding: 11px 22px;
+    border-radius: 3px;
+    font-size: 11px;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: background .2s, transform .2s;
+}
+
+.controles button:hover:not(:disabled) {
+    background: #59472e;
+    transform: translateY(-1px);
+}
+
+.controles button:disabled {
+    opacity: .35;
+    cursor: not-allowed;
+}
+
+#contador {
+    min-width: 105px;
+    text-align: center;
+    font-size: 12px;
+    letter-spacing: 1px;
+}
+
+.instrucao {
+    margin: 14px auto 0;
+    text-align: center;
+    color: #9c8b6d;
+    font: 11px Arial, sans-serif;
+}
+
+#fonte-conteudo {
+    display: none;
+}
+
+@media (max-width: 900px) {
+    :root {
+        --altura-pagina: 740px;
+    }
+
+    .pagina {
+        padding-left: 24px;
+        padding-right: 24px;
+    }
+
+    .pagina-cabecalho,
+    .pagina-rodape {
+        left: 24px;
+        right: 24px;
+    }
+
+    .coluna {
+        font-size: 9.7px;
+    }
+
+    .pagina-conteudo {
+        gap: 15px;
+    }
+}
+
+@media (max-width: 620px) {
+    body {
+        padding: 15px 8px 25px;
+    }
+
+    .cabecalho-livro {
+        margin-bottom: 15px;
+    }
+
+    .cabecalho-livro h1 {
+        font-size: 17px;
+    }
+
+    .livro-aberto {
+        display: block;
+        width: min(100%, 460px);
+        margin: auto;
+    }
+
+    .pagina {
+        display: none;
+        height: min(79vh, 780px);
+        min-height: 590px;
+        padding: 38px 25px 42px;
+        border-radius: 4px !important;
+        border: 0 !important;
+        box-shadow:
+            inset 0 0 22px rgba(92,65,28,.13),
+            0 8px 20px rgba(0,0,0,.35);
+    }
+
+    .pagina.ativa {
+        display: block;
+        animation: virar .28s ease;
+    }
+
+    @keyframes virar {
+        from { opacity: .65; transform: translateX(7px); }
+        to { opacity: 1; transform: translateX(0); }
+    }
+
+    .pagina-conteudo {
+        display: block;
+    }
+
+    .coluna {
+        display: none;
+        font-size: 11.2px;
+        line-height: 1.52;
+    }
+
+    .coluna.coluna-mobile {
+        display: block;
+        border: 0;
+        padding: 0;
+    }
+
+    .pagina-cabecalho {
+        left: 25px;
+        right: 25px;
+        font-size: 7px;
+    }
+
+    .pagina-rodape {
+        left: 25px;
+        right: 25px;
+    }
+
+    .controles {
+        gap: 8px;
+        margin-top: 16px;
+    }
+
+    .controles button {
+        padding: 11px 13px;
+        font-size: 10px;
+    }
+
+    #contador {
+        min-width: 88px;
+        font-size: 11px;
+    }
+
+    .instrucao {
+        font-size: 10px;
+    }
+}
+
+@media print {
+    body {
+        background: white;
+        padding: 0;
+    }
+
+    .cabecalho-livro,
+    .controles,
+    .instrucao {
+        display: none;
+    }
+
+    .livro-aberto {
+        filter: none;
+    }
+
+    .pagina {
+        break-inside: avoid;
+        print-color-adjust: exact;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header class="cabecalho-livro">
+    <div class="marca">Ministério Atalaia apresenta</div>
+    <h1>ATOS 29 • A HISTÓRIA CONTINUA</h1>
+    <p>Capítulo 23 — Quando o Coração Arde</p>
+</header>
+
+<main class="livro-area">
+    <div class="livro-aberto" id="livro">
+        <!-- As páginas são geradas automaticamente pelo JavaScript. -->
+    </div>
+
+    <nav class="controles" aria-label="Navegação do flipbook">
+        <button id="anterior" type="button">← ANTERIOR</button>
+        <span id="contador">Página 1</span>
+        <button id="proxima" type="button">PRÓXIMA →</button>
+    </nav>
+
+    <p class="instrucao">
+        Utilize os botões ou as setas ← → do teclado para mudar as páginas.
+    </p>
+</main>
+
+<!--
+    TEXTO ORIGINAL DO CAPÍTULO.
+    A numeração sobrescrita é aplicada automaticamente:
+    narrativa principal: 1 a 257;
+    testemunho de Rachel: 1 a 52;
+    continuação: 258 a 366.
+-->
+
+<article id="fonte-conteudo">
+
+<h1>CAPÍTULO 23 — QUANDO O CORAÇÃO ARDE</h1>
+<h3>Quando uma Palavra alcança mais de um coração</h3>
+
+<p>Há momentos em nossa caminhada com Deus que pareciam pequenos enquanto aconteciam, mas que, depois, percebíamos que carregavam algo eterno.</p>
+<p>Aquele era um desses momentos.</p>
+<p>Não havia púlpito.</p>
+<p>Não havia igreja cheia.</p>
+<p>Não havia microfone, instrumentos ou uma multidão diante de nós.</p>
+<p>Havia apenas uma tela.</p>
+<p>Uma chamada de vídeo.</p>
+<p>Do outro lado, um discípulo desejava aprender mais da Palavra de Deus.</p>
+<p>E eu estava ali para ensiná-lo.</p>
+<p>Minha filha também estava comigo.</p>
+<p>Talvez, para quem olhasse de fora, fosse apenas mais uma conversa sobre a Bíblia. Mais uma noite comum.</p>
+<p>Mas Deus estava preparando algo que nenhum de nós havia planejado.</p>
+<p>Naquele dia, abrimos as Escrituras para falar sobre dois discípulos que caminhavam para uma pequena aldeia chamada Emaús.</p>
+<p>Eles caminhavam, mas seus corações estavam cansados.</p>
+<p>Tinham esperança, mas a cruz havia transformado suas expectativas em tristeza.</p>
+<p>Jesus havia morrido.</p>
+<p>Enquanto caminhavam, conversavam sobre tudo o que havia acontecido.</p>
+<p>Foi então que alguém se aproximou.</p>
+<p>Era Jesus.</p>
+<p>Mas eles não O reconheceram.</p>
+<p>Essa parte da história sempre me impressionou:</p>
+<p class="destaque">Jesus estava caminhando ao lado deles, mas eles não sabiam que era Jesus.</p>
+<p>Jesus começou a conversar com aqueles homens.</p>
+<p>Perguntou sobre o que estavam falando.</p>
+<p>Depois, começou a abrir as Escrituras.</p>
+<p>Moisés.</p>
+<p>Os Profetas.</p>
+<p>As promessas.</p>
+<p>Tudo aquilo que apontava para Cristo.</p>
+
+<blockquote>
+<p>“E, começando por Moisés, e por todos os profetas, explicava-lhes o que dele se achava em todas as Escrituras.”</p>
+<span class="referencia">Lucas 24:27</span>
+</blockquote>
+
+<p>Jesus não apenas caminhou com eles.</p>
+<p class="destaque">Jesus abriu a Palavra diante deles.</p>
+<p>E enquanto a Palavra era aberta, algo acontecia dentro daqueles homens.</p>
+<p>Mais tarde, depois que seus olhos foram abertos e reconheceram Jesus, disseram:</p>
+
+<blockquote>
+<p>“Porventura não ardia em nós o nosso coração, quando, pelo caminho, nos falava?”</p>
+<span class="referencia">Lucas 24:32</span>
+</blockquote>
+
+<p>Foi nesse ponto que aquela conversa deixou de ser apenas uma explicação sobre Emaús.</p>
+<p>Aquela passagem começou a tocar a minha própria história.</p>
+<p>Eu me lembrei de tantas vezes em que havia ficado sentado ouvindo alguém pregar.</p>
+<p>Pregadores diferentes.</p>
+<p>Lugares diferentes.</p>
+<p>Momentos diferentes.</p>
+<p>Mas havia algo que se repetia.</p>
+<p>Enquanto a Palavra era anunciada, meu coração começava a arder.</p>
+<p>Eu chorava.</p>
+<p>Às vezes, chorava durante praticamente toda a pregação.</p>
+<p>Não era simplesmente porque o pregador tinha uma boa oratória.</p>
+<p>Não era porque a música havia criado um ambiente emocional.</p>
+<p>Era algo mais profundo.</p>
+<p>Eu conhecia aquela sensação.</p>
+<p>Era como se, por trás da voz daquele homem, houvesse outra voz.</p>
+<p>A voz de Cristo.</p>
+<p>O pregador falava, mas Jesus tocava.</p>
+<p>O pregador explicava o texto, mas Jesus abria o meu entendimento.</p>
+<p>O pregador apontava para a Palavra, e a Palavra encontrava exatamente o lugar dentro de mim que precisava ser alcançado.</p>
+<p>Eu sabia:</p>
+<p class="destaque">Era Jesus falando.</p>
+
+<h2>A Palavra e o coração</h2>
+
+<p>A experiência dos discípulos de Emaús ensinava uma verdade profunda.</p>
+<p>O coração daqueles homens ardeu enquanto Jesus lhes falava pelas Escrituras.</p>
+<p>Isso mostrava que o encontro com Cristo não era separado da Palavra.</p>
+<p>Jesus poderia simplesmente ter revelado quem era.</p>
+<p>Mas, antes disso, Ele abriu as Escrituras.</p>
+<p>Ele mostrou que a história da redenção não havia terminado na cruz.</p>
+<p>A Lei, os Profetas e as promessas apontavam para Ele.</p>
+<p>Por isso, quando falamos sobre um coração que arde, não devemos transformar essa expressão apenas em uma experiência emocional.</p>
+<p>O verdadeiro centro continua sendo Cristo e a Palavra.</p>
+<p>A emoção pode acompanhar o momento.</p>
+<p>As lágrimas podem aparecer.</p>
+<p>O coração pode se quebrantar.</p>
+<p>Mas a Palavra permanece.</p>
+
+<p>Isaías declarou:</p>
+<blockquote>
+<p>“Assim será a palavra que sair da minha boca: ela não voltará para mim vazia.”</p>
+<span class="referencia">Isaías 55:11</span>
+</blockquote>
+
+<p>A Palavra de Deus não precisava de um ambiente perfeito para agir.</p>
+<p>Naquela noite, não havia púlpito.</p>
+<p>Não havia multidão.</p>
+<p>Havia apenas uma tela, uma conversa e a Palavra.</p>
+<p>E isso era suficiente.</p>
+
+<h2>Minha filha estava ouvindo</h2>
+
+<p>Foi isso que comecei a compartilhar naquela chamada.</p>
+<p>Falei ao discípulo sobre Emaús.</p>
+<p>Falei sobre como Cristo continuava presente.</p>
+<p>Falei sobre como Ele ainda falava através das Escrituras.</p>
+<p>Falei sobre aquelas experiências que eu havia tido ao ouvir homens de Deus ministrarem a Palavra.</p>
+<p>E então percebi que minha filha estava ouvindo.</p>
+<p>Ela não interrompeu.</p>
+<p>Não disse nada.</p>
+<p>Apenas ficou ali.</p>
+<p>Ouvindo.</p>
+<p>Talvez algumas palavras estivessem entrando em lugares do coração que eu não conseguia enxergar.</p>
+<p>Terminamos a conversa.</p>
+<p>A Palavra havia sido ministrada.</p>
+<p>A chamada estava chegando ao fim.</p>
+<p>Eu imaginava que aquele seria apenas mais um momento de discipulado.</p>
+<p>Mas, então, minha filha começou a chorar.</p>
+<p>Olhei para ela.</p>
+<p>Havia lágrimas em seus olhos.</p>
+<p>Perguntei o que estava acontecendo.</p>
+<p>Ela começou a falar.</p>
+<p>E o que ouvi naquele momento me atingiu profundamente.</p>
+<p>Ela disse que, diversas vezes, havia me ouvido pregar a Palavra de Deus.</p>
+<p>E que, enquanto eu pregava, seu coração ardia.</p>
+<p>Por algumas vezes, ela havia sentido aquilo sem compreender exatamente o que estava acontecendo.</p>
+<p>Mas agora ela entendia.</p>
+<p>Agora ela sabia:</p>
+<p class="destaque">Era Jesus falando.</p>
+<p>Naquele instante, precisei conter minhas próprias lágrimas.</p>
+<p>Porque percebi que algo maior havia acontecido naquela chamada.</p>
+<p>Eu havia entrado naquela conversa pensando que estava discipulando alguém.</p>
+<p>E Deus me mostrou que havia mais uma pessoa ouvindo.</p>
+<p>Minha filha.</p>
+<p>Eu estava ensinando um discípulo sobre os homens de Emaús.</p>
+<p>Mas, enquanto eu falava, Deus estava escrevendo uma experiência de Emaús dentro do coração dela.</p>
+
+<h2>Nunca sabemos quantos estão ouvindo</h2>
+
+<p>Naquela experiência, compreendi algo que talvez nunca mais esquecesse:</p>
+<p class="destaque">Quando ensinamos a Palavra, nunca sabemos quantos corações estão sendo alcançados.</p>
+<p>Às vezes pensamos que estamos falando com uma pessoa.</p>
+<p>Deus pode estar trabalhando em uma família.</p>
+<p>Pensamos que estamos ensinando um discípulo.</p>
+<p>Deus pode estar preparando uma geração.</p>
+<p>Pensamos que estamos ministrando naquele momento.</p>
+<p>Deus pode estar construindo uma memória espiritual para o futuro.</p>
+
+<p>Paulo escreveu:</p>
+<blockquote>
+<p>“Eu plantei, Apolo regou; mas Deus deu o crescimento.”</p>
+<span class="referencia">1 Coríntios 3:6</span>
+</blockquote>
+
+<p>Essa palavra colocava cada coisa em seu devido lugar.</p>
+<p>Eu poderia ensinar.</p>
+<p>Poderia falar.</p>
+<p>Poderia explicar.</p>
+<p>Poderia testemunhar.</p>
+<p>Mas quem produzia o verdadeiro crescimento era Deus.</p>
+<p>O discipulador plantava.</p>
+<p>A Palavra era anunciada.</p>
+<p>O coração recebia.</p>
+<p>E Deus operava.</p>
+
+<h2>O que aconteceu no dia seguinte</h2>
+
+<p>Mas o que aconteceu no dia seguinte tornou aquela experiência ainda mais marcante.</p>
+<p>Minha filha começou a estudar a Bíblia minuciosamente.</p>
+<p>Não foi apenas uma emoção que passou.</p>
+<p>Não foi apenas uma noite de lágrimas.</p>
+<p>Aquela experiência despertou nela uma fome.</p>
+<p>Ela queria conhecer mais.</p>
+<p>Queria entender melhor.</p>
+<p>Queria examinar as Escrituras.</p>
+<p>Queria descobrir por si mesma aquilo que havia começado a compreender naquela noite.</p>
+<p>E isso me emocionou profundamente.</p>
+<p>Porque percebi que o verdadeiro objetivo de um discipulador não era fazer com que as pessoas dependessem eternamente da sua voz.</p>
+<p>Era conduzi-las até a Palavra, para que elas próprias aprendessem a buscar a Deus nas Escrituras.</p>
+
+<p>Os bereanos receberam a mensagem e foram elogiados porque examinavam diariamente as Escrituras para verificar o que ouviam:</p>
+<blockquote>
+<p>“Ora, estes foram mais nobres do que os que estavam em Tessalônica, porque de bom grado receberam a palavra, examinando cada dia nas Escrituras se estas coisas eram assim.”</p>
+<span class="referencia">Atos 17:11</span>
+</blockquote>
+
+<p>Essa deveria ser uma característica de todo discípulo.</p>
+<p>Ouvir.</p>
+<p>Receber.</p>
+<p>Examinar.</p>
+<p>Buscar.</p>
+<p>Aprender.</p>
+<p>Crescer.</p>
+<p>Eu poderia ensinar minha filha.</p>
+<p>Poderia explicar os textos.</p>
+<p>Poderia responder às suas perguntas.</p>
+<p>Mas havia algo que eu não poderia fazer por ela:</p>
+<p class="destaque">eu não poderia ler a Bíblia em seu lugar.</p>
+<p>Ela precisava abrir as Escrituras.</p>
+<p>Precisava buscar.</p>
+<p>Precisava perguntar.</p>
+<p>Precisava meditar.</p>
+<p>Precisava descobrir.</p>
+<p>Precisava desenvolver sua própria caminhada com Deus.</p>
+<p>E foi exatamente isso que começou a acontecer.</p>
+<p>No dia seguinte, aquela menina que havia chorado porque descobrira que Jesus falava ao seu coração agora estava diante da Bíblia, examinando-a com atenção.</p>
+<p>A Palavra que havia feito seu coração arder agora despertava nela o desejo de conhecê-la profundamente.</p>
+
+<h2>O fogo produz fome</h2>
+
+<p>Então compreendi uma verdade que carreguei comigo:</p>
+<p class="destaque">Quando o coração realmente encontra Cristo, ele passa a desejar conhecer a Palavra.</p>
+<p>O fogo produz fome.</p>
+<p>A presença produz busca.</p>
+<p>O encontro produz caminhada.</p>
+<p>E a experiência com Jesus não deveria terminar em lágrimas.</p>
+<p>As lágrimas podiam ser o começo.</p>
+<p>O coração podia arder em um momento.</p>
+<p>Mas depois era necessário abrir as Escrituras e caminhar mais profundamente.</p>
+
+<p>Jesus disse:</p>
+<blockquote>
+<p>“Se vós permanecerdes na minha palavra, verdadeiramente sereis meus discípulos.”</p>
+<span class="referencia">João 8:31</span>
+</blockquote>
+
+<p>A Palavra não deveria ser apenas ouvida em um momento emocionante.</p>
+<p>Ela deveria permanecer.</p>
+<p>O discípulo não deveria viver apenas de experiências passadas.</p>
+<p>Deveria continuar caminhando.</p>
+<p>Continuar buscando.</p>
+<p>Continuar aprendendo.</p>
+<p>Continuar permanecendo em Cristo.</p>
+<p>Minha filha havia dado esse passo.</p>
+<p>E eu, como pai e como ensinador da Palavra, só podia agradecer a Deus.</p>
+
+<h2>Quando a fome nasce</h2>
+
+<p>Existe uma diferença entre criar alguém dentro de um ambiente cristão e vê-lo começar a buscar a Deus por vontade própria.</p>
+<p>Uma coisa era uma criança ouvir a Bíblia porque os pais mandavam.</p>
+<p>Outra coisa era vê-la abrir a Bíblia porque havia nascido dentro dela uma fome.</p>
+<p>Naquele dia, eu vi essa fome nascer.</p>
+<p>E talvez esse seja um dos maiores presentes que um pai pode receber:</p>
+<p class="destaque">ver seu filho não apenas ouvir falar de Jesus, mas começar a procurá-Lo.</p>
+<p>Eu havia ensinado sobre Emaús.</p>
+<p>Agora minha filha estava começando sua própria caminhada pelas Escrituras.</p>
+<p>Os discípulos caminharam com Jesus e ouviram a Palavra.</p>
+<p>Minha filha ouviu a Palavra e, no dia seguinte, decidiu mergulhar nela.</p>
+<p>Talvez ela ainda tivesse muitas perguntas.</p>
+<p>Talvez ainda não compreendesse muitas coisas.</p>
+<p>Mas isso não era um problema.</p>
+<p>Porque a caminhada havia começado.</p>
+<p>E toda grande caminhada com Deus começa com um passo.</p>
+
+<h2>Uma experiência que precisava conduzir à Palavra</h2>
+
+<p>Naquela experiência, aprendi novamente que Jesus continuava entre nós.</p>
+<p>Ele continuava falando.</p>
+<p>Continuava abrindo as Escrituras.</p>
+<p>Continuava fazendo corações arderem.</p>
+<p>Continuava despertando fome espiritual.</p>
+<p>Continuava chamando pessoas para mais perto.</p>
+<p>Mas havia algo importante a compreender.</p>
+<p>Não era suficiente dizer: “Meu coração ardeu.”</p>
+<p>Era necessário perguntar:</p>
+<p class="destaque">O que a Palavra me mostrou?</p>
+<p class="destaque">O que Cristo estava ensinando?</p>
+<p class="destaque">O que eu deveria fazer com aquilo que havia aprendido?</p>
+<p>A experiência precisava conduzir à Palavra.</p>
+<p>A Palavra precisava conduzir a Cristo.</p>
+<p>E Cristo precisava conduzir a uma vida de obediência.</p>
+
+<p>Tiago escreveu:</p>
+<blockquote>
+<p>“E sede cumpridores da palavra, e não somente ouvintes.”</p>
+<span class="referencia">Tiago 1:22</span>
+</blockquote>
+
+<p>Esse era o caminho.</p>
+<p>Ouvir.</p>
+<p>Entender.</p>
+<p>Praticar.</p>
+<p>Caminhar.</p>
+
+<h2>Dentro de casa</h2>
+
+<p>Às vezes, Jesus usava aquilo que fazíamos dentro de casa para alcançar aqueles que mais amávamos.</p>
+<p>Talvez eu nunca soubesse quantas pessoas haviam sido alcançadas pelas mensagens que preguei.</p>
+<p>Talvez nunca conhecesse todas as histórias daqueles que choraram enquanto ouviram a Palavra.</p>
+<p>Mas naquele dia Deus me permitiu ver algo muito precioso:</p>
+<p class="destaque">uma lágrima se transformar em fome pela Palavra.</p>
+<p>E isso valeu tudo.</p>
+<p>Porque o objetivo não era produzir admiradores de um pregador.</p>
+<p>O objetivo era formar discípulos de Jesus.</p>
+<p>Eu não queria que minha filha apenas reconhecesse a minha voz.</p>
+<p>Eu queria que ela conhecesse a voz de Cristo.</p>
+<p>Não queria que ela apenas repetisse aquilo que havia aprendido comigo.</p>
+<p>Queria que ela examinasse as Escrituras.</p>
+<p>Não queria que ela vivesse da minha experiência.</p>
+<p>Queria que ela tivesse sua própria experiência com Deus.</p>
+<p>Porque chegaria o dia em que ela precisaria caminhar sozinha.</p>
+<p>E, nesse dia, minha voz poderia estar distante.</p>
+<p>Mas a Palavra permaneceria.</p>
+
+<h2>Jesus abriu as Escrituras</h2>
+
+<p>Foi isso que Jesus fez com os discípulos de Emaús.</p>
+<p>Ele não apenas caminhou com eles.</p>
+<p class="destaque">Ele abriu as Escrituras.</p>
+<p>Quando seus olhos foram abertos, eles entenderam que nunca haviam estado sozinhos.</p>
+<p>Jesus estava com eles no caminho.</p>
+<p>Jesus estava falando.</p>
+<p>Jesus estava ensinando.</p>
+<p>E seus corações ardiam.</p>
+<p>A experiência de Emaús também mostrava que Cristo não deveria ser procurado apenas em momentos extraordinários.</p>
+<p>Ele estava no caminho.</p>
+<p>Estava presente enquanto aqueles homens caminhavam.</p>
+<p>Estava presente enquanto eles conversavam.</p>
+<p>Estava presente enquanto eles ainda não O reconheciam.</p>
+<p>E estava presente quando abriu as Escrituras.</p>
+<p>Isso era precioso.</p>
+<p>Porque muitas vezes alguém poderia imaginar que Deus só estava presente quando algo extraordinário acontecia.</p>
+<p>Mas Emaús mostrava outra coisa:</p>
+<p class="destaque">Jesus também estava presente no caminho.</p>
+
+<h2>Quando o coração arde</h2>
+
+<p>Talvez alguém lesse este capítulo e se lembrasse de uma experiência semelhante.</p>
+<p>Uma pregação.</p>
+<p>Uma Palavra.</p>
+<p>Uma lágrima.</p>
+<p>Um coração inexplicavelmente aquecido.</p>
+<p>Não deveria desprezar isso.</p>
+<p>Mas também não deveria parar na sensação.</p>
+<p>Deveria voltar para a Bíblia.</p>
+<p>Ler.</p>
+<p>Pesquisar.</p>
+<p>Meditar.</p>
+<p>Orar.</p>
+<p>Buscar compreender.</p>
+<p>Porque talvez aquele fogo fosse apenas o começo de uma caminhada muito mais profunda.</p>
+<p>A experiência deveria despertar fome.</p>
+<p>A fome deveria levar à Palavra.</p>
+<p>A Palavra deveria revelar Cristo.</p>
+<p>E Cristo deveria transformar a vida.</p>
+
+<h2>O testemunho de Rachel</h2>
+
+<p>Naquela noite, minha filha chorou porque descobriu que Jesus falava quando seu coração ardia.</p>
+<p>No dia seguinte, ela abriu a Bíblia para conhecê-Lo melhor.</p>
+<p>E foi assim que uma simples chamada de vídeo se transformou em algo que eu guardaria para sempre.</p>
+<p>Comecei aquela conversa para ensinar um discípulo.</p>
+<p>Terminei percebendo que Deus estava ensinando minha filha.</p>
+<p>E, no dia seguinte, ela mesma começou a buscar.</p>
+<p>Talvez essa fosse uma das belezas do discipulado:</p>
+<p class="destaque">você planta a Palavra, Deus faz nascer a fome, e o próprio Cristo conduz a pessoa pelo caminho.</p>
+<p>E foi nesse contexto que Rachel registrou seu próprio testemunho.</p>
+
+<h2>TESTEMUNHO DE RACHEL CHIRANO DO NASCIMENTO</h2>
+<h3>30/08/2026</h3>
+
+<p>No dia anterior, o papai estava em ligação com o Bruno para dar aula sobre a Bíblia. Era a segunda vez que ele dava aula, e nas duas vezes eu participei.</p>
+<p>Eu gostava de ouvir o papai falar da Bíblia.</p>
+<p>Teve uma hora em que ele falou sobre como sentíamos o coração arder quando ouvíamos Jesus falar. Ele explicou mais sobre isso e eu comecei a sentir vontade de chorar. Eu estava com o choro entalado na garganta.</p>
+<p>E todas as vezes que meu pai falava comigo sobre a Bíblia me dava essa mesma vontade de chorar. Nunca foi por tristeza e nem por alegria. Sempre foi algo que eu nunca entendi.</p>
+<p>Depois que ele falou sobre o coração arder, fiquei daquele jeito até o fim da aula.</p>
+<p>Depois que ele terminou a ligação, falei que achava que Jesus falava por meio dele porque toda vez que eu ouvia ele pregar meu coração ardia.</p>
+<p>Ele me abraçou e eu chorei.</p>
+<p>Eu sempre sentia isso, mas antes não sabia o que era.</p>
+<p>Agora eu sabia.</p>
+<p class="destaque">Era Jesus falando.</p>
+<p>Naquele dia, foi a primeira vez que senti a presença de Deus.</p>
+<p>Depois disso, fui arrumar a casa e fiz tudo enquanto orava.</p>
+<p>E aquela foi a primeira vez em toda a minha vida que realmente orei de todo o coração, que realmente falei com Deus e senti que Ele estava presente, em vez de falar palavras repetidas e vazias.</p>
+<p>Orei por uns dez minutos enquanto arrumava a casa.</p>
+<p>E, desde o momento em que o papai falou sobre o coração arder, até eu arrumar a casa e até o fim da janta, fiquei sentindo meu coração arder.</p>
+<p>Todo esse tempo.</p>
+<p>Eu queria chorar, mas por algo que não conseguia entender.</p>
+<p>Era como se fosse um sentimento novo, algo tão diferente que meu cérebro não sabia como processar.</p>
+<p>Então, a única reação era querer chorar.</p>
+<p>Era da mesma forma que um bebê que está sentindo tudo pela primeira vez tende a chorar por tudo.</p>
+<p>Eu estava sentindo aquilo novamente enquanto escrevia.</p>
+<p>E esperava que continuasse sentindo.</p>
+<p>Orei a Deus dizendo que não queria sair do caminho e perguntando se eu tomaria a escolha certa.</p>
+<p>Porque, mesmo com o livre-arbítrio, eu não sabia o que eu mesma havia escolhido ou o que eu mesma escolheria.</p>
+<p>Eu não queria me afastar dEle.</p>
+<p>Eu O amava e queria estar com Ele, do mesmo jeito que havia estado naquele dia.</p>
+<p>Eu queria me banhar em lágrimas por Ele.</p>
+<p>Eu não queria me afastar de novo.</p>
+<p>Depois, orei novamente.</p>
+<p>Foi tão bom quanto da última vez.</p>
+<p>Chorei como nunca havia chorado.</p>
+<p>Eu queria espalhar a Palavra.</p>
+<p>Queria pregar o Evangelho.</p>
+<p>Queria seguir Jesus.</p>
+<p>Queria que Ele me desse ordens e queria obedecê-las.</p>
+<p>Queria ser uma nova pessoa.</p>
+<p>Queria deitar no peito dEle e ouvir o Seu coração.</p>
+<p>Queria trazer novas pessoas para Ele.</p>
+<p>Queria que outras pessoas sentissem o que eu havia sentido em dobro.</p>
+<p>Eu nunca havia me sentido tão em paz em toda a minha vida.</p>
+<p>Queria aceitá-Lo sem vergonha disso.</p>
+<p>Queria viver coisas como as que meu pai havia vivido.</p>
+<p>Queria cumprir a promessa dEle em mim, mas que fosse a vontade dEle e não a minha.</p>
+<p>Eu estava tão feliz.</p>
+<p>Queria ser uma nova pessoa.</p>
+<p>Queria estar com Ele.</p>
+<p>E, se eu ousasse me afastar, queria que o Senhor me puxasse pelos cabelos, mas não me deixasse dar sequer um passo para longe dEle.</p>
+<p>Eu preferia perder meu livre-arbítrio, minhas escolhas, a escolher me afastar dEle.</p>
+<p>Queria estar tão perto quanto conseguisse.</p>
+<p>Queria estar nos Seus braços.</p>
+<p>Queria que Ele me conhecesse.</p>
+<p>Queria ser Sua filha e seguidora.</p>
+<p>Queria ser útil ao Senhor.</p>
+
+<h2>Quando o coração encontra a Palavra</h2>
+
+<p>Ao ler o testemunho de Rachel, uma coisa se tornou especialmente preciosa.</p>
+<p>O coração havia ardido.</p>
+<p>As lágrimas haviam vindo.</p>
+<p>A presença de Deus havia sido percebida.</p>
+<p>Mas aquilo não havia terminado ali.</p>
+<p>No dia seguinte, havia fome pela Bíblia.</p>
+<p>Isso era significativo.</p>
+<p>A experiência havia produzido busca.</p>
+<p>E a busca havia conduzido às Escrituras.</p>
+
+<p>Jesus havia dito:</p>
+<blockquote>
+<p>“Examinais as Escrituras, porque vós cuidais ter nelas a vida eterna, e são elas que de mim testificam.”</p>
+<span class="referencia">João 5:39</span>
+</blockquote>
+
+<p>A Bíblia não era apenas um livro para ser admirado.</p>
+<p>Era a Palavra que apontava para Cristo.</p>
+<p>Por isso, quando uma pessoa realmente desejava conhecer Jesus, ela precisava aprender a amar Sua Palavra.</p>
+<p>Não apenas ouvir alguém falar.</p>
+<p>Não apenas assistir a uma pregação.</p>
+<p>Não apenas depender da experiência de outra pessoa.</p>
+<p>Era necessário abrir as Escrituras.</p>
+<p>Era necessário buscar.</p>
+<p>Era necessário perguntar.</p>
+<p>Era necessário permanecer.</p>
+
+<h2>Uma herança que não deveria ser apenas recebida</h2>
+
+<p>Como pai, aquela experiência também me ensinou algo sobre herança espiritual.</p>
+<p>Eu poderia transmitir ensinamentos.</p>
+<p>Poderia compartilhar experiências.</p>
+<p>Poderia contar aquilo que Deus havia feito comigo.</p>
+<p>Mas não poderia transferir minha caminhada para minha filha.</p>
+<p>Ela precisava caminhar.</p>
+<p>Precisava buscar.</p>
+<p>Precisava aprender.</p>
+<p>Precisava conhecer.</p>
+<p>Precisava desenvolver sua própria fé.</p>
+<p>A fé não deveria ser apenas uma história contada pelos pais.</p>
+<p>Deveria se tornar uma realidade vivida diante de Deus.</p>
+
+<p>Paulo escreveu a Timóteo lembrando-o de sua fé e de seu aprendizado nas Escrituras:</p>
+<blockquote>
+<p>“E que desde a tua meninice sabes as sagradas letras, que podem fazer-te sábio para a salvação.”</p>
+<span class="referencia">2 Timóteo 3:15</span>
+</blockquote>
+
+<p>A Palavra recebida na juventude poderia acompanhar uma pessoa por toda a vida.</p>
+<p>Por isso, naquele momento, eu não queria apenas que minha filha tivesse ouvido uma boa explicação sobre Emaús.</p>
+<p>Eu queria que ela continuasse caminhando.</p>
+
+<h2>O coração que arde continua caminhando</h2>
+
+<p>Os discípulos de Emaús não ficaram parados.</p>
+<p>Depois de reconhecerem Jesus, levantaram-se e voltaram para Jerusalém.</p>
+<p>O encontro produziu movimento.</p>
+<p>O coração havia ardido.</p>
+<p>Os olhos haviam sido abertos.</p>
+<p>E eles voltaram para testemunhar aquilo que haviam experimentado.</p>
+<p>Esse princípio também estava presente no testemunho de Rachel.</p>
+<p>Ela havia chorado.</p>
+<p>Havia sentido a presença de Deus.</p>
+<p>Havia experimentado algo que não conseguia explicar completamente.</p>
+<p>Mas depois começou a orar.</p>
+<p>Depois começou a buscar.</p>
+<p>Depois começou a desejar conhecer mais.</p>
+<p>O coração que arde não deveria permanecer apenas emocionado.</p>
+<p class="destaque">O coração que arde deveria continuar caminhando.</p>
+
+<h2>A Palavra permanece</h2>
+
+<p>Talvez um dia eu não estivesse presente para responder uma pergunta.</p>
+<p>Talvez minha voz não estivesse por perto.</p>
+<p>Talvez minha filha enfrentasse situações nas quais precisasse tomar decisões sem poder me consultar.</p>
+<p>Mas havia algo que permaneceria.</p>
+<p>A Palavra.</p>
+
+<p>Jesus disse:</p>
+<blockquote>
+<p>“O céu e a terra passarão, mas as minhas palavras não hão de passar.”</p>
+<span class="referencia">Mateus 24:35</span>
+</blockquote>
+
+<p>Essa era a segurança.</p>
+<p>Minha voz passaria.</p>
+<p>Minha presença física seria limitada.</p>
+<p>Minhas experiências eram minhas.</p>
+<p>Mas a Palavra de Deus permaneceria.</p>
+<p>Por isso, o maior presente que eu poderia deixar não seria apenas aquilo que eu havia aprendido.</p>
+<p>Seria ajudá-la a amar a Palavra.</p>
+<p>Porque, quando a Palavra estivesse diante dela, Cristo continuaria falando.</p>
+
+<h2>Uma simples chamada</h2>
+
+<p>Aquela chamada de vídeo parecia simples.</p>
+<p>Um discípulo queria aprender.</p>
+<p>Eu queria ensinar.</p>
+<p>Minha filha estava presente.</p>
+<p>Mas Deus fez daquela ocasião algo que eu não havia planejado.</p>
+<p>Uma conversa tornou-se uma oportunidade.</p>
+<p>Uma explicação sobre Emaús tornou-se uma experiência pessoal.</p>
+<p>Uma lágrima tornou-se fome.</p>
+<p>A fome levou à Bíblia.</p>
+<p>E a Bíblia continuou apontando para Jesus.</p>
+<p>Foi por isso que aquela noite ficou guardada em minha memória.</p>
+<p>Porque, quando pensamos que estamos apenas ensinando alguém, não sabemos o que Deus está fazendo ao redor.</p>
+<p>Talvez alguém esteja ouvindo em silêncio.</p>
+<p>Talvez uma criança esteja prestando atenção.</p>
+<p>Talvez um filho esteja observando.</p>
+<p>Talvez alguém esteja recebendo uma Palavra que só compreenderá depois.</p>
+<p>Por isso, vale a pena falar.</p>
+<p>Vale a pena ensinar.</p>
+<p>Vale a pena abrir as Escrituras.</p>
+<p>Vale a pena continuar proclamando Cristo.</p>
+
+<h2>Para guardar no coração</h2>
+
+<p class="destaque">Não espere estar diante de uma multidão para ensinar a Palavra.</p>
+<p>Uma tela pode ser suficiente.</p>
+<p>Uma conversa pode ser suficiente.</p>
+<p>Uma sala pode ser suficiente.</p>
+<p>Uma família pode ser suficiente.</p>
+<p>Uma pessoa pode ser suficiente.</p>
+<p>Porque Jesus não precisava de uma multidão para fazer um coração arder.</p>
+<p>Ele encontrou dois homens no caminho.</p>
+<p>Abriu as Escrituras.</p>
+<p>E o coração deles ardeu.</p>
+<p>Naquela noite, uma chamada de vídeo também se tornou um caminho.</p>
+<p>Eu pensei que estava ensinando um discípulo.</p>
+<p>Minha filha estava ouvindo.</p>
+<p>Deus estava trabalhando.</p>
+<p>E, no dia seguinte, ela abriu a Bíblia.</p>
+<p>Foi então que compreendi novamente:</p>
+<p class="destaque">O objetivo não é formar pessoas que dependam da nossa voz.</p>
+<p class="destaque">O objetivo é conduzi-las até Cristo.</p>
+<p class="destaque">O objetivo não é produzir admiradores.</p>
+<p class="destaque">É formar discípulos.</p>
+<p class="destaque">O objetivo não é transmitir apenas uma experiência.</p>
+<p class="destaque">É despertar fome pela Palavra.</p>
+<p>E quando a Palavra é aberta, Cristo continua sendo encontrado.</p>
+<p>Quando Cristo fala, o coração arde.</p>
+<p>Quando o coração arde, nasce a fome.</p>
+<p>Quando nasce a fome, começa a busca.</p>
+<p>E quando a busca continua, a caminhada se aprofunda.</p>
+<p>Naquela noite, minha filha descobriu algo que já havia acontecido muitas vezes comigo:</p>
+<p class="destaque">Jesus ainda fala.</p>
+<p>Ele ainda caminha conosco.</p>
+<p>Ele ainda abre as Escrituras.</p>
+<p>Ele ainda toca corações.</p>
+<p>Ele ainda desperta fome.</p>
+<p>Ele ainda chama.</p>
+<p>Ele ainda transforma lágrimas em busca.</p>
+<p>E quando Ele fala...</p>
+<p class="centralizado">O CORAÇÃO ARDE.</p>
+<p class="assinatura">Ministério Atalaia</p>
+<p class="assinatura">Diego Nascimento — Pastor Evangelista</p>
+
+</article>
+
+<script>
+(() => {
+    "use strict";
+
+    const fonte = document.getElementById("fonte-conteudo");
+    const livro = document.getElementById("livro");
+    const botaoAnterior = document.getElementById("anterior");
+    const botaoProxima = document.getElementById("proxima");
+    const contador = document.getElementById("contador");
+
+    let paginas = [];
+    let paginaAtual = 0;
+    let mobile = window.matchMedia("(max-width: 620px)").matches;
+
+    /*
+       A paginação é feita em quatro colunas por abertura:
+       coluna 1 e 2 na página esquerda;
+       coluna 3 e 4 na página direita.
+
+       No celular, cada página exibe uma coluna de leitura,
+       mantendo o conteúdo integral e na ordem original.
+    */
+
+    function criarPagina(numero, lado) {
+        const pagina = document.createElement("section");
+        pagina.className = "pagina " + lado;
+        pagina.dataset.numero = numero;
+
+        const cabecalho = document.createElement("div");
+        cabecalho.className = "pagina-cabecalho";
+        cabecalho.innerHTML = `
+            <span>ATOS 29 • A HISTÓRIA CONTINUA</span>
+            <span>CAPÍTULO 23</span>
+        `;
+
+        const conteudo = document.createElement("div");
+        conteudo.className = "pagina-conteudo";
+
+        const coluna1 = document.createElement("div");
+        coluna1.className = "coluna";
+
+        const coluna2 = document.createElement("div");
+        coluna2.className = "coluna";
+
+        conteudo.append(coluna1, coluna2);
+
+        const rodape = document.createElement("div");
+        rodape.className = "pagina-rodape";
+        rodape.innerHTML = `
+            <span>MINISTÉRIO ATALAIA</span>
+            <span class="numero-pagina">${numero}</span>
+        `;
+
+        pagina.append(cabecalho, conteudo, rodape);
+
+        return {
+            pagina,
+            colunas: [coluna1, coluna2]
+        };
+    }
+
+    function criarGrupo(elementos) {
+        const grupo = document.createElement("div");
+        grupo.className = "grupo-paginacao";
+
+        elementos.forEach(elemento => {
+            grupo.appendChild(elemento.cloneNode(true));
+        });
+
+        return grupo;
+    }
+
+    function medirEstouro(coluna) {
+        return coluna.scrollHeight > coluna.clientHeight + 1;
+    }
+
+    function inserirNaColuna(coluna, elemento) {
+        coluna.appendChild(elemento);
+        return medirEstouro(coluna);
+    }
+
+    function prepararConteudo() {
+        const elementos = Array.from(fonte.children);
+        const unidades = [];
+
+        /*
+          Cada título de seção é agrupado com o elemento seguinte,
+          evitando deixar um subtítulo isolado no final da coluna.
+        */
+        for (let i = 0; i < elementos.length; i++) {
+            const atual = elementos[i];
+
+            if (
+                atual.tagName === "H2" ||
+                atual.tagName === "H1" ||
+                atual.tagName === "H3"
+            ) {
+                const grupo = [atual];
+
+                if (elementos[i + 1]) {
+                    grupo.push(elementos[i + 1]);
+                    i++;
+                }
+
+                unidades.push(criarGrupo(grupo));
+            } else {
+                unidades.push(criarGrupo([atual]));
+            }
+        }
+
+        return unidades;
+    }
+
+    function numerarParagrafos(unidades) {
+        let numeroPrincipal = 1;
+        let numeroRachel = 1;
+        let numeroDepoisRachel = 258;
+        let fase = "principal";
+
+        unidades.forEach(unidade => {
+            const texto = unidade.textContent.toUpperCase();
+
+            if (texto.includes("TESTEMUNHO DE RACHEL CHIRANO DO NASCIMENTO")) {
+                fase = "rachel";
+            }
+
+            if (texto.includes("QUANDO O CORAÇÃO ENCONTRA A PALAVRA")) {
+                fase = "depois";
+            }
+
+            const paragrafos = unidade.querySelectorAll("p");
+
+            paragrafos.forEach(paragrafo => {
+                if (
+                    paragrafo.classList.contains("destaque") ||
+                    paragrafo.classList.contains("centralizado") ||
+                    paragrafo.classList.contains("assinatura") ||
+                    paragrafo.closest("blockquote")
+                ) {
+                    paragrafo.classList.add("sem-numero");
+                    return;
+                }
+
+                let numero;
+
+                if (fase === "principal") {
+                    numero = numeroPrincipal++;
+                } else if (fase === "rachel") {
+                    numero = numeroRachel++;
+                } else {
+                    numero = numeroDepoisRachel++;
+                }
+
+                const marcador = document.createElement("sup");
+                marcador.className = "numero-paragrafo";
+                marcador.textContent = numero;
+
+                paragrafo.insertBefore(marcador, paragrafo.firstChild);
+            });
+        });
+    }
+
+    function construirLivro() {
+        livro.innerHTML = "";
+        paginas = [];
+        paginaAtual = 0;
+        mobile = window.matchMedia("(max-width: 620px)").matches;
+
+        const unidades = prepararConteudo();
+        numerarParagrafos(unidades);
+
+        /*
+          Primeiro cria páginas de medição fora da tela.
+          Depois distribui o texto conforme a altura disponível.
+        */
+        const medidor = document.createElement("div");
+        medidor.style.position = "absolute";
+        medidor.style.left = "-10000px";
+        medidor.style.top = "0";
+        medidor.style.width = mobile ? "390px" : "1140px";
+        medidor.style.visibility = "hidden";
+        document.body.appendChild(medidor);
+
+        let paginaEsquerda = criarPagina(1, "esquerda");
+        let paginaDireita = criarPagina(2, "direita");
+
+        medidor.append(paginaEsquerda.pagina, paginaDireita.pagina);
+
+        let lado = 0;
+        let coluna = 0;
+        let numeroPagina = 1;
+        let conjuntoAtual = [paginaEsquerda, paginaDireita];
+
+        function colunaAtual() {
+            if (mobile) {
+                return conjuntoAtual[0].colunas[0];
+            }
+
+            return conjuntoAtual[lado].colunas[coluna];
+        }
+
+        function avancarColuna() {
+            if (mobile) {
+                numeroPagina++;
+                const nova = criarPagina(numeroPagina, "direita");
+                medidor.appendChild(nova.pagina);
+                conjuntoAtual = [nova];
+                lado = 0;
+                coluna = 0;
+                return;
+            }
+
+            if (coluna === 0) {
+                coluna = 1;
+                return;
+            }
+
+            coluna = 0;
+
+            if (lado === 0) {
+                lado = 1;
+                return;
+            }
+
+            numeroPagina += 2;
+
+            paginaEsquerda = criarPagina(numeroPagina, "esquerda");
+            paginaDireita = criarPagina(numeroPagina + 1, "direita");
+
+            medidor.append(paginaEsquerda.pagina, paginaDireita.pagina);
+
+            conjuntoAtual = [paginaEsquerda, paginaDireita];
+            lado = 0;
+            coluna = 0;
+        }
+
+        unidades.forEach(unidade => {
+            let elemento = unidade.cloneNode(true);
+            let destino = colunaAtual();
+
+            destino.appendChild(elemento);
+
+            if (medirEstouro(destino)) {
+                destino.removeChild(elemento);
+
+                avancarColuna();
+                destino = colunaAtual();
+
+                elemento = unidade.cloneNode(true);
+                destino.appendChild(elemento);
+
+                /*
+                  Uma unidade isolada muito grande permanece inteira.
+                  O tamanho da fonte é reduzido ligeiramente apenas
+                  nesse caso para evitar corte do conteúdo.
+                */
+                if (medirEstouro(destino)) {
+                    elemento.style.fontSize = "9px";
+                    elemento.style.lineHeight = "1.32";
+                }
+            }
+        });
+
+        medidor.remove();
+
+        /*
+          Recolhe as páginas criadas na área de medição e as coloca
+          na estrutura final. A ordem de leitura é preservada.
+        */
+        const paginasGeradas = Array.from(
+            document.querySelectorAll("body > .pagina")
+        );
+
+        paginasGeradas.forEach(pagina => pagina.remove());
+
+        const todasPaginas = Array.from(
+            document.querySelectorAll(".pagina")
+        ).filter(p => p.closest("#livro") === null);
+
+        /*
+          A paginação é refeita diretamente no livro final,
+          usando as unidades já numeradas.
+        */
+        livro.innerHTML = "";
+        paginas = [];
+
+        let paginaNumero = 1;
+        let parAtual = criarPagina(1, "esquerda");
+        let imparAtual = criarPagina(2, "direita");
+
+        livro.append(parAtual.pagina, imparAtual.pagina);
+
+        let paginaGrupo = [parAtual, imparAtual];
+        let ladoGrupo = 0;
+        let colunaGrupo = 0;
+
+        function colunaDestino() {
+            if (mobile) return paginaGrupo[0].colunas[0];
+            return paginaGrupo[ladoGrupo].colunas[colunaGrupo];
+        }
+
+        function proximaColuna() {
+            if (mobile) {
+                paginaNumero++;
+                const novaPagina = criarPagina(paginaNumero, "direita");
+                livro.appendChild(novaPagina.pagina);
+                paginaGrupo = [novaPagina];
+                ladoGrupo = 0;
+                colunaGrupo = 0;
+                return;
+            }
+
+            if (colunaGrupo === 0) {
+                colunaGrupo = 1;
+                return;
+            }
+
+            colunaGrupo = 0;
+
+            if (ladoGrupo === 0) {
+                ladoGrupo = 1;
+                return;
+            }
+
+            paginaNumero += 2;
+
+            const novaEsquerda = criarPagina(paginaNumero, "esquerda");
+            const novaDireita = criarPagina(paginaNumero + 1, "direita");
+
+            livro.append(novaEsquerda.pagina, novaDireita.pagina);
+            paginaGrupo = [novaEsquerda, novaDireita];
+            ladoGrupo = 0;
+            colunaGrupo = 0;
+        }
+
+        /*
+          A distribuição final utiliza a altura real das páginas.
+          Cada bloco é transferido integralmente para a próxima
+          coluna sempre que não couber na coluna atual.
+        */
+        const fila = unidades.map(u => u.cloneNode(true));
+
+        fila.forEach(unidade => {
+            let destino = colunaDestino();
+            destino.appendChild(unidade);
+
+            if (medirEstouro(destino)) {
+                destino.removeChild(unidade);
+                proximaColuna();
+
+                destino = colunaDestino();
+                destino.appendChild(unidade);
+            }
+        });
+
+        /*
+          Em telas pequenas, a página possui apenas uma coluna.
+          Em computadores, cada página mantém duas colunas.
+        */
+        const paginasFisicas = Array.from(livro.querySelectorAll(".pagina"));
+
+        paginasFisicas.forEach((pagina, indice) => {
+            const colunas = pagina.querySelectorAll(".coluna");
+
+            if (mobile) {
+                colunas[0].classList.add("coluna-mobile");
+                colunas[1].style.display = "none";
+            }
+
+            pagina.dataset.indice = indice;
+        });
+
+        paginas = paginasFisicas;
+
+        if (mobile) {
+            /*
+              Cada página móvel representa uma página física.
+              A paginação sequencial é mantida.
+            */
+            paginas.forEach((pagina, indice) => {
+                pagina.querySelector(".numero-pagina").textContent = indice + 1;
+            });
+        } else {
+            /*
+              As páginas são exibidas em pares, como um livro aberto.
+            */
+            paginas.forEach((pagina, indice) => {
+                pagina.querySelector(".numero-pagina").textContent = indice + 1;
+            });
+        }
+
+        atualizarVisualizacao();
+    }
+
+    function atualizarVisualizacao() {
+        mobile = window.matchMedia("(max-width: 620px)").matches;
+
+        if (mobile) {
+            paginas.forEach((pagina, indice) => {
+                pagina.classList.toggle("ativa", indice === paginaAtual);
+            });
+
+            contador.textContent =
+                `Página ${paginaAtual + 1} de ${paginas.length}`;
+
+            botaoAnterior.disabled = paginaAtual === 0;
+            botaoProxima.disabled = paginaAtual >= paginas.length - 1;
+        } else {
+            const inicio = Math.floor(paginaAtual / 2) * 2;
+
+            paginas.forEach((pagina, indice) => {
+                pagina.style.display =
+                    indice === inicio || indice === inicio + 1
+                        ? "block"
+                        : "none";
+            });
+
+            const paginaEsquerda = Math.min(inicio + 1, paginas.length);
+            const paginaDireita = Math.min(inicio + 2, paginas.length);
+
+            contador.textContent =
+                `${paginaEsquerda}–${paginaDireita} / ${paginas.length}`;
+
+            botaoAnterior.disabled = inicio === 0;
+            botaoProxima.disabled = inicio + 2 >= paginas.length;
+        }
+    }
+
+    function irAnterior() {
+        if (mobile) {
+            if (paginaAtual > 0) paginaAtual--;
+        } else {
+            paginaAtual = Math.max(0, Math.floor(paginaAtual / 2) * 2 - 2);
+        }
+
+        atualizarVisualizacao();
+    }
+
+    function irProxima() {
+        if (mobile) {
+            if (paginaAtual < paginas.length - 1) paginaAtual++;
+        } else {
+            const inicio = Math.floor(paginaAtual / 2) * 2;
+            if (inicio + 2 < paginas.length) paginaAtual = inicio + 2;
+        }
+
+        atualizarVisualizacao();
+    }
+
+    botaoAnterior.addEventListener("click", irAnterior);
+    botaoProxima.addEventListener("click", irProxima);
+
+    document.addEventListener("keydown", evento => {
+        if (evento.key === "ArrowLeft") {
+            irAnterior();
+        }
+
+        if (evento.key === "ArrowRight") {
+            irProxima();
+        }
+    });
+
+    let larguraAnterior = window.innerWidth;
+
+    window.addEventListener("resize", () => {
+        if (Math.abs(window.innerWidth - larguraAnterior) > 80) {
+            larguraAnterior = window.innerWidth;
+            construirLivro();
+        }
+    });
+
+    /*
+      Aguarda a renderização do navegador para calcular as alturas
+      reais das colunas e construir as páginas.
+    */
+    window.addEventListener("load", () => {
+        requestAnimationFrame(() => {
+            requestAnimationFrame(construirLivro);
+        });
+    });
+
+})();
+</script>
+
+</body>
+</html>

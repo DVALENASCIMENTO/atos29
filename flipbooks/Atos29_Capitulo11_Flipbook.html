@@ -1,0 +1,1224 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>ATOS 29 — Capítulo 11 | O Anjo de Luz e o Discernimento Espiritual</title>
+
+<style>
+:root {
+    --fundo: #17130f;
+    --papel: #f3ead4;
+    --papel-claro: #f8f1df;
+    --tinta: #302719;
+    --tinta-suave: #675943;
+    --linha: rgba(85, 65, 39, .23);
+    --sombra: rgba(0, 0, 0, .55);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    padding: 25px 12px 35px;
+    background:
+        radial-gradient(ellipse at center, #40372b 0%, #211b15 55%, #100e0c 100%);
+    color: #eee4d1;
+    font-family: Georgia, "Times New Roman", serif;
+}
+
+.topo {
+    text-align: center;
+    margin-bottom: 22px;
+}
+
+.topo h1 {
+    margin: 0;
+    font-size: 19px;
+    letter-spacing: 3px;
+    font-weight: normal;
+}
+
+.topo p {
+    margin: 7px 0 0;
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: #c4b69e;
+}
+
+.livro-area {
+    width: min(1200px, 100%);
+    margin: auto;
+}
+
+.livro {
+    position: relative;
+    width: 100%;
+    min-height: 650px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    perspective: 1800px;
+    filter: drop-shadow(0 20px 25px var(--sombra));
+}
+
+.pagina {
+    position: relative;
+    min-width: 0;
+    height: 650px;
+    overflow: hidden;
+    padding: 35px 30px 42px;
+    color: var(--tinta);
+    background:
+        radial-gradient(ellipse at 20% 15%, rgba(255,255,255,.35), transparent 45%),
+        radial-gradient(ellipse at 80% 85%, rgba(160,125,70,.08), transparent 45%),
+        repeating-linear-gradient(
+            0deg,
+            rgba(105, 79, 42, .018) 0px,
+            rgba(105, 79, 42, .018) 1px,
+            transparent 1px,
+            transparent 4px
+        ),
+        var(--papel);
+}
+
+.pagina.esquerda {
+    border-radius: 5px 0 0 5px;
+    box-shadow: inset -12px 0 18px -16px rgba(0,0,0,.8);
+}
+
+.pagina.direita {
+    border-radius: 0 5px 5px 0;
+    box-shadow: inset 12px 0 18px -16px rgba(0,0,0,.8);
+}
+
+.livro::after {
+    content: "";
+    position: absolute;
+    z-index: 5;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 18px;
+    transform: translateX(-50%);
+    pointer-events: none;
+    background: linear-gradient(
+        to right,
+        rgba(70,50,25,.18),
+        rgba(255,255,255,.20),
+        rgba(70,50,25,.18)
+    );
+}
+
+.cabecalho-pagina {
+    height: 28px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 8px;
+    border-bottom: 1px solid var(--linha);
+    padding-bottom: 8px;
+    margin-bottom: 15px;
+    color: var(--tinta-suave);
+    font-size: 9px;
+    letter-spacing: 1.1px;
+    text-transform: uppercase;
+}
+
+.cabecalho-pagina span:last-child {
+    text-align: right;
+}
+
+.conteudo-pagina {
+    height: calc(100% - 75px);
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 22px;
+    overflow: hidden;
+}
+
+.coluna {
+    min-width: 0;
+    height: 100%;
+    overflow: hidden;
+    font-size: 12.4px;
+    line-height: 1.48;
+    text-align: justify;
+    overflow-wrap: break-word;
+    hyphens: auto;
+}
+
+.bloco {
+    margin: 0 0 8px;
+    break-inside: avoid;
+}
+
+.bloco p {
+    margin: 0;
+    text-indent: 10px;
+}
+
+.bloco p.sem-recuo {
+    text-indent: 0;
+}
+
+.numero {
+    display: inline-block;
+    vertical-align: super;
+    font-size: .66em;
+    line-height: 0;
+    font-weight: bold;
+    margin-right: 3px;
+    color: #59462d;
+}
+
+.titulo-capitulo {
+    text-align: center;
+    margin: 10px 0 17px;
+}
+
+.titulo-capitulo .identificacao {
+    display: block;
+    font-size: 9px;
+    letter-spacing: 2px;
+    margin-bottom: 8px;
+    color: var(--tinta-suave);
+}
+
+.titulo-capitulo h2 {
+    font-size: 17px;
+    line-height: 1.25;
+    margin: 0;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.subtitulo {
+    font-size: 11px;
+    line-height: 1.3;
+    text-align: left;
+    text-transform: uppercase;
+    font-weight: bold;
+    margin: 13px 0 8px;
+    letter-spacing: .35px;
+    color: #382b1c;
+}
+
+.citacao {
+    margin: 9px 8px 12px 15px;
+    padding: 0;
+    border: 0;
+    font-style: italic;
+    font-size: 11.8px;
+    line-height: 1.45;
+    text-align: left;
+}
+
+.citacao p {
+    margin: 0;
+    text-indent: 0;
+}
+
+.referencia {
+    display: block;
+    margin-top: 4px;
+    font-size: 10px;
+    font-style: normal;
+    font-weight: bold;
+    text-align: right;
+    color: var(--tinta-suave);
+}
+
+.destaque {
+    font-weight: bold;
+    font-style: normal;
+}
+
+.fechamento {
+    text-align: center;
+    font-weight: bold;
+    margin: 9px 0;
+}
+
+.rodape-pagina {
+    position: absolute;
+    bottom: 17px;
+    left: 30px;
+    right: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 1px solid var(--linha);
+    padding-top: 7px;
+    font-size: 9px;
+    letter-spacing: 1.2px;
+    color: var(--tinta-suave);
+}
+
+.rodape-pagina span:last-child {
+    font-size: 10px;
+    letter-spacing: 0;
+}
+
+.controles {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 18px;
+    margin: 22px auto 0;
+}
+
+.controles button {
+    border: 1px solid #9c896b;
+    border-radius: 3px;
+    background: #30271d;
+    color: #f3ead4;
+    padding: 11px 22px;
+    font-family: Georgia, serif;
+    font-size: 11px;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: .2s;
+}
+
+.controles button:hover {
+    background: #57442e;
+}
+
+.controles button:disabled {
+    opacity: .35;
+    cursor: not-allowed;
+}
+
+.indicador {
+    min-width: 100px;
+    text-align: center;
+    font-size: 12px;
+    color: #d7c8ad;
+}
+
+.instrucao {
+    margin-top: 13px;
+    text-align: center;
+    font-size: 10px;
+    color: #b8aa93;
+    letter-spacing: .5px;
+}
+
+.assinatura {
+    text-align: center;
+    margin-top: 28px;
+    color: #b8aa93;
+    font-size: 10px;
+    letter-spacing: 2px;
+}
+
+/* Animação discreta */
+
+.livro.animando .pagina {
+    animation: virar .28s ease;
+}
+
+@keyframes virar {
+    0% {
+        opacity: .65;
+        transform: rotateY(2deg);
+    }
+    100% {
+        opacity: 1;
+        transform: rotateY(0);
+    }
+}
+
+/* Área invisível utilizada para medir os blocos */
+
+.medidor {
+    position: fixed;
+    left: -10000px;
+    top: 0;
+    visibility: hidden;
+    pointer-events: none;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.medidor-coluna {
+    width: 100%;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 12.4px;
+    line-height: 1.48;
+    text-align: justify;
+    overflow-wrap: break-word;
+    hyphens: auto;
+}
+
+/* Tablet */
+
+@media (max-width: 900px) {
+    .pagina {
+        padding-left: 22px;
+        padding-right: 22px;
+    }
+
+    .conteudo-pagina {
+        gap: 14px;
+    }
+
+    .coluna {
+        font-size: 11.5px;
+    }
+
+    .medidor-coluna {
+        font-size: 11.5px;
+    }
+
+    .titulo-capitulo h2 {
+        font-size: 15px;
+    }
+}
+
+/* Celular: uma página por vez e uma coluna */
+
+@media (max-width: 650px) {
+    body {
+        padding: 15px 8px 25px;
+    }
+
+    .topo h1 {
+        font-size: 15px;
+        letter-spacing: 2px;
+    }
+
+    .livro {
+        display: block;
+        min-height: 650px;
+    }
+
+    .livro::after {
+        display: none;
+    }
+
+    .pagina {
+        display: none;
+        height: 650px;
+        border-radius: 4px !important;
+        padding: 25px 23px 42px;
+        box-shadow: 0 8px 22px rgba(0,0,0,.4);
+    }
+
+    .pagina.mobile-visivel {
+        display: block;
+    }
+
+    .conteudo-pagina {
+        display: block;
+    }
+
+    .coluna {
+        display: none;
+        font-size: 13px;
+        line-height: 1.52;
+    }
+
+    .coluna.mobile-coluna {
+        display: block;
+    }
+
+    .titulo-capitulo h2 {
+        font-size: 17px;
+    }
+
+    .subtitulo {
+        font-size: 12px;
+    }
+
+    .citacao {
+        font-size: 12.5px;
+    }
+
+    .rodape-pagina {
+        left: 23px;
+        right: 23px;
+    }
+
+    .controles {
+        gap: 8px;
+    }
+
+    .controles button {
+        padding: 10px 13px;
+        font-size: 10px;
+    }
+
+    .indicador {
+        min-width: 75px;
+        font-size: 11px;
+    }
+}
+
+@media (max-width: 360px) {
+    .pagina {
+        padding-left: 18px;
+        padding-right: 18px;
+    }
+
+    .coluna {
+        font-size: 12px;
+    }
+
+    .rodape-pagina {
+        left: 18px;
+        right: 18px;
+    }
+}
+
+@media print {
+    body {
+        background: white;
+        padding: 0;
+    }
+
+    .topo,
+    .controles,
+    .instrucao,
+    .assinatura {
+        display: none;
+    }
+
+    .livro {
+        filter: none;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header class="topo">
+    <h1>ATOS 29 • A HISTÓRIA CONTINUA</h1>
+    <p>MINISTÉRIO ATALAIA</p>
+</header>
+
+<main class="livro-area">
+
+    <div class="livro" id="livro">
+
+        <section class="pagina esquerda" id="paginaEsquerda">
+            <div class="cabecalho-pagina">
+                <span>ATOS 29 • A HISTÓRIA CONTINUA</span>
+                <span>CAPÍTULO 11</span>
+            </div>
+
+            <div class="conteudo-pagina">
+                <div class="coluna" id="coluna1"></div>
+                <div class="coluna" id="coluna2"></div>
+            </div>
+
+            <div class="rodape-pagina">
+                <span>MINISTÉRIO ATALAIA</span>
+                <span class="numero-pagina"></span>
+            </div>
+        </section>
+
+        <section class="pagina direita" id="paginaDireita">
+            <div class="cabecalho-pagina">
+                <span>ATOS 29 • A HISTÓRIA CONTINUA</span>
+                <span>CAPÍTULO 11</span>
+            </div>
+
+            <div class="conteudo-pagina">
+                <div class="coluna" id="coluna3"></div>
+                <div class="coluna" id="coluna4"></div>
+            </div>
+
+            <div class="rodape-pagina">
+                <span>MINISTÉRIO ATALAIA</span>
+                <span class="numero-pagina"></span>
+            </div>
+        </section>
+
+    </div>
+
+    <nav class="controles" aria-label="Navegação do livro">
+        <button id="anterior" type="button">‹ ANTERIOR</button>
+        <span class="indicador" id="indicador">Páginas</span>
+        <button id="proxima" type="button">PRÓXIMA ›</button>
+    </nav>
+
+    <p class="instrucao">
+        Utilize os botões ou as setas do teclado para virar as páginas.
+    </p>
+
+    <p class="assinatura">
+        ATOS 29 — A HISTÓRIA CONTINUA • MINISTÉRIO ATALAIA
+    </p>
+
+</main>
+
+<div class="medidor" id="medidor">
+    <div class="medidor-coluna" id="medidorColuna"></div>
+</div>
+
+<script>
+"use strict";
+
+/* =====================================================
+   CONTEÚDO DO CAPÍTULO 11
+   Numeração preservada conforme o texto organizado.
+===================================================== */
+
+const conteudo = [
+
+{
+    tipo: "titulo",
+    html: `
+        <div class="titulo-capitulo">
+            <span class="identificacao">ATOS 29 • CAPÍTULO 11</span>
+            <h2>O ANJO DE LUZ E O DISCERNIMENTO ESPIRITUAL</h2>
+        </div>
+    `
+},
+
+{
+    tipo: "subtitulo",
+    html: "NEM TUDO O QUE PARECE ESPIRITUAL VEM DE DEUS"
+},
+
+{ tipo: "paragrafo", numero: 1, texto: "Certa vez, estávamos voltando da igreja para casa, depois de um culto." },
+
+{ tipo: "paragrafo", numero: 2, texto: "Foi então que eu vi um anjo vestido de branco. Diante daquela visão, eu disse às pessoas que estavam comigo:" },
+
+{ tipo: "citacao", texto: "“Olha, eu vi um anjo aqui.”" },
+
+{ tipo: "paragrafo", numero: 3, texto: "Mas algo aconteceu que chamou a nossa atenção." },
+
+{ tipo: "paragrafo", numero: 4, texto: "Não tivemos paz." },
+
+{ tipo: "paragrafo", numero: 5, texto: "Embora aquilo tivesse a aparência de um anjo, havia em nós um profundo discernimento de que aquela manifestação não vinha de Deus. Naquele momento, entendemos, pela nossa percepção espiritual, que se tratava de um demônio disfarçado de anjo de luz." },
+
+{ tipo: "paragrafo", numero: 6, texto: "Não quero acrescentar detalhes que não aconteceram. Quero apenas registrar aquilo que realmente vivemos." },
+
+{ tipo: "paragrafo", numero: 7, texto: "E foi justamente naquele momento que compreendemos uma verdade importante: nem tudo aquilo que parece ser luz deve ser recebido sem discernimento.", destaque: "nem tudo aquilo que parece ser luz deve ser recebido sem discernimento." },
+
+{ tipo: "citacao", texto: "“E não é de admirar, porque o próprio Satanás se transforma em anjo de luz.”", referencia: "2 Coríntios 11:14" },
+
+{
+    tipo: "subtitulo",
+    html: "O DISCERNIMENTO ESPIRITUAL"
+},
+
+{ tipo: "paragrafo", numero: 9, texto: "Aquela experiência me fez compreender ainda mais a importância de provar aquilo que se apresenta diante de nós." },
+
+{ tipo: "paragrafo", numero: 10, texto: "A Palavra de Deus diz:" },
+
+{ tipo: "citacao", texto: "“Amados, não creiais em todo espírito, mas provai se os espíritos são de Deus.”", referencia: "1 João 4:1" },
+
+{ tipo: "paragrafo", numero: 11, texto: "O fato de algo possuir uma aparência espiritual não significa, por si só, que tenha origem em Deus." },
+
+{ tipo: "paragrafo", numero: 12, texto: "Por isso, o cristão precisa permanecer fundamentado na Palavra." },
+
+{ tipo: "paragrafo", numero: 13, texto: "Naquela ocasião, não foi a aparência que determinou nossa atitude. Foi o discernimento que tivemos naquele momento." },
+
+{ tipo: "paragrafo", numero: 14, texto: "Não recebemos aquilo simplesmente porque parecia um anjo." },
+
+{
+    tipo: "subtitulo",
+    html: "UMA BATALHA ESPIRITUAL"
+},
+
+{ tipo: "paragrafo", numero: 15, texto: "Depois de percebermos que não havia paz, começamos a orar." },
+
+{ tipo: "paragrafo", numero: 16, texto: "Entramos em uma batalha espiritual." },
+
+{ tipo: "paragrafo", numero: 17, texto: "Não paramos imediatamente. Continuamos orando, buscando a Deus e resistindo espiritualmente até que finalmente tivemos paz." },
+
+{ tipo: "paragrafo", numero: 18, texto: "Foi então que entendemos, dentro daquela experiência, que aquela presença havia ido embora." },
+
+{ tipo: "paragrafo", numero: 19, texto: "A Palavra de Deus nos ensina:" },
+
+{ tipo: "citacao", texto: "“Sujeitai-vos, portanto, a Deus; mas resisti ao diabo, e ele fugirá de vós.”", referencia: "Tiago 4:7" },
+
+{ tipo: "paragrafo", numero: 20, texto: "A nossa reação não foi confiar em nós mesmos, nem tentar enfrentar aquilo por nossa própria força." },
+
+{ tipo: "paragrafo", numero: 21, texto: "Oramos." },
+
+{ tipo: "paragrafo", numero: 22, texto: "Buscamos a Deus." },
+
+{ tipo: "paragrafo", numero: 23, texto: "Permanecemos firmes." },
+
+{ tipo: "paragrafo", numero: 24, texto: "E esperamos até que a paz retornasse." },
+
+{
+    tipo: "subtitulo",
+    html: "A PAZ COMO SINAL DE DISCERNIMENTO"
+},
+
+{ tipo: "paragrafo", numero: 25, texto: "Uma das coisas que mais marcou aquela experiência foi justamente a ausência de paz." },
+
+{ tipo: "paragrafo", numero: 26, texto: "Depois de orarmos, quando a paz voltou, entendemos que a batalha havia terminado." },
+
+{ tipo: "paragrafo", numero: 27, texto: "Isso não significa que devemos transformar toda sensação de desconforto em uma conclusão espiritual. A nossa experiência foi específica e pessoal. O que posso testemunhar é aquilo que nós percebemos naquele momento: não tivemos paz, oramos e continuamos orando até que a paz retornasse.", destaque: "não tivemos paz, oramos e continuamos orando até que a paz retornasse." },
+
+{ tipo: "paragrafo", numero: 28, texto: "A Bíblia nos chama a examinar todas as coisas:" },
+
+{ tipo: "citacao", texto: "“Julgai todas as coisas, retende o que é bom.”", referencia: "1 Tessalonicenses 5:21" },
+
+{ tipo: "paragrafo", numero: 29, texto: "Discernimento não é viver com medo." },
+
+{ tipo: "paragrafo", numero: 30, texto: "Discernimento é permanecer atento." },
+
+{ tipo: "paragrafo", numero: 31, texto: "É conhecer a Palavra." },
+
+{ tipo: "paragrafo", numero: 32, texto: "É buscar a Deus." },
+
+{ tipo: "paragrafo", numero: 33, texto: "É não aceitar qualquer manifestação simplesmente porque parece sobrenatural." },
+
+{
+    tipo: "subtitulo",
+    html: "A ARMADURA DE DEUS"
+},
+
+{ tipo: "paragrafo", numero: 34, texto: "Paulo escreveu aos Efésios sobre uma realidade espiritual e ensinou que a nossa luta não é simplesmente contra aquilo que vemos." },
+
+{ tipo: "citacao", texto: "“Porque a nossa luta não é contra o sangue e a carne, e sim contra os principados e potestades...”", referencia: "Efésios 6:12" },
+
+{ tipo: "paragrafo", numero: 35, texto: "Por isso, ele apresenta a armadura de Deus: o cinturão da verdade, a couraça da justiça, o evangelho da paz, o escudo da fé, o capacete da salvação e a espada do Espírito, que é a Palavra de Deus." },
+
+{ tipo: "paragrafo", numero: 36, texto: "Aquele episódio me fez lembrar que a vida cristã exige vigilância." },
+
+{ tipo: "paragrafo", numero: 37, texto: "Não devemos procurar batalhas espirituais em todo lugar." },
+
+{ tipo: "paragrafo", numero: 38, texto: "Mas também não devemos ignorar aquilo que discernimos quando estamos diante de uma situação que exige oração e prudência." },
+
+{
+    tipo: "subtitulo",
+    html: "NÃO É A APARÊNCIA. É A VERDADE."
+},
+
+{ tipo: "paragrafo", numero: 39, texto: "Aquela experiência me ensinou algo que permanece comigo:" },
+
+{ tipo: "destaque", texto: "A aparência não pode substituir o discernimento." },
+
+{ tipo: "paragrafo", numero: 40, texto: "Algo pode parecer celestial." },
+
+{ tipo: "paragrafo", numero: 41, texto: "Pode parecer espiritual." },
+
+{ tipo: "paragrafo", numero: 42, texto: "Pode até apresentar uma aparência de luz." },
+
+{ tipo: "paragrafo", numero: 43, texto: "Mas o cristão precisa voltar sempre para a Palavra de Deus." },
+
+{ tipo: "paragrafo", numero: 44, texto: "A Bíblia é o nosso fundamento." },
+
+{ tipo: "paragrafo", numero: 45, texto: "Por isso, o maior perigo não está apenas em não enxergar aquilo que é espiritual, mas em aceitar qualquer coisa espiritual sem prová-la." },
+
+{ tipo: "paragrafo", numero: 46, texto: "João escreveu:" },
+
+{ tipo: "citacao", texto: "“Não creiais em todo espírito, mas provai se os espíritos são de Deus.”", referencia: "1 João 4:1" },
+
+{
+    tipo: "subtitulo",
+    html: "O CENTRO CONTINUA SENDO CRISTO"
+},
+
+{ tipo: "paragrafo", numero: 47, texto: "Ao recordar aquela noite, não quero colocar a experiência acima da Palavra de Deus." },
+
+{ tipo: "paragrafo", numero: 48, texto: "Também não quero que o testemunho produza medo." },
+
+{ tipo: "paragrafo", numero: 49, texto: "O objetivo é mostrar a importância do discernimento espiritual e da dependência de Deus." },
+
+{ tipo: "paragrafo", numero: 50, texto: "Nossa confiança não está em experiências sobrenaturais." },
+
+{ tipo: "paragrafo", numero: 51, texto: "Nossa confiança está em Jesus Cristo." },
+
+{ tipo: "paragrafo", numero: 52, texto: "A nossa segurança não está naquilo que vemos." },
+
+{ tipo: "paragrafo", numero: 53, texto: "Está naquele que não vemos, mas em quem cremos." },
+
+{ tipo: "citacao", texto: "“Porque andamos por fé e não pelo que vemos.”", referencia: "2 Coríntios 5:7" },
+
+{ tipo: "paragrafo", numero: 54, texto: "Naquela noite, vimos algo que interpretamos como uma manifestação espiritual, discernimos que não deveríamos recebê-la, começamos a orar e permanecemos em oração até que tivemos paz." },
+
+{ tipo: "paragrafo", numero: 55, texto: "Foi assim que vivemos aquela experiência." },
+
+{ tipo: "paragrafo", numero: 56, texto: "E é assim que quero registrá-la." },
+
+{
+    tipo: "subtitulo",
+    html: "ATOS 29"
+},
+
+{ tipo: "paragrafo", numero: 57, texto: "A igreja precisa de discernimento." },
+
+{ tipo: "paragrafo", numero: 58, texto: "Precisa conhecer a Palavra." },
+
+{ tipo: "paragrafo", numero: 59, texto: "Precisa orar." },
+
+{ tipo: "paragrafo", numero: 60, texto: "Precisa permanecer vigilante." },
+
+{ tipo: "paragrafo", numero: 61, texto: "Precisa saber que nem toda aparência espiritual deve ser aceita sem exame." },
+
+{ tipo: "paragrafo", numero: 62, texto: "Mas, acima de tudo, precisa permanecer em Cristo." },
+
+{ tipo: "paragrafo", numero: 63, texto: "Porque o propósito do discernimento não é produzir medo." },
+
+{ tipo: "paragrafo", numero: 64, texto: "É preservar a fé." },
+
+{ tipo: "paragrafo", numero: 65, texto: "É guardar o coração." },
+
+{ tipo: "paragrafo", numero: 66, texto: "É permanecer na verdade." },
+
+{ tipo: "paragrafo", numero: 67, texto: "É reconhecer aquilo que vem de Deus e rejeitar aquilo que não vem dele." },
+
+{ tipo: "paragrafo", numero: 68, texto: "E, quando enfrentarmos qualquer batalha, nossa confiança continuará sendo a mesma:" },
+
+{ tipo: "destaque", texto: "Jesus Cristo é o Senhor." },
+
+{ tipo: "citacao", texto: "“Maior é aquele que está em vós do que aquele que está no mundo.”", referencia: "1 João 4:4" },
+
+{ tipo: "paragrafo", numero: 69, texto: "ATOS 29 continua.", destaque: "ATOS 29 continua." },
+
+{ tipo: "paragrafo", numero: 70, texto: "Enquanto a Igreja estiver na terra, haverá testemunho, oração, discernimento, fé e proclamação do Evangelho." },
+
+{ tipo: "paragrafo", numero: 71, texto: "E tudo deve apontar para Cristo." }
+
+];
+
+
+/* =====================================================
+   CONSTRUÇÃO DOS BLOCOS
+===================================================== */
+
+function escaparHTML(texto) {
+    return String(texto).replace(/[&<>"']/g, caractere => ({
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        '"': "&quot;",
+        "'": "&#039;"
+    })[caractere]);
+}
+
+function criarHTML(item) {
+
+    if (item.tipo === "titulo") {
+        return item.html;
+    }
+
+    if (item.tipo === "subtitulo") {
+        return `<h3 class="subtitulo">${item.html}</h3>`;
+    }
+
+    if (item.tipo === "paragrafo") {
+
+        let texto = escaparHTML(item.texto);
+
+        if (item.destaque) {
+            const destaque = escaparHTML(item.destaque);
+            texto = texto.replace(
+                destaque,
+                `<strong class="destaque">${destaque}</strong>`
+            );
+        }
+
+        return `
+            <div class="bloco">
+                <p>
+                    <sup class="numero">${item.numero}</sup>
+                    ${texto}
+                </p>
+            </div>
+        `;
+    }
+
+    if (item.tipo === "citacao") {
+        return `
+            <div class="bloco">
+                <blockquote class="citacao">
+                    <p>${escaparHTML(item.texto)}</p>
+                    ${item.referencia
+                        ? `<span class="referencia">${escaparHTML(item.referencia)}</span>`
+                        : ""}
+                </blockquote>
+            </div>
+        `;
+    }
+
+    if (item.tipo === "destaque") {
+        return `
+            <div class="bloco fechamento">
+                <strong>${escaparHTML(item.texto)}</strong>
+            </div>
+        `;
+    }
+
+    return "";
+}
+
+
+/* =====================================================
+   PAGINAÇÃO AUTOMÁTICA POR MEDIÇÃO
+   Desktop: 4 colunas por abertura.
+   Celular: 1 coluna por página.
+===================================================== */
+
+const livro = document.getElementById("livro");
+const medidor = document.getElementById("medidor");
+const medidorColuna = document.getElementById("medidorColuna");
+
+const paginaEsquerda = document.getElementById("paginaEsquerda");
+const paginaDireita = document.getElementById("paginaDireita");
+
+const colunas = [
+    document.getElementById("coluna1"),
+    document.getElementById("coluna2"),
+    document.getElementById("coluna3"),
+    document.getElementById("coluna4")
+];
+
+const indicador = document.getElementById("indicador");
+const botaoAnterior = document.getElementById("anterior");
+const botaoProxima = document.getElementById("proxima");
+
+let paginas = [];
+let indiceAtual = 0;
+let modoMobile = false;
+
+function obterModoMobile() {
+    return window.matchMedia("(max-width: 650px)").matches;
+}
+
+function criarMedidor() {
+
+    const larguraPagina = paginaEsquerda.clientWidth;
+
+    const estilo = getComputedStyle(paginaEsquerda);
+
+    const larguraInterna =
+        larguraPagina -
+        parseFloat(estilo.paddingLeft) -
+        parseFloat(estilo.paddingRight);
+
+    const larguraColuna = modoMobile
+        ? larguraInterna
+        : (larguraInterna - 22) / 2;
+
+    const alturaInterna =
+        paginaEsquerda.clientHeight -
+        28 -
+        15 -
+        42 -
+        10;
+
+    medidor.style.width = larguraColuna + "px";
+
+    medidorColuna.style.width = larguraColuna + "px";
+    medidorColuna.style.height = alturaInterna + "px";
+
+    medidorColuna.style.fontSize = modoMobile
+        ? getComputedStyle(document.querySelector(".coluna")).fontSize
+        : getComputedStyle(document.querySelector(".coluna")).fontSize;
+
+    medidorColuna.style.lineHeight =
+        getComputedStyle(document.querySelector(".coluna")).lineHeight;
+
+    return {
+        largura: larguraColuna,
+        altura: alturaInterna
+    };
+}
+
+function medirAltura(html) {
+    medidorColuna.innerHTML = html;
+    return medidorColuna.scrollHeight;
+}
+
+function formarPaginas() {
+
+    modoMobile = obterModoMobile();
+
+    const medidas = criarMedidor();
+
+    const totalColunasPorPagina = modoMobile ? 1 : 4;
+
+    const colunasGeradas = [];
+    let colunaAtual = [];
+    let alturaAtual = 0;
+
+    function fecharColuna() {
+        colunasGeradas.push(colunaAtual);
+        colunaAtual = [];
+        alturaAtual = 0;
+    }
+
+    function adicionarBloco(html) {
+
+        const altura = medirAltura(html);
+        const espacamento = 8;
+
+        if (
+            colunaAtual.length > 0 &&
+            alturaAtual + altura + espacamento > medidas.altura
+        ) {
+            fecharColuna();
+        }
+
+        colunaAtual.push(html);
+        alturaAtual += altura + espacamento;
+    }
+
+    for (let i = 0; i < conteudo.length; i++) {
+
+        const item = conteudo[i];
+        const html = criarHTML(item);
+
+        /*
+           Evita deixar subtítulo sozinho no final da coluna.
+           Mede o subtítulo junto com o próximo bloco.
+        */
+
+        if (item.tipo === "subtitulo" && i + 1 < conteudo.length) {
+
+            const proximo = criarHTML(conteudo[i + 1]);
+            const alturaCombinada = medirAltura(html + proximo);
+
+            if (
+                colunaAtual.length > 0 &&
+                alturaAtual + alturaCombinada + 8 > medidas.altura
+            ) {
+                fecharColuna();
+            }
+
+            adicionarBloco(html);
+            continue;
+        }
+
+        adicionarBloco(html);
+    }
+
+    if (colunaAtual.length > 0) {
+        fecharColuna();
+    }
+
+    /*
+       Agrupa as colunas em páginas.
+       No computador, cada página física possui duas colunas.
+       Cada abertura possui duas páginas físicas.
+    */
+
+    const quantidadeColunasPorPagina = modoMobile ? 1 : 2;
+
+    const paginasGeradas = [];
+
+    for (
+        let i = 0;
+        i < colunasGeradas.length;
+        i += quantidadeColunasPorPagina
+    ) {
+        paginasGeradas.push(
+            colunasGeradas.slice(
+                i,
+                i + quantidadeColunasPorPagina
+            )
+        );
+    }
+
+    paginas = paginasGeradas;
+
+    if (paginas.length === 0) {
+        paginas = [[[]]];
+    }
+
+    const quantidadeAbas = modoMobile
+        ? paginas.length
+        : Math.ceil(paginas.length / 2);
+
+    if (indiceAtual >= quantidadeAbas) {
+        indiceAtual = Math.max(0, quantidadeAbas - 1);
+    }
+
+    renderizar();
+}
+
+
+/* =====================================================
+   RENDERIZAÇÃO
+===================================================== */
+
+function limparColunas() {
+    colunas.forEach(coluna => {
+        coluna.innerHTML = "";
+        coluna.classList.remove("mobile-coluna");
+    });
+}
+
+function renderizarPaginaFisica(elemento, dados, numero) {
+
+    const colunasPagina = elemento.querySelectorAll(".coluna");
+
+    colunasPagina.forEach((coluna, indice) => {
+        coluna.innerHTML = "";
+        coluna.classList.remove("mobile-coluna");
+
+        if (dados && dados[indice]) {
+            coluna.innerHTML = dados[indice].join("");
+        }
+    });
+
+    elemento.querySelector(".numero-pagina").textContent = numero;
+}
+
+function renderizarMobile() {
+
+    paginaEsquerda.classList.remove("mobile-visivel");
+    paginaDireita.classList.remove("mobile-visivel");
+
+    const dados = paginas[indiceAtual] || [];
+
+    paginaEsquerda.classList.add("mobile-visivel");
+
+    const coluna = paginaEsquerda.querySelector(".coluna");
+
+    coluna.classList.add("mobile-coluna");
+    coluna.innerHTML = dados[0] ? dados[0].join("") : "";
+
+    paginaEsquerda.querySelector(".numero-pagina").textContent =
+        indiceAtual + 1;
+
+    paginaDireita.style.display = "none";
+
+    indicador.textContent =
+        `Página ${indiceAtual + 1} de ${paginas.length}`;
+}
+
+function renderizarDesktop() {
+
+    paginaEsquerda.classList.add("mobile-visivel");
+    paginaDireita.classList.add("mobile-visivel");
+
+    paginaDireita.style.display = "";
+
+    const dadosEsquerda = paginas[indiceAtual * 2] || [];
+    const dadosDireita = paginas[indiceAtual * 2 + 1] || [];
+
+    renderizarPaginaFisica(
+        paginaEsquerda,
+        dadosEsquerda,
+        indiceAtual * 2 + 1
+    );
+
+    renderizarPaginaFisica(
+        paginaDireita,
+        dadosDireita,
+        indiceAtual * 2 + 2
+    );
+
+    const totalAberturas = Math.ceil(paginas.length / 2);
+
+    indicador.textContent =
+        `Abertura ${indiceAtual + 1} de ${totalAberturas}`;
+}
+
+function renderizar() {
+
+    limparColunas();
+
+    if (modoMobile) {
+        renderizarMobile();
+    } else {
+        renderizarDesktop();
+    }
+
+    const total = modoMobile
+        ? paginas.length
+        : Math.ceil(paginas.length / 2);
+
+    botaoAnterior.disabled = indiceAtual <= 0;
+    botaoProxima.disabled = indiceAtual >= total - 1;
+
+    livro.classList.remove("animando");
+
+    requestAnimationFrame(() => {
+        livro.classList.add("animando");
+    });
+}
+
+
+/* =====================================================
+   NAVEGAÇÃO
+===================================================== */
+
+function anterior() {
+    if (indiceAtual > 0) {
+        indiceAtual--;
+        renderizar();
+    }
+}
+
+function proxima() {
+
+    const total = modoMobile
+        ? paginas.length
+        : Math.ceil(paginas.length / 2);
+
+    if (indiceAtual < total - 1) {
+        indiceAtual++;
+        renderizar();
+    }
+}
+
+botaoAnterior.addEventListener("click", anterior);
+botaoProxima.addEventListener("click", proxima);
+
+document.addEventListener("keydown", evento => {
+
+    if (
+        evento.key === "ArrowRight" ||
+        evento.key === "PageDown"
+    ) {
+        proxima();
+    }
+
+    if (
+        evento.key === "ArrowLeft" ||
+        evento.key === "PageUp"
+    ) {
+        anterior();
+    }
+});
+
+
+/* =====================================================
+   INICIALIZAÇÃO E REDIMENSIONAMENTO
+===================================================== */
+
+let temporizadorRedimensionamento;
+
+function inicializar() {
+
+    indiceAtual = 0;
+
+    requestAnimationFrame(() => {
+        formarPaginas();
+    });
+}
+
+window.addEventListener("resize", () => {
+
+    clearTimeout(temporizadorRedimensionamento);
+
+    temporizadorRedimensionamento = setTimeout(() => {
+        inicializar();
+    }, 180);
+});
+
+window.addEventListener("load", inicializar);
+
+</script>
+
+</body>
+</html>

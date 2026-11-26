@@ -1,0 +1,962 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#211b15">
+<title>ATOS 29 — Capítulo 10 | O Peso da Glória de Deus</title>
+
+<style>
+:root {
+    --fundo: #211b15;
+    --papel: #f4edda;
+    --papel-escuro: #e9dfc8;
+    --tinta: #292319;
+    --dourado: #9a8050;
+    --largura-pagina: 540px;
+    --altura-pagina: 720px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    background:
+        radial-gradient(ellipse at center, #514334 0%, #30271e 48%, #17120e 100%);
+    color: #eee5d3;
+    font-family: Georgia, "Times New Roman", serif;
+}
+
+.topo {
+    text-align: center;
+    padding: 22px 12px 12px;
+}
+
+.topo h1 {
+    margin: 0;
+    font-size: 18px;
+    letter-spacing: 3px;
+    font-weight: normal;
+}
+
+.topo p {
+    margin: 7px 0 0;
+    color: #c5b798;
+    font-size: 12px;
+    letter-spacing: 2px;
+}
+
+.livro-area {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 18px 16px 12px;
+}
+
+.livro {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    perspective: 1800px;
+    width: min(1100px, 100%);
+    min-height: var(--altura-pagina);
+    filter: drop-shadow(0 18px 24px rgba(0,0,0,.48));
+}
+
+.pagina {
+    position: relative;
+    width: 50%;
+    max-width: var(--largura-pagina);
+    height: var(--altura-pagina);
+    min-width: 0;
+    padding: 37px 35px 43px;
+    color: var(--tinta);
+    background:
+        linear-gradient(90deg, rgba(112,85,44,.10), transparent 8%, transparent 92%, rgba(112,85,44,.08)),
+        repeating-linear-gradient(0deg, rgba(120,94,52,.018) 0px, rgba(120,94,52,.018) 1px, transparent 1px, transparent 4px),
+        var(--papel);
+    overflow: hidden;
+}
+
+.pagina.esquerda {
+    border-radius: 5px 0 0 5px;
+    box-shadow: inset -12px 0 18px -16px #342719;
+}
+
+.pagina.direita {
+    border-radius: 0 5px 5px 0;
+    box-shadow: inset 12px 0 18px -16px #342719;
+}
+
+.lombada {
+    width: 12px;
+    flex: 0 0 12px;
+    background: linear-gradient(90deg, #b7a582, #756044 35%, #d0c09e 50%, #756044 70%, #b7a582);
+    box-shadow: 0 0 10px rgba(0,0,0,.45);
+    z-index: 2;
+}
+
+.cabecalho-pagina {
+    height: 25px;
+    border-bottom: 1px solid rgba(77,61,38,.42);
+    margin-bottom: 17px;
+    padding-bottom: 7px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+    color: #66563b;
+    font-size: 9px;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.colunas {
+    height: calc(100% - 75px);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 22px;
+}
+
+.coluna {
+    min-width: 0;
+    height: 100%;
+    overflow: hidden;
+    text-align: justify;
+    font-size: 11.4px;
+    line-height: 1.48;
+    hyphens: auto;
+    overflow-wrap: break-word;
+}
+
+.bloco {
+    margin: 0 0 7px;
+    break-inside: avoid;
+}
+
+.bloco.paragrafo {
+    text-indent: 0;
+}
+
+.numero {
+    color: #8b7144;
+    font-size: .72em;
+    vertical-align: super;
+    font-weight: bold;
+    margin-right: 2px;
+}
+
+.subtitulo {
+    margin: 13px 0 8px;
+    text-align: left;
+    font-size: 10px;
+    line-height: 1.3;
+    font-weight: bold;
+    letter-spacing: .45px;
+    text-transform: uppercase;
+    color: #42351f;
+    break-after: avoid;
+}
+
+.titulo-capitulo {
+    text-align: center;
+    margin: 3px 0 16px;
+    font-size: 16px;
+    line-height: 1.35;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: .5px;
+}
+
+.credito {
+    text-align: center;
+    font-size: 9px;
+    font-style: italic;
+    margin: 0 0 18px;
+    color: #67583e;
+}
+
+.referencia {
+    margin: 9px 0 3px;
+    font-size: 10px;
+    font-weight: bold;
+    text-align: left;
+    color: #57462b;
+    break-after: avoid;
+}
+
+.citacao {
+    margin: 3px 7px 9px;
+    padding-left: 9px;
+    border-left: 1px solid rgba(130,102,58,.55);
+    font-size: 10.8px;
+    line-height: 1.45;
+    font-style: italic;
+    text-align: left;
+}
+
+.destaque {
+    font-weight: bold;
+}
+
+.fecho {
+    text-align: center;
+    font-weight: bold;
+    margin: 14px 0 8px;
+    font-size: 11px;
+    letter-spacing: .5px;
+}
+
+.rodape-pagina {
+    position: absolute;
+    left: 30px;
+    right: 30px;
+    bottom: 15px;
+    border-top: 1px solid rgba(77,61,38,.35);
+    padding-top: 6px;
+    display: flex;
+    justify-content: space-between;
+    color: #766447;
+    font-size: 9px;
+    letter-spacing: .8px;
+}
+
+.controles {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 14px;
+    padding: 12px 10px 22px;
+}
+
+.controles button {
+    border: 1px solid #a58b5c;
+    background: linear-gradient(#594a36, #342a1e);
+    color: #f5ead5;
+    padding: 11px 22px;
+    font-family: Georgia, serif;
+    font-size: 11px;
+    letter-spacing: 1.3px;
+    cursor: pointer;
+    transition: .2s;
+}
+
+.controles button:hover:not(:disabled) {
+    background: #796343;
+}
+
+.controles button:disabled {
+    opacity: .35;
+    cursor: not-allowed;
+}
+
+#indicador {
+    min-width: 125px;
+    text-align: center;
+    color: #e3d4b8;
+    font-size: 12px;
+}
+
+.institucional {
+    text-align: center;
+    padding: 0 10px 20px;
+    color: #b5a487;
+    font-size: 10px;
+    letter-spacing: 2px;
+}
+
+.mensagem-carregamento {
+    color: #e7dcc8;
+    text-align: center;
+    padding: 30px;
+}
+
+@media (max-width: 850px) {
+    :root {
+        --altura-pagina:  min(780px, 78vh);
+    }
+
+    .livro {
+        width: min(560px, 100%);
+    }
+
+    .pagina {
+        width: 100%;
+        max-width: 560px;
+        padding: 30px 27px 42px;
+    }
+
+    .pagina.direita,
+    .lombada {
+        display: none;
+    }
+
+    .pagina.esquerda {
+        border-radius: 5px;
+    }
+
+    .colunas {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+
+    .coluna {
+        font-size: 12px;
+        line-height: 1.55;
+    }
+
+    .controles {
+        gap: 8px;
+    }
+
+    .controles button {
+        padding: 10px 14px;
+        font-size: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    :root {
+        --altura-pagina:  min(760px, 76vh);
+    }
+
+    .topo h1 {
+        font-size: 15px;
+        letter-spacing: 2px;
+    }
+
+    .pagina {
+        padding: 24px 20px 40px;
+    }
+
+    .cabecalho-pagina {
+        font-size: 8px;
+        letter-spacing: .7px;
+    }
+
+    .coluna {
+        font-size: 11.5px;
+    }
+
+    .titulo-capitulo {
+        font-size: 14px;
+    }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .pagina {
+        animation: entrada .25s ease;
+    }
+
+    @keyframes entrada {
+        from {
+            opacity: .65;
+            transform: rotateY(-2deg);
+        }
+        to {
+            opacity: 1;
+            transform: rotateY(0);
+        }
+    }
+}
+
+@media print {
+    body {
+        background: white;
+    }
+
+    .topo,
+    .controles,
+    .institucional {
+        display: none;
+    }
+
+    .livro-area {
+        padding: 0;
+    }
+
+    .livro {
+        filter: none;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header class="topo">
+    <h1>ATOS 29 • A HISTÓRIA CONTINUA</h1>
+    <p>CAPÍTULO 10 — O PESO DA GLÓRIA DE DEUS</p>
+</header>
+
+<main class="livro-area">
+    <div class="livro" id="livro">
+        <div class="pagina esquerda" id="paginaEsquerda">
+            <div class="cabecalho-pagina">
+                <span>ATOS 29 • A HISTÓRIA CONTINUA</span>
+                <span>CAPÍTULO 10</span>
+            </div>
+            <div class="colunas">
+                <div class="coluna" id="colunaE1"></div>
+                <div class="coluna" id="colunaE2"></div>
+            </div>
+            <div class="rodape-pagina">
+                <span>MINISTÉRIO ATALAIA</span>
+                <span id="numeroE">1</span>
+            </div>
+        </div>
+
+        <div class="lombada"></div>
+
+        <div class="pagina direita" id="paginaDireita">
+            <div class="cabecalho-pagina">
+                <span>ATOS 29 • A HISTÓRIA CONTINUA</span>
+                <span>O PESO DA GLÓRIA</span>
+            </div>
+            <div class="colunas">
+                <div class="coluna" id="colunaD1"></div>
+                <div class="coluna" id="colunaD2"></div>
+            </div>
+            <div class="rodape-pagina">
+                <span>MINISTÉRIO ATALAIA</span>
+                <span id="numeroD">2</span>
+            </div>
+        </div>
+    </div>
+</main>
+
+<div class="controles">
+    <button id="anterior" type="button">← ANTERIOR</button>
+    <span id="indicador">Páginas 1–2</span>
+    <button id="proxima" type="button">PRÓXIMA →</button>
+</div>
+
+<footer class="institucional">
+    MINISTÉRIO ATALAIA
+</footer>
+
+<script>
+/* =========================================================
+   ATOS 29 — CAPÍTULO 10
+   O PESO DA GLÓRIA DE DEUS
+
+   Os números sobrescritos identificam os parágrafos.
+   As referências bíblicas permanecem separadas.
+========================================================= */
+
+const conteudo = [
+
+{tipo:"titulo", texto:"O PESO DA GLÓRIA DE DEUS"},
+{tipo:"credito", texto:"Ministério Atalaia • Diego Nascimento — Pastor Evangelista"},
+
+{tipo:"sub", texto:"MOMENTOS QUE NÃO PODEM SER EXPLICADOS"},
+{tipo:"p", n:1, texto:"Existem momentos na caminhada cristã que não são facilmente explicados por palavras."},
+{tipo:"p", n:2, texto:"São momentos em que não se trata simplesmente de ouvir uma canção, participar de uma reunião ou assistir a uma apresentação."},
+{tipo:"p", n:3, texto:"Há momentos em que a presença de Deus se torna tão intensa para nós que parece haver um peso espiritual que não conseguimos descrever completamente."},
+{tipo:"p", n:4, texto:"Foi assim que vivi duas experiências que ficaram marcadas na minha memória."},
+{tipo:"p", n:5, texto:"Uma aconteceu durante uma apresentação do Ministério de Louvor Trazendo a Arca.", destaque:true},
+{tipo:"p", n:6, texto:"A outra aconteceu durante uma apresentação da Pastora Ludmila Ferber.", destaque:true},
+{tipo:"p", n:7, texto:"Em ambas as ocasiões, experimentei aquilo que, na minha compreensão, posso descrever como o peso da glória de Deus.", destaque:true},
+
+{tipo:"sub", texto:"NÃO ERA APENAS MÚSICA"},
+{tipo:"p", n:8, texto:"Eu sempre tive uma relação muito profunda com a música."},
+{tipo:"p", n:9, texto:"Desde o início da minha caminhada com Cristo, compreendi que a música poderia ser muito mais do que uma expressão artística."},
+{tipo:"p", n:10, texto:"O louvor poderia ser uma forma de adoração."},
+{tipo:"p", n:11, texto:"Poderia anunciar a Palavra."},
+{tipo:"p", n:12, texto:"Poderia conduzir pessoas à presença de Deus."},
+{tipo:"p", n:13, texto:"Poderia preparar o coração para ouvir aquilo que o Senhor desejava falar."},
+{tipo:"p", n:14, texto:"Foi justamente por isso que essas duas experiências me marcaram."},
+{tipo:"p", n:15, texto:"Eu não estava simplesmente diante de músicos."},
+{tipo:"p", n:16, texto:"Eu estava participando de momentos de adoração que produziram em mim uma percepção muito profunda da presença de Deus."},
+{tipo:"p", n:17, texto:"A música estava acontecendo, mas aquilo que eu estava experimentando interiormente ia muito além da música."},
+
+{tipo:"sub", texto:"O PESO DA GLÓRIA"},
+{tipo:"p", n:18, texto:"Quando usamos a expressão “peso da glória”, estamos tentando descrever uma realidade que aparece nas Escrituras de maneira muito profunda."},
+{tipo:"p", n:19, texto:"A Bíblia fala da glória de Deus como algo tão grandioso que, em determinadas ocasiões, aqueles que estavam presentes não conseguiam permanecer de pé ou continuar ministrando normalmente."},
+{tipo:"p", n:20, texto:"Na dedicação do templo de Salomão, por exemplo, aconteceu algo extraordinário:"},
+{tipo:"ref", texto:"2 Crônicas 5:13-14"},
+{tipo:"citacao", texto:"A Casa se encheu de uma nuvem, e a glória do Senhor encheu a Casa de Deus. Os sacerdotes não podiam permanecer ali para ministrar por causa daquela manifestação."},
+{tipo:"p", n:21, texto:"A glória de Deus havia enchido o templo."},
+{tipo:"p", n:22, texto:"Esse texto sempre me impressionou."},
+{tipo:"p", n:23, texto:"Não era apenas uma reunião."},
+{tipo:"p", n:24, texto:"Não era apenas música."},
+{tipo:"p", n:25, texto:"Não era apenas uma cerimônia."},
+{tipo:"p", n:26, texto:"Era uma manifestação da presença e da glória de Deus."},
+
+{tipo:"sub", texto:"UMA EXPERIÊNCIA COM O TRAZENDO A ARCA"},
+{tipo:"p", n:27, texto:"Em uma apresentação do Ministério de Louvor Trazendo a Arca, vivi uma dessas experiências."},
+{tipo:"p", n:28, texto:"Durante aquele momento de louvor, senti sobre mim aquilo que compreendi como um peso da glória de Deus."},
+{tipo:"p", n:29, texto:"Era uma sensação profunda."},
+{tipo:"p", n:30, texto:"Algo que marcou meu espírito."},
+{tipo:"p", n:31, texto:"Não quero acrescentar detalhes que não vivi, nem tentar explicar tecnicamente aquilo que aconteceu comigo."},
+{tipo:"p", n:32, texto:"Quero apenas testemunhar aquilo que posso afirmar:"},
+{tipo:"p", n:33, texto:"Eu senti o peso da glória de Deus.", destaque:true},
+{tipo:"p", n:34, texto:"A experiência ficou registrada dentro de mim."},
+{tipo:"p", n:35, texto:"E, para alguém que havia aprendido a amar a adoração e que posteriormente também serviria ao Senhor através da música, aquele momento teve um significado muito especial."},
+{tipo:"p", n:36, texto:"Eu compreendi novamente que o louvor não deve ser tratado como espetáculo."},
+{tipo:"p", n:37, texto:"Existe algo muito maior."},
+
+{tipo:"sub", texto:"UMA SEGUNDA EXPERIÊNCIA"},
+{tipo:"p", n:38, texto:"Em outra ocasião, durante uma apresentação da Pastora Ludmila Ferber, aconteceu algo semelhante."},
+{tipo:"p", n:39, texto:"Novamente experimentei aquilo que reconheci como o peso da glória de Deus."},
+{tipo:"p", n:40, texto:"Duas ocasiões diferentes."},
+{tipo:"p", n:41, texto:"Dois momentos diferentes."},
+{tipo:"p", n:42, texto:"Mas uma mesma percepção espiritual."},
+{tipo:"p", n:43, texto:"Isso ficou marcado na minha memória porque me fez compreender ainda mais profundamente que a adoração pode nos conduzir a momentos de profunda reverência diante do Senhor."},
+{tipo:"p", n:44, texto:"Não era sobre quem estava cantando."},
+{tipo:"p", n:45, texto:"Não era sobre quem estava no palco."},
+{tipo:"p", n:46, texto:"Não era sobre uma apresentação humana."},
+{tipo:"p", n:47, texto:"Para mim, naquele momento, tudo apontava para Deus."},
+
+{tipo:"sub", texto:"A GLÓRIA NÃO É DO MINISTRO"},
+{tipo:"p", n:48, texto:"Essa é uma das lições mais importantes que essas experiências me ensinaram."},
+{tipo:"p", n:49, texto:"A glória não pertence ao ministro."},
+{tipo:"p", n:50, texto:"Não pertence ao cantor."},
+{tipo:"p", n:51, texto:"Não pertence à banda."},
+{tipo:"p", n:52, texto:"Não pertence ao pregador."},
+{tipo:"p", n:53, texto:"Não pertence ao instrumento."},
+{tipo:"p", n:54, texto:"A glória pertence a Deus.", destaque:true},
+{tipo:"ref", texto:"Isaías 42:8"},
+{tipo:"citacao", texto:"Eu sou o Senhor; este é o meu nome; a minha glória, pois, a outrem não darei."},
+{tipo:"p", n:55, texto:"Essa verdade precisa permanecer no centro de qualquer ministério de louvor."},
+{tipo:"p", n:56, texto:"Podemos ter grandes músicos."},
+{tipo:"p", n:57, texto:"Podemos ter excelentes cantores."},
+{tipo:"p", n:58, texto:"Podemos ter equipamentos extraordinários."},
+{tipo:"p", n:59, texto:"Podemos organizar grandes eventos."},
+{tipo:"p", n:60, texto:"Mas nada disso substitui a presença de Deus."},
+{tipo:"p", n:61, texto:"A excelência pode preparar o ambiente."},
+{tipo:"p", n:62, texto:"A música pode ser executada com perfeição."},
+{tipo:"p", n:63, texto:"Mas somente Deus recebe a glória."},
+
+{tipo:"sub", texto:"O LOUVOR QUE APONTA PARA O CÉU"},
+{tipo:"p", n:64, texto:"Quando olho para minha própria história, percebo como Deus foi formando minha compreensão sobre o louvor."},
+{tipo:"p", n:65, texto:"Primeiro, aprendi a amar Jesus."},
+{tipo:"p", n:66, texto:"Depois, aprendi a buscar Sua presença."},
+{tipo:"p", n:67, texto:"Aprendi a estudar a Palavra."},
+{tipo:"p", n:68, texto:"Aprendi a orar."},
+{tipo:"p", n:69, texto:"Aprendi sobre consagração."},
+{tipo:"p", n:70, texto:"E também aprendi que a música poderia ser uma ferramenta para glorificar o Senhor."},
+{tipo:"p", n:71, texto:"Por isso, essas experiências tiveram um impacto tão grande sobre mim."},
+{tipo:"p", n:72, texto:"Elas me lembraram de que o verdadeiro propósito da música cristã não é produzir admiração pelo músico."},
+{tipo:"p", n:73, texto:"É conduzir o coração das pessoas para Deus."},
+{tipo:"ref", texto:"Salmos 95:6"},
+{tipo:"citacao", texto:"Vinde, adoremos e prostremo-nos; ajoelhemos diante do Senhor que nos criou."},
+
+{tipo:"sub", texto:"QUANDO A PRESENÇA NOS FAZ PARAR"},
+{tipo:"p", n:74, texto:"Há momentos em que não precisamos de muitas palavras."},
+{tipo:"p", n:75, texto:"A presença de Deus produz reverência."},
+{tipo:"p", n:76, texto:"Produz silêncio interior."},
+{tipo:"p", n:77, texto:"Produz quebrantamento."},
+{tipo:"p", n:78, texto:"Produz consciência da grandeza daquele que estamos adorando."},
+{tipo:"p", n:79, texto:"Isaías teve uma experiência dessa natureza."},
+{tipo:"ref", texto:"Isaías 6:1-5"},
+{tipo:"p", n:80, texto:"Ao contemplar a glória do Senhor, ele não saiu daquela experiência exaltando a si mesmo."},
+{tipo:"p", n:81, texto:"Ele reconheceu sua própria condição diante da santidade de Deus."},
+{tipo:"p", n:82, texto:"Esse é um princípio que considero fundamental."},
+{tipo:"p", n:83, texto:"Quanto mais percebemos a grandeza de Deus, menos espaço existe para a glória humana.", destaque:true},
+{tipo:"p", n:84, texto:"A verdadeira presença de Deus não alimenta o orgulho."},
+{tipo:"p", n:85, texto:"Ela produz reverência."},
+
+{tipo:"sub", texto:"A GLÓRIA E O MINISTÉRIO"},
+{tipo:"p", n:86, texto:"Como músico, essas experiências também me ensinaram uma responsabilidade."},
+{tipo:"p", n:87, texto:"Subir em um altar não é simplesmente cantar."},
+{tipo:"p", n:88, texto:"Ministrar louvor não é simplesmente executar uma música."},
+{tipo:"p", n:89, texto:"Conduzir uma igreja em adoração não é simplesmente escolher um repertório."},
+{tipo:"p", n:90, texto:"Existe uma responsabilidade espiritual."},
+{tipo:"p", n:91, texto:"O ministro precisa compreender que está servindo."},
+{tipo:"p", n:92, texto:"Jesus ensinou:"},
+{tipo:"ref", texto:"João 12:26"},
+{tipo:"citacao", texto:"Se alguém me serve, siga-me."},
+{tipo:"p", n:93, texto:"Servir é diferente de aparecer."},
+{tipo:"p", n:94, texto:"Adorar é diferente de performar."},
+{tipo:"p", n:95, texto:"Ministrar é diferente de buscar reconhecimento."},
+{tipo:"p", n:96, texto:"Essa compreensão foi se tornando cada vez mais forte na minha caminhada."},
+
+{tipo:"sub", texto:"A GLÓRIA QUE TRANSFORMA"},
+{tipo:"p", n:97, texto:"A glória de Deus não deve ser apenas uma experiência que nos emociona."},
+{tipo:"p", n:98, texto:"Ela precisa produzir transformação."},
+{tipo:"p", n:99, texto:"Quando Moisés esteve diante da presença de Deus, seu rosto resplandeceu."},
+{tipo:"ref", texto:"Êxodo 34:29"},
+{tipo:"p", n:100, texto:"Paulo também ensina que, ao contemplarmos a glória do Senhor, somos transformados."},
+{tipo:"ref", texto:"2 Coríntios 3:18"},
+{tipo:"p", n:101, texto:"Essa é uma verdade poderosa."},
+{tipo:"p", n:102, texto:"Não buscamos a presença de Deus simplesmente para sentir alguma coisa."},
+{tipo:"p", n:103, texto:"Buscamos a Deus para sermos transformados por Ele."},
+{tipo:"p", n:104, texto:"Se uma experiência espiritual não nos conduz a uma vida mais próxima de Cristo, mais santa, mais obediente, mais humilde e mais comprometida com o Evangelho, precisamos compreender que a experiência por si mesma não é o objetivo."},
+{tipo:"p", n:105, texto:"Cristo é o objetivo.", destaque:true},
+
+{tipo:"sub", texto:"DUAS EXPERIÊNCIAS QUE PERMANECERAM"},
+{tipo:"p", n:106, texto:"Quando me lembro daqueles dois momentos — um durante a apresentação do Trazendo a Arca e outro durante a apresentação da Pastora Ludmila Ferber — lembro-me principalmente da intensidade com que percebi a presença de Deus."},
+{tipo:"p", n:107, texto:"Não quero transformar aquilo em uma fórmula."},
+{tipo:"p", n:108, texto:"Não quero dizer que determinada música necessariamente produz uma manifestação da glória."},
+{tipo:"p", n:109, texto:"Não quero colocar uma experiência pessoal acima das Escrituras."},
+{tipo:"p", n:110, texto:"Quero apenas testemunhar aquilo que vivi."},
+{tipo:"p", n:111, texto:"Eu senti o peso da glória de Deus.", destaque:true},
+{tipo:"p", n:112, texto:"E essas experiências contribuíram para aprofundar em mim uma convicção:"},
+{tipo:"p", n:113, texto:"O louvor pertence ao Senhor.", destaque:true},
+
+{tipo:"sub", texto:"A GLÓRIA É DELE"},
+{tipo:"p", n:114, texto:"Depois de tantos anos caminhando com Cristo, uma coisa continua absolutamente clara para mim:"},
+{tipo:"p", n:115, texto:"Tudo aquilo que fazemos precisa voltar para Ele."},
+{tipo:"p", n:116, texto:"Se cantamos, que seja para Ele."},
+{tipo:"p", n:117, texto:"Se tocamos, que seja para Ele."},
+{tipo:"p", n:118, texto:"Se pregamos, que seja para Ele."},
+{tipo:"p", n:119, texto:"Se evangelizamos, que seja para Ele."},
+{tipo:"p", n:120, texto:"Se servimos, que seja para Ele."},
+{tipo:"p", n:121, texto:"Se Deus nos permite experimentar Sua presença de maneira extraordinária, que a experiência também nos conduza a glorificá-Lo."},
+{tipo:"ref", texto:"1 Coríntios 10:31"},
+{tipo:"citacao", texto:"Portanto, quer comais, quer bebais ou façais outra coisa qualquer, fazei tudo para a glória de Deus."},
+{tipo:"p", n:122, texto:"Esse versículo resume uma grande parte daquilo que aprendi."},
+
+{tipo:"sub", texto:"ATOS 29 — A GLÓRIA PERTENCE AO SENHOR"},
+{tipo:"p", n:123, texto:"Aquelas duas experiências fazem parte da minha caminhada."},
+{tipo:"p", n:124, texto:"Uma aconteceu durante uma apresentação do Trazendo a Arca."},
+{tipo:"p", n:125, texto:"Outra aconteceu durante uma apresentação da Pastora Ludmila Ferber."},
+{tipo:"p", n:126, texto:"Duas ocasiões em que senti aquilo que reconheci como o peso da glória de Deus."},
+{tipo:"p", n:127, texto:"Não são essas experiências que sustentam minha fé."},
+{tipo:"p", n:128, texto:"Minha fé está sustentada em Jesus Cristo e na Palavra de Deus."},
+{tipo:"p", n:129, texto:"Mas elas fazem parte do meu testemunho."},
+{tipo:"p", n:130, texto:"E quando olho para trás, compreendo que Deus estava me ensinando algo que ultrapassava a música."},
+{tipo:"p", n:131, texto:"Ele estava me ensinando sobre reverência."},
+{tipo:"p", n:132, texto:"Sobre adoração."},
+{tipo:"p", n:133, texto:"Sobre serviço."},
+{tipo:"p", n:134, texto:"Sobre presença."},
+{tipo:"p", n:135, texto:"E, principalmente, sobre glória."},
+{tipo:"p", n:136, texto:"Porque a glória não é nossa."},
+{tipo:"p", n:137, texto:"Nunca foi."},
+{tipo:"p", n:138, texto:"Nunca será."},
+{tipo:"p", n:139, texto:"Toda a glória pertence ao Senhor.", destaque:true},
+{tipo:"ref", texto:"Apocalipse 5:13"},
+{tipo:"citacao", texto:"Àquele que está sentado no trono e ao Cordeiro sejam o louvor, a honra, a glória e o domínio pelos séculos dos séculos."},
+
+{tipo:"fecho", texto:"SOLI DEO GLORIA."},
+{tipo:"fecho", texto:"Somente a Deus seja toda a glória."}
+
+];
+
+/* =========================================================
+   PAGINAÇÃO AUTOMÁTICA
+========================================================= */
+
+const livro = document.getElementById("livro");
+const esquerda = document.getElementById("paginaEsquerda");
+const direita = document.getElementById("paginaDireita");
+
+const colunasIds = [
+    "colunaE1",
+    "colunaE2",
+    "colunaD1",
+    "colunaD2"
+];
+
+let paginas = [];
+let paginaAtual = 0;
+let temporizadorRedimensionamento;
+
+function criarElemento(item) {
+    const el = document.createElement("div");
+    el.className = "bloco";
+
+    if (item.tipo === "titulo") {
+        el.classList.add("titulo-capitulo");
+        el.textContent = item.texto;
+    }
+
+    if (item.tipo === "credito") {
+        el.classList.add("credito");
+        el.textContent = item.texto;
+    }
+
+    if (item.tipo === "sub") {
+        el.classList.add("subtitulo");
+        el.textContent = item.texto;
+    }
+
+    if (item.tipo === "p") {
+        el.classList.add("paragrafo");
+
+        const numero = document.createElement("sup");
+        numero.className = "numero";
+        numero.textContent = item.n;
+
+        const texto = document.createElement("span");
+        texto.textContent = item.texto;
+
+        if (item.destaque) {
+            texto.classList.add("destaque");
+        }
+
+        el.append(numero, texto);
+    }
+
+    if (item.tipo === "ref") {
+        el.classList.add("referencia");
+        el.textContent = "📖 " + item.texto;
+    }
+
+    if (item.tipo === "citacao") {
+        el.classList.add("citacao");
+        el.textContent = "“" + item.texto + "”";
+    }
+
+    if (item.tipo === "fecho") {
+        el.classList.add("fecho");
+        el.textContent = item.texto;
+    }
+
+    return el;
+}
+
+function criarEstruturaTemporaria() {
+    const temporario = document.createElement("div");
+    temporario.style.position = "absolute";
+    temporario.style.left = "-10000px";
+    temporario.style.top = "0";
+    temporario.style.visibility = "hidden";
+    temporario.style.width = getComputedStyle(esquerda).width;
+    temporario.style.height = getComputedStyle(esquerda).height;
+    temporario.style.padding = getComputedStyle(esquerda).padding;
+    temporario.style.boxSizing = "border-box";
+
+    const cabecalho = document.createElement("div");
+    cabecalho.className = "cabecalho-pagina";
+    cabecalho.innerHTML = "<span>ATOS 29 • A HISTÓRIA CONTINUA</span><span>CAPÍTULO 10</span>";
+
+    const area = document.createElement("div");
+    area.className = "colunas";
+
+    const mobile = window.matchMedia("(max-width: 850px)").matches;
+    area.style.height = "calc(100% - 75px)";
+    area.style.display = "grid";
+    area.style.gridTemplateColumns = mobile ? "1fr" : "1fr 1fr";
+    area.style.gap = mobile ? "0" : "22px";
+
+    const colunas = [];
+
+    for (let i = 0; i < (mobile ? 1 : 2); i++) {
+        const coluna = document.createElement("div");
+        coluna.className = "coluna";
+        coluna.style.height = "100%";
+        coluna.style.overflow = "hidden";
+        colunas.push(coluna);
+        area.appendChild(coluna);
+    }
+
+    temporario.append(cabecalho, area);
+    document.body.appendChild(temporario);
+
+    return {temporario, colunas};
+}
+
+function medirAlturaDisponivel(estrutura) {
+    return estrutura.colunas[0].clientHeight;
+}
+
+function paginar() {
+    const estrutura = criarEstruturaTemporaria();
+    const colunas = estrutura.colunas;
+    const limite = medirAlturaDisponivel(estrutura);
+
+    const mobile = window.matchMedia("(max-width: 850px)").matches;
+    const quantidadeColunas = mobile ? 1 : 2;
+
+    paginas = [];
+
+    let pagina = [];
+    let colunaAtual = 0;
+    let colunaElemento = colunas[colunaAtual];
+
+    function salvarPagina() {
+        paginas.push(pagina);
+    }
+
+    function novaPagina() {
+        if (pagina.length) salvarPagina();
+        pagina = [];
+        colunaAtual = 0;
+
+        colunas.forEach(c => c.innerHTML = "");
+        colunaElemento = colunas[0];
+    }
+
+    conteudo.forEach(item => {
+        const elemento = criarElemento(item);
+
+        colunaElemento.appendChild(elemento);
+
+        if (colunaElemento.scrollHeight > limite + 1) {
+            colunaElemento.removeChild(elemento);
+
+            if (colunaAtual < quantidadeColunas - 1) {
+                colunaAtual++;
+                colunaElemento = colunas[colunaAtual];
+            } else {
+                novaPagina();
+            }
+
+            colunaElemento.appendChild(elemento);
+
+            /* Proteção para um bloco excepcionalmente alto. */
+            if (colunaElemento.scrollHeight > limite + 1) {
+                elemento.style.fontSize = "10px";
+            }
+        }
+
+        pagina.push(item);
+    });
+
+    if (pagina.length) salvarPagina();
+
+    estrutura.temporario.remove();
+
+    if (!paginas.length) paginas = [[]];
+
+    paginaAtual = Math.min(paginaAtual, paginas.length - 1);
+    renderizar();
+}
+
+function renderizarPagina(indice, ids) {
+    const itens = paginas[indice] || [];
+
+    const mobile = window.matchMedia("(max-width: 850px)").matches;
+    const coluna1 = document.getElementById(ids[0]);
+    const coluna2 = document.getElementById(ids[1]);
+
+    coluna1.innerHTML = "";
+    coluna2.innerHTML = "";
+
+    if (mobile) {
+        itens.forEach(item => coluna1.appendChild(criarElemento(item)));
+    } else {
+        /*
+          Os itens da página são distribuídos novamente em duas colunas
+          com base no ponto de quebra registrado na paginação.
+        */
+        const estrutura = criarEstruturaTemporaria();
+        const colunasTemp = estrutura.colunas;
+        const limite = medirAlturaDisponivel(estrutura);
+        let coluna = 0;
+
+        itens.forEach(item => {
+            const el = criarElemento(item);
+            colunasTemp[coluna].appendChild(el);
+
+            if (colunasTemp[coluna].scrollHeight > limite + 1 && coluna === 0) {
+                colunasTemp[coluna].removeChild(el);
+                coluna = 1;
+                colunasTemp[coluna].appendChild(el);
+            }
+        });
+
+        colunasTemp.forEach((temp, i) => {
+            const destino = i === 0 ? coluna1 : coluna2;
+            Array.from(temp.children).forEach(child => {
+                destino.appendChild(criarElemento({
+                    tipo: child.classList.contains("subtitulo") ? "sub" :
+                          child.classList.contains("referencia") ? "ref" :
+                          child.classList.contains("citacao") ? "citacao" :
+                          child.classList.contains("credito") ? "credito" :
+                          child.classList.contains("titulo-capitulo") ? "titulo" :
+                          child.classList.contains("fecho") ? "fecho" : "p",
+                    n: child.querySelector("sup") ? child.querySelector("sup").textContent : undefined,
+                    texto: child.classList.contains("paragrafo")
+                        ? child.querySelector("span").textContent
+                        : child.textContent.replace(/^📖\s*/, "").replace(/[“”]/g, ""),
+                    destaque: !!child.querySelector(".destaque")
+                }));
+            });
+        });
+
+        estrutura.temporario.remove();
+    }
+}
+
+function renderizar() {
+    const total = paginas.length;
+    const mobile = window.matchMedia("(max-width: 850px)").matches;
+
+    if (mobile) {
+        esquerda.style.display = "block";
+        direita.style.display = "none";
+        document.querySelector(".lombada").style.display = "none";
+
+        renderizarPagina(paginaAtual, ["colunaE1", "colunaE2"]);
+        document.getElementById("numeroE").textContent = paginaAtual + 1;
+
+        document.getElementById("indicador").textContent =
+            "Página " + (paginaAtual + 1) + " de " + total;
+    } else {
+        esquerda.style.display = "block";
+        direita.style.display = "block";
+        document.querySelector(".lombada").style.display = "block";
+
+        renderizarPagina(paginaAtual, ["colunaE1", "colunaE2"]);
+
+        if (paginaAtual + 1 < total) {
+            renderizarPagina(paginaAtual + 1, ["colunaD1", "colunaD2"]);
+        } else {
+            ["colunaD1", "colunaD2"].forEach(id => {
+                document.getElementById(id).innerHTML = "";
+            });
+        }
+
+        document.getElementById("numeroE").textContent = paginaAtual + 1;
+        document.getElementById("numeroD").textContent =
+            Math.min(paginaAtual + 2, total);
+
+        document.getElementById("indicador").textContent =
+            "Páginas " + (paginaAtual + 1) + "–" +
+            Math.min(paginaAtual + 2, total) + " de " + total;
+    }
+
+    document.getElementById("anterior").disabled = paginaAtual <= 0;
+    document.getElementById("proxima").disabled =
+        paginaAtual + (mobile ? 1 : 2) >= total;
+}
+
+function avancar() {
+    const mobile = window.matchMedia("(max-width: 850px)").matches;
+    const passo = mobile ? 1 : 2;
+
+    if (paginaAtual + passo < paginas.length) {
+        paginaAtual += passo;
+        renderizar();
+    }
+}
+
+function voltar() {
+    const mobile = window.matchMedia("(max-width: 850px)").matches;
+    const passo = mobile ? 1 : 2;
+
+    paginaAtual = Math.max(0, paginaAtual - passo);
+    renderizar();
+}
+
+document.getElementById("proxima").addEventListener("click", avancar);
+document.getElementById("anterior").addEventListener("click", voltar);
+
+document.addEventListener("keydown", event => {
+    if (event.key === "ArrowRight") avancar();
+    if (event.key === "ArrowLeft") voltar();
+});
+
+window.addEventListener("resize", () => {
+    clearTimeout(temporizadorRedimensionamento);
+    temporizadorRedimensionamento = setTimeout(() => {
+        paginaAtual = 0;
+        paginar();
+    }, 180);
+});
+
+window.addEventListener("load", paginar);
+</script>
+
+</body>
+</html>

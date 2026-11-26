@@ -1,0 +1,1308 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>ATOS 29 — Capítulo 13 | A Cura da Minha Futura Sogra</title>
+
+<style>
+:root {
+    --fundo: #17130f;
+    --papel: #f3ead4;
+    --tinta: #302719;
+    --tinta-suave: #675943;
+    --linha: rgba(85, 65, 39, .23);
+    --sombra: rgba(0, 0, 0, .55);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    padding: 25px 12px 35px;
+    background:
+        radial-gradient(ellipse at center, #40372b 0%, #211b15 55%, #100e0c 100%);
+    color: #eee4d1;
+    font-family: Georgia, "Times New Roman", serif;
+}
+
+.topo {
+    text-align: center;
+    margin-bottom: 22px;
+}
+
+.topo h1 {
+    margin: 0;
+    font-size: 19px;
+    letter-spacing: 3px;
+    font-weight: normal;
+}
+
+.topo p {
+    margin: 7px 0 0;
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: #c4b69e;
+}
+
+.livro-area {
+    width: min(1200px, 100%);
+    margin: auto;
+}
+
+.livro {
+    position: relative;
+    width: 100%;
+    min-height: 650px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    perspective: 1800px;
+    filter: drop-shadow(0 20px 25px var(--sombra));
+}
+
+.pagina {
+    position: relative;
+    min-width: 0;
+    height: 650px;
+    overflow: hidden;
+    padding: 35px 30px 42px;
+    color: var(--tinta);
+    background:
+        radial-gradient(ellipse at 20% 15%, rgba(255,255,255,.35), transparent 45%),
+        radial-gradient(ellipse at 80% 85%, rgba(160,125,70,.08), transparent 45%),
+        repeating-linear-gradient(
+            0deg,
+            rgba(105, 79, 42, .018) 0px,
+            rgba(105, 79, 42, .018) 1px,
+            transparent 1px,
+            transparent 4px
+        ),
+        var(--papel);
+}
+
+.pagina.esquerda {
+    border-radius: 5px 0 0 5px;
+    box-shadow: inset -12px 0 18px -16px rgba(0,0,0,.8);
+}
+
+.pagina.direita {
+    border-radius: 0 5px 5px 0;
+    box-shadow: inset 12px 0 18px -16px rgba(0,0,0,.8);
+}
+
+.livro::after {
+    content: "";
+    position: absolute;
+    z-index: 5;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 18px;
+    transform: translateX(-50%);
+    pointer-events: none;
+    background: linear-gradient(
+        to right,
+        rgba(70,50,25,.18),
+        rgba(255,255,255,.20),
+        rgba(70,50,25,.18)
+    );
+}
+
+.cabecalho-pagina {
+    height: 28px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 8px;
+    border-bottom: 1px solid var(--linha);
+    padding-bottom: 8px;
+    margin-bottom: 15px;
+    color: var(--tinta-suave);
+    font-size: 9px;
+    letter-spacing: 1.1px;
+    text-transform: uppercase;
+}
+
+.cabecalho-pagina span:last-child {
+    text-align: right;
+}
+
+.conteudo-pagina {
+    height: calc(100% - 75px);
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 22px;
+    overflow: hidden;
+}
+
+.coluna {
+    min-width: 0;
+    height: 100%;
+    overflow: hidden;
+    font-size: 12.4px;
+    line-height: 1.48;
+    text-align: justify;
+    overflow-wrap: break-word;
+    hyphens: auto;
+}
+
+.bloco {
+    margin: 0 0 8px;
+    break-inside: avoid;
+}
+
+.bloco p {
+    margin: 0;
+    text-indent: 10px;
+}
+
+.numero {
+    display: inline-block;
+    vertical-align: super;
+    font-size: .66em;
+    line-height: 0;
+    font-weight: bold;
+    margin-right: 3px;
+    color: #59462d;
+}
+
+.titulo-capitulo {
+    text-align: center;
+    margin: 10px 0 17px;
+}
+
+.titulo-capitulo .identificacao {
+    display: block;
+    font-size: 9px;
+    letter-spacing: 2px;
+    margin-bottom: 8px;
+    color: var(--tinta-suave);
+}
+
+.titulo-capitulo h2 {
+    font-size: 17px;
+    line-height: 1.25;
+    margin: 0;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.credito {
+    text-align: center;
+    font-size: 9px;
+    font-style: italic;
+    color: var(--tinta-suave);
+    margin: 8px 0 12px;
+}
+
+.subtitulo {
+    font-size: 11px;
+    line-height: 1.3;
+    text-align: left;
+    text-transform: uppercase;
+    font-weight: bold;
+    margin: 13px 0 8px;
+    letter-spacing: .35px;
+    color: #382b1c;
+}
+
+.citacao {
+    margin: 9px 8px 12px 15px;
+    padding: 0;
+    border: 0;
+    font-style: italic;
+    font-size: 11.8px;
+    line-height: 1.45;
+    text-align: left;
+}
+
+.citacao p {
+    margin: 0;
+    text-indent: 0;
+}
+
+.referencia {
+    display: block;
+    margin-top: 4px;
+    font-size: 10px;
+    font-style: normal;
+    font-weight: bold;
+    text-align: right;
+    color: var(--tinta-suave);
+}
+
+.destaque {
+    font-weight: bold;
+    font-style: normal;
+}
+
+.fechamento {
+    text-align: center;
+    font-weight: bold;
+    margin: 9px 0;
+}
+
+.rodape-pagina {
+    position: absolute;
+    bottom: 17px;
+    left: 30px;
+    right: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 1px solid var(--linha);
+    padding-top: 7px;
+    font-size: 9px;
+    letter-spacing: 1.2px;
+    color: var(--tinta-suave);
+}
+
+.rodape-pagina span:last-child {
+    font-size: 10px;
+    letter-spacing: 0;
+}
+
+.controles {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 18px;
+    margin: 22px auto 0;
+}
+
+.controles button {
+    border: 1px solid #9c896b;
+    border-radius: 3px;
+    background: #30271d;
+    color: #f3ead4;
+    padding: 11px 22px;
+    font-family: Georgia, serif;
+    font-size: 11px;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: .2s;
+}
+
+.controles button:hover {
+    background: #57442e;
+}
+
+.controles button:disabled {
+    opacity: .35;
+    cursor: not-allowed;
+}
+
+.indicador {
+    min-width: 100px;
+    text-align: center;
+    font-size: 12px;
+    color: #d7c8ad;
+}
+
+.instrucao {
+    margin-top: 13px;
+    text-align: center;
+    font-size: 10px;
+    color: #b8aa93;
+    letter-spacing: .5px;
+}
+
+.assinatura {
+    text-align: center;
+    margin-top: 28px;
+    color: #b8aa93;
+    font-size: 10px;
+    letter-spacing: 2px;
+}
+
+.livro.animando .pagina {
+    animation: virar .28s ease;
+}
+
+@keyframes virar {
+    0% {
+        opacity: .65;
+        transform: rotateY(2deg);
+    }
+    100% {
+        opacity: 1;
+        transform: rotateY(0);
+    }
+}
+
+/* MEDIDOR INVISÍVEL PARA PAGINAÇÃO */
+
+.medidor {
+    position: fixed;
+    left: -10000px;
+    top: 0;
+    visibility: hidden;
+    pointer-events: none;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.medidor-coluna {
+    width: 100%;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 12.4px;
+    line-height: 1.48;
+    text-align: justify;
+    overflow-wrap: break-word;
+    hyphens: auto;
+}
+
+/* TABLETS */
+
+@media (max-width: 900px) {
+    .pagina {
+        padding-left: 22px;
+        padding-right: 22px;
+    }
+
+    .conteudo-pagina {
+        gap: 14px;
+    }
+
+    .coluna {
+        font-size: 11.5px;
+    }
+
+    .titulo-capitulo h2 {
+        font-size: 15px;
+    }
+}
+
+/* CELULARES */
+
+@media (max-width: 650px) {
+    body {
+        padding: 15px 8px 25px;
+    }
+
+    .topo h1 {
+        font-size: 15px;
+        letter-spacing: 2px;
+    }
+
+    .livro {
+        display: block;
+        min-height: 650px;
+    }
+
+    .livro::after {
+        display: none;
+    }
+
+    .pagina {
+        display: none;
+        height: 650px;
+        border-radius: 4px !important;
+        padding: 25px 23px 42px;
+        box-shadow: 0 8px 22px rgba(0,0,0,.4);
+    }
+
+    .pagina.mobile-visivel {
+        display: block;
+    }
+
+    .conteudo-pagina {
+        display: block;
+    }
+
+    .coluna {
+        display: none;
+        font-size: 13px;
+        line-height: 1.52;
+    }
+
+    .coluna.mobile-coluna {
+        display: block;
+    }
+
+    .titulo-capitulo h2 {
+        font-size: 17px;
+    }
+
+    .subtitulo {
+        font-size: 12px;
+    }
+
+    .citacao {
+        font-size: 12.5px;
+    }
+
+    .rodape-pagina {
+        left: 23px;
+        right: 23px;
+    }
+
+    .controles {
+        gap: 8px;
+    }
+
+    .controles button {
+        padding: 10px 13px;
+        font-size: 10px;
+    }
+
+    .indicador {
+        min-width: 75px;
+        font-size: 11px;
+    }
+}
+
+@media (max-width: 360px) {
+    .pagina {
+        padding-left: 18px;
+        padding-right: 18px;
+    }
+
+    .coluna {
+        font-size: 12px;
+    }
+
+    .rodape-pagina {
+        left: 18px;
+        right: 18px;
+    }
+}
+
+@media print {
+    body {
+        background: white;
+        padding: 0;
+    }
+
+    .topo,
+    .controles,
+    .instrucao,
+    .assinatura {
+        display: none;
+    }
+
+    .livro {
+        filter: none;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header class="topo">
+    <h1>ATOS 29 • A HISTÓRIA CONTINUA</h1>
+    <p>MINISTÉRIO ATALAIA</p>
+</header>
+
+<main class="livro-area">
+
+    <div class="livro" id="livro">
+
+        <section class="pagina esquerda" id="paginaEsquerda">
+
+            <div class="cabecalho-pagina">
+                <span>ATOS 29 • A HISTÓRIA CONTINUA</span>
+                <span>CAPÍTULO 13</span>
+            </div>
+
+            <div class="conteudo-pagina">
+                <div class="coluna"></div>
+                <div class="coluna"></div>
+            </div>
+
+            <div class="rodape-pagina">
+                <span>MINISTÉRIO ATALAIA</span>
+                <span class="numero-pagina"></span>
+            </div>
+
+        </section>
+
+        <section class="pagina direita" id="paginaDireita">
+
+            <div class="cabecalho-pagina">
+                <span>ATOS 29 • A HISTÓRIA CONTINUA</span>
+                <span>CAPÍTULO 13</span>
+            </div>
+
+            <div class="conteudo-pagina">
+                <div class="coluna"></div>
+                <div class="coluna"></div>
+            </div>
+
+            <div class="rodape-pagina">
+                <span>MINISTÉRIO ATALAIA</span>
+                <span class="numero-pagina"></span>
+            </div>
+
+        </section>
+
+    </div>
+
+    <nav class="controles" aria-label="Navegação do livro">
+        <button id="anterior" type="button">‹ ANTERIOR</button>
+        <span class="indicador" id="indicador">Páginas</span>
+        <button id="proxima" type="button">PRÓXIMA ›</button>
+    </nav>
+
+    <p class="instrucao">
+        Utilize os botões ou as setas do teclado para virar as páginas.
+    </p>
+
+    <p class="assinatura">
+        ATOS 29 — A HISTÓRIA CONTINUA • MINISTÉRIO ATALAIA
+    </p>
+
+</main>
+
+<div class="medidor" aria-hidden="true">
+    <div class="medidor-coluna" id="medidorColuna"></div>
+</div>
+
+<script>
+"use strict";
+
+/* =====================================================
+   CAPÍTULO 13 — A CURA DA MINHA FUTURA SOGRA
+===================================================== */
+
+const conteudo = [
+
+    {
+        tipo: "titulo",
+        html: `
+            <div class="titulo-capitulo">
+                <span class="identificacao">ATOS 29 • CAPÍTULO 13</span>
+                <h2>A CURA DA MINHA FUTURA SOGRA</h2>
+            </div>
+            <div class="credito">
+                Ministério Atalaia • Diego Nascimento — Pastor Evangelista
+            </div>
+        `
+    },
+
+    { tipo: "subtitulo", texto: "QUANDO A ENFERMIDADE CHEGOU" },
+
+    { tipo: "paragrafo", numero: 1, texto: "No ano de 2010, enquanto eu e minha futura esposa vivíamos um compromisso de oração, enfrentamos um momento muito difícil." },
+
+    { tipo: "paragrafo", numero: 2, texto: "Sua mãe havia sido diagnosticada com câncer na tireoide, e seu estado de saúde era bastante preocupante.", destaque: "câncer na tireoide" },
+
+    { tipo: "paragrafo", numero: 3, texto: "Era uma situação que naturalmente trazia preocupação para toda a família." },
+
+    { tipo: "paragrafo", numero: 4, texto: "Mas, naquele período, aconteceu algo que marcou profundamente a minha caminhada de fé." },
+
+    { tipo: "subtitulo", texto: "O SONHO" },
+
+    { tipo: "paragrafo", numero: 5, texto: "Durante aquele tempo, o Senhor me concedeu um sonho muito especial." },
+
+    { tipo: "paragrafo", numero: 6, texto: "No sonho, vi minha futura sogra completamente restaurada, saudável e cantando ao Senhor." },
+
+    { tipo: "paragrafo", numero: 7, texto: "Guardei aquela visão no coração como uma promessa de Deus." },
+
+    { tipo: "paragrafo", numero: 8, texto: "Eu ainda não sabia como aquilo aconteceria." },
+
+    { tipo: "paragrafo", numero: 9, texto: "A enfermidade estava presente." },
+
+    { tipo: "paragrafo", numero: 10, texto: "A situação era preocupante." },
+
+    { tipo: "paragrafo", numero: 11, texto: "Mas aquela imagem permaneceu dentro de mim: minha futura sogra saudável, restaurada e adorando ao Senhor.", destaque: "minha futura sogra saudável, restaurada e adorando ao Senhor." },
+
+    { tipo: "subtitulo", texto: "UMA NOTÍCIA PREOCUPANTE" },
+
+    { tipo: "paragrafo", numero: 12, texto: "Algum tempo depois, minha compromissada recebeu uma ligação informando que sua mãe estava muito mal e que a família acreditava que ela estava vivendo seus últimos momentos." },
+
+    { tipo: "paragrafo", numero: 13, texto: "Diante daquela notícia, imediatamente pedi a um amigo que nos levasse de carro até a casa onde ela se encontrava." },
+
+    { tipo: "paragrafo", numero: 14, texto: "Precisávamos estar ali." },
+
+    { tipo: "paragrafo", numero: 15, texto: "Precisávamos orar." },
+
+    { tipo: "paragrafo", numero: 16, texto: "Precisávamos colocar aquela situação diante de Deus." },
+
+    { tipo: "subtitulo", texto: "DIANTE DA ENFERMIDADE" },
+
+    { tipo: "paragrafo", numero: 17, texto: "Quando chegamos, encontramos minha futura sogra deitada sobre uma cama." },
+
+    { tipo: "paragrafo", numero: 18, texto: "Ela estava com febre muito alta e gemia intensamente por causa das dores provocadas pela enfermidade.", destaque: "febre muito alta" },
+
+    { tipo: "paragrafo", numero: 19, texto: "A situação era muito difícil de presenciar." },
+
+    { tipo: "paragrafo", numero: 20, texto: "Então nos reunimos ao redor dela e começamos a orar." },
+
+    { tipo: "paragrafo", numero: 21, texto: "Clamamos ao Senhor com fé, entregando aquela situação em Suas mãos." },
+
+    { tipo: "paragrafo", numero: 22, texto: "Não tínhamos controle sobre aquilo que estava acontecendo." },
+
+    { tipo: "paragrafo", numero: 23, texto: "Mas podíamos orar." },
+
+    { tipo: "paragrafo", numero: 24, texto: "Podíamos clamar." },
+
+    { tipo: "paragrafo", numero: 25, texto: "Podíamos confiar." },
+
+    { tipo: "subtitulo", texto: "A FEBRE DESAPARECEU" },
+
+    { tipo: "paragrafo", numero: 26, texto: "Enquanto orávamos, algo aconteceu." },
+
+    { tipo: "paragrafo", numero: 27, texto: "A febre desapareceu completamente.", destaque: "A febre desapareceu completamente." },
+
+    { tipo: "paragrafo", numero: 28, texto: "Aquela melhora renovou nossa esperança e fortaleceu toda a família." },
+
+    { tipo: "paragrafo", numero: 29, texto: "Naquele momento, vimos uma mudança acontecer diante dos nossos olhos." },
+
+    { tipo: "paragrafo", numero: 30, texto: "Continuamos confiando no Senhor." },
+
+    { tipo: "paragrafo", numero: 31, texto: "Mas também entendíamos que o tratamento médico deveria continuar." },
+
+    { tipo: "subtitulo", texto: "DEUS CONTINUOU CONDUZINDO O PROCESSO" },
+
+    { tipo: "paragrafo", numero: 32, texto: "Ela continuou realizando todo o tratamento médico necessário." },
+
+    { tipo: "paragrafo", numero: 33, texto: "E, pela graça de Deus, foi completamente curada do câncer." },
+
+    { tipo: "paragrafo", numero: 34, texto: "Ao registrar esse testemunho, quero preservar justamente essa parte da história: a oração aconteceu, a febre desapareceu durante aquele momento de oração, e ela continuou realizando o tratamento médico necessário até a cura do câncer." },
+
+    { tipo: "paragrafo", numero: 35, texto: "Para mim, tudo aquilo foi uma demonstração da fidelidade de Deus." },
+
+    {
+        tipo: "citacao",
+        texto: "“Eu sou o SENHOR que te sara.”",
+        referencia: "Êxodo 15:26"
+    },
+
+    { tipo: "paragrafo", semNumero: true, texto: "E também:" },
+
+    {
+        tipo: "citacao",
+        texto: "“É ele quem perdoa todas as tuas iniquidades; quem sara todas as tuas enfermidades.”",
+        referencia: "Salmo 103:3"
+    },
+
+    { tipo: "subtitulo", texto: "O CUMPRIMENTO DO SONHO" },
+
+    { tipo: "paragrafo", numero: 36, texto: "Mas havia ainda algo que marcaria meu coração de maneira muito especial." },
+
+    { tipo: "paragrafo", numero: 37, texto: "Algum tempo depois, pude vê-la saudável, alegre e cantando ao Senhor." },
+
+    { tipo: "paragrafo", numero: 38, texto: "Era exatamente como eu havia visto naquela noite no sonho." },
+
+    { tipo: "paragrafo", numero: 39, texto: "Aquilo me tocou profundamente." },
+
+    { tipo: "paragrafo", numero: 40, texto: "Eu havia visto minha futura sogra saudável e cantando ao Senhor." },
+
+    { tipo: "paragrafo", numero: 41, texto: "Depois de todo aquele processo, pude contemplá-la daquela maneira." },
+
+    { tipo: "paragrafo", numero: 42, texto: "Não apenas saudável, mas adorando." },
+
+    { tipo: "subtitulo", texto: "A FIDELIDADE DO SENHOR" },
+
+    { tipo: "paragrafo", numero: 43, texto: "Sempre que a vejo adorando a Deus, lembro-me daquela experiência." },
+
+    { tipo: "paragrafo", numero: 44, texto: "Lembro-me do diagnóstico." },
+
+    { tipo: "paragrafo", numero: 45, texto: "Lembro-me daquele momento de grande preocupação." },
+
+    { tipo: "paragrafo", numero: 46, texto: "Lembro-me da oração." },
+
+    { tipo: "paragrafo", numero: 47, texto: "Lembro-me da febre que desapareceu." },
+
+    { tipo: "paragrafo", numero: 48, texto: "Lembro-me do tratamento." },
+
+    { tipo: "paragrafo", numero: 49, texto: "E lembro-me de vê-la posteriormente saudável, alegre e cantando ao Senhor." },
+
+    { tipo: "paragrafo", numero: 50, texto: "Tudo isso me faz lembrar da fidelidade de Deus." },
+
+    { tipo: "paragrafo", numero: 51, texto: "Por isso, quando olho para essa história, não quero glorificar a experiência." },
+
+    { tipo: "paragrafo", numero: 52, texto: "Quero glorificar o Senhor.", destaque: "o Senhor" },
+
+    { tipo: "subtitulo", texto: "A ORAÇÃO DIANTE DA ENFERMIDADE" },
+
+    { tipo: "paragrafo", numero: 53, texto: "Aquele episódio também me ensinou que, diante da enfermidade, devemos buscar a Deus em oração." },
+
+    {
+        tipo: "citacao",
+        texto: "“Está alguém entre vós doente? Chame os presbíteros da igreja, e estes façam oração sobre ele, ungindo-o com óleo em nome do Senhor.”",
+        referencia: "Tiago 5:14"
+    },
+
+    { tipo: "paragrafo", numero: 54, texto: "A oração não é uma tentativa de controlar Deus." },
+
+    { tipo: "paragrafo", numero: 55, texto: "É uma expressão de fé e dependência." },
+
+    { tipo: "paragrafo", numero: 56, texto: "Naquela ocasião, nós nos reunimos ao redor dela e clamamos ao Senhor." },
+
+    { tipo: "paragrafo", numero: 57, texto: "Entregamos aquela situação em Suas mãos." },
+
+    { tipo: "paragrafo", numero: 58, texto: "E testemunhamos uma intervenção que marcou profundamente nossa família." },
+
+    { tipo: "subtitulo", texto: "A PROMESSA E O PROCESSO" },
+
+    { tipo: "paragrafo", numero: 59, texto: "Uma coisa que aprendi com aquela experiência é que uma promessa não significa necessariamente que não haverá processo." },
+
+    { tipo: "paragrafo", numero: 60, texto: "Eu havia visto minha futura sogra saudável no sonho." },
+
+    { tipo: "paragrafo", numero: 61, texto: "Mas, depois disso, ainda veio uma notícia terrível." },
+
+    { tipo: "paragrafo", numero: 62, texto: "Houve sofrimento." },
+
+    { tipo: "paragrafo", numero: 63, texto: "Houve preocupação." },
+
+    { tipo: "paragrafo", numero: 64, texto: "Houve oração." },
+
+    { tipo: "paragrafo", numero: 65, texto: "Houve tratamento." },
+
+    { tipo: "paragrafo", numero: 66, texto: "E somente depois pude contemplar aquilo que havia visto no sonho." },
+
+    { tipo: "paragrafo", numero: 67, texto: "Isso me ensinou a confiar em Deus mesmo quando aquilo que estamos vivendo parece completamente contrário àquilo que esperamos." },
+
+    { tipo: "subtitulo", texto: "QUANDO A RESPOSTA CHEGA" },
+
+    { tipo: "paragrafo", numero: 68, texto: "Às vezes, a resposta de Deus não chega da maneira ou no momento que imaginamos." },
+
+    { tipo: "paragrafo", numero: 69, texto: "Mas devemos continuar confiando." },
+
+    { tipo: "paragrafo", numero: 70, texto: "Naquela história, o que ficou gravado em meu coração não foi somente a cura." },
+
+    { tipo: "paragrafo", numero: 71, texto: "Foi também o caminho percorrido até chegar àquele momento." },
+
+    { tipo: "paragrafo", numero: 72, texto: "E, principalmente, aquilo que veio depois." },
+
+    { tipo: "paragrafo", numero: 73, texto: "Ver minha futura sogra saudável, alegre e cantando ao Senhor tornou-se para mim uma lembrança viva da fidelidade de Deus." },
+
+    { tipo: "subtitulo", texto: "PARA A GLÓRIA DE DEUS" },
+
+    {
+        tipo: "citacao",
+        texto: "“Eu sou o SENHOR, este é o meu nome; a minha glória, pois, não a darei a outrem.”",
+        referencia: "Isaías 42:8"
+    },
+
+    { tipo: "paragrafo", numero: 74, texto: "Por isso, esse testemunho não termina na enfermidade." },
+
+    { tipo: "paragrafo", numero: 75, texto: "Não termina na oração." },
+
+    { tipo: "paragrafo", numero: 76, texto: "Não termina na cura." },
+
+    { tipo: "paragrafo", numero: 77, texto: "Termina na adoração." },
+
+    { tipo: "paragrafo", numero: 78, texto: "Porque foi justamente isso que mais marcou meu coração: ver aquela mulher saudável e cantando ao Senhor.", destaque: "ver aquela mulher saudável e cantando ao Senhor." },
+
+    { tipo: "paragrafo", numero: 79, texto: "Aquele sonho que um dia guardei no coração tornou-se uma lembrança daquilo que Deus realizou." },
+
+    { tipo: "paragrafo", numero: 80, texto: "E toda vez que a vejo adorando, lembro-me da fidelidade do Senhor e glorifico o Seu nome por tudo aquilo que Ele realizou." },
+
+    { tipo: "subtitulo", texto: "ATOS 29" },
+
+    { tipo: "paragrafo", numero: 81, texto: "Essa experiência me ensinou que podemos atravessar momentos em que as circunstâncias parecem dizer que não existe mais esperança." },
+
+    { tipo: "paragrafo", numero: 82, texto: "Mas a nossa esperança não está nas circunstâncias." },
+
+    { tipo: "paragrafo", numero: 83, texto: "Nossa esperança está em Deus." },
+
+    { tipo: "paragrafo", numero: 84, texto: "Podemos orar." },
+
+    { tipo: "paragrafo", numero: 85, texto: "Podemos clamar." },
+
+    { tipo: "paragrafo", numero: 86, texto: "Podemos buscar o Senhor." },
+
+    { tipo: "paragrafo", numero: 87, texto: "Podemos também seguir os tratamentos necessários e confiar que Deus continua conduzindo todas as coisas." },
+
+    { tipo: "paragrafo", numero: 88, texto: "E quando a resposta chega, a nossa reação deve ser a mesma:" },
+
+    { tipo: "paragrafo", numero: 89, texto: "adorar.", destaque: "adorar." },
+
+    { tipo: "paragrafo", numero: 90, texto: "Porque o testemunho não é sobre aquilo que o homem conseguiu fazer." },
+
+    { tipo: "paragrafo", numero: 91, texto: "É sobre a fidelidade de Deus." },
+
+    { tipo: "paragrafo", numero: 92, texto: "E quando vejo minha futura sogra saudável, alegre e cantando ao Senhor, só consigo me lembrar de uma coisa:" },
+
+    { tipo: "destaque", numero: 93, texto: "Deus foi fiel." },
+
+    {
+        tipo: "citacao",
+        texto: "“Jesus Cristo, ontem e hoje, é o mesmo e o será para sempre.”",
+        referencia: "Hebreus 13:8"
+    },
+
+    { tipo: "paragrafo", numero: 94, texto: "ATOS 29 continua.", destaque: "ATOS 29 continua." }
+
+];
+
+
+/* =====================================================
+   CONVERSÃO SEGURA DOS BLOCOS EM HTML
+===================================================== */
+
+function escaparHTML(texto) {
+    return String(texto).replace(/[&<>"']/g, caractere => ({
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        '"': "&quot;",
+        "'": "&#039;"
+    })[caractere]);
+}
+
+function criarHTML(item) {
+
+    if (item.tipo === "titulo") {
+        return item.html;
+    }
+
+    if (item.tipo === "subtitulo") {
+        return `<h3 class="subtitulo">${escaparHTML(item.texto)}</h3>`;
+    }
+
+    if (item.tipo === "paragrafo") {
+
+        let texto = escaparHTML(item.texto);
+
+        if (item.destaque) {
+            const destaque = escaparHTML(item.destaque);
+
+            texto = texto.replace(
+                destaque,
+                `<strong class="destaque">${destaque}</strong>`
+            );
+        }
+
+        const numero = item.numero
+            ? `<sup class="numero">${item.numero}</sup>`
+            : "";
+
+        return `
+            <div class="bloco">
+                <p>${numero}${texto}</p>
+            </div>
+        `;
+    }
+
+    if (item.tipo === "citacao") {
+        return `
+            <div class="bloco">
+                <blockquote class="citacao">
+                    <p>${escaparHTML(item.texto)}</p>
+                    <span class="referencia">
+                        ${escaparHTML(item.referencia)}
+                    </span>
+                </blockquote>
+            </div>
+        `;
+    }
+
+    if (item.tipo === "destaque") {
+        const numero = item.numero
+            ? `<sup class="numero">${item.numero}</sup>`
+            : "";
+
+        return `
+            <div class="bloco fechamento">
+                ${numero}<strong>${escaparHTML(item.texto)}</strong>
+            </div>
+        `;
+    }
+
+    return "";
+}
+
+
+/* =====================================================
+   ELEMENTOS E ESTADO DA PAGINAÇÃO
+===================================================== */
+
+const livro = document.getElementById("livro");
+const paginaEsquerda = document.getElementById("paginaEsquerda");
+const paginaDireita = document.getElementById("paginaDireita");
+
+const medidorColuna = document.getElementById("medidorColuna");
+
+const indicador = document.getElementById("indicador");
+const botaoAnterior = document.getElementById("anterior");
+const botaoProxima = document.getElementById("proxima");
+
+let paginas = [];
+let indiceAtual = 0;
+let modoMobile = false;
+
+
+/* =====================================================
+   MEDIÇÃO DO ESPAÇO DISPONÍVEL
+===================================================== */
+
+function obterModoMobile() {
+    return window.matchMedia("(max-width: 650px)").matches;
+}
+
+function prepararMedidor() {
+
+    const estiloPagina = getComputedStyle(paginaEsquerda);
+
+    const larguraPagina = paginaEsquerda.clientWidth;
+
+    const larguraInterna =
+        larguraPagina -
+        parseFloat(estiloPagina.paddingLeft) -
+        parseFloat(estiloPagina.paddingRight);
+
+    const larguraColuna = modoMobile
+        ? larguraInterna
+        : (larguraInterna - 22) / 2;
+
+    const alturaInterna =
+        paginaEsquerda.clientHeight - 28 - 15 - 42 - 10;
+
+    const colunaReferencia =
+        paginaEsquerda.querySelector(".coluna");
+
+    const estiloColuna = getComputedStyle(colunaReferencia);
+
+    medidorColuna.style.width = larguraColuna + "px";
+    medidorColuna.style.height = alturaInterna + "px";
+    medidorColuna.style.fontSize = estiloColuna.fontSize;
+    medidorColuna.style.lineHeight = estiloColuna.lineHeight;
+
+    return {
+        largura: larguraColuna,
+        altura: alturaInterna
+    };
+}
+
+
+/* =====================================================
+   AGRUPAMENTO DOS TÍTULOS COM O TEXTO SEGUINTE
+===================================================== */
+
+function formarGrupos() {
+
+    const grupos = [];
+    let i = 0;
+
+    while (i < conteudo.length) {
+
+        const item = conteudo[i];
+
+        if (
+            item.tipo === "subtitulo" ||
+            item.tipo === "titulo"
+        ) {
+
+            let grupo = criarHTML(item);
+
+            i++;
+
+            /*
+             * Mantém o título junto do primeiro bloco
+             * de conteúdo que vem logo depois dele.
+             */
+
+            if (i < conteudo.length) {
+                grupo += criarHTML(conteudo[i]);
+                i++;
+            }
+
+            grupos.push(grupo);
+
+        } else {
+
+            grupos.push(criarHTML(item));
+            i++;
+        }
+    }
+
+    return grupos;
+}
+
+
+/* =====================================================
+   DISTRIBUIÇÃO AUTOMÁTICA DAS COLUNAS
+===================================================== */
+
+function formarPaginas() {
+
+    modoMobile = obterModoMobile();
+
+    const medidas = prepararMedidor();
+    const grupos = formarGrupos();
+
+    const colunasGeradas = [];
+
+    let colunaAtual = [];
+    let alturaAtual = 0;
+
+    function fecharColuna() {
+
+        if (colunaAtual.length > 0) {
+            colunasGeradas.push(colunaAtual);
+        }
+
+        colunaAtual = [];
+        alturaAtual = 0;
+    }
+
+    function medirBloco(html) {
+
+        medidorColuna.innerHTML = html;
+
+        return medidorColuna.scrollHeight;
+    }
+
+    grupos.forEach(html => {
+
+        const altura = medirBloco(html);
+        const espacamento = 8;
+
+        if (
+            colunaAtual.length > 0 &&
+            alturaAtual + altura + espacamento > medidas.altura
+        ) {
+            fecharColuna();
+        }
+
+        colunaAtual.push(html);
+        alturaAtual += altura + espacamento;
+
+    });
+
+    fecharColuna();
+
+    /*
+     * Desktop: duas colunas por página.
+     * Celular: uma coluna por página.
+     */
+
+    const quantidadeColunasPorPagina = modoMobile ? 1 : 2;
+
+    paginas = [];
+
+    for (
+        let i = 0;
+        i < colunasGeradas.length;
+        i += quantidadeColunasPorPagina
+    ) {
+
+        paginas.push(
+            colunasGeradas.slice(
+                i,
+                i + quantidadeColunasPorPagina
+            )
+        );
+    }
+
+    if (paginas.length === 0) {
+        paginas = [[[]]];
+    }
+
+    const totalAberturas = modoMobile
+        ? paginas.length
+        : Math.ceil(paginas.length / 2);
+
+    indiceAtual = Math.min(
+        indiceAtual,
+        Math.max(0, totalAberturas - 1)
+    );
+
+    renderizar();
+}
+
+
+/* =====================================================
+   PREENCHIMENTO DAS PÁGINAS
+===================================================== */
+
+function preencherPagina(elemento, dados, numeroPagina) {
+
+    const colunas = elemento.querySelectorAll(".coluna");
+
+    colunas.forEach((coluna, indice) => {
+
+        coluna.innerHTML = "";
+        coluna.classList.remove("mobile-coluna");
+
+        if (dados && dados[indice]) {
+            coluna.innerHTML = dados[indice].join("");
+        }
+    });
+
+    elemento.querySelector(".numero-pagina").textContent =
+        numeroPagina;
+}
+
+
+/* =====================================================
+   EXIBIÇÃO NO CELULAR
+===================================================== */
+
+function renderizarMobile() {
+
+    paginaEsquerda.classList.add("mobile-visivel");
+    paginaDireita.classList.remove("mobile-visivel");
+
+    const dados = paginas[indiceAtual] || [];
+
+    preencherPagina(
+        paginaEsquerda,
+        dados,
+        indiceAtual + 1
+    );
+
+    const coluna = paginaEsquerda.querySelector(".coluna");
+
+    coluna.classList.add("mobile-coluna");
+
+    paginaDireita.style.display = "none";
+
+    indicador.textContent =
+        `Página ${indiceAtual + 1} de ${paginas.length}`;
+}
+
+
+/* =====================================================
+   EXIBIÇÃO NO COMPUTADOR
+===================================================== */
+
+function renderizarDesktop() {
+
+    paginaEsquerda.classList.add("mobile-visivel");
+    paginaDireita.classList.add("mobile-visivel");
+
+    paginaDireita.style.display = "";
+
+    const dadosEsquerda = paginas[indiceAtual * 2] || [];
+    const dadosDireita = paginas[indiceAtual * 2 + 1] || [];
+
+    preencherPagina(
+        paginaEsquerda,
+        dadosEsquerda,
+        indiceAtual * 2 + 1
+    );
+
+    preencherPagina(
+        paginaDireita,
+        dadosDireita,
+        indiceAtual * 2 + 2
+    );
+
+    const totalAberturas = Math.ceil(paginas.length / 2);
+
+    indicador.textContent =
+        `Abertura ${indiceAtual + 1} de ${totalAberturas}`;
+}
+
+
+/* =====================================================
+   ATUALIZAÇÃO DA TELA
+===================================================== */
+
+function renderizar() {
+
+    if (modoMobile) {
+        renderizarMobile();
+    } else {
+        renderizarDesktop();
+    }
+
+    const total = modoMobile
+        ? paginas.length
+        : Math.ceil(paginas.length / 2);
+
+    botaoAnterior.disabled = indiceAtual <= 0;
+    botaoProxima.disabled = indiceAtual >= total - 1;
+
+    livro.classList.remove("animando");
+
+    requestAnimationFrame(() => {
+        livro.classList.add("animando");
+    });
+}
+
+
+/* =====================================================
+   NAVEGAÇÃO
+===================================================== */
+
+function anterior() {
+
+    if (indiceAtual > 0) {
+        indiceAtual--;
+        renderizar();
+    }
+}
+
+function proxima() {
+
+    const total = modoMobile
+        ? paginas.length
+        : Math.ceil(paginas.length / 2);
+
+    if (indiceAtual < total - 1) {
+        indiceAtual++;
+        renderizar();
+    }
+}
+
+botaoAnterior.addEventListener("click", anterior);
+botaoProxima.addEventListener("click", proxima);
+
+document.addEventListener("keydown", evento => {
+
+    if (
+        evento.key === "ArrowRight" ||
+        evento.key === "PageDown"
+    ) {
+        proxima();
+    }
+
+    if (
+        evento.key === "ArrowLeft" ||
+        evento.key === "PageUp"
+    ) {
+        anterior();
+    }
+});
+
+
+/* =====================================================
+   INICIALIZAÇÃO E REDIMENSIONAMENTO
+===================================================== */
+
+let temporizadorRedimensionamento;
+
+function inicializar() {
+
+    indiceAtual = 0;
+
+    requestAnimationFrame(() => {
+        formarPaginas();
+    });
+}
+
+window.addEventListener("load", inicializar);
+
+window.addEventListener("resize", () => {
+
+    clearTimeout(temporizadorRedimensionamento);
+
+    temporizadorRedimensionamento = setTimeout(() => {
+
+        const novoModoMobile = obterModoMobile();
+
+        if (novoModoMobile !== modoMobile) {
+            indiceAtual = 0;
+        }
+
+        formarPaginas();
+
+    }, 200);
+});
+
+</script>
+
+</body>
+</html>

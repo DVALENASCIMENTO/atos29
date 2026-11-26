@@ -1,0 +1,1146 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#17130f">
+
+<title>Atos 29 — Capítulo 9 | A Nuvem de Glória</title>
+
+<style>
+:root {
+    --fundo: #17130f;
+    --papel: #f3ead3;
+    --papel-escuro: #e9ddc0;
+    --texto: #302719;
+    --dourado: #b89b64;
+    --largura-pagina: 560px;
+    --altura-pagina: 750px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    background:
+        radial-gradient(ellipse at center, #393027 0%, #211b15 55%, #100d0a 100%);
+    color: #eee4d1;
+    font-family: Georgia, "Times New Roman", serif;
+}
+
+/* CABEÇALHO EXTERNO */
+
+.topo {
+    text-align: center;
+    padding: 22px 12px 14px;
+}
+
+.topo h1 {
+    margin: 0;
+    font-size: 19px;
+    letter-spacing: 3px;
+    font-weight: normal;
+    color: #e2d2ad;
+}
+
+.topo p {
+    margin: 7px 0 0;
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: #b8a783;
+}
+
+/* LIVRO */
+
+.area-livro {
+    width: 100%;
+    padding: 12px 16px 22px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.livro {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    perspective: 1800px;
+    max-width: 1200px;
+    width: 100%;
+    gap: 0;
+}
+
+/* PÁGINAS */
+
+.pagina {
+    position: relative;
+    width: 50%;
+    max-width: var(--largura-pagina);
+    height: var(--altura-pagina);
+    overflow: hidden;
+    color: var(--texto);
+    background:
+        linear-gradient(90deg,
+            rgba(100, 75, 40, .10),
+            transparent 8%,
+            transparent 92%,
+            rgba(100, 75, 40, .08)),
+        repeating-linear-gradient(
+            0deg,
+            rgba(100, 75, 40, .018) 0px,
+            rgba(100, 75, 40, .018) 1px,
+            transparent 1px,
+            transparent 4px
+        ),
+        var(--papel);
+    box-shadow:
+        inset 0 0 28px rgba(80, 55, 25, .13),
+        0 12px 35px rgba(0, 0, 0, .45);
+    padding: 38px 30px 48px;
+}
+
+.pagina.esquerda {
+    border-radius: 5px 0 0 5px;
+    box-shadow:
+        inset -14px 0 18px -16px rgba(0,0,0,.55),
+        inset 0 0 25px rgba(80,55,25,.12),
+        -8px 10px 25px rgba(0,0,0,.3);
+}
+
+.pagina.direita {
+    border-radius: 0 5px 5px 0;
+    box-shadow:
+        inset 14px 0 18px -16px rgba(0,0,0,.55),
+        inset 0 0 25px rgba(80,55,25,.12),
+        8px 10px 25px rgba(0,0,0,.3);
+}
+
+/* LOMBADA */
+
+.lombada {
+    width: 15px;
+    flex: 0 0 15px;
+    background: linear-gradient(
+        90deg,
+        #8e7955,
+        #c3ad7f 30%,
+        #766044 50%,
+        #d1bd91 72%,
+        #786044
+    );
+    box-shadow: 0 0 12px rgba(0,0,0,.6);
+    z-index: 2;
+}
+
+/* CABEÇALHO DA PÁGINA */
+
+.cabecalho-pagina {
+    text-align: center;
+    border-bottom: 1px solid rgba(75, 55, 30, .35);
+    padding-bottom: 8px;
+    margin-bottom: 18px;
+    color: #655337;
+    font-size: 9px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+}
+
+/* DUAS COLUNAS */
+
+.colunas {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 21px;
+    height: calc(100% - 58px);
+    overflow: hidden;
+}
+
+.coluna {
+    min-width: 0;
+    overflow: hidden;
+    text-align: justify;
+    font-size: 12px;
+    line-height: 1.48;
+    hyphens: auto;
+    overflow-wrap: break-word;
+}
+
+.coluna + .coluna {
+    border-left: 1px solid rgba(80, 60, 35, .16);
+    padding-left: 14px;
+}
+
+/* TÍTULO PRINCIPAL */
+
+.titulo-principal {
+    text-align: center;
+    margin: 4px 0 20px;
+    break-inside: avoid;
+}
+
+.titulo-principal .identificacao {
+    display: block;
+    font-size: 10px;
+    letter-spacing: 2px;
+    margin-bottom: 12px;
+    color: #75603c;
+    font-weight: bold;
+}
+
+.titulo-principal h1 {
+    font-size: 19px;
+    line-height: 1.3;
+    text-align: center;
+    margin: 0 0 8px;
+    color: #352817;
+    font-weight: bold;
+}
+
+.titulo-principal .credito {
+    font-size: 10px;
+    text-align: center;
+    font-style: italic;
+    color: #715d3d;
+    margin: 0;
+}
+
+/* SUBTÍTULOS */
+
+.subtitulo {
+    font-size: 11px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: .35px;
+    line-height: 1.35;
+    text-align: left;
+    margin: 15px 0 7px;
+    color: #3c2e1c;
+    break-after: avoid;
+    page-break-after: avoid;
+}
+
+/* PARÁGRAFOS */
+
+.paragrafo {
+    margin: 0 0 8px;
+    text-indent: 0;
+}
+
+.numero {
+    font-size: 8px;
+    vertical-align: super;
+    font-weight: bold;
+    margin-right: 2px;
+    color: #806b47;
+}
+
+/* DESTAQUES */
+
+.destaque {
+    font-weight: bold;
+}
+
+.citacao {
+    margin: 8px 7px 3px;
+    padding-left: 9px;
+    border-left: 2px solid #a38a5d;
+    font-style: italic;
+    text-align: left;
+    font-size: 11px;
+    line-height: 1.45;
+}
+
+.referencia {
+    font-size: 9px;
+    font-weight: bold;
+    font-style: normal;
+    text-align: right;
+    margin: 3px 7px 9px;
+    color: #685333;
+}
+
+.referencia-isolada {
+    font-size: 10px;
+    font-weight: bold;
+    font-style: italic;
+    margin: 4px 0 8px;
+    text-align: left;
+    color: #685333;
+}
+
+.final {
+    text-align: center;
+    font-weight: bold;
+    font-style: italic;
+    margin: 10px 0;
+}
+
+/* RODAPÉ */
+
+.rodape-pagina {
+    position: absolute;
+    bottom: 17px;
+    left: 30px;
+    right: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid rgba(75, 55, 30, .25);
+    padding-top: 6px;
+    color: #796746;
+    font-size: 9px;
+    letter-spacing: .5px;
+}
+
+/* NAVEGAÇÃO */
+
+.controles {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    padding: 14px 10px 20px;
+}
+
+.controles button {
+    border: 1px solid #a68c5d;
+    color: #e9d9b6;
+    background: #30261b;
+    padding: 11px 23px;
+    font-family: Georgia, serif;
+    font-size: 11px;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: .2s;
+}
+
+.controles button:hover:not(:disabled) {
+    background: #55432b;
+    color: #fff;
+}
+
+.controles button:disabled {
+    opacity: .35;
+    cursor: not-allowed;
+}
+
+.indicador {
+    min-width: 100px;
+    text-align: center;
+    font-size: 12px;
+    color: #d8c7a4;
+}
+
+/* RODAPÉ INSTITUCIONAL */
+
+.rodape-site {
+    text-align: center;
+    padding: 8px 10px 25px;
+    color: #a99570;
+    font-size: 10px;
+    letter-spacing: 2px;
+}
+
+/* ANIMAÇÃO */
+
+.pagina.animar {
+    animation: virar .35s ease;
+}
+
+@keyframes virar {
+    from {
+        opacity: .55;
+        transform: rotateY(-3deg);
+    }
+    to {
+        opacity: 1;
+        transform: rotateY(0);
+    }
+}
+
+/* RESPONSIVIDADE */
+
+@media (max-width: 850px) {
+    :root {
+        --altura-pagina: 720px;
+    }
+
+    .pagina {
+        padding: 32px 24px 45px;
+    }
+
+    .coluna {
+        font-size: 11px;
+    }
+}
+
+@media (max-width: 620px) {
+    .topo {
+        padding-top: 17px;
+    }
+
+    .topo h1 {
+        font-size: 15px;
+        letter-spacing: 2px;
+    }
+
+    .area-livro {
+        padding: 8px 10px 14px;
+    }
+
+    .livro {
+        max-width: 480px;
+    }
+
+    .pagina {
+        width: 100%;
+        max-width: 100%;
+        height: min(76vh, 760px);
+        min-height: 540px;
+        padding: 28px 23px 45px;
+        border-radius: 4px !important;
+    }
+
+    .pagina.esquerda {
+        display: none;
+    }
+
+    .lombada {
+        display: none;
+    }
+
+    .pagina.direita {
+        width: 100%;
+    }
+
+    .colunas {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+
+    .coluna {
+        font-size: 13px;
+        line-height: 1.58;
+    }
+
+    .coluna + .coluna {
+        display: none;
+    }
+
+    .titulo-principal h1 {
+        font-size: 20px;
+    }
+
+    .subtitulo {
+        font-size: 12px;
+    }
+
+    .citacao {
+        font-size: 12px;
+    }
+
+    .controles {
+        gap: 9px;
+    }
+
+    .controles button {
+        padding: 10px 14px;
+        font-size: 10px;
+    }
+}
+
+@media (max-width: 360px) {
+    .pagina {
+        padding-left: 17px;
+        padding-right: 17px;
+    }
+
+    .coluna {
+        font-size: 12px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header class="topo">
+    <h1>ATOS 29 • A HISTÓRIA CONTINUA</h1>
+    <p>MINISTÉRIO ATALAIA</p>
+</header>
+
+<main class="area-livro">
+    <div class="livro" id="livro">
+
+        <section class="pagina esquerda" id="paginaEsquerda">
+            <div class="cabecalho-pagina">ATOS 29 • A HISTÓRIA CONTINUA</div>
+            <div class="colunas">
+                <div class="coluna" id="coluna1"></div>
+                <div class="coluna" id="coluna2"></div>
+            </div>
+            <div class="rodape-pagina">
+                <span id="numeroEsquerda"></span>
+                <span>MINISTÉRIO ATALAIA</span>
+            </div>
+        </section>
+
+        <div class="lombada"></div>
+
+        <section class="pagina direita" id="paginaDireita">
+            <div class="cabecalho-pagina">CAPÍTULO 9 • A NUVEM DE GLÓRIA</div>
+            <div class="colunas">
+                <div class="coluna" id="coluna3"></div>
+                <div class="coluna" id="coluna4"></div>
+            </div>
+            <div class="rodape-pagina">
+                <span id="numeroDireita"></span>
+                <span>MINISTÉRIO ATALAIA</span>
+            </div>
+        </section>
+
+    </div>
+</main>
+
+<nav class="controles" aria-label="Navegação do livro">
+    <button id="anterior" type="button">← ANTERIOR</button>
+    <span class="indicador" id="indicador">Páginas 1–2</span>
+    <button id="proxima" type="button">PRÓXIMA →</button>
+</nav>
+
+<footer class="rodape-site">
+    MINISTÉRIO ATALAIA
+</footer>
+
+<!-- CONTEÚDO ORIGINAL DO CAPÍTULO -->
+
+<template id="conteudo">
+
+    <div class="titulo-principal">
+        <span class="identificacao">ATOS 29 — CAPÍTULO 9</span>
+        <h1>A NUVEM DE GLÓRIA</h1>
+        <p class="credito">Ministério Atalaia • Diego Nascimento — Pastor Evangelista</p>
+    </div>
+
+    <h2 class="subtitulo">UMA EXPERIÊNCIA MARCANTE NO INÍCIO DA CAMINHADA</h2>
+
+    <p class="paragrafo"><sup class="numero">1</sup> Há experiências que permanecem profundamente gravadas na memória. Não porque possamos explicá-las completamente, mas porque, naquele momento, tivemos a convicção de que estávamos diante de algo extraordinário.</p>
+
+    <p class="paragrafo"><sup class="numero">2</sup> Uma dessas experiências aconteceu comigo ainda nos primeiros tempos da minha caminhada com Cristo.</p>
+
+    <p class="paragrafo"><sup class="numero">3</sup> Eu era novo convertido. Estava vivendo aquele período de descoberta, de fome pela Palavra, de oração, de louvor e de uma busca intensa pela presença de Deus.</p>
+
+    <p class="paragrafo"><sup class="numero">4</sup> Certa vez, depois dos louvores na igreja, aconteceu algo que marcou profundamente a minha vida.</p>
+
+    <p class="paragrafo"><sup class="numero">5</sup> Eu vi uma <strong class="destaque">nuvem de glória</strong>.</p>
+
+    <p class="paragrafo"><sup class="numero">6</sup> Não era simplesmente uma ideia ou uma imagem que eu havia imaginado. Eu estava ali, depois do período de louvor, e aquela manifestação ficou gravada em minha memória como uma experiência muito forte da presença de Deus.</p>
+
+    <p class="paragrafo"><sup class="numero">7</sup> Naquele momento, eu ainda era alguém que estava começando a conhecer as Escrituras e compreender tantas coisas que posteriormente fariam parte da minha caminhada. Eu não tinha todas as respostas. Mas aquela experiência despertou em mim uma compreensão ainda maior de que a presença de Deus não era apenas uma doutrina que eu estudava.</p>
+
+    <p class="paragrafo"><sup class="numero">8</sup> Eu cria que Deus estava presente.</p>
+
+    <p class="paragrafo"><sup class="numero">9</sup> E aquela experiência ficou guardada no meu coração.</p>
+
+
+    <h2 class="subtitulo">UMA EXPERIÊNCIA QUE SE REPETIU</h2>
+
+    <p class="paragrafo"><sup class="numero">10</sup> Anos mais tarde, em <strong class="destaque">2010</strong>, algo semelhante aconteceu novamente.</p>
+
+    <p class="paragrafo"><sup class="numero">11</sup> Mais uma vez, depois dos louvores, eu vi uma nuvem de glória na igreja.</p>
+
+    <p class="paragrafo"><sup class="numero">12</sup> Foi uma experiência que imediatamente me fez lembrar daquela primeira vez, quando eu ainda era novo convertido.</p>
+
+    <p class="paragrafo"><sup class="numero">13</sup> Duas experiências separadas pelo tempo, mas que, para mim, possuíam uma característica em comum: aconteceram depois dos louvores e ficaram associadas à percepção da presença manifesta de Deus.</p>
+
+    <p class="paragrafo"><sup class="numero">14</sup> Naquele momento, compreendi que havia uma ligação profunda entre aquilo que eu estava vendo e tudo aquilo que as Escrituras já haviam registrado sobre a manifestação da glória de Deus.</p>
+
+
+    <h2 class="subtitulo">A GLÓRIA NO TEMPLO DE SALOMÃO</h2>
+
+    <p class="paragrafo"><sup class="numero">15</sup> Quando estudamos a Bíblia, encontramos um episódio extraordinário na dedicação do templo construído por Salomão.</p>
+
+    <p class="paragrafo"><sup class="numero">16</sup> Depois que a Arca da Aliança foi colocada no Santo dos Santos, os sacerdotes saíram do lugar santo, e os levitas adoravam ao Senhor com cânticos e instrumentos.</p>
+
+    <p class="paragrafo"><sup class="numero">17</sup> Então aconteceu algo extraordinário:</p>
+
+    <blockquote class="citacao">“A casa se encheu de uma nuvem.”</blockquote>
+    <p class="referencia">2 Crônicas 5:13-14</p>
+
+    <p class="paragrafo"><sup class="numero">18</sup> A passagem descreve que os sacerdotes não podiam permanecer ministrando por causa da nuvem, porque <strong class="destaque">a glória do Senhor encheu a Casa de Deus</strong>.</p>
+
+    <p class="paragrafo"><sup class="numero">19</sup> O relato também aparece em:</p>
+    <p class="referencia-isolada">1 Reis 8:10-11</p>
+
+    <p class="paragrafo"><sup class="numero">20</sup> Ali encontramos novamente a descrição da nuvem enchendo a Casa do Senhor.</p>
+
+    <p class="paragrafo"><sup class="numero">21</sup> Existe algo especialmente significativo nessa passagem: <strong class="destaque">a manifestação da glória acontece no contexto da adoração</strong>.</p>
+
+    <p class="paragrafo"><sup class="numero">22</sup> Os levitas estavam louvando e adorando ao Senhor, declarando:</p>
+
+    <blockquote class="citacao">“Porque ele é bom, porque a sua misericórdia dura para sempre.”</blockquote>
+    <p class="referencia">2 Crônicas 5:13</p>
+
+    <p class="paragrafo"><sup class="numero">23</sup> Então a Casa se encheu da nuvem.</p>
+
+
+    <h2 class="subtitulo">QUANDO O LOUVOR SE TORNA UM LUGAR DE ENCONTRO</h2>
+
+    <p class="paragrafo"><sup class="numero">24</sup> Ao lembrar dessas experiências que vivi, não posso deixar de pensar naquele episódio registrado nas Escrituras.</p>
+
+    <p class="paragrafo"><sup class="numero">25</sup> Eu não quero afirmar que uma experiência pessoal possa ser colocada no mesmo nível do acontecimento histórico registrado na Bíblia.</p>
+
+    <p class="paragrafo"><sup class="numero">26</sup> A Bíblia é a Palavra de Deus e é o fundamento da nossa fé.</p>
+
+    <p class="paragrafo"><sup class="numero">27</sup> O que posso afirmar é aquilo que vivi.</p>
+
+    <p class="paragrafo"><sup class="numero">28</sup> <strong class="destaque">Eu vi a nuvem.</strong></p>
+
+    <p class="paragrafo"><sup class="numero">29</sup> E, quando posteriormente li e estudei sobre a glória de Deus enchendo o templo de Salomão, aquela passagem ganhou um significado ainda mais profundo para mim.</p>
+
+    <p class="paragrafo"><sup class="numero">30</sup> A experiência pessoal me fez lembrar das Escrituras.</p>
+
+    <p class="paragrafo"><sup class="numero">31</sup> E as Escrituras me ajudaram a compreender a maneira como eu deveria enxergar a experiência.</p>
+
+
+    <h2 class="subtitulo">A GLÓRIA PERTENCE A DEUS</h2>
+
+    <p class="paragrafo"><sup class="numero">32</sup> Existe também uma lição importante nisso.</p>
+
+    <p class="paragrafo"><sup class="numero">33</sup> A glória não é do homem.</p>
+
+    <p class="paragrafo"><sup class="numero">34</sup> Não é do cantor.</p>
+
+    <p class="paragrafo"><sup class="numero">35</sup> Não é do músico.</p>
+
+    <p class="paragrafo"><sup class="numero">36</sup> Não é do pregador.</p>
+
+    <p class="paragrafo"><sup class="numero">37</sup> Não é da igreja.</p>
+
+    <p class="paragrafo"><sup class="numero">38</sup> <strong class="destaque">A glória pertence ao Senhor.</strong></p>
+
+    <p class="paragrafo"><sup class="numero">39</sup> Foi isso que aprendi ao longo da caminhada.</p>
+
+    <p class="paragrafo"><sup class="numero">40</sup> O louvor não existe para colocar o homem no centro. A música não existe para exaltar quem está no altar. O ministério não existe para construir a imagem de alguém.</p>
+
+    <p class="paragrafo"><sup class="numero">41</sup> Tudo deve apontar para Deus.</p>
+
+    <p class="referencia-isolada">Salmos 115:1</p>
+
+    <blockquote class="citacao">“Não a nós, Senhor, não a nós, mas ao teu nome dá glória.”</blockquote>
+
+    <p class="paragrafo"><sup class="numero">42</sup> Esse princípio se tornou cada vez mais importante para mim.</p>
+
+    <p class="paragrafo"><sup class="numero">43</sup> Quanto mais compreendemos a presença de Deus, menos espaço deveria existir para a exaltação humana.</p>
+
+
+    <h2 class="subtitulo">A NUVEM E A PRESENÇA</h2>
+
+    <p class="paragrafo"><sup class="numero">44</sup> Na Bíblia, a nuvem aparece em diferentes momentos relacionados à manifestação da presença e da glória de Deus.</p>
+
+    <p class="paragrafo"><sup class="numero">45</sup> No deserto, Deus conduziu Israel por meio de uma coluna de nuvem.</p>
+    <p class="referencia-isolada">Êxodo 13:21-22</p>
+
+    <p class="paragrafo"><sup class="numero">46</sup> Na dedicação do tabernáculo, a nuvem cobriu a tenda, e a glória do Senhor encheu o lugar.</p>
+    <p class="referencia-isolada">Êxodo 40:34-35</p>
+
+    <p class="paragrafo"><sup class="numero">47</sup> Na dedicação do templo de Salomão, novamente a nuvem encheu a Casa de Deus.</p>
+    <p class="referencia-isolada">1 Reis 8:10-11</p>
+
+    <p class="paragrafo"><sup class="numero">48</sup> Esses textos me fazem compreender que a presença de Deus sempre foi uma realidade central na história bíblica.</p>
+
+    <p class="paragrafo"><sup class="numero">49</sup> Deus não estava interessado apenas em construir lugares.</p>
+
+    <p class="paragrafo"><sup class="numero">50</sup> Ele desejava habitar no meio do seu povo.</p>
+
+
+    <h2 class="subtitulo">DUAS EXPERIÊNCIAS, UMA MESMA LEMBRANÇA</h2>
+
+    <p class="paragrafo"><sup class="numero">51</sup> A primeira vez aconteceu quando eu era novo convertido.</p>
+
+    <p class="paragrafo"><sup class="numero">52</sup> Eu ainda estava começando a compreender a dimensão da vida espiritual.</p>
+
+    <p class="paragrafo"><sup class="numero">53</sup> A segunda aconteceu em 2010.</p>
+
+    <p class="paragrafo"><sup class="numero">54</sup> Já havia passado por muitas experiências, crescido no ministério e aprendido muito mais das Escrituras.</p>
+
+    <p class="paragrafo"><sup class="numero">55</sup> Mas, quando vi novamente aquela nuvem, algo dentro de mim imediatamente trouxe à memória aquela primeira experiência.</p>
+
+    <p class="paragrafo"><sup class="numero">56</sup> Era como se Deus estivesse me fazendo lembrar de algo que havia acontecido no início da minha caminhada.</p>
+
+    <p class="paragrafo"><sup class="numero">57</sup> Não quero acrescentar detalhes que não vivi.</p>
+
+    <p class="paragrafo"><sup class="numero">58</sup> Não quero transformar uma experiência pessoal em algo maior do que aquilo que realmente aconteceu.</p>
+
+    <p class="paragrafo"><sup class="numero">59</sup> Quero apenas testemunhar:</p>
+
+    <p class="paragrafo"><sup class="numero">60</sup> <strong class="destaque">Eu vi uma nuvem de glória na igreja em uma ocasião, quando ainda era novo convertido. E anos depois, em 2010, vi novamente uma nuvem de glória depois dos louvores.</strong></p>
+
+    <p class="paragrafo"><sup class="numero">61</sup> Essas experiências ficaram marcadas na minha história com Deus.</p>
+
+
+    <h2 class="subtitulo">MAIS IMPORTANTE DO QUE VER É PERMANECER</h2>
+
+    <p class="paragrafo"><sup class="numero">62</sup> Com o passar dos anos, aprendi que uma experiência espiritual, por mais marcante que seja, não pode substituir a Palavra de Deus.</p>
+
+    <p class="paragrafo"><sup class="numero">63</sup> Nós caminhamos pela fé.</p>
+    <p class="referencia-isolada">2 Coríntios 5:7</p>
+
+    <p class="paragrafo"><sup class="numero">64</sup> A nossa fé não está fundamentada naquilo que vemos.</p>
+
+    <p class="paragrafo"><sup class="numero">65</sup> Está fundamentada em Cristo.</p>
+
+    <p class="paragrafo"><sup class="numero">66</sup> Por isso, aquela experiência não se tornou para mim uma busca por manifestações.</p>
+
+    <p class="paragrafo"><sup class="numero">67</sup> Meu desejo passou a ser conhecer mais profundamente o Senhor.</p>
+
+    <p class="paragrafo"><sup class="numero">68</sup> A presença de Deus não deveria ser buscada apenas por aquilo que podemos sentir ou ver.</p>
+
+    <p class="paragrafo"><sup class="numero">69</sup> Devemos buscá-Lo porque Ele é Deus.</p>
+
+    <p class="paragrafo"><sup class="numero">70</sup> Porque Ele nos chamou.</p>
+
+    <p class="paragrafo"><sup class="numero">71</sup> Porque Cristo nos salvou.</p>
+
+    <p class="paragrafo"><sup class="numero">72</sup> Porque o Espírito Santo habita em nós.</p>
+
+
+    <h2 class="subtitulo">A GLÓRIA QUE APONTA PARA CRISTO</h2>
+
+    <p class="paragrafo"><sup class="numero">73</sup> Ao olhar para trás, percebo que aquela experiência aconteceu em uma fase em que Deus estava formando minha vida.</p>
+
+    <p class="paragrafo"><sup class="numero">74</sup> Eu estava aprendendo a adorar.</p>
+
+    <p class="paragrafo"><sup class="numero">75</sup> Estava aprendendo a orar.</p>
+
+    <p class="paragrafo"><sup class="numero">76</sup> Estava aprendendo a Palavra.</p>
+
+    <p class="paragrafo"><sup class="numero">77</sup> Estava descobrindo o chamado.</p>
+
+    <p class="paragrafo"><sup class="numero">78</sup> E talvez essa seja uma das maiores lições que ficaram daquela experiência:</p>
+
+    <p class="paragrafo"><sup class="numero">79</sup> <strong class="destaque">A verdadeira glória nunca aponta para o homem. Ela aponta para Deus.</strong></p>
+
+    <p class="paragrafo"><sup class="numero">80</sup> Quando a Igreja adora, quando Cristo é exaltado, quando o coração está rendido ao Senhor, tudo aquilo que fazemos deve ter um único propósito:</p>
+
+    <p class="paragrafo"><sup class="numero">81</sup> <strong class="destaque">que o nome de Jesus seja glorificado.</strong></p>
+
+    <p class="referencia-isolada">João 12:26</p>
+
+    <blockquote class="citacao">“Se alguém me serve, siga-me; e, onde eu estou, ali estará também o meu servo.”</blockquote>
+
+
+    <h2 class="subtitulo">ATOS 29 — A GLÓRIA QUE PERMANECE</h2>
+
+    <p class="paragrafo"><sup class="numero">82</sup> Aquela nuvem que vi tornou-se parte da minha história.</p>
+
+    <p class="paragrafo"><sup class="numero">83</sup> Não como fundamento da minha fé.</p>
+
+    <p class="paragrafo"><sup class="numero">84</sup> O fundamento continua sendo a Palavra de Deus.</p>
+
+    <p class="paragrafo"><sup class="numero">85</sup> Não como algo que eu precise provar para alguém.</p>
+
+    <p class="paragrafo"><sup class="numero">86</sup> Mas como um testemunho daquilo que vivi.</p>
+
+    <p class="paragrafo"><sup class="numero">87</sup> A primeira vez aconteceu quando eu ainda estava começando minha caminhada.</p>
+
+    <p class="paragrafo"><sup class="numero">88</sup> A segunda aconteceu em 2010.</p>
+
+    <p class="paragrafo"><sup class="numero">89</sup> E, olhando para tudo isso hoje, entendo que Deus estava me ensinando algo muito maior do que simplesmente contemplar uma manifestação.</p>
+
+    <p class="paragrafo"><sup class="numero">90</sup> Ele estava me ensinando a valorizar a Sua presença.</p>
+
+    <p class="paragrafo"><sup class="numero">91</sup> A adorar.</p>
+
+    <p class="paragrafo"><sup class="numero">92</sup> A permanecer.</p>
+
+    <p class="paragrafo"><sup class="numero">93</sup> A servir.</p>
+
+    <p class="paragrafo"><sup class="numero">94</sup> A dar toda a glória ao Senhor.</p>
+
+    <p class="paragrafo"><sup class="numero">95</sup> Porque a nuvem passa.</p>
+
+    <p class="paragrafo"><sup class="numero">96</sup> A experiência passa.</p>
+
+    <p class="paragrafo"><sup class="numero">97</sup> O sentimento passa.</p>
+
+    <p class="paragrafo"><sup class="numero">98</sup> Mas <strong class="destaque">a Palavra permanece</strong>.</p>
+
+    <p class="referencia-isolada">Isaías 40:8</p>
+
+    <blockquote class="citacao">“Seca-se a erva, e cai a sua flor, mas a palavra de nosso Deus permanece eternamente.”</blockquote>
+
+    <p class="paragrafo"><sup class="numero">99</sup> E é sobre essa Palavra que a minha fé continua firmada.</p>
+
+    <p class="final">Soli Deo Gloria.</p>
+
+    <p class="final">Toda a glória seja dada somente a Deus.</p>
+
+</template>
+
+<script>
+(() => {
+    "use strict";
+
+    const template = document.getElementById("conteudo");
+    const livro = document.getElementById("livro");
+
+    const paginaEsquerda = document.getElementById("paginaEsquerda");
+    const paginaDireita = document.getElementById("paginaDireita");
+
+    const colunas = [
+        document.getElementById("coluna1"),
+        document.getElementById("coluna2"),
+        document.getElementById("coluna3"),
+        document.getElementById("coluna4")
+    ];
+
+    const numeroEsquerda = document.getElementById("numeroEsquerda");
+    const numeroDireita = document.getElementById("numeroDireita");
+    const indicador = document.getElementById("indicador");
+
+    const botaoAnterior = document.getElementById("anterior");
+    const botaoProxima = document.getElementById("proxima");
+
+    let paginas = [];
+    let indice = 0;
+    let modoCelular = window.matchMedia("(max-width: 620px)").matches;
+
+    /*
+       Cada página física possui duas colunas.
+       No computador, quatro colunas são distribuídas
+       em duas páginas abertas.
+       No celular, uma página é exibida por vez.
+    */
+
+    function criarColunaTemporaria() {
+        const coluna = document.createElement("div");
+        coluna.className = "coluna";
+        coluna.style.position = "absolute";
+        coluna.style.visibility = "hidden";
+        coluna.style.left = "-10000px";
+        coluna.style.top = "0";
+        coluna.style.width = colunas[0].clientWidth + "px";
+        coluna.style.height = colunas[0].clientHeight + "px";
+        coluna.style.overflow = "hidden";
+        coluna.style.fontSize = getComputedStyle(colunas[0]).fontSize;
+        coluna.style.lineHeight = getComputedStyle(colunas[0]).lineHeight;
+        coluna.style.fontFamily = getComputedStyle(colunas[0]).fontFamily;
+        document.body.appendChild(coluna);
+        return coluna;
+    }
+
+    function medirColuna() {
+        return criarColunaTemporaria();
+    }
+
+    function distribuirConteudo() {
+        paginas = [];
+
+        const elementos = Array.from(template.content.children);
+
+        const larguraPagina = paginaDireita.clientWidth;
+        const larguraColuna = Math.floor((larguraPagina - 60 - 21) / 2);
+
+        const alturaColuna = paginaDireita.clientHeight - 105;
+
+        let colunaAtual = 0;
+        let temporaria = medirColuna();
+
+        temporaria.style.width = larguraColuna + "px";
+        temporaria.style.height = alturaColuna + "px";
+
+        let fragmentoAtual = [];
+
+        function salvarColuna() {
+            paginas.push(fragmentoAtual);
+            fragmentoAtual = [];
+        }
+
+        function avancarColuna() {
+            salvarColuna();
+            colunaAtual++;
+
+            if (colunaAtual % 2 === 0) {
+                // Nova página física
+            }
+
+            temporaria.innerHTML = "";
+        }
+
+        function adicionarElemento(elemento) {
+            const copia = elemento.cloneNode(true);
+            temporaria.appendChild(copia);
+
+            if (temporaria.scrollHeight > temporaria.clientHeight + 1 &&
+                fragmentoAtual.length > 0) {
+
+                temporaria.removeChild(copia);
+                avancarColuna();
+                temporaria.appendChild(copia);
+            }
+
+            fragmentoAtual.push(elemento.cloneNode(true));
+        }
+
+        elementos.forEach(elemento => {
+            adicionarElemento(elemento);
+        });
+
+        if (fragmentoAtual.length > 0) {
+            salvarColuna();
+        }
+
+        document.body.removeChild(temporaria);
+
+        // Agrupa duas colunas por página.
+        const paginasFisicas = [];
+
+        for (let i = 0; i < paginas.length; i += 2) {
+            paginasFisicas.push([
+                paginas[i] || [],
+                paginas[i + 1] || []
+            ]);
+        }
+
+        // Ajuste para que sempre haja páginas em pares no computador.
+        if (paginasFisicas.length === 0) {
+            paginasFisicas.push([[], []]);
+        }
+
+        return paginasFisicas;
+    }
+
+    function construirPaginas() {
+        const temporario = document.createElement("div");
+        temporario.style.position = "absolute";
+        temporario.style.visibility = "hidden";
+        temporario.style.width = getComputedStyle(paginaDireita).width;
+        temporario.style.height = getComputedStyle(paginaDireita).height;
+        temporario.style.left = "-10000px";
+        temporario.style.top = "0";
+        document.body.appendChild(temporario);
+
+        // Medição real do espaço disponível nas colunas.
+        const paginasGeradas = [];
+        const elementos = Array.from(template.content.children);
+
+        const amostra = colunas[0].cloneNode(false);
+        amostra.style.width = "100%";
+        amostra.style.height = "100%";
+        amostra.style.overflow = "hidden";
+        amostra.style.position = "static";
+        temporario.appendChild(amostra);
+
+        const alturaUtil = paginaDireita.clientHeight - 110;
+        const larguraUtil = Math.floor((paginaDireita.clientWidth - 60 - 21) / 2);
+
+        amostra.style.width = larguraUtil + "px";
+        amostra.style.height = alturaUtil + "px";
+
+        let colunaItens = [];
+        let colunaElemento = amostra.cloneNode(false);
+        colunaElemento.style.width = larguraUtil + "px";
+        colunaElemento.style.height = alturaUtil + "px";
+        temporario.appendChild(colunaElemento);
+
+        function novaColuna() {
+            paginasGeradas.push(colunaItens);
+            colunaItens = [];
+            colunaElemento.innerHTML = "";
+        }
+
+        elementos.forEach(elemento => {
+            const copia = elemento.cloneNode(true);
+            colunaElemento.appendChild(copia);
+
+            if (
+                colunaElemento.scrollHeight > colunaElemento.clientHeight + 1 &&
+                colunaItens.length > 0
+            ) {
+                colunaElemento.removeChild(copia);
+                novaColuna();
+                colunaElemento.appendChild(copia);
+            }
+
+            colunaItens.push(elemento.cloneNode(true));
+        });
+
+        if (colunaItens.length) {
+            paginasGeradas.push(colunaItens);
+        }
+
+        document.body.removeChild(temporario);
+
+        const resultado = [];
+
+        for (let i = 0; i < paginasGeradas.length; i += 2) {
+            resultado.push([
+                paginasGeradas[i] || [],
+                paginasGeradas[i + 1] || []
+            ]);
+        }
+
+        return resultado.length ? resultado : [[[], []]];
+    }
+
+    function preencherColuna(coluna, elementos) {
+        coluna.innerHTML = "";
+
+        elementos.forEach(elemento => {
+            coluna.appendChild(elemento.cloneNode(true));
+        });
+    }
+
+    function renderizar() {
+        if (!paginas.length) return;
+
+        modoCelular = window.matchMedia("(max-width: 620px)").matches;
+
+        let esquerda;
+        let direita;
+
+        if (modoCelular) {
+            esquerda = null;
+            direita = paginas[indice] || [[], []];
+
+            paginaEsquerda.style.display = "none";
+            paginaDireita.style.width = "100%";
+            paginaDireita.style.maxWidth = "100%";
+
+            preencherColuna(colunas[2], direita[0]);
+            preencherColuna(colunas[3], direita[1]);
+
+            // No celular, somente uma coluna deve ficar visível.
+            colunas[2].style.display = "block";
+            colunas[3].style.display = "none";
+
+            document.querySelector("#paginaDireita .cabecalho-pagina").textContent =
+                "CAPÍTULO 9 • A NUVEM DE GLÓRIA";
+
+            numeroDireita.textContent = "Página " + (indice + 1);
+
+            indicador.textContent =
+                "Página " + (indice + 1) + " de " + paginas.length;
+
+            botaoAnterior.disabled = indice === 0;
+            botaoProxima.disabled = indice >= paginas.length - 1;
+
+        } else {
+            paginaEsquerda.style.display = "block";
+            paginaEsquerda.style.width = "50%";
+            paginaDireita.style.width = "50%";
+            paginaDireita.style.maxWidth = "var(--largura-pagina)";
+
+            const primeira = paginas[indice] || [[], []];
+            const segunda = paginas[indice + 1] || [[], []];
+
+            preencherColuna(colunas[0], primeira[0]);
+            preencherColuna(colunas[1], primeira[1]);
+            preencherColuna(colunas[2], segunda[0]);
+            preencherColuna(colunas[3], segunda[1]);
+
+            colunas.forEach(coluna => {
+                coluna.style.display = "block";
+            });
+
+            document.querySelector("#paginaEsquerda .cabecalho-pagina").textContent =
+                "ATOS 29 • A HISTÓRIA CONTINUA";
+
+            document.querySelector("#paginaDireita .cabecalho-pagina").textContent =
+                "CAPÍTULO 9 • A NUVEM DE GLÓRIA";
+
+            numeroEsquerda.textContent = "Página " + (indice + 1);
+            numeroDireita.textContent =
+                indice + 2 <= paginas.length
+                    ? "Página " + (indice + 2)
+                    : "";
+
+            indicador.textContent =
+                "Páginas " + (indice + 1) + "–" +
+                Math.min(indice + 2, paginas.length) +
+                " de " + paginas.length;
+
+            botaoAnterior.disabled = indice === 0;
+            botaoProxima.disabled = indice + 2 >= paginas.length;
+        }
+
+        paginaEsquerda.classList.remove("animar");
+        paginaDireita.classList.remove("animar");
+
+        void paginaDireita.offsetWidth;
+
+        paginaEsquerda.classList.add("animar");
+        paginaDireita.classList.add("animar");
+    }
+
+    function atualizarLivro() {
+        paginas = construirPaginas();
+        indice = 0;
+        renderizar();
+    }
+
+    function avancar() {
+        const passo = modoCelular ? 1 : 2;
+
+        if (indice + passo < paginas.length) {
+            indice += passo;
+            renderizar();
+        }
+    }
+
+    function voltar() {
+        const passo = modoCelular ? 1 : 2;
+
+        indice = Math.max(0, indice - passo);
+        renderizar();
+    }
+
+    botaoAnterior.addEventListener("click", voltar);
+    botaoProxima.addEventListener("click", avancar);
+
+    document.addEventListener("keydown", evento => {
+        if (evento.key === "ArrowRight") avancar();
+        if (evento.key === "ArrowLeft") voltar();
+    });
+
+    let inicioToque = 0;
+
+    livro.addEventListener("touchstart", evento => {
+        inicioToque = evento.changedTouches[0].screenX;
+    }, { passive: true });
+
+    livro.addEventListener("touchend", evento => {
+        const fimToque = evento.changedTouches[0].screenX;
+        const diferenca = fimToque - inicioToque;
+
+        if (Math.abs(diferenca) > 55) {
+            if (diferenca < 0) avancar();
+            else voltar();
+        }
+    }, { passive: true });
+
+    let redimensionamento;
+
+    window.addEventListener("resize", () => {
+        clearTimeout(redimensionamento);
+        redimensionamento = setTimeout(atualizarLivro, 250);
+    });
+
+    // Aguarda a tipografia e o layout estarem prontos para medir.
+    window.addEventListener("load", () => {
+        atualizarLivro();
+    });
+
+    if (document.fonts && document.fonts.ready) {
+        document.fonts.ready.then(atualizarLivro);
+    }
+
+})();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,892 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#17130f">
+
+<title>ATOS 29 — Capítulo 25 | O Sonho e o Despertar Espiritual</title>
+
+<style>
+:root {
+    --fundo: #17130f;
+    --papel: #eee2bd;
+    --papel-claro: #f5ebcf;
+    --texto: #302719;
+    --destaque: #72552e;
+    --linha: rgba(80, 57, 29, .22);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    background:
+        radial-gradient(ellipse at center, #383027 0%, #211b15 55%, #100e0b 100%);
+    color: #eee2bd;
+    font-family: Georgia, "Times New Roman", serif;
+}
+
+.cabecalho-site {
+    text-align: center;
+    padding: 25px 15px 12px;
+    color: #d6c49c;
+}
+
+.cabecalho-site h1 {
+    margin: 0;
+    font-size: 18px;
+    letter-spacing: 3px;
+    font-weight: normal;
+}
+
+.cabecalho-site p {
+    margin: 7px 0 0;
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: #a99773;
+}
+
+.area-livro {
+    width: min(1400px, 96%);
+    margin: 18px auto 12px;
+    perspective: 1800px;
+}
+
+.livro {
+    position: relative;
+    width: 100%;
+    min-height: 660px;
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+    transform-style: preserve-3d;
+    transition: opacity .25s ease;
+}
+
+.livro.mudando {
+    opacity: .35;
+}
+
+.pagina {
+    position: relative;
+    width: 50%;
+    min-height: 660px;
+    overflow: hidden;
+    color: var(--texto);
+    background:
+        radial-gradient(ellipse at 20% 20%, rgba(255,255,255,.24), transparent 55%),
+        radial-gradient(ellipse at 80% 85%, rgba(135,103,55,.09), transparent 60%),
+        repeating-linear-gradient(
+            0deg,
+            rgba(105,78,39,.018) 0px,
+            rgba(105,78,39,.018) 1px,
+            transparent 1px,
+            transparent 4px
+        ),
+        linear-gradient(105deg, var(--papel-claro), var(--papel));
+    box-shadow:
+        inset 0 0 28px rgba(95,65,25,.13),
+        0 8px 25px rgba(0,0,0,.48);
+}
+
+.pagina.esquerda {
+    border-radius: 5px 0 0 5px;
+    box-shadow:
+        inset -12px 0 18px -17px #3a2917,
+        inset 0 0 25px rgba(95,65,25,.13),
+        0 8px 25px rgba(0,0,0,.48);
+}
+
+.pagina.direita {
+    border-radius: 0 5px 5px 0;
+    box-shadow:
+        inset 12px 0 18px -17px #3a2917,
+        inset 0 0 25px rgba(95,65,25,.13),
+        0 8px 25px rgba(0,0,0,.48);
+}
+
+.lombada {
+    position: absolute;
+    z-index: 5;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 22px;
+    transform: translateX(-50%);
+    pointer-events: none;
+    background: linear-gradient(
+        90deg,
+        rgba(48,34,17,.20),
+        rgba(80,57,29,.04) 35%,
+        rgba(35,25,14,.22) 50%,
+        rgba(255,255,255,.12) 75%,
+        rgba(48,34,17,.15)
+    );
+}
+
+.cabecalho-pagina {
+    height: 42px;
+    margin: 0 30px;
+    border-bottom: 1px solid var(--linha);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    color: #705a38;
+    font-size: 9px;
+    letter-spacing: 1.1px;
+    text-transform: uppercase;
+}
+
+.miolo-pagina {
+    height: calc(100% - 82px);
+    padding: 18px 30px 12px;
+    overflow: hidden;
+}
+
+.colunas {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 22px;
+    height: 100%;
+}
+
+.coluna {
+    min-width: 0;
+    height: 100%;
+    overflow: hidden;
+    font-size: 13px;
+    line-height: 1.48;
+    text-align: justify;
+    hyphens: auto;
+    overflow-wrap: break-word;
+}
+
+.bloco {
+    margin: 0 0 7px;
+    break-inside: avoid;
+}
+
+.bloco p {
+    margin: 0;
+}
+
+.numero-versiculo {
+    font-size: .72em;
+    vertical-align: super;
+    line-height: 0;
+    font-weight: bold;
+    color: #70552e;
+    margin-right: 2px;
+}
+
+.titulo-capitulo {
+    text-align: center;
+    margin: 5px 0 12px;
+    font-size: 17px;
+    line-height: 1.3;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: .4px;
+}
+
+.subtitulo-capitulo {
+    text-align: center;
+    font-size: 12px;
+    line-height: 1.4;
+    font-style: italic;
+    margin: 0 0 18px;
+    color: #66502e;
+}
+
+.titulo-secao {
+    font-size: 12px;
+    line-height: 1.35;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: .3px;
+    margin: 12px 0 8px;
+    text-align: left;
+    color: #49371e;
+}
+
+.citacao {
+    margin: 9px 8px 11px 13px;
+    padding-left: 9px;
+    border-left: 1px solid rgba(103,77,40,.35);
+    font-style: italic;
+    text-align: left;
+    color: #493a27;
+}
+
+.referencia {
+    display: block;
+    margin-top: 3px;
+    font-size: .88em;
+    font-style: normal;
+    text-align: right;
+    color: #70552e;
+}
+
+.referencias-gerais {
+    margin: 8px 0 12px;
+    font-size: 11px;
+    line-height: 1.4;
+    text-align: left;
+}
+
+.rodape-pagina {
+    position: absolute;
+    bottom: 0;
+    left: 30px;
+    right: 30px;
+    height: 40px;
+    border-top: 1px solid var(--linha);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: #705a38;
+    font-size: 10px;
+}
+
+.numero-pagina {
+    font-size: 11px;
+    font-weight: bold;
+}
+
+.controles {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    padding: 18px 10px 30px;
+}
+
+.controles button {
+    border: 1px solid #806c4a;
+    background: linear-gradient(#403629, #292219);
+    color: #eadbb8;
+    padding: 11px 24px;
+    font-family: Georgia, serif;
+    font-size: 12px;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: .2s;
+}
+
+.controles button:hover:not(:disabled) {
+    background: #685338;
+}
+
+.controles button:disabled {
+    opacity: .35;
+    cursor: not-allowed;
+}
+
+.indicador {
+    min-width: 105px;
+    text-align: center;
+    color: #d8c7a3;
+    font-size: 12px;
+}
+
+.assinatura {
+    text-align: center;
+    color: #a99773;
+    font-size: 11px;
+    letter-spacing: 2px;
+    padding: 0 10px 24px;
+}
+
+/* Área invisível usada para calcular a paginação */
+#fonte {
+    position: absolute;
+    left: -100000px;
+    top: 0;
+    width: 1px;
+    visibility: hidden;
+}
+
+@media (min-width: 1000px) {
+    .livro {
+        height: 720px;
+    }
+
+    .pagina {
+        height: 720px;
+    }
+
+    .coluna {
+        font-size: 13.5px;
+        line-height: 1.5;
+    }
+}
+
+@media (max-width: 760px) {
+    .area-livro {
+        width: 96%;
+        margin-top: 8px;
+    }
+
+    .livro {
+        min-height: 680px;
+    }
+
+    .pagina {
+        width: 100%;
+        min-height: 680px;
+        height: 680px;
+        border-radius: 4px !important;
+    }
+
+    .pagina.esquerda {
+        display: none;
+    }
+
+    .pagina.direita {
+        width: 100%;
+        box-shadow:
+            inset 0 0 25px rgba(95,65,25,.13),
+            0 8px 25px rgba(0,0,0,.48);
+    }
+
+    .lombada {
+        display: none;
+    }
+
+    .cabecalho-pagina {
+        margin: 0 20px;
+        font-size: 8px;
+    }
+
+    .miolo-pagina {
+        padding: 17px 22px 12px;
+    }
+
+    .colunas {
+        display: block;
+    }
+
+    .coluna {
+        font-size: 14px;
+        line-height: 1.55;
+    }
+
+    .rodape-pagina {
+        left: 22px;
+        right: 22px;
+    }
+
+    .titulo-capitulo {
+        font-size: 18px;
+    }
+
+    .controles {
+        gap: 8px;
+    }
+
+    .controles button {
+        padding: 11px 15px;
+        font-size: 10px;
+    }
+}
+
+@media (max-width: 380px) {
+    .pagina {
+        min-height: 650px;
+        height: 650px;
+    }
+
+    .coluna {
+        font-size: 13px;
+    }
+
+    .cabecalho-pagina {
+        letter-spacing: .5px;
+    }
+}
+
+@media print {
+    body {
+        background: white;
+    }
+
+    .cabecalho-site,
+    .controles,
+    .assinatura {
+        display: none;
+    }
+
+    .pagina {
+        box-shadow: none;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header class="cabecalho-site">
+    <h1>ATOS 29</h1>
+    <p>A HISTÓRIA CONTINUA</p>
+</header>
+
+<main class="area-livro">
+    <div class="livro" id="livro">
+
+        <section class="pagina esquerda">
+            <div class="cabecalho-pagina">
+                <span>ATOS 29 • A HISTÓRIA CONTINUA</span>
+                <span>CAPÍTULO 25</span>
+            </div>
+
+            <div class="miolo-pagina">
+                <div class="colunas">
+                    <div class="coluna" id="coluna1"></div>
+                    <div class="coluna" id="coluna2"></div>
+                </div>
+            </div>
+
+            <div class="rodape-pagina">
+                <span>MINISTÉRIO ATALAIA</span>
+                <span class="numero-pagina" id="numeroEsquerda">1</span>
+            </div>
+        </section>
+
+        <section class="pagina direita">
+            <div class="cabecalho-pagina">
+                <span>ATOS 29 • A HISTÓRIA CONTINUA</span>
+                <span>CAPÍTULO 25</span>
+            </div>
+
+            <div class="miolo-pagina">
+                <div class="colunas">
+                    <div class="coluna" id="coluna3"></div>
+                    <div class="coluna" id="coluna4"></div>
+                </div>
+            </div>
+
+            <div class="rodape-pagina">
+                <span>MINISTÉRIO ATALAIA</span>
+                <span class="numero-pagina" id="numeroDireita">2</span>
+            </div>
+        </section>
+
+        <div class="lombada"></div>
+    </div>
+</main>
+
+<nav class="controles" aria-label="Navegação do livro">
+    <button id="anterior" type="button">← ANTERIOR</button>
+    <span class="indicador" id="indicador">Páginas 1–2</span>
+    <button id="proxima" type="button">PRÓXIMA →</button>
+</nav>
+
+<footer class="assinatura">
+    MINISTÉRIO ATALAIA
+</footer>
+
+<!-- CONTEÚDO ORIGINAL DO CAPÍTULO -->
+
+<div id="fonte">
+
+    <div class="bloco">
+        <h2 class="titulo-capitulo">
+            O SONHO E O DESPERTAR ESPIRITUAL
+        </h2>
+        <p class="subtitulo-capitulo">
+            O relato de uma discípula chamada Ana e a exortação à vigilância espiritual
+        </p>
+    </div>
+
+    <div class="bloco">
+        <p><sup class="numero-versiculo">1</sup> Certo dia, uma discípula chamada Ana enviou uma mensagem a Diego, servo de Jesus Cristo e evangelista, para lhe contar um sonho que tivera. E disse-lhe:</p>
+    </div>
+
+    <div class="bloco">
+        <p><sup class="numero-versiculo">2</sup> Estava tudo escuro lá em casa, e eu estava dormindo.</p>
+    </div>
+
+    <div class="bloco">
+        <p><sup class="numero-versiculo">3</sup> Ela riu.</p>
+    </div>
+
+    <div class="bloco">
+        <p><sup class="numero-versiculo">4</sup> Mas vocês tinham que me levar ao hospital. E eu não conseguia acordar. Vocês batiam à porta.</p>
+    </div>
+
+    <div class="bloco">
+        <p><sup class="numero-versiculo">5</sup> Rodeavam a casa.</p>
+    </div>
+
+    <div class="bloco">
+        <p><sup class="numero-versiculo">6</sup> Ela riu.</p>
+    </div>
+
+    <div class="bloco">
+        <p><sup class="numero-versiculo">7</sup> Até que comecei a ouvir. Então me levantei e fui abrir a porta. E Gisella, esposa de Diego, dizia: “Bora, arruma-te logo! Vamos te levar ao hospital”.</p>
+    </div>
+
+    <div class="bloco">
+        <p><sup class="numero-versiculo">8</sup> Então Diego, ouvindo o relato, começou a considerar os elementos daquele sonho e respondeu-lhe: Tua casa estava na escuridão, e tu estavas dormindo. Alguém veio para despertar-te e levar-te ao hospital.</p>
+    </div>
+
+    <div class="bloco">
+        <p><sup class="numero-versiculo">9</sup> E prosseguiu, dizendo: A tua casa significa a tua vida e a tua família. A escuridão significa as trevas deste mundo. E o sono significa o estado de indolência espiritual, no qual a pessoa permanece sem perceber a necessidade de despertar.</p>
+    </div>
+
+    <div class="bloco">
+        <p><sup class="numero-versiculo">10</sup> E a discípula, ouvindo aquelas palavras, admirou-se e disse: Nossa!</p>
+    </div>
+
+    <div class="bloco">
+        <p><sup class="numero-versiculo">11</sup> Então Diego continuou: Alguém batia à porta, e isso me faz lembrar as palavras do Senhor Jesus, que disse:</p>
+    </div>
+
+    <div class="bloco">
+        <blockquote class="citacao">
+            “Eis que estou à porta e bato: se alguém ouvir a minha voz e abrir a porta, entrarei em sua casa e com ele cearei, e ele comigo.”
+            <span class="referencia">Apocalipse 3:20</span>
+        </blockquote>
+    </div>
+
+    <div class="bloco">
+        <p><sup class="numero-versiculo">12</sup> E a discípula respondeu: E o hospital?</p>
+    </div>
+
+    <div class="bloco">
+        <p><sup class="numero-versiculo">13</sup> Então Diego prosseguiu: O hospital significa a Igreja, lugar onde somos conduzidos ao cuidado, à comunhão e ao fortalecimento espiritual.</p>
+    </div>
+
+    <div class="bloco">
+        <p><sup class="numero-versiculo">14</sup> E acrescentou: O fato de abrires a porta faz lembrar aquilo que o Senhor declarou: “Se alguém ouvir a minha voz e abrir a porta, entrarei em sua casa e com ele cearei, e ele comigo” (Apocalipse 3:20).</p>
+    </div>
+
+    <div class="bloco">
+        <p><sup class="numero-versiculo">15</sup> E ainda declarou: Quem revela os sonhos é Deus.</p>
+    </div>
+
+    <div class="bloco">
+        <p class="referencias-gerais">
+            <strong>Referências bíblicas:</strong>
+            Números 12:6; Jó 33:14-18; Gênesis 37:5-10; Gênesis 40:8; Gênesis 41:15-16; Daniel 2:19, 27-28; Daniel 2:45; Mateus 1:20; Mateus 2:12-13, 19-20.
+        </p>
+    </div>
+
+    <div class="bloco">
+        <p><sup class="numero-versiculo">16</sup> E a discípula respondeu: Sim!</p>
+    </div>
+
+    <div class="bloco">
+        <h3 class="titulo-secao">A VOZ DAQUELE QUE BATE À PORTA</h3>
+    </div>
+
+    <div class="bloco">
+        <p><sup class="numero-versiculo">17</sup> Então Diego chamou-lhe a atenção para as Escrituras e recordou as palavras que estão escritas no livro do Apocalipse:</p>
+    </div>
+
+    <div class="bloco">
+        <blockquote class="citacao">
+            Eu repreendo e corrijo a todos quantos amo; sê, pois, diligente e arrepende-te.
+            <span class="referencia">Apocalipse 3:19</span>
+        </blockquote>
+    </div>
+
+    <div class="bloco">
+        <blockquote class="citacao">
+            Eis que estou à porta e bato: se alguém ouvir a minha voz e abrir a porta, entrarei em sua casa e com ele cearei, e ele comigo.
+            <span class="referencia">Apocalipse 3:20</span>
+        </blockquote>
+    </div>
+
+    <div class="bloco">
+        <blockquote class="citacao">
+            Ao vencedor, Eu lhe concederei que se assente comigo no meu trono, assim como Eu venci e me assentei com meu Pai no seu trono.
+            <span class="referencia">Apocalipse 3:21</span>
+        </blockquote>
+    </div>
+
+    <div class="bloco">
+        <blockquote class="citacao">
+            Aquele que tem ouvidos, compreenda o que o Espírito revela às igrejas!
+            <span class="referencia">Apocalipse 3:22</span>
+        </blockquote>
+    </div>
+
+    <div class="bloco">
+        <p><sup class="numero-versiculo">18</sup> Depois de lhe apresentar a passagem, Diego declarou: Jesus fala contigo!</p>
+    </div>
+
+    <div class="bloco">
+        <p><sup class="numero-versiculo">19</sup> E continuou: Parecia um sonho simples. Você até sorriu, mas é um alerta: é tempo de despertar!</p>
+    </div>
+
+    <div class="bloco">
+        <p><sup class="numero-versiculo">20</sup> E a discípula, profundamente tocada, respondeu: Meu Deus! Eu não tinha me atentado. Realmente, foi uma grande revelação. De despertar.</p>
+    </div>
+
+    <div class="bloco">
+        <p><sup class="numero-versiculo">21</sup> Então Diego lhe respondeu: Não te atentastes por estares dormindo! Deus te dá sonhos e revelações, mas precisas buscar a compreensão diante dele. Pede ao Senhor que te conceda discernimento e entendimento.</p>
+    </div>
+
+    <div class="bloco">
+        <p><sup class="numero-versiculo">22</sup> E ela, entristecida, respondeu: Jesus me ama tanto... Parece que eu não consigo despertar. Dá um passo à frente.</p>
+    </div>
+
+    <div class="bloco">
+        <h3 class="titulo-secao">O CHAMADO AO DESPERTAR</h3>
+    </div>
+
+    <div class="bloco">
+        <p><sup class="numero-versiculo">23</sup> E assim ficou a reflexão: há momentos em que o homem está tão adormecido espiritualmente que não percebe quando é chamado a despertar.</p>
+    </div>
+
+    <div class="bloco">
+        <p><sup class="numero-versiculo">24</sup> Mas a voz de Cristo continua chamando.</p>
+    </div>
+
+    <div class="bloco">
+        <p><sup class="numero-versiculo">25</sup> Porque está escrito:</p>
+    </div>
+
+    <div class="bloco">
+        <blockquote class="citacao">
+            “Desperta, tu que dormes, e levanta-te dentre os mortos, e Cristo te esclarecerá.”
+            <span class="referencia">Efésios 5:14</span>
+        </blockquote>
+    </div>
+
+    <div class="bloco">
+        <p><sup class="numero-versiculo">26</sup> Portanto, que aquele que tem ouvidos ouça o que o Espírito diz!</p>
+    </div>
+
+    <div class="bloco">
+        <p><sup class="numero-versiculo">27</sup> Porque o Senhor não nos chama para permanecermos na escuridão, mas para andarmos na sua luz.</p>
+    </div>
+
+    <div class="bloco">
+        <p style="text-align:center; font-weight:bold; margin-top:18px;">
+            ATOS 29 — MINISTÉRIO ATALAIA
+        </p>
+        <p style="text-align:center; font-style:italic; margin-top:8px;">
+            Embaixadores do Reino dos Céus
+        </p>
+        <p style="text-align:center; margin-top:8px;">
+            Uma geração que desperta, se levanta e proclama a Palavra de Deus.
+        </p>
+    </div>
+
+</div>
+
+<script>
+(function () {
+    const fonte = document.getElementById("fonte");
+    const livro = document.getElementById("livro");
+
+    const colunas = [
+        document.getElementById("coluna1"),
+        document.getElementById("coluna2"),
+        document.getElementById("coluna3"),
+        document.getElementById("coluna4")
+    ];
+
+    const paginaEsquerda = document.querySelector(".pagina.esquerda");
+    const paginaDireita = document.querySelector(".pagina.direita");
+
+    const anterior = document.getElementById("anterior");
+    const proxima = document.getElementById("proxima");
+    const indicador = document.getElementById("indicador");
+
+    const numeroEsquerda = document.getElementById("numeroEsquerda");
+    const numeroDireita = document.getElementById("numeroDireita");
+
+    let paginas = [];
+    let paginaAtual = 0;
+    let temporizador;
+
+    function ehCelular() {
+        return window.matchMedia("(max-width: 760px)").matches;
+    }
+
+    function criarColunaTemporaria() {
+        const coluna = document.createElement("div");
+        coluna.className = "coluna";
+        coluna.style.position = "absolute";
+        coluna.style.visibility = "hidden";
+        coluna.style.left = "-100000px";
+        coluna.style.top = "0";
+        coluna.style.height = ehCelular() ? "595px" : "620px";
+        coluna.style.width = ehCelular() ? "calc(100vw - 92px)" : "calc((100vw - 180px) / 4)";
+        coluna.style.overflow = "hidden";
+        coluna.style.fontSize = ehCelular() ? "14px" : "13.5px";
+        coluna.style.lineHeight = ehCelular() ? "1.55" : "1.5";
+        document.body.appendChild(coluna);
+        return coluna;
+    }
+
+    function criarPaginas() {
+        paginas = [];
+
+        const blocos = Array.from(fonte.children);
+        const temporaria = criarColunaTemporaria();
+
+        let colunaAtual = [];
+        let alturaAtual = 0;
+
+        function salvarColuna() {
+            paginas.push(colunaAtual);
+            colunaAtual = [];
+            alturaAtual = 0;
+        }
+
+        blocos.forEach(bloco => {
+            const copia = bloco.cloneNode(true);
+            temporaria.appendChild(copia);
+
+            const alturaBloco = copia.getBoundingClientRect().height + 7;
+
+            temporaria.removeChild(copia);
+
+            if (alturaAtual + alturaBloco > temporaria.clientHeight && colunaAtual.length > 0) {
+                salvarColuna();
+            }
+
+            colunaAtual.push(bloco.cloneNode(true));
+            alturaAtual += alturaBloco;
+        });
+
+        if (colunaAtual.length > 0) {
+            salvarColuna();
+        }
+
+        document.body.removeChild(temporaria);
+
+        if (paginas.length === 0) {
+            paginas.push([]);
+        }
+
+        if (ehCelular()) {
+            // No celular, cada coluna corresponde a uma página.
+        } else {
+            // No computador, duas colunas compõem cada página.
+            const colunasOriginais = paginas;
+            paginas = [];
+
+            for (let i = 0; i < colunasOriginais.length; i += 2) {
+                paginas.push([
+                    ...colunasOriginais[i],
+                    ...(colunasOriginais[i + 1] || [])
+                ]);
+            }
+        }
+
+        paginaAtual = Math.min(paginaAtual, paginas.length - 1);
+    }
+
+    function preencherColuna(elemento, conteudo) {
+        elemento.innerHTML = "";
+        conteudo.forEach(bloco => {
+            elemento.appendChild(bloco.cloneNode(true));
+        });
+    }
+
+    function mostrarPagina() {
+        const celular = ehCelular();
+
+        livro.classList.add("mudando");
+
+        if (celular) {
+            paginaEsquerda.style.display = "none";
+            paginaDireita.style.display = "block";
+
+            preencherColuna(colunas[3], paginas[paginaAtual] || []);
+            colunas[2].innerHTML = "";
+            colunas[3].style.width = "100%";
+
+            numeroDireita.textContent = paginaAtual + 1;
+            indicador.textContent = `Página ${paginaAtual + 1} de ${paginas.length}`;
+        } else {
+            paginaEsquerda.style.display = "block";
+            paginaDireita.style.display = "block";
+
+            const conteudo = paginas[paginaAtual] || [];
+
+            // A distribuição é refeita em duas colunas por página.
+            preencherColuna(colunas[0], conteudo);
+            colunas[1].innerHTML = "";
+            colunas[2].innerHTML = "";
+            colunas[3].innerHTML = "";
+
+            numeroEsquerda.textContent = paginaAtual * 2 + 1;
+            numeroDireita.textContent = paginaAtual * 2 + 2;
+
+            indicador.textContent =
+                `Páginas ${paginaAtual * 2 + 1}–${Math.min(paginaAtual * 2 + 2, paginas.length * 2)}`;
+        }
+
+        anterior.disabled = paginaAtual === 0;
+        proxima.disabled = paginaAtual >= paginas.length - 1;
+
+        clearTimeout(temporizador);
+        temporizador = setTimeout(() => {
+            livro.classList.remove("mudando");
+        }, 180);
+    }
+
+    function reconstruir() {
+        criarPaginas();
+        mostrarPagina();
+    }
+
+    anterior.addEventListener("click", function () {
+        if (paginaAtual > 0) {
+            paginaAtual--;
+            mostrarPagina();
+        }
+    });
+
+    proxima.addEventListener("click", function () {
+        if (paginaAtual < paginas.length - 1) {
+            paginaAtual++;
+            mostrarPagina();
+        }
+    });
+
+    document.addEventListener("keydown", function (evento) {
+        if (evento.key === "ArrowRight") {
+            if (paginaAtual < paginas.length - 1) {
+                paginaAtual++;
+                mostrarPagina();
+            }
+        }
+
+        if (evento.key === "ArrowLeft") {
+            if (paginaAtual > 0) {
+                paginaAtual--;
+                mostrarPagina();
+            }
+        }
+    });
+
+    let larguraAnterior = window.innerWidth;
+
+    window.addEventListener("resize", function () {
+        if (Math.abs(window.innerWidth - larguraAnterior) > 80) {
+            larguraAnterior = window.innerWidth;
+            reconstruir();
+        }
+    });
+
+    window.addEventListener("load", reconstruir);
+
+    reconstruir();
+})();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#171512">
+<title>ATOS 29 — Capítulo 19 | Quando Deus Abre o Caminho</title>
+<style>
+:root {
+    --fundo: #171512;
+    --fundo-2: #211d18;
+    --papel: #f2e8ce;
+    --papel-claro: #f7efd9;
+    --tinta: #302719;
+    --tinta-suave: #5a4a34;
+    --linha: rgba(91, 69, 39, .26);
+    --largura-pagina: 440px;
+    --altura-pagina: 650px;
+    --fonte: Georgia, "Times New Roman", serif;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; min-height: 100%; }
+body {
+    color: #eee6d8;
+    background:
+        radial-gradient(ellipse at 50% 35%, #393027 0%, #211d18 48%, #11100e 100%);
+    font-family: var(--fonte);
+    padding: 22px 16px 28px;
+}
+.interface {
+    width: min(100%, 1120px);
+    margin: 0 auto;
+}
+.topo {
+    text-align: center;
+    margin: 0 auto 18px;
+    color: #e7dcc7;
+}
+.marca {
+    font: 700 12px/1.4 Arial, sans-serif;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+}
+.identificacao {
+    margin-top: 5px;
+    color: #c4b59c;
+    font: 12px/1.5 Arial, sans-serif;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+}
+.livro-area {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 670px;
+    perspective: 1800px;
+}
+.abertura {
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+    filter: drop-shadow(0 18px 22px rgba(0,0,0,.48));
+    transform-style: preserve-3d;
+    transition: opacity .22s ease, transform .22s ease;
+}
+.abertura.trocando { opacity: .35; transform: rotateY(-2deg) scale(.99); }
+.pagina {
+    position: relative;
+    width: var(--largura-pagina);
+    height: var(--altura-pagina);
+    overflow: hidden;
+    color: var(--tinta);
+    background:
+        radial-gradient(ellipse at 20% 15%, rgba(255,255,255,.38), transparent 55%),
+        radial-gradient(ellipse at 85% 80%, rgba(141,108,57,.08), transparent 60%),
+        repeating-linear-gradient(0deg, rgba(120,94,53,.018) 0px, rgba(120,94,53,.018) 1px, transparent 1px, transparent 4px),
+        linear-gradient(90deg, #eadfbe 0%, var(--papel) 12%, var(--papel-claro) 50%, var(--papel) 100%);
+    border: 1px solid rgba(104,78,42,.32);
+    box-shadow: inset 0 0 22px rgba(99,74,37,.10);
+}
+.pagina.esquerda {
+    border-radius: 5px 0 0 5px;
+    box-shadow: inset -13px 0 17px -17px rgba(55,38,17,.65), inset 0 0 22px rgba(99,74,37,.10);
+}
+.pagina.direita {
+    border-radius: 0 5px 5px 0;
+    box-shadow: inset 13px 0 17px -17px rgba(55,38,17,.65), inset 0 0 22px rgba(99,74,37,.10);
+}
+.pagina-vazia { background: linear-gradient(90deg, #e9ddbd, #f4ebd3); }
+.cabecalho-pagina {
+    height: 36px;
+    margin: 0 27px;
+    border-bottom: 1px solid var(--linha);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    color: #6c5a3f;
+    font: 8px/1 Arial, sans-serif;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+}
+.cabecalho-pagina span:last-child {
+    text-align: right;
+    letter-spacing: .06em;
+}
+.titulo-pagina {
+    padding: 17px 29px 7px;
+    text-align: center;
+    color: #352819;
+}
+.titulo-pagina .supra {
+    font: 700 9px/1.4 Arial, sans-serif;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: #756044;
+}
+.titulo-pagina h1 {
+    margin: 7px 0 0;
+    font: 700 19px/1.2 var(--fonte);
+    letter-spacing: .025em;
+    text-transform: uppercase;
+}
+.colunas {
+    position: absolute;
+    left: 27px;
+    right: 27px;
+    top: 48px;
+    bottom: 43px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 21px;
+}
+.pagina.tem-titulo .colunas { top: 116px; }
+.coluna {
+    min-width: 0;
+    height: 100%;
+    overflow: hidden;
+    text-align: justify;
+    hyphens: auto;
+    overflow-wrap: break-word;
+    font: 11.2px/1.42 var(--fonte);
+    color: var(--tinta);
+}
+.unidade { margin: 0 0 5px; break-inside: avoid; }
+.paragrafo {
+    margin: 0 0 5px;
+    text-indent: 0;
+}
+.numero {
+    display: inline-block;
+    vertical-align: super;
+    font-size: .68em;
+    line-height: 0;
+    font-weight: 700;
+    margin-right: 3px;
+    color: #655237;
+}
+.subtitulo {
+    margin: 9px 0 6px;
+    font: 700 10px/1.28 var(--fonte);
+    text-align: center;
+    letter-spacing: .035em;
+    text-transform: uppercase;
+    color: #3c2d1c;
+}
+.citacao {
+    margin: 7px 5px 9px 11px;
+    padding-left: 9px;
+    border-left: 1px solid rgba(104,78,42,.38);
+    font: italic 10.7px/1.42 var(--fonte);
+    text-align: left;
+    color: #403321;
+}
+.citacao-texto { white-space: pre-line; }
+.referencia {
+    display: block;
+    margin-top: 4px;
+    font: normal 9px/1.25 var(--fonte);
+    text-align: right;
+    color: #66543a;
+}
+.rodape-pagina {
+    position: absolute;
+    bottom: 13px;
+    left: 27px;
+    right: 27px;
+    border-top: 1px solid var(--linha);
+    padding-top: 6px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #756246;
+    font: 8px/1 Arial, sans-serif;
+    letter-spacing: .1em;
+}
+.controles {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    margin: 18px auto 0;
+    font: 12px Arial, sans-serif;
+    color: #e7dcc7;
+}
+.controles button {
+    border: 1px solid #76664f;
+    border-radius: 3px;
+    padding: 10px 17px;
+    color: #f1e8d8;
+    background: linear-gradient(#393128, #28231d);
+    font: 700 10px Arial, sans-serif;
+    letter-spacing: .12em;
+    cursor: pointer;
+}
+.controles button:hover:not(:disabled) { background: #514435; }
+.controles button:disabled { opacity: .35; cursor: default; }
+.indicador { min-width: 100px; text-align: center; color: #d2c3a9; }
+.institucional {
+    margin-top: 17px;
+    text-align: center;
+    color: #b7a78d;
+    font: 9px Arial, sans-serif;
+    letter-spacing: .2em;
+}
+#medidor {
+    position: fixed;
+    left: -20000px;
+    top: 0;
+    visibility: hidden;
+    pointer-events: none;
+    z-index: -1;
+}
+#medidor .pagina {
+    display: block !important;
+    width: var(--largura-pagina);
+    height: var(--altura-pagina);
+    box-shadow: none;
+}
+#medidor .coluna { overflow: hidden; }
+#medidor .unidade { display: block; }
+@media (max-width: 920px) {
+    :root { --largura-pagina: min(44vw, 420px); }
+    .pagina { height: min(78vh, 650px); min-height: 540px; }
+    .livro-area { min-height: 560px; }
+}
+@media (max-width: 700px) {
+    #medidor .pagina { height: min(78vh, 720px); min-height: 560px; }
+    body { padding: 14px 8px 22px; }
+    :root { --largura-pagina: min(92vw, 440px); }
+    .livro-area { min-height: 0; }
+    .abertura { width: 100%; }
+    .pagina { display: none; width: var(--largura-pagina); height: min(78vh, 720px); min-height: 560px; border-radius: 5px !important; }
+    .pagina.visivel-mobile { display: block; }
+    .pagina .colunas { grid-template-columns: 1fr; left: 30px; right: 30px; column-gap: 0; }
+    .pagina .coluna { font-size: 12.1px; line-height: 1.48; }
+    .pagina.tem-titulo .colunas { top: 118px; }
+    .cabecalho-pagina { margin: 0 30px; }
+    .rodape-pagina { left: 30px; right: 30px; }
+    .controles { gap: 8px; }
+    .controles button { padding: 10px 12px; }
+}
+@media (max-width: 380px) {
+    .pagina { min-height: 520px; }
+    .pagina .coluna { font-size: 11.5px; }
+    .cabecalho-pagina { font-size: 7px; }
+    .titulo-pagina h1 { font-size: 17px; }
+}
+@media print {
+    body { background: white; padding: 0; }
+    .topo, .controles, .institucional { display: none; }
+    .livro-area { display: block; }
+    .abertura { display: block; filter: none; }
+    .pagina { page-break-after: always; box-shadow: none; }
+}
+</style>
+</head>
+<body>
+<div class="interface">
+    <header class="topo">
+        <div class="marca">ATOS 29 • A HISTÓRIA CONTINUA</div>
+        <div class="identificacao">Ministério Atalaia · Capítulo 19</div>
+    </header>
+
+    <main class="livro-area">
+        <div class="abertura" id="abertura" aria-live="polite"></div>
+    </main>
+
+    <nav class="controles" aria-label="Navegação do flipbook">
+        <button type="button" id="anterior">ANTERIOR</button>
+        <span class="indicador" id="indicador">Páginas 1–2</span>
+        <button type="button" id="proxima">PRÓXIMA</button>
+    </nav>
+    <footer class="institucional">MINISTÉRIO ATALAIA</footer>
+</div>
+
+<div id="medidor" aria-hidden="true"></div>
+
+<script>
+"use strict";
+
+/*
+ * Conteúdo integral do Capítulo 19.
+ * Os 443 parágrafos narrativos recebem a numeração sobrescrita original.
+ * Títulos, subtítulos, citações e referências permanecem sem numeração.
+ */
+const conteudo = [{"type": "heading", "text": "UM DESEJO DIANTE DO SENHOR"}, {"type": "paragraph", "text": "Depois de anos evangelizando nas ruas, de casa em casa e nas esquinas, nasceu em meu coração um desejo específico: evangelizar do outro lado do Rio Negro, em frente de Manaus.", "number": "¹"}, {"type": "paragraph", "text": "Eu havia percorrido muitos lugares anunciando o Evangelho, mas aquele desejo era diferente.", "number": "²"}, {"type": "paragraph", "text": "Eu queria atravessar o rio e levar a Palavra de Deus para comunidades que ainda não conhecia.", "number": "³"}, {"type": "paragraph", "text": "O problema era que eu não conhecia o lugar.", "number": "⁴"}, {"type": "paragraph", "text": "Não sabia exatamente onde seria.", "number": "⁵"}, {"type": "paragraph", "text": "Não conhecia ninguém daquela região.", "number": "⁶"}, {"type": "paragraph", "text": "Não tinha recursos suficientes para realizar uma viagem missionária.", "number": "⁷"}, {"type": "paragraph", "text": "Eu tinha apenas uma coisa:", "number": "⁸"}, {"type": "paragraph", "text": "o desejo de anunciar Jesus.", "number": "⁹"}, {"type": "paragraph", "text": "Foi então que comecei a apresentar aquele desejo ao Senhor.", "number": "¹⁰"}, {"type": "paragraph", "text": "Eu não sabia como a porta seria aberta.", "number": "¹¹"}, {"type": "paragraph", "text": "Mas aprendi que, quando colocamos nossos desejos diante de Deus, precisamos estar dispostos não apenas a pedir que Ele abra uma porta, mas também a seguir a direção que Ele nos der.", "number": "¹²"}, {"type": "quote", "text": "«“Entrega o teu caminho ao Senhor; confia nele, e ele tudo fará.”", "reference": "Salmo 37:5»"}, {"type": "heading", "text": "QUANDO O DESEJO SE TORNA ORAÇÃO"}, {"type": "paragraph", "text": "A Bíblia apresenta muitos homens e mulheres que carregaram no coração um desejo relacionado à obra de Deus antes de compreenderem completamente como aquilo aconteceria.", "number": "¹³"}, {"type": "paragraph", "text": "Neemias ouviu sobre a situação de Jerusalém e seu coração foi profundamente tocado. Antes de agir, porém, ele orou.", "number": "¹⁴"}, {"type": "quote", "text": "«“E sucedeu que, ouvindo eu estas palavras, assentei-me, e chorei, e lamentei por alguns dias; e estive jejuando e orando perante o Deus dos céus.”", "reference": "Neemias 1:4»"}, {"type": "paragraph", "text": "O princípio é importante: o desejo pela obra precisa ser colocado diante de Deus.", "number": "¹⁵"}, {"type": "paragraph", "text": "Nem todo desejo se realizará exatamente da maneira que imaginamos.", "number": "¹⁶"}, {"type": "paragraph", "text": "Às vezes, Deus nos conduz por um caminho diferente.", "number": "¹⁷"}, {"type": "paragraph", "text": "Às vezes, a porta que esperamos não é a primeira porta que Ele abre.", "number": "¹⁸"}, {"type": "paragraph", "text": "E foi exatamente isso que aconteceu comigo.", "number": "¹⁹"}, {"type": "heading", "text": "A PRIMEIRA PORTA"}, {"type": "paragraph", "text": "Eu queria chegar ao outro lado do Rio Negro, em frente de Manaus.", "number": "²⁰"}, {"type": "paragraph", "text": "Mas Deus abriu primeiro uma porta para outro lugar:", "number": "²¹"}, {"type": "paragraph", "text": "o Distrito do Araçá.", "number": "²²"}, {"type": "paragraph", "text": "Foi ali que realizamos duas viagens missionárias.", "number": "²³"}, {"type": "paragraph", "text": "Levamos Bíblias.", "number": "²⁴"}, {"type": "paragraph", "text": "Levamos folhetos.", "number": "²⁵"}, {"type": "paragraph", "text": "Levamos a mensagem do Evangelho.", "number": "²⁶"}, {"type": "paragraph", "text": "E fomos aprendendo que uma porta aberta por Deus nem sempre é aquela que imaginamos inicialmente.", "number": "²⁷"}, {"type": "paragraph", "text": "Aquele lugar que inicialmente parecia ser apenas um caminho diferente acabou se tornando parte importante daquilo que Deus estava fazendo.", "number": "²⁸"}, {"type": "paragraph", "text": "Durante essas viagens, conhecemos um pastor.", "number": "²⁹"}, {"type": "paragraph", "text": "Ele possuía uma Voz Comunitária, um sistema de comunicação utilizado para alcançar toda a comunidade.", "number": "³⁰"}, {"type": "paragraph", "text": "E ele nos permitiu utilizar aquela Voz Comunitária para anunciar a Palavra de Deus.", "number": "³¹"}, {"type": "paragraph", "text": "Aquilo foi muito significativo.", "number": "³²"}, {"type": "paragraph", "text": "Nós havíamos chegado para evangelizar uma comunidade.", "number": "³³"}, {"type": "paragraph", "text": "E Deus abriu uma porta para que a mensagem alcançasse pessoas que talvez nem estivessem presentes fisicamente onde estávamos.", "number": "³⁴"}, {"type": "heading", "text": "DEUS ABRE PORTAS PARA O EVANGELHO"}, {"type": "paragraph", "text": "Paulo reconhecia que Deus poderia abrir portas para a pregação.", "number": "³⁵"}, {"type": "quote", "text": "«“Porque uma porta grande e eficaz se me abriu; e há muitos adversários.”", "reference": "1 Coríntios 16:9»"}, {"type": "paragraph", "text": "Também escreveu:", "number": "³⁶"}, {"type": "quote", "text": "«“Perseverai em oração, velando nela com ação de graças; orando também juntamente por nós, para que Deus nos abra a porta da palavra, a fim de falarmos do mistério de Cristo.”", "reference": "Colossenses 4:2-3»"}, {"type": "paragraph", "text": "A oração de Paulo não era simplesmente:", "number": "³⁷"}, {"type": "paragraph", "text": "“Senhor, dá-me recursos.”", "number": "³⁸"}, {"type": "paragraph", "text": "Era:", "number": "³⁹"}, {"type": "paragraph", "text": "“Senhor, abre a porta da Palavra.”", "number": "⁴⁰"}, {"type": "paragraph", "text": "Essa experiência me ensinou algo semelhante.", "number": "⁴¹"}, {"type": "paragraph", "text": "Eu não sabia como chegaria àquele lugar.", "number": "⁴²"}, {"type": "paragraph", "text": "Mas Deus começou a abrir portas através de pessoas que eu ainda não conhecia.", "number": "⁴³"}, {"type": "heading", "text": "UM CONVITE QUE MUDARIA O CAMINHO"}, {"type": "paragraph", "text": "Depois de nos permitir utilizar a Voz Comunitária para anunciar o Evangelho, aquele pastor nos convidou para participar do culto em sua igreja.", "number": "⁴⁴"}, {"type": "paragraph", "text": "A igreja ficava no mesmo local.", "number": "⁴⁵"}, {"type": "paragraph", "text": "Fomos ao culto.", "number": "⁴⁶"}, {"type": "paragraph", "text": "Durante aquela reunião, o pastor nos apresentou outro pastor, seu amigo.", "number": "⁴⁷"}, {"type": "paragraph", "text": "Até aquele momento, eu não fazia ideia de quem ele era.", "number": "⁴⁸"}, {"type": "paragraph", "text": "Mas então veio uma surpresa.", "number": "⁴⁹"}, {"type": "paragraph", "text": "Aquele homem era pastor justamente da igreja localizada no lugar que eu desejava alcançar desde o início: o outro lado do Rio Negro, em frente de Manaus.", "number": "⁵⁰"}, {"type": "paragraph", "text": "Aquilo chamou profundamente minha atenção.", "number": "⁵¹"}, {"type": "paragraph", "text": "Eu não conhecia o lugar.", "number": "⁵²"}, {"type": "paragraph", "text": "Não conhecia o pastor.", "number": "⁵³"}, {"type": "paragraph", "text": "Não tinha contato com ninguém daquela região.", "number": "⁵⁴"}, {"type": "paragraph", "text": "Mas, por meio de uma viagem que inicialmente parecia ser para outro destino, Deus permitiu que eu conhecesse justamente alguém que estava ligado ao local que eu desejava evangelizar.", "number": "⁵⁵"}, {"type": "paragraph", "text": "A porta que eu não conseguia encontrar começou a aparecer diante de mim.", "number": "⁵⁶"}, {"type": "heading", "text": "OS CAMINHOS DE DEUS"}, {"type": "paragraph", "text": "A Escritura declara:", "number": "⁵⁷"}, {"type": "quote", "text": "«“O coração do homem considera o seu caminho, mas o Senhor lhe dirige os passos.”", "reference": "Provérbios 16:9»"}, {"type": "paragraph", "text": "Nós fazemos planos.", "number": "⁵⁸"}, {"type": "paragraph", "text": "Oramos.", "number": "⁵⁹"}, {"type": "paragraph", "text": "Trabalhamos.", "number": "⁶⁰"}, {"type": "paragraph", "text": "Procuramos caminhos.", "number": "⁶¹"}, {"type": "paragraph", "text": "Mas Deus pode conduzir nossos passos de maneiras que não conseguimos prever.", "number": "⁶²"}, {"type": "paragraph", "text": "Paulo também experimentou mudanças em seus planos missionários.", "number": "⁶³"}, {"type": "paragraph", "text": "Em Atos 16, ele e seus companheiros tentaram ir para determinadas regiões, mas foram impedidos pelo Espírito.", "number": "⁶⁴"}, {"type": "paragraph", "text": "Depois disso, Paulo recebeu uma visão e compreendeu que deveria seguir para a Macedônia.", "number": "⁶⁵"}, {"type": "quote", "text": "«“E Paulo teve de noite uma visão, em que se apresentou um varão da Macedônia, e lhe rogou, dizendo: Passa à Macedônia e ajuda-nos.”", "reference": "Atos 16:9»"}, {"type": "paragraph", "text": "A lição não é que todo desejo pessoal seja automaticamente uma direção de Deus.", "number": "⁶⁶"}, {"type": "paragraph", "text": "A lição é que precisamos permanecer disponíveis para que Deus redirecione nossos passos.", "number": "⁶⁷"}, {"type": "heading", "text": "JANUARI — A PORTA SE ABRIU"}, {"type": "paragraph", "text": "Depois daquele encontro, fizemos também duas viagens missionárias para o Janauari e outras comunidades adjacentes.", "number": "⁶⁸"}, {"type": "paragraph", "text": "Aquilo que havia começado como um desejo colocado diante de Deus agora estava se tornando realidade.", "number": "⁶⁹"}, {"type": "paragraph", "text": "Começamos a atravessar o rio.", "number": "⁷⁰"}, {"type": "paragraph", "text": "Começamos a chegar às comunidades.", "number": "⁷¹"}, {"type": "paragraph", "text": "Começamos a anunciar o Evangelho.", "number": "⁷²"}, {"type": "paragraph", "text": "Mas havia uma questão:", "number": "⁷³"}, {"type": "paragraph", "text": "como faríamos tudo aquilo sem recursos?", "number": "⁷⁴"}, {"type": "paragraph", "text": "Eu não tinha dinheiro suficiente para realizar uma grande operação missionária.", "number": "⁷⁵"}, {"type": "paragraph", "text": "Não possuía caminhão.", "number": "⁷⁶"}, {"type": "paragraph", "text": "Não possuía barco.", "number": "⁷⁷"}, {"type": "paragraph", "text": "Não tinha uma grande estrutura.", "number": "⁷⁸"}, {"type": "paragraph", "text": "Eu tinha apenas a vontade de evangelizar.", "number": "⁷⁹"}, {"type": "paragraph", "text": "E foi então que comecei a perceber algo:", "number": "⁸⁰"}, {"type": "paragraph", "text": "eu não precisava ter tudo nas minhas mãos para começar a obedecer.", "number": "⁸¹"}, {"type": "heading", "text": "DEUS LEVANTA PESSOAS"}, {"type": "paragraph", "text": "Deus começou a levantar pessoas para caminhar conosco.", "number": "⁸²"}, {"type": "paragraph", "text": "Algumas foram conosco nas viagens.", "number": "⁸³"}, {"type": "paragraph", "text": "Outras doaram cestas básicas.", "number": "⁸⁴"}, {"type": "paragraph", "text": "Outras doaram roupas.", "number": "⁸⁵"}, {"type": "paragraph", "text": "Outras doaram sapatos.", "number": "⁸⁶"}, {"type": "paragraph", "text": "Surgiu um caminhão para transportar as doações.", "number": "⁸⁷"}, {"type": "paragraph", "text": "Surgiu um barco para atravessar o rio.", "number": "⁸⁸"}, {"type": "paragraph", "text": "Pessoas diferentes começaram a participar de uma mesma missão.", "number": "⁸⁹"}, {"type": "paragraph", "text": "Cada uma contribuindo de uma maneira.", "number": "⁹⁰"}, {"type": "paragraph", "text": "E aquilo me fez lembrar que a obra de Deus não depende de uma única pessoa.", "number": "⁹¹"}, {"type": "heading", "text": "SOMOS UM CORPO"}, {"type": "paragraph", "text": "Paulo ensinou que a Igreja é um corpo formado por muitos membros.", "number": "⁹²"}, {"type": "quote", "text": "«“Porque, assim como o corpo é um e tem muitos membros, e todos os membros, sendo muitos, são um só corpo, assim é Cristo também.”", "reference": "1 Coríntios 12:12»"}, {"type": "paragraph", "text": "E continua:", "number": "⁹³"}, {"type": "quote", "text": "«“Mas agora Deus colocou os membros no corpo, cada um deles como quis.”", "reference": "1 Coríntios 12:18»"}, {"type": "paragraph", "text": "Na missão, cada pessoa pode exercer uma função.", "number": "⁹⁴"}, {"type": "paragraph", "text": "Um prega.", "number": "⁹⁵"}, {"type": "paragraph", "text": "Outro ora.", "number": "⁹⁶"}, {"type": "paragraph", "text": "Outro contribui.", "number": "⁹⁷"}, {"type": "paragraph", "text": "Outro transporta.", "number": "⁹⁸"}, {"type": "paragraph", "text": "Outro oferece hospedagem.", "number": "⁹⁹"}, {"type": "paragraph", "text": "Outro disponibiliza um barco.", "number": "¹⁰⁰"}, {"type": "paragraph", "text": "Outro entrega uma cesta básica.", "number": "¹⁰¹"}, {"type": "paragraph", "text": "Outro doa uma roupa.", "number": "¹⁰²"}, {"type": "paragraph", "text": "Outro simplesmente decide ir junto.", "number": "¹⁰³"}, {"type": "paragraph", "text": "O importante é que todos podem cooperar.", "number": "¹⁰⁴"}, {"type": "paragraph", "text": "A missão não precisava depender exclusivamente dos meus recursos.", "number": "¹⁰⁵"}, {"type": "paragraph", "text": "Deus podia usar os recursos e os dons de muitas pessoas.", "number": "¹⁰⁶"}, {"type": "heading", "text": "EU NÃO TINHA RECURSOS"}, {"type": "paragraph", "text": "Essa frase ficou marcada em minha memória:", "number": "¹⁰⁷"}, {"type": "paragraph", "text": "Eu não tinha recursos.", "number": "¹⁰⁸"}, {"type": "paragraph", "text": "Mas tinha vontade.", "number": "¹⁰⁹"}, {"type": "paragraph", "text": "Tinha disposição.", "number": "¹¹⁰"}, {"type": "paragraph", "text": "Tinha fé.", "number": "¹¹¹"}, {"type": "paragraph", "text": "E tinha uma convicção:", "number": "¹¹²"}, {"type": "paragraph", "text": "eu queria anunciar Jesus.", "number": "¹¹³"}, {"type": "paragraph", "text": "Isso não significa que eu acreditasse que a obra pudesse ser realizada sem planejamento, organização ou recursos.", "number": "¹¹⁴"}, {"type": "paragraph", "text": "Significa que eu não permiti que a falta de recursos iniciais fosse maior do que o desejo de obedecer ao chamado de anunciar o Evangelho.", "number": "¹¹⁵"}, {"type": "paragraph", "text": "Jesus ensinou:", "number": "¹¹⁶"}, {"type": "quote", "text": "«“Ide por todo o mundo, pregai o evangelho a toda criatura.”", "reference": "Marcos 16:15»"}, {"type": "paragraph", "text": "O mandamento de anunciar o Evangelho não foi condicionado à existência de uma grande estrutura.", "number": "¹¹⁷"}, {"type": "paragraph", "text": "A missão começa com disposição para obedecer.", "number": "¹¹⁸"}, {"type": "paragraph", "text": "Os recursos podem ser levantados ao longo do caminho.", "number": "¹¹⁹"}, {"type": "heading", "text": "A SEGUNDA VIAGEM AO JANUARI"}, {"type": "paragraph", "text": "Existe uma experiência daquela segunda viagem ao Janauari que permanece muito viva em minha memória.", "number": "¹²⁰"}, {"type": "paragraph", "text": "Um pastor amigo me perguntou:", "number": "¹²¹"}, {"type": "paragraph", "text": "— O que nós vamos comer lá?", "number": "¹²²"}, {"type": "paragraph", "text": "Eu respondi:", "number": "¹²³"}, {"type": "paragraph", "text": "— Eu não estou levando nada. Mas, se você quiser levar, pode levar.", "number": "¹²⁴"}, {"type": "paragraph", "text": "Era uma resposta simples.", "number": "¹²⁵"}, {"type": "paragraph", "text": "Eu realmente não tinha provisão para aquela refeição.", "number": "¹²⁶"}, {"type": "paragraph", "text": "Seguimos viagem.", "number": "¹²⁷"}, {"type": "paragraph", "text": "Continuamos evangelizando.", "number": "¹²⁸"}, {"type": "paragraph", "text": "Pregamos a Palavra.", "number": "¹²⁹"}, {"type": "paragraph", "text": "Visitamos comunidades.", "number": "¹³⁰"}, {"type": "paragraph", "text": "E chegamos à última comunidade daquela viagem.", "number": "¹³¹"}, {"type": "paragraph", "text": "Ali realizamos o culto dentro do barco.", "number": "¹³²"}, {"type": "paragraph", "text": "Depois do culto, aconteceu algo que jamais esqueci.", "number": "¹³³"}, {"type": "heading", "text": "UM CONVITE PARA ALMOÇAR"}, {"type": "paragraph", "text": "Ao final do culto, uma moradora daquela comunidade nos convidou para almoçar em sua casa.", "number": "¹³⁴"}, {"type": "paragraph", "text": "Aceitamos o convite.", "number": "¹³⁵"}, {"type": "paragraph", "text": "Quando chegamos, ela nos contou algo que havia acontecido na noite anterior.", "number": "¹³⁶"}, {"type": "paragraph", "text": "Ela disse que havia sonhado que muitos anjos estavam vindo almoçar em sua casa.", "number": "¹³⁷"}, {"type": "paragraph", "text": "Na manhã seguinte, começou a preparar uma grande quantidade de comida.", "number": "¹³⁸"}, {"type": "paragraph", "text": "Preparou comida para muito mais pessoas do que as que normalmente faziam parte de sua família.", "number": "¹³⁹"}, {"type": "paragraph", "text": "Seu esposo percebeu a quantidade de comida e perguntou:", "number": "¹⁴⁰"}, {"type": "paragraph", "text": "— Por que você está fazendo tanta comida? Vai estragar.", "number": "¹⁴¹"}, {"type": "paragraph", "text": "Então ela contou a ele sobre o sonho.", "number": "¹⁴²"}, {"type": "paragraph", "text": "Naquele dia, nós chegamos à sua casa.", "number": "¹⁴³"}, {"type": "paragraph", "text": "Éramos muitas pessoas.", "number": "¹⁴⁴"}, {"type": "paragraph", "text": "E havia comida preparada.", "number": "¹⁴⁵"}, {"type": "paragraph", "text": "Para nós, aquele momento foi profundamente marcante.", "number": "¹⁴⁶"}, {"type": "paragraph", "text": "O que eu não tinha levado, Deus havia providenciado por meio daquela família.", "number": "¹⁴⁷"}, {"type": "paragraph", "text": "O alimento que eu não sabia de onde viria já estava sendo preparado antes mesmo de chegarmos.", "number": "¹⁴⁸"}, {"type": "paragraph", "text": "Naquele momento, compreendi aquela experiência como uma confirmação de que Deus estava cuidando daquela missão.", "number": "¹⁴⁹"}, {"type": "paragraph", "text": "Mas aquela história não terminou com o almoço.", "number": "¹⁵⁰"}, {"type": "paragraph", "text": "Aquela família que nos recebeu em sua casa também se converteu.", "number": "¹⁵¹"}, {"type": "paragraph", "text": "O Evangelho que havíamos levado até aquela comunidade alcançou aquela casa.", "number": "¹⁵²"}, {"type": "paragraph", "text": "A família abriu as portas para nós e, mais importante, abriu o coração para Cristo.", "number": "¹⁵³"}, {"type": "paragraph", "text": "E não foi somente aquela família.", "number": "¹⁵⁴"}, {"type": "paragraph", "text": "Muitas outras pessoas daquelas comunidades também se converteram.", "number": "¹⁵⁵"}, {"type": "paragraph", "text": "Famílias ouviram a Palavra.", "number": "¹⁵⁶"}, {"type": "paragraph", "text": "Pessoas receberam a mensagem do Evangelho.", "number": "¹⁵⁷"}, {"type": "paragraph", "text": "Vidas foram alcançadas.", "number": "¹⁵⁸"}, {"type": "paragraph", "text": "E aquilo tornou aquelas viagens muito maiores do que simplesmente levar Bíblias, folhetos, alimentos, roupas e sapatos.", "number": "¹⁵⁹"}, {"type": "paragraph", "text": "Estávamos levando a mensagem de Jesus Cristo.", "number": "¹⁶⁰"}, {"type": "heading", "text": "DEUS CONHECE A NECESSIDADE"}, {"type": "paragraph", "text": "Jesus ensinou:", "number": "¹⁶¹"}, {"type": "quote", "text": "«“Porque vosso Pai sabe o que vos é necessário, antes de vós lho pedirdes.”", "reference": "Mateus 6:8»"}, {"type": "paragraph", "text": "Também ensinou:", "number": "¹⁶²"}, {"type": "quote", "text": "«“Não andeis, pois, inquietos, dizendo: Que comeremos, ou que beberemos, ou com que nos vestiremos?”", "reference": "Mateus 6:31»"}, {"type": "paragraph", "text": "Jesus não ensinou irresponsabilidade.", "number": "¹⁶³"}, {"type": "paragraph", "text": "Ele ensinou confiança.", "number": "¹⁶⁴"}, {"type": "paragraph", "text": "Existe uma diferença entre não possuir todos os recursos e não confiar na provisão de Deus.", "number": "¹⁶⁵"}, {"type": "paragraph", "text": "Naquela viagem, eu não sabia o que comeríamos.", "number": "¹⁶⁶"}, {"type": "paragraph", "text": "Mas Deus sabia.", "number": "¹⁶⁷"}, {"type": "paragraph", "text": "Eu não tinha levado comida.", "number": "¹⁶⁸"}, {"type": "paragraph", "text": "Mas Deus já conhecia aquela necessidade.", "number": "¹⁶⁹"}, {"type": "paragraph", "text": "E uma família daquela comunidade acabou sendo usada para suprir aquilo que precisávamos naquele momento.", "number": "¹⁷⁰"}, {"type": "heading", "text": "A PROVIDÊNCIA ANTES DA NECESSIDADE"}, {"type": "paragraph", "text": "Aquela experiência me fez lembrar de uma verdade bíblica:", "number": "¹⁷¹"}, {"type": "paragraph", "text": "Deus não é surpreendido pelas nossas necessidades.", "number": "¹⁷²"}, {"type": "paragraph", "text": "Quando chegamos àquela casa, a comida já estava sendo preparada.", "number": "¹⁷³"}, {"type": "paragraph", "text": "Para nós, a provisão apareceu naquele momento.", "number": "¹⁷⁴"}, {"type": "paragraph", "text": "Mas, segundo o relato daquela mulher, a preparação havia começado antes.", "number": "¹⁷⁵"}, {"type": "paragraph", "text": "Isso me fez pensar em como muitas vezes enxergamos somente o momento em que a provisão chega, mas não sabemos quantas coisas Deus já está movimentando antes que percebamos.", "number": "¹⁷⁶"}, {"type": "paragraph", "text": "Abraão também experimentou algo semelhante quando Deus providenciou o cordeiro.", "number": "¹⁷⁷"}, {"type": "quote", "text": "«“E chamou Abraão o nome daquele lugar: O Senhor proverá.”", "reference": "Gênesis 22:14»"}, {"type": "paragraph", "text": "A expressão “O Senhor proverá” tornou-se muito significativa para mim.", "number": "¹⁷⁸"}, {"type": "paragraph", "text": "Não significa que devemos esperar passivamente sem agir.", "number": "¹⁷⁹"}, {"type": "paragraph", "text": "Abraão estava obedecendo.", "number": "¹⁸⁰"}, {"type": "paragraph", "text": "Os discípulos foram.", "number": "¹⁸¹"}, {"type": "paragraph", "text": "Paulo viajou.", "number": "¹⁸²"}, {"type": "paragraph", "text": "Os missionários trabalham.", "number": "¹⁸³"}, {"type": "paragraph", "text": "Nós viajamos.", "number": "¹⁸⁴"}, {"type": "paragraph", "text": "Nós pregamos.", "number": "¹⁸⁵"}, {"type": "paragraph", "text": "Nós distribuímos Bíblias.", "number": "¹⁸⁶"}, {"type": "paragraph", "text": "Nós visitamos comunidades.", "number": "¹⁸⁷"}, {"type": "paragraph", "text": "Mas, no caminho da obediência, aprendemos a reconhecer que a provisão pertence ao Senhor.", "number": "¹⁸⁸"}, {"type": "heading", "text": "QUANDO DEUS USA PESSOAS"}, {"type": "paragraph", "text": "Outra coisa que aquela experiência me ensinou foi que a provisão de Deus muitas vezes chega através de pessoas.", "number": "¹⁸⁹"}, {"type": "paragraph", "text": "Deus não colocou uma cesta básica simplesmente no meio do caminho.", "number": "¹⁹⁰"}, {"type": "paragraph", "text": "Ele levantou pessoas para doar.", "number": "¹⁹¹"}, {"type": "paragraph", "text": "Deus não fez aparecer um caminhão sem ninguém envolvido.", "number": "¹⁹²"}, {"type": "paragraph", "text": "Ele levantou alguém que disponibilizou o caminhão.", "number": "¹⁹³"}, {"type": "paragraph", "text": "Deus não colocou um barco à nossa disposição sem ninguém.", "number": "¹⁹⁴"}, {"type": "paragraph", "text": "Ele levantou pessoas para nos ajudar.", "number": "¹⁹⁵"}, {"type": "paragraph", "text": "E, naquela última comunidade, Deus usou uma família para preparar uma refeição.", "number": "¹⁹⁶"}, {"type": "paragraph", "text": "Mas Deus fez ainda mais:", "number": "¹⁹⁷"}, {"type": "paragraph", "text": "usou aquela mesma família para ser alcançada pelo Evangelho.", "number": "¹⁹⁸"}, {"type": "paragraph", "text": "A casa que abriu a porta para nos alimentar tornou-se também um lugar onde a mensagem de Cristo foi recebida.", "number": "¹⁹⁹"}, {"type": "paragraph", "text": "E, junto daquela família, muitas outras pessoas das comunidades também se converteram.", "number": "²⁰⁰"}, {"type": "paragraph", "text": "Isso mostra que a missão vai muito além da provisão material.", "number": "²⁰¹"}, {"type": "paragraph", "text": "A provisão alimentou nossos corpos.", "number": "²⁰²"}, {"type": "paragraph", "text": "Mas a Palavra de Deus alcançou nossas almas.", "number": "²⁰³"}, {"type": "heading", "text": "EVANGELHO E MISERICÓRDIA"}, {"type": "paragraph", "text": "Nossas viagens não tinham apenas o objetivo de entregar alimentos, roupas ou sapatos.", "number": "²⁰⁴"}, {"type": "paragraph", "text": "O centro era Jesus Cristo.", "number": "²⁰⁵"}, {"type": "paragraph", "text": "Os recursos materiais eram instrumentos de amor e cuidado.", "number": "²⁰⁶"}, {"type": "paragraph", "text": "As Bíblias eram instrumentos para que as pessoas tivessem acesso à Palavra.", "number": "²⁰⁷"}, {"type": "paragraph", "text": "Os folhetos ajudavam a anunciar a mensagem.", "number": "²⁰⁸"}, {"type": "paragraph", "text": "As cestas básicas ajudavam famílias em necessidades concretas.", "number": "²⁰⁹"}, {"type": "paragraph", "text": "As roupas e os sapatos demonstravam cuidado.", "number": "²¹⁰"}, {"type": "paragraph", "text": "Mas havia algo que não poderíamos substituir:", "number": "²¹¹"}, {"type": "paragraph", "text": "a pregação do Evangelho.", "number": "²¹²"}, {"type": "paragraph", "text": "E vimos o fruto dessa pregação.", "number": "²¹³"}, {"type": "paragraph", "text": "A família que nos recebeu se converteu.", "number": "²¹⁴"}, {"type": "paragraph", "text": "Muitas outras pessoas das comunidades também se converteram.", "number": "²¹⁵"}, {"type": "paragraph", "text": "Jesus estava sendo anunciado.", "number": "²¹⁶"}, {"type": "paragraph", "text": "Pessoas estavam ouvindo.", "number": "²¹⁷"}, {"type": "paragraph", "text": "Corações estavam sendo alcançados.", "number": "²¹⁸"}, {"type": "paragraph", "text": "Jesus não nos chamou apenas para distribuir coisas.", "number": "²¹⁹"}, {"type": "paragraph", "text": "Ele nos chamou para fazer discípulos.", "number": "²²⁰"}, {"type": "quote", "text": "«“Portanto, ide, ensinai todas as nações, batizando-as em nome do Pai, e do Filho, e do Espírito Santo.”", "reference": "Mateus 28:19»"}, {"type": "paragraph", "text": "A ação de misericórdia demonstrava amor.", "number": "²²¹"}, {"type": "paragraph", "text": "A mensagem do Evangelho anunciava quem é Cristo e chamava as pessoas ao arrependimento e à fé.", "number": "²²²"}, {"type": "heading", "text": "O SONHO DAQUELA MULHER"}, {"type": "paragraph", "text": "Não quero construir uma doutrina sobre aquele sonho.", "number": "²²³"}, {"type": "paragraph", "text": "A Bíblia registra sonhos pelos quais Deus falou em determinadas situações, mas nem todo sonho apresentado por alguém deve ser automaticamente considerado uma revelação divina.", "number": "²²⁴"}, {"type": "paragraph", "text": "Naquela experiência específica, porém, o relato daquela mulher chamou profundamente minha atenção.", "number": "²²⁵"}, {"type": "paragraph", "text": "Ela havia sonhado com muitos anjos chegando para uma refeição.", "number": "²²⁶"}, {"type": "paragraph", "text": "Na manhã seguinte, preparou comida em grande quantidade.", "number": "²²⁷"}, {"type": "paragraph", "text": "E, mais tarde, chegamos à sua casa depois de realizar um culto naquela comunidade.", "number": "²²⁸"}, {"type": "paragraph", "text": "Para mim, aquele acontecimento foi uma experiência muito marcante da provisão de Deus.", "number": "²²⁹"}, {"type": "paragraph", "text": "Não fundamento minha fé naquele sonho.", "number": "²³⁰"}, {"type": "paragraph", "text": "Minha fé está fundamentada na Palavra de Deus.", "number": "²³¹"}, {"type": "paragraph", "text": "O sonho fez parte da experiência.", "number": "²³²"}, {"type": "paragraph", "text": "A Palavra permanece sendo o fundamento.", "number": "²³³"}, {"type": "heading", "text": "DISCERNINDO EXPERIÊNCIAS"}, {"type": "paragraph", "text": "A Bíblia nos ensina a examinar aquilo que ouvimos.", "number": "²³⁴"}, {"type": "quote", "text": "«“Não desprezeis as profecias. Examinai tudo. Retende o bem.”", "reference": "1 Tessalonicenses 5:20-21»"}, {"type": "paragraph", "text": "Por isso, experiências pessoais podem ser compartilhadas como testemunhos, mas não devem substituir a Escritura.", "number": "²³⁵"}, {"type": "paragraph", "text": "O testemunho diz:", "number": "²³⁶"}, {"type": "paragraph", "text": "“Foi assim que eu vivi.”", "number": "²³⁷"}, {"type": "paragraph", "text": "A Escritura diz:", "number": "²³⁸"}, {"type": "paragraph", "text": "“Assim diz a Palavra de Deus.”", "number": "²³⁹"}, {"type": "paragraph", "text": "Essa diferença precisa ser preservada.", "number": "²⁴⁰"}, {"type": "heading", "text": "QUANDO A PORTA SE ABRE"}, {"type": "paragraph", "text": "Quando olho para toda aquela história, percebo uma sequência que jamais poderia ter planejado sozinho.", "number": "²⁴¹"}, {"type": "paragraph", "text": "Eu tinha um desejo.", "number": "²⁴²"}, {"type": "paragraph", "text": "Apresentei esse desejo ao Senhor.", "number": "²⁴³"}, {"type": "paragraph", "text": "A primeira porta foi o Araçá.", "number": "²⁴⁴"}, {"type": "paragraph", "text": "Depois vieram as duas viagens.", "number": "²⁴⁵"}, {"type": "paragraph", "text": "Conhecemos um pastor.", "number": "²⁴⁶"}, {"type": "paragraph", "text": "Recebemos acesso à Voz Comunitária.", "number": "²⁴⁷"}, {"type": "paragraph", "text": "Pregamos para a comunidade.", "number": "²⁴⁸"}, {"type": "paragraph", "text": "Fomos ao culto.", "number": "²⁴⁹"}, {"type": "paragraph", "text": "Conhecemos outro pastor.", "number": "²⁵⁰"}, {"type": "paragraph", "text": "Descobrimos que ele era pastor justamente no lugar que eu desejava alcançar.", "number": "²⁵¹"}, {"type": "paragraph", "text": "Depois vieram as viagens ao Janauari.", "number": "²⁵²"}, {"type": "paragraph", "text": "Pessoas começaram a cooperar.", "number": "²⁵³"}, {"type": "paragraph", "text": "Vieram Bíblias.", "number": "²⁵⁴"}, {"type": "paragraph", "text": "Vieram folhetos.", "number": "²⁵⁵"}, {"type": "paragraph", "text": "Vieram cestas básicas.", "number": "²⁵⁶"}, {"type": "paragraph", "text": "Vieram roupas.", "number": "²⁵⁷"}, {"type": "paragraph", "text": "Vieram sapatos.", "number": "²⁵⁸"}, {"type": "paragraph", "text": "Veio caminhão.", "number": "²⁵⁹"}, {"type": "paragraph", "text": "Veio barco.", "number": "²⁶⁰"}, {"type": "paragraph", "text": "Vieram pessoas para ajudar.", "number": "²⁶¹"}, {"type": "paragraph", "text": "E, quando não sabíamos o que comeríamos, encontramos uma mesa preparada.", "number": "²⁶²"}, {"type": "paragraph", "text": "E naquela mesma casa, uma família encontrou Cristo.", "number": "²⁶³"}, {"type": "paragraph", "text": "Depois, vimos muitas outras pessoas das comunidades também se converterem.", "number": "²⁶⁴"}, {"type": "paragraph", "text": "O caminho foi sendo aberto passo a passo.", "number": "²⁶⁵"}, {"type": "heading", "text": "NÃO ERA SOBRE TER MUITO"}, {"type": "paragraph", "text": "Aquela experiência também me ensinou que não precisamos esperar ter muito para começar a fazer aquilo que Deus colocou em nosso coração.", "number": "²⁶⁶"}, {"type": "paragraph", "text": "Eu não tinha uma grande estrutura.", "number": "²⁶⁷"}, {"type": "paragraph", "text": "Não tinha grandes recursos.", "number": "²⁶⁸"}, {"type": "paragraph", "text": "Não tinha uma equipe formada desde o começo.", "number": "²⁶⁹"}, {"type": "paragraph", "text": "Eu tinha apenas uma disposição:", "number": "²⁷⁰"}, {"type": "paragraph", "text": "“Senhor, eu quero anunciar o Evangelho.”", "number": "²⁷¹"}, {"type": "paragraph", "text": "O restante foi acontecendo ao longo do caminho.", "number": "²⁷²"}, {"type": "paragraph", "text": "Isso não significa que devemos agir sem planejamento.", "number": "²⁷³"}, {"type": "paragraph", "text": "Significa que não devemos transformar a falta de recursos em uma desculpa permanente para nunca obedecer.", "number": "²⁷⁴"}, {"type": "paragraph", "text": "Jesus alimentou multidões utilizando aquilo que estava disponível.", "number": "²⁷⁵"}, {"type": "paragraph", "text": "Em uma ocasião, havia apenas cinco pães e dois peixes.", "number": "²⁷⁶"}, {"type": "quote", "text": "«“E ele lhes disse: Dai-lhes vós de comer.”", "reference": "Lucas 9:13»"}, {"type": "paragraph", "text": "Os discípulos olharam para o que tinham.", "number": "²⁷⁷"}, {"type": "paragraph", "text": "Jesus olhou para o que Deus poderia fazer com aquilo que estava disponível.", "number": "²⁷⁸"}, {"type": "heading", "text": "CINCO PÃES E DOIS PEIXES"}, {"type": "paragraph", "text": "A multiplicação dos pães não ensina que devemos ignorar nossas limitações.", "number": "²⁷⁹"}, {"type": "paragraph", "text": "Ela ensina que aquilo que colocamos nas mãos de Jesus pode ser usado de maneira que ultrapassa nossa própria capacidade.", "number": "²⁸⁰"}, {"type": "paragraph", "text": "O pouco dos discípulos tornou-se suficiente para uma multidão.", "number": "²⁸¹"}, {"type": "paragraph", "text": "Naquela viagem missionária, eu também conheci o princípio do pouco colocado à disposição.", "number": "²⁸²"}, {"type": "paragraph", "text": "Eu tinha disposição.", "number": "²⁸³"}, {"type": "paragraph", "text": "Outros tinham alimentos.", "number": "²⁸⁴"}, {"type": "paragraph", "text": "Outros tinham roupas.", "number": "²⁸⁵"}, {"type": "paragraph", "text": "Outros tinham sapatos.", "number": "²⁸⁶"}, {"type": "paragraph", "text": "Outro tinha caminhão.", "number": "²⁸⁷"}, {"type": "paragraph", "text": "Outro tinha barco.", "number": "²⁸⁸"}, {"type": "paragraph", "text": "Outros tinham tempo.", "number": "²⁸⁹"}, {"type": "paragraph", "text": "E todos aqueles recursos, quando colocados a serviço do Reino, tornaram-se parte da missão.", "number": "²⁹⁰"}, {"type": "heading", "text": "ATOS 29"}, {"type": "paragraph", "text": "Quando penso naquela história, entendo cada vez mais por que gosto de chamar essas experiências de Atos 29.", "number": "²⁹¹"}, {"type": "paragraph", "text": "O livro de Atos termina no capítulo 28.", "number": "²⁹²"}, {"type": "paragraph", "text": "Mas a missão de anunciar Cristo não terminou.", "number": "²⁹³"}, {"type": "paragraph", "text": "A Igreja continuou pregando.", "number": "²⁹⁴"}, {"type": "paragraph", "text": "Continuou atravessando fronteiras.", "number": "²⁹⁵"}, {"type": "paragraph", "text": "Continuou chegando a lugares diferentes.", "number": "²⁹⁶"}, {"type": "paragraph", "text": "Continuou levando a Palavra.", "number": "²⁹⁷"}, {"type": "paragraph", "text": "E nós também somos chamados a continuar essa missão.", "number": "²⁹⁸"}, {"type": "paragraph", "text": "Não estamos acrescentando um capítulo à Bíblia.", "number": "²⁹⁹"}, {"type": "paragraph", "text": "Estamos testemunhando aquilo que Deus tem permitido viver depois do período narrado no livro de Atos.", "number": "³⁰⁰"}, {"type": "paragraph", "text": "A missão continua.", "number": "³⁰¹"}, {"type": "paragraph", "text": "O Evangelho continua sendo anunciado.", "number": "³⁰²"}, {"type": "paragraph", "text": "Pessoas continuam precisando ouvir.", "number": "³⁰³"}, {"type": "paragraph", "text": "Comunidades continuam precisando conhecer Jesus.", "number": "³⁰⁴"}, {"type": "paragraph", "text": "E portas continuam sendo abertas.", "number": "³⁰⁵"}, {"type": "heading", "text": "UMA LIÇÃO QUE CARREGO COMIGO"}, {"type": "paragraph", "text": "Aquela experiência me ensinou que Deus pode abrir uma porta através de outra porta.", "number": "³⁰⁶"}, {"type": "paragraph", "text": "Eu queria chegar a um determinado lugar.", "number": "³⁰⁷"}, {"type": "paragraph", "text": "Mas não conhecia ninguém.", "number": "³⁰⁸"}, {"type": "paragraph", "text": "Não sabia como chegar.", "number": "³⁰⁹"}, {"type": "paragraph", "text": "Não tinha recursos.", "number": "³¹⁰"}, {"type": "paragraph", "text": "Então Deus me levou primeiro a outro lugar.", "number": "³¹¹"}, {"type": "paragraph", "text": "E naquela primeira porta encontrei pessoas que me ajudaram a chegar à segunda.", "number": "³¹²"}, {"type": "paragraph", "text": "Isso mudou minha maneira de enxergar os caminhos de Deus.", "number": "³¹³"}, {"type": "paragraph", "text": "Nem toda mudança de rota significa que estamos fora do propósito.", "number": "³¹⁴"}, {"type": "paragraph", "text": "Às vezes, o caminho aparentemente diferente faz parte da maneira como Deus nos conduz.", "number": "³¹⁵"}, {"type": "paragraph", "text": "Por isso, aprendi:", "number": "³¹⁶"}, {"type": "paragraph", "text": "não despreze a primeira porta apenas porque você está esperando outra.", "number": "³¹⁷"}, {"type": "paragraph", "text": "Pode ser através dela que Deus esteja preparando o caminho.", "number": "³¹⁸"}, {"type": "heading", "text": "O QUE EU TINHA?"}, {"type": "paragraph", "text": "Se alguém me perguntasse naquele começo:", "number": "³¹⁹"}, {"type": "paragraph", "text": "— O que você tem?", "number": "³²⁰"}, {"type": "paragraph", "text": "Eu poderia responder:", "number": "³²¹"}, {"type": "paragraph", "text": "Tenho vontade de evangelizar.", "number": "³²²"}, {"type": "paragraph", "text": "Mas Deus mostrou que a vontade colocada à disposição pode encontrar pessoas dispostas a cooperar.", "number": "³²³"}, {"type": "paragraph", "text": "Eu tinha vontade.", "number": "³²⁴"}, {"type": "paragraph", "text": "Alguém tinha uma cesta básica.", "number": "³²⁵"}, {"type": "paragraph", "text": "Outro tinha roupas.", "number": "³²⁶"}, {"type": "paragraph", "text": "Outro tinha sapatos.", "number": "³²⁷"}, {"type": "paragraph", "text": "Outro tinha um caminhão.", "number": "³²⁸"}, {"type": "paragraph", "text": "Outro tinha um barco.", "number": "³²⁹"}, {"type": "paragraph", "text": "Outro tinha disposição para viajar.", "number": "³³⁰"}, {"type": "paragraph", "text": "Um pastor tinha uma Voz Comunitária.", "number": "³³¹"}, {"type": "paragraph", "text": "Outro pastor tinha uma igreja.", "number": "³³²"}, {"type": "paragraph", "text": "Uma família tinha uma mesa preparada.", "number": "³³³"}, {"type": "paragraph", "text": "E todos nós tínhamos uma missão:", "number": "³³⁴"}, {"type": "paragraph", "text": "anunciar Jesus.", "number": "³³⁵"}, {"type": "heading", "text": "DEUS ABRIU O CAMINHO"}, {"type": "paragraph", "text": "Hoje, quando me lembro de tudo isso, percebo que eu não teria conseguido planejar aquela sequência de acontecimentos.", "number": "³³⁶"}, {"type": "paragraph", "text": "Eu não conhecia o lugar.", "number": "³³⁷"}, {"type": "paragraph", "text": "Não conhecia as pessoas.", "number": "³³⁸"}, {"type": "paragraph", "text": "Não sabia como chegar.", "number": "³³⁹"}, {"type": "paragraph", "text": "Não tinha os recursos.", "number": "³⁴⁰"}, {"type": "paragraph", "text": "Mas comecei a caminhar.", "number": "³⁴¹"}, {"type": "paragraph", "text": "E, enquanto caminhávamos, as portas foram aparecendo.", "number": "³⁴²"}, {"type": "paragraph", "text": "A experiência me ensinou que fé não significa possuir todas as respostas antes de começar.", "number": "³⁴³"}, {"type": "paragraph", "text": "Às vezes, significa dar o primeiro passo confiando em Deus.", "number": "³⁴⁴"}, {"type": "quote", "text": "«“Porque andamos por fé, e não por vista.”", "reference": "2 Coríntios 5:7»"}, {"type": "paragraph", "text": "Eu não via todo o caminho.", "number": "³⁴⁵"}, {"type": "paragraph", "text": "Mas comecei a caminhar.", "number": "³⁴⁶"}, {"type": "paragraph", "text": "E Deus foi mostrando o caminho.", "number": "³⁴⁷"}, {"type": "heading", "text": "UMA MESA NO FIM DA JORNADA"}, {"type": "paragraph", "text": "Existe algo especialmente bonito naquela última cena.", "number": "³⁴⁸"}, {"type": "paragraph", "text": "Depois de atravessar o rio.", "number": "³⁴⁹"}, {"type": "paragraph", "text": "Depois de viajar.", "number": "³⁵⁰"}, {"type": "paragraph", "text": "Depois de evangelizar.", "number": "³⁵¹"}, {"type": "paragraph", "text": "Depois de realizar o culto no barco.", "number": "³⁵²"}, {"type": "paragraph", "text": "Depois de chegar à última comunidade.", "number": "³⁵³"}, {"type": "paragraph", "text": "Recebemos um convite:", "number": "³⁵⁴"}, {"type": "paragraph", "text": "“Venham almoçar em minha casa.”", "number": "³⁵⁵"}, {"type": "paragraph", "text": "E havia comida.", "number": "³⁵⁶"}, {"type": "paragraph", "text": "Naquele momento, lembrei da pergunta que o pastor havia feito antes da viagem:", "number": "³⁵⁷"}, {"type": "paragraph", "text": "— O que vamos comer lá?", "number": "³⁵⁸"}, {"type": "paragraph", "text": "Eu não sabia.", "number": "³⁵⁹"}, {"type": "paragraph", "text": "Mas naquele dia eu tinha uma resposta:", "number": "³⁶⁰"}, {"type": "paragraph", "text": "Deus havia preparado uma mesa.", "number": "³⁶¹"}, {"type": "paragraph", "text": "Não foi uma grande estrutura.", "number": "³⁶²"}, {"type": "paragraph", "text": "Não foi um restaurante.", "number": "³⁶³"}, {"type": "paragraph", "text": "Não foi algo planejado por nós.", "number": "³⁶⁴"}, {"type": "paragraph", "text": "Foi uma família simples abrindo sua casa.", "number": "³⁶⁵"}, {"type": "paragraph", "text": "E, naquele mesmo lugar, não apenas recebemos alimento.", "number": "³⁶⁶"}, {"type": "paragraph", "text": "Recebemos a oportunidade de testemunhar a transformação de uma família que se entregou a Cristo.", "number": "³⁶⁷"}, {"type": "paragraph", "text": "E aquela conversão não ficou restrita àquela casa.", "number": "³⁶⁸"}, {"type": "paragraph", "text": "Muitas pessoas das comunidades alcançadas também se converteram.", "number": "³⁶⁹"}, {"type": "paragraph", "text": "A mesa alimentou nosso corpo.", "number": "³⁷⁰"}, {"type": "paragraph", "text": "A Palavra alimentou nossa fé.", "number": "³⁷¹"}, {"type": "paragraph", "text": "E Cristo estava alcançando vidas.", "number": "³⁷²"}, {"type": "heading", "text": "JESUS CONTINUA ENVIANDO"}, {"type": "paragraph", "text": "Jesus continua sendo a esperança das comunidades.", "number": "³⁷³"}, {"type": "paragraph", "text": "Continua sendo a resposta para o pecador.", "number": "³⁷⁴"}, {"type": "paragraph", "text": "Continua sendo o Salvador.", "number": "³⁷⁵"}, {"type": "paragraph", "text": "Continua chamando sua Igreja para anunciar o Evangelho.", "number": "³⁷⁶"}, {"type": "paragraph", "text": "A grandeza daquela experiência não está no barco.", "number": "³⁷⁷"}, {"type": "paragraph", "text": "Não está no caminhão.", "number": "³⁷⁸"}, {"type": "paragraph", "text": "Não está nas cestas.", "number": "³⁷⁹"}, {"type": "paragraph", "text": "Não está nas roupas.", "number": "³⁸⁰"}, {"type": "paragraph", "text": "Não está no sonho.", "number": "³⁸¹"}, {"type": "paragraph", "text": "Não está sequer na minha disposição.", "number": "³⁸²"}, {"type": "paragraph", "text": "Está em Jesus Cristo.", "number": "³⁸³"}, {"type": "paragraph", "text": "Tudo aquilo foi instrumento.", "number": "³⁸⁴"}, {"type": "paragraph", "text": "O objetivo sempre foi um:", "number": "³⁸⁵"}, {"type": "paragraph", "text": "que pessoas ouvissem a Palavra de Deus e conhecessem Jesus.", "number": "³⁸⁶"}, {"type": "paragraph", "text": "E foi isso que vimos acontecer.", "number": "³⁸⁷"}, {"type": "paragraph", "text": "Famílias foram alcançadas.", "number": "³⁸⁸"}, {"type": "paragraph", "text": "Pessoas se converteram.", "number": "³⁸⁹"}, {"type": "paragraph", "text": "Comunidades ouviram o Evangelho.", "number": "³⁹⁰"}, {"type": "paragraph", "text": "E vidas começaram uma nova caminhada com Cristo.", "number": "³⁹¹"}, {"type": "heading", "text": "CONCLUSÃO"}, {"type": "paragraph", "text": "Eu queria evangelizar do outro lado do Rio Negro.", "number": "³⁹²"}, {"type": "paragraph", "text": "Não conhecia o lugar.", "number": "³⁹³"}, {"type": "paragraph", "text": "Não conhecia ninguém.", "number": "³⁹⁴"}, {"type": "paragraph", "text": "Não tinha recursos.", "number": "³⁹⁵"}, {"type": "paragraph", "text": "Mas tinha um desejo colocado diante do Senhor.", "number": "³⁹⁶"}, {"type": "paragraph", "text": "Deus abriu uma primeira porta no Distrito do Araçá.", "number": "³⁹⁷"}, {"type": "paragraph", "text": "Depois, através daquela porta, conhecemos pessoas.", "number": "³⁹⁸"}, {"type": "paragraph", "text": "Uma Voz Comunitária foi colocada à nossa disposição.", "number": "³⁹⁹"}, {"type": "paragraph", "text": "Pregamos para a comunidade.", "number": "⁴⁰⁰"}, {"type": "paragraph", "text": "Fomos ao culto.", "number": "⁴⁰¹"}, {"type": "paragraph", "text": "Conhecemos outro pastor.", "number": "⁴⁰²"}, {"type": "paragraph", "text": "E descobrimos que ele pastoreava exatamente no lugar que eu desejava alcançar.", "number": "⁴⁰³"}, {"type": "paragraph", "text": "Depois vieram as viagens ao Janauari e às comunidades adjacentes.", "number": "⁴⁰⁴"}, {"type": "paragraph", "text": "Vieram pessoas.", "number": "⁴⁰⁵"}, {"type": "paragraph", "text": "Vieram Bíblias.", "number": "⁴⁰⁶"}, {"type": "paragraph", "text": "Vieram folhetos.", "number": "⁴⁰⁷"}, {"type": "paragraph", "text": "Vieram cestas básicas.", "number": "⁴⁰⁸"}, {"type": "paragraph", "text": "Vieram roupas.", "number": "⁴⁰⁹"}, {"type": "paragraph", "text": "Vieram sapatos.", "number": "⁴¹⁰"}, {"type": "paragraph", "text": "Veio caminhão.", "number": "⁴¹¹"}, {"type": "paragraph", "text": "Veio barco.", "number": "⁴¹²"}, {"type": "paragraph", "text": "E, quando não sabíamos o que comeríamos, Deus nos conduziu até uma casa onde havia uma mesa preparada.", "number": "⁴¹³"}, {"type": "paragraph", "text": "Ali, aquela família que nos recebeu também foi alcançada pelo Evangelho e se converteu a Cristo.", "number": "⁴¹⁴"}, {"type": "paragraph", "text": "E, juntamente com aquela família, muitas outras pessoas daquelas comunidades também se converteram.", "number": "⁴¹⁵"}, {"type": "paragraph", "text": "Tudo isso me ensinou que a missão pertence ao Senhor.", "number": "⁴¹⁶"}, {"type": "paragraph", "text": "Nós somos apenas cooperadores.", "number": "⁴¹⁷"}, {"type": "quote", "text": "«“Eu plantei, Apolo regou; mas Deus deu o crescimento.”", "reference": "1 Coríntios 3:6»"}, {"type": "paragraph", "text": "Eu não tinha todos os recursos.", "number": "⁴¹⁸"}, {"type": "paragraph", "text": "Mas tinha disposição.", "number": "⁴¹⁹"}, {"type": "paragraph", "text": "Eu não conhecia o caminho.", "number": "⁴²⁰"}, {"type": "paragraph", "text": "Mas Deus conhecia.", "number": "⁴²¹"}, {"type": "paragraph", "text": "Eu não conhecia as pessoas.", "number": "⁴²²"}, {"type": "paragraph", "text": "Mas Deus já sabia quem colocaria em nosso caminho.", "number": "⁴²³"}, {"type": "paragraph", "text": "Eu não sabia o que comeríamos.", "number": "⁴²⁴"}, {"type": "paragraph", "text": "Mas Deus já conhecia aquela mesa.", "number": "⁴²⁵"}, {"type": "paragraph", "text": "E eu não sabia quantas vidas seriam alcançadas.", "number": "⁴²⁶"}, {"type": "paragraph", "text": "Mas Deus já conhecia aquelas pessoas.", "number": "⁴²⁷"}, {"type": "paragraph", "text": "Por isso, quando olho para aquela experiência, não vejo apenas viagens missionárias.", "number": "⁴²⁸"}, {"type": "paragraph", "text": "Vejo portas abertas.", "number": "⁴²⁹"}, {"type": "paragraph", "text": "Vejo cooperação.", "number": "⁴³⁰"}, {"type": "paragraph", "text": "Vejo provisão.", "number": "⁴³¹"}, {"type": "paragraph", "text": "Vejo famílias alcançadas.", "number": "⁴³²"}, {"type": "paragraph", "text": "Vejo pessoas convertidas.", "number": "⁴³³"}, {"type": "paragraph", "text": "Vejo comunidades ouvindo a Palavra.", "number": "⁴³⁴"}, {"type": "paragraph", "text": "E vejo uma lição que ficou profundamente marcada em mim:", "number": "⁴³⁵"}, {"type": "paragraph", "text": "Quando colocamos nossa disposição nas mãos de Deus, Ele pode abrir caminhos que não conseguimos abrir sozinhos.", "number": "⁴³⁶"}, {"type": "paragraph", "text": "Não significa que todos os caminhos serão fáceis.", "number": "⁴³⁷"}, {"type": "paragraph", "text": "Não significa que nunca haverá dificuldades.", "number": "⁴³⁸"}, {"type": "paragraph", "text": "Significa que podemos continuar caminhando em obediência, confiando que Deus continua sendo Deus no caminho.", "number": "⁴³⁹"}, {"type": "paragraph", "text": "E, enquanto houver comunidades para alcançar, pessoas para ouvir e lugares onde Cristo ainda precisa ser anunciado, continuaremos dizendo:", "number": "⁴⁴⁰"}, {"type": "paragraph", "text": "“Eis-me aqui, Senhor.”", "number": "⁴⁴¹"}, {"type": "paragraph", "text": "“Envia-me a mim.”", "number": "⁴⁴²"}, {"type": "quote", "text": "«“Depois disto ouvi a voz do Senhor, que dizia: A quem enviarei, e quem há de ir por nós? Então disse eu: Eis-me aqui, envia-me a mim.”", "reference": "Isaías 6:8»"}, {"type": "paragraph", "text": "ATOS 29 continua.", "number": "⁴⁴³"}];
+
+const abertura = document.getElementById("abertura");
+const medidor = document.getElementById("medidor");
+const indicador = document.getElementById("indicador");
+const botaoAnterior = document.getElementById("anterior");
+const botaoProxima = document.getElementById("proxima");
+
+let paginas = [];
+let indiceAbertura = 0;
+let modoMobile = window.matchMedia("(max-width: 700px)");
+
+function criarElemento(item) {
+    const unidade = document.createElement("div");
+    unidade.className = "unidade";
+
+    if (item.type === "heading") {
+        const h = document.createElement("h2");
+        h.className = "subtitulo";
+        h.textContent = item.text;
+        unidade.appendChild(h);
+    } else if (item.type === "quote") {
+        const block = document.createElement("blockquote");
+        block.className = "citacao";
+
+        const texto = document.createElement("div");
+        texto.className = "citacao-texto";
+        texto.textContent = item.text;
+
+        const ref = document.createElement("span");
+        ref.className = "referencia";
+        ref.textContent = item.reference;
+
+        block.append(texto, ref);
+        unidade.appendChild(block);
+    } else {
+        const p = document.createElement("p");
+        p.className = "paragrafo";
+
+        const n = document.createElement("span");
+        n.className = "numero";
+        n.textContent = item.number;
+
+        p.append(n, document.createTextNode(item.text));
+        unidade.appendChild(p);
+    }
+    return unidade;
+}
+
+/* Mantém cada subtítulo junto ao primeiro elemento que o sucede. */
+function agruparUnidades(lista) {
+    const grupos = [];
+    for (let i = 0; i < lista.length; i++) {
+        const atual = lista[i];
+        if (atual.type === "heading") {
+            const grupo = [atual];
+            if (i + 1 < lista.length) grupo.push(lista[++i]);
+            grupos.push(grupo);
+        } else {
+            grupos.push([atual]);
+        }
+    }
+    return grupos;
+}
+
+function criarPagina(numero, lado, temTitulo, colunasPorPagina) {
+    const pagina = document.createElement("section");
+    pagina.className = "pagina " + lado + (temTitulo ? " tem-titulo" : "");
+    pagina.dataset.numero = numero;
+
+    const cabecalho = document.createElement("div");
+    cabecalho.className = "cabecalho-pagina";
+
+    const esquerda = document.createElement("span");
+    esquerda.textContent = "ATOS 29 • A HISTÓRIA CONTINUA";
+
+    const direita = document.createElement("span");
+    direita.textContent = "CAPÍTULO 19";
+
+    cabecalho.append(esquerda, direita);
+    pagina.appendChild(cabecalho);
+
+    if (temTitulo) {
+        const titulo = document.createElement("div");
+        titulo.className = "titulo-pagina";
+
+        const supra = document.createElement("div");
+        supra.className = "supra";
+        supra.textContent = "ATOS 29";
+
+        const h1 = document.createElement("h1");
+        h1.textContent = "QUANDO DEUS ABRE O CAMINHO";
+
+        titulo.append(supra, h1);
+        pagina.appendChild(titulo);
+    }
+
+    const colunas = document.createElement("div");
+    colunas.className = "colunas";
+    colunas.style.gridTemplateColumns =
+        colunasPorPagina === 1 ? "1fr" : "1fr 1fr";
+
+    for (let c = 0; c < colunasPorPagina; c++) {
+        const coluna = document.createElement("div");
+        coluna.className = "coluna";
+        colunas.appendChild(coluna);
+    }
+    pagina.appendChild(colunas);
+
+    const rodape = document.createElement("div");
+    rodape.className = "rodape-pagina";
+
+    const marca = document.createElement("span");
+    marca.textContent = "MINISTÉRIO ATALAIA";
+
+    const numeroPagina = document.createElement("span");
+    numeroPagina.className = "numero-pagina";
+    numeroPagina.textContent = numero;
+
+    rodape.append(marca, numeroPagina);
+    pagina.appendChild(rodape);
+    return pagina;
+}
+
+function montarPaginas() {
+    const mobile = modoMobile.matches;
+    const colunasPorPagina = mobile ? 1 : 2;
+
+    medidor.innerHTML = "";
+    paginas = [];
+
+    const grupos = agruparUnidades(conteudo);
+    const paginasMedidas = [];
+    let numeroPagina = 1;
+    let pagina = criarPagina(numeroPagina, "esquerda", true, colunasPorPagina);
+    medidor.appendChild(pagina);
+    let colunas = [...pagina.querySelectorAll(".coluna")];
+    let indiceColuna = 0;
+
+    function novaPagina() {
+        numeroPagina++;
+        pagina = criarPagina(
+            numeroPagina,
+            numeroPagina % 2 === 0 ? "direita" : "esquerda",
+            false,
+            colunasPorPagina
+        );
+        medidor.appendChild(pagina);
+        colunas = [...pagina.querySelectorAll(".coluna")];
+        indiceColuna = 0;
+    }
+
+    function avancarColuna() {
+        indiceColuna++;
+        if (indiceColuna >= colunasPorPagina) {
+            novaPagina();
+        }
+    }
+
+    function colunaTemConteudo(coluna) {
+        return coluna.childElementCount > 0;
+    }
+
+    function excedeu(coluna) {
+        return coluna.scrollHeight > coluna.clientHeight + 1;
+    }
+
+    for (const grupo of grupos) {
+        const destino = colunas[indiceColuna];
+        const inseridos = grupo.map(criarElemento);
+
+        inseridos.forEach(el => destino.appendChild(el));
+
+        if (excedeu(destino) && colunaTemConteudo(destino)) {
+            // Remove somente o grupo recém-inserido; nenhum bloco anterior é perdido.
+            inseridos.forEach(el => {
+                if (el.parentNode === destino) destino.removeChild(el);
+            });
+
+            avancarColuna();
+            const novaColuna = colunas[indiceColuna];
+            const novamente = grupo.map(criarElemento);
+            novamente.forEach(el => novaColuna.appendChild(el));
+
+            // Um grupo excepcionalmente alto permanece inteiro em uma coluna própria.
+            if (excedeu(novaColuna) && colunaTemConteudo(novaColuna)) {
+                novamente.forEach(el => novaColuna.removeChild(el));
+                avancarColuna();
+                const ultimaColuna = colunas[indiceColuna];
+                grupo.map(criarElemento).forEach(el => ultimaColuna.appendChild(el));
+            }
+        }
+    }
+
+    const paginasBrutas = [...medidor.querySelectorAll(".pagina")];
+    paginasBrutas.forEach((p, idx) => {
+        const clone = p.cloneNode(true);
+        clone.dataset.numero = String(idx + 1);
+        clone.querySelector(".numero-pagina").textContent = String(idx + 1);
+        paginasMedidas.push(clone);
+    });
+
+    paginas = paginasMedidas;
+    indiceAbertura = 0;
+    desenharAbertura();
+}
+
+function desenharAbertura() {
+    abertura.classList.add("trocando");
+    abertura.innerHTML = "";
+
+    const mobile = modoMobile.matches;
+    const primeira = mobile ? indiceAbertura : indiceAbertura * 2;
+    const quantidade = mobile ? 1 : 2;
+
+    for (let i = 0; i < quantidade; i++) {
+        const pagina = paginas[primeira + i];
+        if (!pagina) continue;
+
+        const clone = pagina.cloneNode(true);
+        clone.classList.remove("esquerda", "direita");
+        clone.classList.add(i === 0 ? "esquerda" : "direita");
+
+        if (mobile) clone.classList.add("visivel-mobile");
+        abertura.appendChild(clone);
+    }
+
+    const totalAberturas = mobile ? paginas.length : Math.ceil(paginas.length / 2);
+    const inicio = primeira + 1;
+    const fim = Math.min(primeira + quantidade, paginas.length);
+    indicador.textContent = mobile
+        ? `Página ${inicio} de ${paginas.length}`
+        : `Páginas ${inicio}–${fim} de ${paginas.length}`;
+
+    botaoAnterior.disabled = indiceAbertura <= 0;
+    botaoProxima.disabled = indiceAbertura >= totalAberturas - 1;
+
+    requestAnimationFrame(() => abertura.classList.remove("trocando"));
+}
+
+function navegar(direcao) {
+    const total = modoMobile.matches
+        ? paginas.length
+        : Math.ceil(paginas.length / 2);
+
+    indiceAbertura = Math.max(0, Math.min(total - 1, indiceAbertura + direcao));
+    desenharAbertura();
+}
+
+botaoAnterior.addEventListener("click", () => navegar(-1));
+botaoProxima.addEventListener("click", () => navegar(1));
+
+document.addEventListener("keydown", evento => {
+    if (evento.key === "ArrowLeft") navegar(-1);
+    if (evento.key === "ArrowRight") navegar(1);
+});
+
+let inicioToqueX = null;
+abertura.addEventListener("touchstart", evento => {
+    inicioToqueX = evento.changedTouches[0].clientX;
+}, { passive: true });
+
+abertura.addEventListener("touchend", evento => {
+    if (inicioToqueX === null) return;
+    const fimX = evento.changedTouches[0].clientX;
+    const diferenca = fimX - inicioToqueX;
+    if (Math.abs(diferenca) > 45) navegar(diferenca > 0 ? -1 : 1);
+    inicioToqueX = null;
+}, { passive: true });
+
+let temporizadorRedimensionamento;
+window.addEventListener("resize", () => {
+    clearTimeout(temporizadorRedimensionamento);
+    temporizadorRedimensionamento = setTimeout(montarPaginas, 180);
+});
+
+if (typeof modoMobile.addEventListener === "function") {
+    modoMobile.addEventListener("change", montarPaginas);
+} else {
+    modoMobile.addListener(montarPaginas);
+}
+
+window.addEventListener("load", montarPaginas);
+</script>
+</body>
+</html>
